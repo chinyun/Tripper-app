@@ -1,0 +1,156 @@
+input {
+	outline: none;
+}
+
+.account-table {
+	width: 36%;
+	height: auto;
+	padding: 0;
+	margin-top: 3%;
+	margin-left: 12%;
+	background-color: rgba(255, 255, 255, 0.1);
+	border-radius: 20px;
+	box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.05);
+}
+
+.scroll-account-list {
+	padding: 7% 6% 6% 6%;
+	height: 75%;
+}
+
+.account-list {
+	margin: 0;
+	padding: 0;
+	width: 98%;
+	max-height: 538px;
+}
+
+.account-list-item {
+	margin-bottom: 6px;
+	padding: 3%;
+	border-radius: 6px;
+	background-color: rgba(249, 249, 253,1 );
+	box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.1);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.account-list li span {
+	margin: 2px 10px;
+	padding: 0;
+	font-size: 16px;
+	letter-spacing: 0.5px;
+	line-height: 20px;
+}
+
+.list-item-category {
+	color: rgba(62,62,62,1);
+	font-weight: 600;
+}
+
+.list-item-detail {
+	color: rgba(113, 113, 113, 1);
+	font-weight: 400;
+	border: none;
+	font-size: 16px;
+	width: 75%;
+	background-color: rgba(249, 249, 253,1 );
+}
+
+.list-item-amount {
+	color: rgba(113, 113, 113, 1);
+}
+
+.add-account-list {
+	margin: 0;
+	padding: 2% 6% 6% 6%;
+	width: 86%;
+	display: flex;
+}
+
+.account-category {
+	width: 16%;
+	margin: 5px 5px 5px 0;
+	padding: 5px 15px;
+	background-color: rgba(249,249,253,1);
+	border: 1px solid rgba(90, 215, 235, 1);
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+}
+
+.account-category-selector {
+	appearance: none;
+	outline: none;
+	font-size: 15px;
+	font-weight: 500;
+	color: rgba(62,62,62,1);
+	background: transparent; 
+	border: none;
+	cursor: pointer;
+	width: 100%;
+}
+.account-category-selector-icon {
+	padding: 0;
+	margin: 0;
+	float: right;
+}
+
+.account-category-selector-icon img {
+	padding: 0;
+	margin: 5px 0 0 0;
+	width: 10px;
+}
+
+.add-list-input-group {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.input-list-detail, .input-list-amount {
+	font-weight: 500;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 20px;
+	color: rgba(255,255,255,0.9);
+	color: rgba(62,62,62, 0.9);
+	margin: 5px 2px;
+	padding: 2%;
+	width: 28%;
+	background-color: rgba(0, 0, 0,0.1);
+	outline: none;
+	border: 2px solid rgba(70, 210, 235, 0);
+	border-radius: 6px;
+}
+
+.input-list-detail::placeholder, .input-list-amount::placeholder {
+	color: rgba(255,255,255,0.4);
+	font-weight: 500;
+	letter-spacing: 0.5px;
+}
+
+.input-list-detail:focus, .input-list-amount:focus {
+	background-color: rgba(0, 0, 0,0.02);
+	border: 2px solid rgba(70, 210, 235, 1);
+}
+
+.input-list-submit {
+	font-weight: 500;
+	font-size: 16px;
+	letter-spacing: 2px;
+	line-height: 20px;
+	width: 20%;
+	margin: 5px 0 5px 5px;
+	padding: 2%;
+	color: rgba(249,249,253,1);
+	background-color: rgba(90, 215, 235, 1);
+	border: 1px solid rgba(90, 215, 235, 1);
+	border-radius: 4px;
+	box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.05);
+}
+
+.account-list-submit:hover {
+	background-color: rgba(90, 215, 210, 1);
+	box-shadow: 3px 8px 10px 0px rgba(0,0,0, 0.1);
+}
