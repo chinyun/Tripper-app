@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './List.css';
-import deleteIcon from './delete-icon.png';
 
 class List extends Component {
 	constructor( props ) {
@@ -8,27 +7,27 @@ class List extends Component {
 		this.state = {};
 	}
 
-	removeListItem = ( event )=> {
-		event.target.parentNode.parentNode.remove();
+	handleDelete = ( {removeListItem} ) => {
+		this.props.removeListItem();
 	};
 
-
 	render(){
+		const { list } = this.props;
 		return (
 			<li className='account-list-item'>
 				<div>
-					<button onClick= { this.removeListItem } >
-						<img alt='delete-icon' src={ deleteIcon }/>
+					<button onClick= { this.handleDelete } >
+						Delete
 					</button>
-					{/*<span className='list-item-category'>
-						{ this.porps.category}
-					</span>*/}
+					<span className='list-item-category'>
+						{ list.category}
+					</span>
 					<span className='list-item-detail'>
-						{ this.props.detail}
+						{ list.detail}
 					</span>
 				</div>
 				<span className='list-item-amount'>
-					{ this.props.amount }
+					{ list.amount }
 				</span>
 			</li>
 		)

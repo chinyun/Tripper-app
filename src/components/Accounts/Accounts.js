@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './Accounts.css';
 import Scroll from './Scroll';
-import SelectIcon from './select-icon.png'; 
 import List from './List';
+import SelectIcon from './select-icon.png'; 
+
 
 
 // const caculates = {
@@ -12,18 +13,25 @@ import List from './List';
 // 	}
 // ;
 
-const initailState = {
-	totalAmount: 0,
-	inputDetailValue: '',
-	inputAmountValue: '',
-	addNewListItem: false
-};
 
 class Accounts extends Component {
 	constructor ( ) {
 		super();
-		this.state = initailState;
-	}
+		this.state = {
+			totalAmount: 0,
+			category: '',
+			Detail: '',
+			Amount: '',
+			list: []
+		};
+		this.id = 0;
+	};
+
+	// componentDidMount( ) {
+	// 	fetch('localhost:')
+	// 		.then( response => response.json( ))
+	// 		.then( data => this.setState({ list: data }) )
+	// };
 
 	// caculateTotalAmount = ( ) => {
 	// 	let totalAmount = ( ) => {
@@ -32,65 +40,67 @@ class Accounts extends Component {
 	// 	}
 	// 	this.setState({ totalAmount: totalAmount });
 	// };
-
-	onInputDetailValueChange = (event) => {
-		this.setState({ inputDetailValue: event.target.value });
-	};
-
-	onInputAmountValueChange = (event) => {
-		this.setState({ inputAmountValue: event.target.value });
-	};
-
-
-
 	
 
-	createAccountList =( )=> {
-		// const ul = document.querySelector('ul');
-		// let li = document.getElementByClassName('account-list-item');
+	onSelectChange = () => { 
+		let select = document.getElementById('account-category-selector');
+		let index = select.selectedIndex; 
+		this.setState({
+			Category: select.options[index].text
+		})
+	};
 
-		// const inputListDetail = document.getElementById('input-list-detail');
-		// const inputListAmount = document.getElementById('input-list-amount');
+	onDetailValueChange = (event) => {
+		this.setState({ Detail: event.target.value });
+	};
 
-		// let select = document.getElementById('account-category-selector');
-		// let index = select.selectedIndex;
-		// category.appendChild(document.createTextNode(select.options[index].text));
+	onAmountValueChange = (event) => {
+		this.setState({ Amount: event.target.value });
+	};
 
+	removeListItem = ( event ) => {
+		this.setState({
+			list: this.state.list.filter(item => item.id !== list.id)
+		});
+	};
 
-		// let detail = document.createElement('span');
-		// detail.classList.toggle('list-item-detail');
-		// detail.appendChild(document.createTextNode(inputListDetail.value));
-		// div.appendChild(detail);
-
-		// let amount = document.createElement('span');
-		// amount.classList.toggle('list-item-amount');
-		// amount.appendChild(document.createTextNode(inputListAmount.value));
-		// li.appendChild(amount);
-		// ul.appendChild(li);
-
-		this.setState({ addNewListItem: true });
+	createAccountList = ( event ) => {
+		this.setState({ 
+			list: [...this.state.list, {
+				category: this.state.Category,
+				detail: this.state.Detail,
+				amount: this.state.Amount,
+				id: this.id++
+			}],
+			Category: '',
+			Detail: '',
+			Amount: ''
+		})
 	}
 
 	render () {
 		return (
 			<div className='account-table'>
 				<div className='scroll-account-list'>
-					<Scroll>
-						<ul className='account-list'>
-								<List 
-									// category={ this.state.inputDetailValue }
-									detail={ this.state.inputDetailValue }
-									amount={ this.state.inputAmountValue }		
-								/>
-						</ul>
-					</Scroll>
-				</div>
+				<Scroll>
+					<ul className='account-list'>
+						{this.state.list.map( item => 
+							<List 
+								key={list.id} 
+								list={list}
+								removeListItem={removeListItem}
+							/> 
+						)}
+					</ul>
+				</Scroll>
+			</div>	
 				<div className='add-account-list'>
 					<div className='account-category'>
 						<select 
 							className='account-category-selector' 
 							id='account-category-selector' 
 							name='account-category-selector'
+							value={this.onSelectChange}
 						>
 							<option value='transportation'>交通</option>
 							<option value='living'>住宿</option>
@@ -107,14 +117,16 @@ class Accounts extends Component {
 						className='input-list-detail' 
 						type='text' 
 						placeholder='description'
-						onChange={this.onInputDetailValueChange}
+						value={this.state.Detail}
+						onChange={this.onDetailValueChange}
 					/>
 					<input 
 						id='input-list-amount' 
 						className='input-list-amount'
 						type='text' 
 						placeholder='amount'
-						onChange={this.onInputAmountValueChange}
+						value={this.state.Amount}
+						onChange={this.onAmountValueChange}
 					/>
 					<input 
 						id='input-list-submit' 
@@ -123,6 +135,7 @@ class Accounts extends Component {
 						value='Add'
 						onClick={this.createAccountList}
 					/>
+					
 				</div>
 				
 			</div>
