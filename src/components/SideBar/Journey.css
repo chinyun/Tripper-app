@@ -1,0 +1,26 @@
+.journey {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	margin: 5px 0;
+	padding: 2%;
+}
+
+.journey-delete-btn {
+	background: none;
+	margin: 0 5px;
+}
+
+.journey-delete-btn img {
+	padding: 0;
+	margin: 5px 0 0 0;
+	width: 10px;
+}
+
+.journey-content {
+	font-size: 16px;
+	font-weight: 500;
+	color: rgba(62, 62, 62, 1);
+	margin: 0px 10px;
+	letter-spacing: 0.6px;
+}

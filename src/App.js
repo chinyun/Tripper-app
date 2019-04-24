@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation/Navigation';
 import SideBar from './components/SideBar/SideBar';
-// import SetBudget from './components/SetBudget/SetBudget';
+import SetBudget from './components/SetBudget/SetBudget';
 // import Export from './components/Export/Export';
 import Accounts from './components/Accounts/Accounts';
 // import Dashboard from './components/Dashboard/Dashboard';
@@ -29,11 +29,12 @@ class App extends Component {
     return (
       <div className='app'>
         <Navigation/>
-        {/*<SideBar/>*/}
+        <SideBar/>
         <div className='container'>
-           <div className ='control-pannel'>
-          {/* 
+          <div className ='control-pannel'>
             <SetBudget/>
+          {/* 
+            
             <Export/>
          */}
           </div>

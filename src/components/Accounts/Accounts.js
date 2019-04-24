@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import './Accounts.css';
 import Scroll from './Scroll';
 import List from './List';
-import SelectIcon from './select-icon.png'; 
-
-
+import SelectIcon from './select-green-icon.png';
+import AddIcon from './add-white-icon.png'; 
 
 // const caculates = {
 // 		category: [],
@@ -19,12 +18,14 @@ class Accounts extends Component {
 		super();
 		this.state = {
 			totalAmount: 0,
-			category: '',
+			Category: '交通',
 			Detail: '',
-			Amount: '',
-			list: []
+			Amount: 0,
+			lists: [],
+			isShowed: false,
+			isAdded: true
 		};
-		this.id = 0;
+		this.initailId = 0;
 	};
 
 	// componentDidMount( ) {
@@ -42,11 +43,9 @@ class Accounts extends Component {
 	// };
 	
 
-	onSelectChange = () => { 
-		let select = document.getElementById('account-category-selector');
-		let index = select.selectedIndex; 
+	onSelectChange = (event) => { 
 		this.setState({
-			Category: select.options[index].text
+			Category: event.target.value
 		})
 	};
 
@@ -58,87 +57,126 @@ class Accounts extends Component {
 		this.setState({ Amount: event.target.value });
 	};
 
-	removeListItem = ( event ) => {
+	removeListItem = ( list ) => {
 		this.setState({
-			list: this.state.list.filter(item => item.id !== list.id)
+			lists: this.state.lists.filter(item => item.id !== list.id)
 		});
 	};
 
 	createAccountList = ( event ) => {
 		this.setState({ 
-			list: [...this.state.list, {
+			lists: [...this.state.lists, {
 				category: this.state.Category,
 				detail: this.state.Detail,
 				amount: this.state.Amount,
-				id: this.id++
+				id: this.initailId++
 			}],
-			Category: '',
 			Detail: '',
-			Amount: ''
+			Amount: 0,
+			isAdded: false
 		})
-	}
+	};
+
+	showAddList = ( event ) => {
+		this.setState({ isShowed: true })
+	};
+
+	showAddAccountlist = ( event ) => {
+		this.setState({ isAdded: true })
+	};
 
 	render () {
 		return (
-			<div className='account-table'>
-				<div className='scroll-account-list'>
-				<Scroll>
-					<ul className='account-list'>
-						{this.state.list.map( item => 
-							<List 
-								key={list.id} 
-								list={list}
-								removeListItem={removeListItem}
-							/> 
-						)}
-					</ul>
-				</Scroll>
-			</div>	
-				<div className='add-account-list'>
-					<div className='account-category'>
-						<select 
-							className='account-category-selector' 
-							id='account-category-selector' 
-							name='account-category-selector'
-							value={this.onSelectChange}
+			<div className='accounts-container'>
+			{ this.state.isShowed === false
+				? <div className='show-add-list-wrapper'> 
+						<button
+							className='show-add-list'
+							onClick={this.showAddList}
 						>
-							<option value='transportation'>交通</option>
-							<option value='living'>住宿</option>
-							<option value='food'>飲食</option>
-							<option value='ticket'>票券</option>
-							<option value='shopping'>購物</option>
-						</select>
-						<span className='account-category-selector-icon'>
-							<img alt='selector-icon'src={SelectIcon}/>
-						</span>
+							<img 
+								className='add-list-img' 
+								alt='add' 
+								src={AddIcon} 
+							/>
+							<span className='show-add-list-text'>新增支出項目</span>
+						</button>
 					</div>
-					<input 
-						id='input-list-detail'
-						className='input-list-detail' 
-						type='text' 
-						placeholder='description'
-						value={this.state.Detail}
-						onChange={this.onDetailValueChange}
-					/>
-					<input 
-						id='input-list-amount' 
-						className='input-list-amount'
-						type='text' 
-						placeholder='amount'
-						value={this.state.Amount}
-						onChange={this.onAmountValueChange}
-					/>
-					<input 
-						id='input-list-submit' 
-						className='input-list-submit'
-						type='submit' 
-						value='Add'
-						onClick={this.createAccountList}
-					/>
-					
-				</div>
-				
-			</div>
+				: <div className='account-table'>
+						<div className='scroll-account-list'>
+							<Scroll>
+								<ul className='account-list'>
+									{this.state.lists.map( list => 
+										<List 
+											key={list.id} 
+											list={list}
+											removeListItem={this.removeListItem}
+										/> 
+									)}
+								</ul>
+							</Scroll>
+							<div>
+								{ this.state.isAdded === false
+									? <button
+											className='show-add-account-list'
+											onClick={this.showAddAccountlist}
+										>
+											<img 
+												className='add-list-img' 
+												alt='add' 
+												src={AddIcon} 
+											/>
+											<span className='show-add-list-text'>新增支出項目</span>
+										</button>
+									: <div className='add-account-list'>
+											<div className='account-category'>
+												<select 
+													className='account-category-selector' 
+													id='account-category-selector' 
+													name='account-category-selector'
+													onChange={this.onSelectChange}
+												>
+													<option value='交通'>交通</option>
+													<option value='住宿'>住宿</option>
+													<option value='飲食'>飲食</option>
+													<option value='票券'>票券</option>
+													<option value='購物'>購物</option>
+												</select>
+												<span className='account-category-selector-icon'>
+													<img alt='select-green-icon'src={SelectIcon}/>
+												</span>
+											</div>
+											<input 
+												id='input-list-detail'
+												className='input-list-detail' 
+												type='text' 
+												placeholder='description'
+												value={this.state.Detail}
+												onChange={this.onDetailValueChange}
+											/>
+											<input 
+												id='input-list-amount' 
+												className='input-list-amount'
+												type='text' 
+												placeholder='amount'
+												value={this.state.Amount}
+												onChange={this.onAmountValueChange}
+											/>
+											<input 
+												id='input-list-submit' 
+												className='input-list-submit'
+												type='submit' 
+												value='新增支出'
+												onClick={this.createAccountList}
+											/>
+										</div>
+								}
+							</div>
+							
+						</div>	
+					</div>
+			}
+		</div>
 		)
 	}
 };

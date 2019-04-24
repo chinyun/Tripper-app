@@ -13,13 +13,14 @@
 .control-pannel {
 	background-color: rgba(250,190, 220, 1);
 	width: 100%;
-	height: 315px;
+	height: 38%;
 	box-shadow: 0 5px 10px 0px rgba(0,0,0, 0.1);
 	z-index: 1;
 }
   
 .section {
-	background-color: rgba(70, 160, 245, 1);
+	/* */
+	background-color: rgba(82, 145, 230, 1);
 	width: 100%;
-	height: 75%;
+	height: 62%;
 }
