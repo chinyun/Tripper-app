@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './SideBar.css';
-import	Journey from './Journey';
+import Journey from './Journey';
 import AddIcon from './add-icon.png';
+import CancelIcon from './cancel-dark-icon.png';
 
 class SideBar extends Component {
 	constructor ( ) {
@@ -101,13 +102,16 @@ class SideBar extends Component {
 										value='新增'
 										onClick={this.createJourney}
 									/>
-									<input 
-										id='cancel-new-submit' 
-										className='cancel-new-submit'
-										type='submit' 
-										value='取消'
+									<button
+										className='cancel-new-submit-btn'
 										onClick={this.cancelNewSubmit}
-									/>
+									>
+										<img 
+											className='cancel-dark-btn-img' 
+											alt='cancel' 
+											src={CancelIcon} 
+										/>
+									</button>
 								</div>
 							</div>	
 					}

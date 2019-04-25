@@ -4,6 +4,7 @@ import Scroll from './Scroll';
 import List from './List';
 import SelectIcon from './select-green-icon.png';
 import AddIcon from './add-white-icon.png'; 
+import CancelIcon from './cancel-icon.png';
 
 // const caculates = {
 // 		category: [],
@@ -20,7 +21,7 @@ class Accounts extends Component {
 			totalAmount: 0,
 			Category: '交通',
 			Detail: '',
-			Amount: 0,
+			Amount: '',
 			lists: [],
 			isShowed: false,
 			isAdded: true
@@ -85,6 +86,10 @@ class Accounts extends Component {
 		this.setState({ isAdded: true })
 	};
 
+	cancelListSubmit =( event ) => {
+		this.setState({ isAdded: false })
+	};
+
 	render () {
 		return (
 			<div className='accounts-container'>
@@ -129,50 +134,71 @@ class Accounts extends Component {
 											<span className='show-add-list-text'>新增支出項目</span>
 										</button>
 									: <div className='add-account-list'>
-											<div className='account-category'>
-												<select 
-													className='account-category-selector' 
-													id='account-category-selector' 
-													name='account-category-selector'
-													onChange={this.onSelectChange}
-												>
-													<option value='交通'>交通</option>
-													<option value='住宿'>住宿</option>
-													<option value='飲食'>飲食</option>
-													<option value='票券'>票券</option>
-													<option value='購物'>購物</option>
-												</select>
-												<span className='account-category-selector-icon'>
-													<img alt='select-green-icon'src={SelectIcon}/>
-												</span>
+											<div className='add-account-list-content'>
+												<div className='account-category'>
+													<select 
+														className='account-category-selector' 
+														id='account-category-selector' 
+														name='account-category-selector'
+														onChange={this.onSelectChange}
+													>
+														<option value='交通'>交通</option>
+														<option value='住宿'>住宿</option>
+														<option value='飲食'>飲食</option>
+														<option value='票券'>票券</option>
+														<option value='購物'>購物</option>
+													</select>
+													<span className='account-category-selector-icon'>
+														<img alt='select-green-icon'src={SelectIcon}/>
+													</span>
+												</div>
+												<input 
+													id='input-list-detail'
+													className='input-list-detail' 
+													type='text' 
+													placeholder='description'
+													value={this.state.Detail}
+													onChange={this.onDetailValueChange}
+												/>
+												<input 
+													id='input-list-amount' 
+													className='input-list-amount'
+													type='text' 
+													placeholder='amount'
+													value={this.state.Amount}
+													onChange={this.onAmountValueChange}
+												/>
 											</div>
-											<input 
-												id='input-list-detail'
-												className='input-list-detail' 
-												type='text' 
-												placeholder='description'
-												value={this.state.Detail}
-												onChange={this.onDetailValueChange}
-											/>
-											<input 
-												id='input-list-amount' 
-												className='input-list-amount'
-												type='text' 
-												placeholder='amount'
-												value={this.state.Amount}
-												onChange={this.onAmountValueChange}
-											/>
-											<input 
+											<div className='input-list-submit-group'>
+												<input 
 												id='input-list-submit' 
 												className='input-list-submit'
 												type='submit' 
 												value='新增支出'
 												onClick={this.createAccountList}
-											/>
+												/>
+												<button
+													className='cancel-input-list-btn'
+													onClick={this.cancelListSubmit}
+												>
+													<img 
+														className='cancel-btn-img' 
+														alt='cancel' 
+														src={CancelIcon} 
+													/>
+												</button>
+												{/*<input
+													id='cancel-input-list-submit'
+													className='cancel-input-list-submit'
+													type='submit'
+													value='取消'
+													onClick={this.cancelListSubmit}
+												/>*/}
+											</div>
+											
 										</div>
 								}
 							</div>
-							
 						</div>	
 					</div>
 			}

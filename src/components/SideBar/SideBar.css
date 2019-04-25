@@ -85,7 +85,7 @@
 	display: flex;
 	align-items: center;
 	padding: 0;
-	margin: 0;
+	margin-top: 15px;
 }
 
 .input-new-journey {
@@ -98,7 +98,7 @@
 	color: rgba(249,249,253,1);
 	background-color: rgba( 0, 172, 238, 1);
 	border: 0px;
-	border-radius: 4px;
+	border-radius: 6px;
 	box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.05);
 	cursor: pointer;
 }
@@ -107,21 +107,14 @@
 	background-color: rgba( 0, 160, 220, 1);
 }
 
-.cancel-new-submit {
-	font-weight: 500;
-	font-size: 15px;
-	letter-spacing: 1px;
-	margin: 10px 0;
-	padding: 3px 6px;
-	width: 40%;
-	color: rgba(249,249,253,1);
-	background-color: rgba( 62, 62, 62, 0.4);
-	border: 0px;
-	border-radius: 4px;
-	box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.05);
+.cancel-new-submit-btn {
+	margin: 4px 0 0 2px;
+	width: auto;
 	cursor: pointer;
+	outline: none;
+	background-color: rgba( 197, 199, 212, 0);
 }
 
-.cancel-new-submit:hover {
-	background-color: rgba( 62, 62, 62, 0.5);
+.cancel-dark-btn-img {
+	width: 16px;
 }
