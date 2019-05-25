@@ -2,52 +2,62 @@ import React, { Component } from 'react';
 import './Accounts.css';
 import Scroll from './Scroll';
 import List from './List';
-import SelectIcon from './select-green-icon.png';
+import SelectIcon from './select-white-icon.png';
 import AddIcon from './add-white-icon.png'; 
 import CancelIcon from './cancel-icon.png';
+import Days from './Days';
 
-// const caculates = {
-// 		category: [],
-// 		detail: [],
-// 		amount: []
-// 	}
-// ;
+const db = [{
+	
+},{
+	
+},{
 
+}]
 
 class Accounts extends Component {
 	constructor ( ) {
 		super();
 		this.state = {
 			totalAmount: 0,
+			trafficAmount: 0,
+			livingAmount: 0,
+			foodAmount: 0,
+			ticketsAmount: 0,
+			shoppingAmount: 0,
 			Category: '交通',
 			Detail: '',
 			Amount: '',
 			lists: [],
-			isShowed: false,
-			isAdded: true
+			isAdded: true,
+			days: [],
+			displayDay: 1
 		};
 		this.initailId = 0;
+		this.initialDayId = 1;
+		this.initialDay = 2;
 	};
 
-	// componentDidMount( ) {
-	// 	fetch('localhost:')
-	// 		.then( response => response.json( ))
-	// 		.then( data => this.setState({ list: data }) )
-	// };
+	addNewDay = (event) => {
+		this.setState({
+			days: [...this.state.days, {
+				counts: this.initialDay++,
+				id: this.initialDayId++
+			}]
+		});
+	};
 
-	// caculateTotalAmount = ( ) => {
-	// 	let totalAmount = ( ) => {
+	onDaySelectChange = (event) => {
+		this.setState({
+			displayDay: event.target.value
+		});
+		console.log(this.state.displayDay);
+	};
 
-	// 		return 
-	// 	}
-	// 	this.setState({ totalAmount: totalAmount });
-	// };
-	
-
-	onSelectChange = (event) => { 
+	onCategorySelectChange = (event) => { 
 		this.setState({
 			Category: event.target.value
-		})
+		});
 	};
 
 	onDetailValueChange = (event) => {
@@ -64,7 +74,7 @@ class Accounts extends Component {
 		});
 	};
 
-	createAccountList = ( event ) => {
+	addAccountList = ( event ) => {
 		this.setState({ 
 			lists: [...this.state.lists, {
 				category: this.state.Category,
@@ -73,16 +83,13 @@ class Accounts extends Component {
 				id: this.initailId++
 			}],
 			Detail: '',
-			Amount: 0,
-			isAdded: false
-		})
+			Amount: '',
+			isAdded: false,
+			totalAmount: this.state.totalAmount += +this.state.Amount
+		});
 	};
 
-	showAddList = ( event ) => {
-		this.setState({ isShowed: true })
-	};
-
-	showAddAccountlist = ( event ) => {
+	showAddAccount = ( event ) => {
 		this.setState({ isAdded: true })
 	};
 
@@ -93,116 +100,123 @@ class Accounts extends Component {
 	render () {
 		return (
 			<div className='accounts-container'>
-			{ this.state.isShowed === false
-				? <div className='show-add-list-wrapper'> 
-						<button
-							className='show-add-list'
-							onClick={this.showAddList}
-						>
+				<div className='accounts-days-nav'>
+					<p className='accounts-day-title'>記帳簿</p>
+					<div className='accounts-days-manage'>
+						<button className='add-accounts-days-btn' onClick={this.addNewDay}>
 							<img 
-								className='add-list-img' 
+								className='add-day-img' 
 								alt='add' 
 								src={AddIcon} 
 							/>
-							<span className='show-add-list-text'>新增支出項目</span>
+							<span>新增</span>
 						</button>
+						<div className='accounts-days'>
+							<select 
+								className='accounts-day-selector' 
+								name='accounts-day-selector'
+								onChange={this.onDaySelectChange}
+							>
+								<option value='Day1'>Day1</option>
+								{this.state.days.map( day =>
+									<Days
+										key={day.id}
+										day={day}
+									/>
+								)}
+							</select>
+							<span className='account-category-selector-icon'>
+								<img alt='select-green-icon'src={SelectIcon}/>
+							</span>
+						</div>
 					</div>
-				: <div className='account-table'>
-						<div className='scroll-account-list'>
-							<Scroll>
-								<ul className='account-list'>
-									{this.state.lists.map( list => 
-										<List 
-											key={list.id} 
-											list={list}
-											removeListItem={this.removeListItem}
-										/> 
-									)}
-								</ul>
-							</Scroll>
-							<div>
-								{ this.state.isAdded === false
-									? <button
-											className='show-add-account-list'
-											onClick={this.showAddAccountlist}
-										>
-											<img 
-												className='add-list-img' 
-												alt='add' 
-												src={AddIcon} 
-											/>
-											<span className='show-add-list-text'>新增支出項目</span>
-										</button>
-									: <div className='add-account-list'>
-											<div className='add-account-list-content'>
-												<div className='account-category'>
-													<select 
-														className='account-category-selector' 
-														id='account-category-selector' 
-														name='account-category-selector'
-														onChange={this.onSelectChange}
-													>
-														<option value='交通'>交通</option>
-														<option value='住宿'>住宿</option>
-														<option value='飲食'>飲食</option>
-														<option value='票券'>票券</option>
-														<option value='購物'>購物</option>
-													</select>
-													<span className='account-category-selector-icon'>
-														<img alt='select-green-icon'src={SelectIcon}/>
-													</span>
-												</div>
-												<input 
-													id='input-list-detail'
-													className='input-list-detail' 
-													type='text' 
-													placeholder='description'
-													value={this.state.Detail}
-													onChange={this.onDetailValueChange}
-												/>
-												<input 
-													id='input-list-amount' 
-													className='input-list-amount'
-													type='text' 
-													placeholder='amount'
-													value={this.state.Amount}
-													onChange={this.onAmountValueChange}
-												/>
-											</div>
-											<div className='input-list-submit-group'>
-												<input 
-												id='input-list-submit' 
-												className='input-list-submit'
-												type='submit' 
-												value='新增支出'
-												onClick={this.createAccountList}
-												/>
-												<button
-													className='cancel-input-list-btn'
-													onClick={this.cancelListSubmit}
+				</div>
+				<div className='accounts-table'>
+					<div className='scroll-accounts-list'>
+						<Scroll>
+							<ul className='accounts-list'>
+								{this.state.lists.map( list => 
+									<List 
+										key={list.id} 
+										list={list}
+										removeListItem={this.removeListItem}
+									/> 
+								)}
+							</ul>
+						</Scroll>
+						<div>
+							{ this.state.isAdded === false
+								? <button
+										className='show-add-account-btn'
+										onClick={this.showAddAccount}
+									>
+										<img 
+											className='add-account-img' 
+											alt='add' 
+											src={AddIcon} 
+										/>
+										<span className='show-add-account-text'>新增支出項目</span>
+									</button>
+								: <div className='add-account-list'>
+										<div className='add-account-list-content'>
+											<div className='account-category'>
+												<select 
+													className='account-category-selector' 
+													name='account-category-selector'
+													onChange={this.onCategorySelectChange}
 												>
-													<img 
-														className='cancel-btn-img' 
-														alt='cancel' 
-														src={CancelIcon} 
-													/>
-												</button>
-												{/*<input
-													id='cancel-input-list-submit'
-													className='cancel-input-list-submit'
-													type='submit'
-													value='取消'
-													onClick={this.cancelListSubmit}
-												/>*/}
+													<option value='交通'>交通</option>
+													<option value='住宿'>住宿</option>
+													<option value='飲食'>飲食</option>
+													<option value='票券'>票券</option>
+													<option value='購物'>購物</option>
+												</select>
+												<span className='account-category-selector-icon'>
+													<img alt='select-green-icon'src={SelectIcon}/>
+												</span>
 											</div>
-											
+											<input 
+												id='input-list-detail'
+												className='input-list-detail' 
+												type='text' 
+												placeholder='描述'
+												value={this.state.Detail}
+												onChange={this.onDetailValueChange}
+											/>
+											<input 
+												id='input-list-amount' 
+												className='input-list-amount'
+												type='text' 
+												placeholder='金額'
+												value={this.state.Amount}
+												onChange={this.onAmountValueChange}
+											/>
 										</div>
-								}
-							</div>
-						</div>	
-					</div>
-			}
-		</div>
+										<div className='add-list-btn-group'>
+											<input 
+											id='add-list-submit' 
+											className='add-list-submit'
+											type='submit' 
+											value='新增支出'
+											onClick={this.addAccountList}
+											/>
+											<button
+												className='cancel-add-list-btn'
+												onClick={this.cancelListSubmit}
+											>
+												<img 
+													className='cancel-btn-img' 
+													alt='cancel' 
+													src={CancelIcon} 
+												/>
+											</button>
+										</div>
+									</div>
+							}
+						</div>
+					</div>	
+				</div>
+			</div>
 		)
 	}
 };

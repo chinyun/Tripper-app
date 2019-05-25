@@ -1,36 +1,118 @@
 .accounts-container {
-	padding: 0 ;
-	margin: 0 ;
-}
-
-.show-add-list-wrapper {
-	width: 36%;
+	width: 100%;
 	height: auto;
-	padding: 0;
-	margin-top: 3%;
-	margin-left: 12%;
-	background-color: rgba(255, 255, 255, 0.2);
-	border-radius: 8px;
-	box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.05);
+	padding: 3.2% 4%;
+	margin: 0;
 }
 
-.show-add-list {
+.accounts-days-nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.accounts-day-title {
+	font-size: 20px;
+  color: rgba(255,255,255,1);
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin: 0 15px;
+  padding: 5px;
+  cursor: pointer; 
+}
+
+.accounts-day-title:hover {
+  color: rgba(255,255,255,0.7);
+}
+
+.accounts-days-manage {
+	display: flex;
+	align-items: center;
+}
+
+.accounts-days {
+	width: 100px;
+	height: 36px;
+	margin: 0 15px;
+	padding: 0 15px;
+	background-color: rgba( 0, 172, 238, 1);
+	border: 0px;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+}
+
+.accounts-day-selector {
+	appearance: none;
+	outline: none;
+	font-size: 16px;
+	font-weight: 600;
+	color: rgba(255,255,255,1);
+	letter-spacing: 3px;
+	background: transparent; 
+	border: none;
+	cursor: pointer;
+	width: 100%;
+}
+
+.add-accounts-days-btn {
+	margin: 2px 0 0 0;
+	outline: none;
+	background: none;
+	font-size: 18px;
+	font-weight: 500;
+	color: rgba(255,255,255,1);
+}
+
+.add-accounts-days-btn:hover {
+	color: rgba(255,255,255,0.8);
+}
+
+.add-day-img {
+	width: 12px;
+	height: auto;
+	margin: 0 5px;
+	padding: 0;
+}
+
+.accounts-table {
+	padding: 1%;
+	margin-top: 2%;
+	margin-left: 2%;
+	height: auto;
+	background-color: rgba(255, 255, 255, 0.2);
+	border-radius: 20px;
+	box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.08);
+}
+
+.scroll-accounts-list {
+	padding: 7% 6% 2% 6%;
+}
+
+.accounts-list {
+	margin: 0;
+	padding: 0;
+	width: 98%;
+	max-height: 340px;
+}
+
+.show-add-account-btn {
 	display: flex;
 	align-items: center;
 	padding: 3%;
-	margin-left: 4%;
+	margin-top: 10px;
 	background-color: rgba(255, 255, 255,0);
 	outline: none;
 }
 
-.add-list-img {
+.add-account-img {
 	width: 14px;
 	height: auto;
 	margin: 0;
 	padding: 0;
 }
 
-.show-add-list-text {
+.show-add-account-text {
 	font-weight: 800;
 	font-size: 17px;
 	font-family: "Ubuntu";
@@ -40,58 +122,29 @@
 	margin-left: 15px;
 }
 
-
-.account-table {
-	width: 36%;
-	height: auto;
-	padding: 0;
-	margin-top: 3%;
-	margin-left: 12%;
-	background-color: rgba(255, 255, 255, 0.2);
-	border-radius: 20px;
-	box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.05);
-}
-
-.scroll-account-list {
-	padding: 7% 6% 0% 6%;
-}
-
-.account-list {
-	margin: 0;
-	padding: 0;
-	width: 98%;
-	max-height: 400px;
-}
-
-.show-add-account-list {
-	display: flex;
-	align-items: center;
-	padding: 3.5% 3% 5% 3%;
-	margin: 0;
-	background-color: rgba(255, 255, 255,0);
-	outline: none;
-}
-
 .add-account-list {
 	margin: 0;
-	padding: 2% 0% 6% 0%;
-	width: 98%;
+	padding: 0% 0% 2% 0%;
+	width: 95.5%;
 	display: flex;
 	flex-direction: column;
 }
 
 .add-account-list-content {
-	margin-top: 10px;
-	padding: 0;
+	margin-top: 25px;
+	padding: 1%;
 	width: 100%;
 	display: flex;
+	border-radius: 5px;
+	background-color: rgba(255, 255, 255,1);
 }
 
 .account-category {
-	width: 16%;
-	margin: 6px 5px 6px 0;
+	width: 14%;
+	height: 40px;
+	margin: 0 5px 0 0;
 	padding: 0 2%;
-	background-color: rgba(249,249,253,1);
+	background-color: rgba( 0, 172, 238, 1);
 	border: 0px;
 	border-radius: 6px;
 	display: flex;
@@ -103,7 +156,8 @@
 	outline: none;
 	font-size: 15px;
 	font-weight: 500;
-	color: rgba(62,62,62,1);
+	color: rgba(255,255,255,1);
+	letter-spacing: 2px;
 	background: transparent; 
 	border: none;
 	cursor: pointer;
@@ -118,8 +172,8 @@
 
 .account-category-selector-icon img {
 	padding: 0;
-	margin: 5px 0 0 0;
-	width: 12px;
+	margin: 2px 2px 0 0;
+	width: 10px;
 }
 
 .add-list-input-group {
@@ -127,13 +181,20 @@
 	justify-content: flex-start;
 }
 
+.input-list-detail {
+	width: 54%;
+}
+
+.input-list-amount {
+	width: 16%;
+}
+
 .input-list-detail, .input-list-amount {
 	font-weight: 500;
-	font-size: 16px;
+	font-size: 15px;
 	color: rgba(62,62,62, 0.9);
-	margin: 5px 2px;
-	padding: 1.8%;
-	width: 40%;
+	margin: 0 2px;
+	padding: 9px 10px;
 	background-color: rgba(0, 0, 0,0.1);
 	outline: none;
 	border: 2px solid rgba(70, 210, 235, 0);
@@ -141,7 +202,7 @@
 }
 
 .input-list-detail::placeholder, .input-list-amount::placeholder {
-	color: rgba(255,255,255,0.4);
+	color: rgba(0,0,0,0.5);
 	font-weight: 500;
 	letter-spacing: 0.5px;
 }
@@ -151,21 +212,24 @@
 	border: 2px solid rgba(40, 215, 194, 1);
 }
 
-.input-list-submit-group {
-	margin-top: 10px;
+
+.add-list-btn-group {
+	margin-top: 8px;
 	padding: 0;
-	width: 100%;
+	width: 104%;
 	display: flex;
 	align-items: center;
+	justify-content: flex-end;
 }
 
-.input-list-submit {
-	font-weight: 500;
+.add-list-submit {
+	font-weight: 600;
 	font-size: 15px;
 	letter-spacing: 1px;
 	width: 20%;
 	margin: 0;
-	padding: 1.6%;
+	height: 40px;
+	padding: 0;
 	color: rgba(249,249,253,1);
 	background-color: rgba(40, 215, 194, 1);
 	border: 0px;
@@ -174,12 +238,14 @@
 	cursor: pointer;
 }
 
-.input-list-submit:hover {
+.add-list-submit:hover {
 	background-color: rgba(40, 200, 190, 1);
 }
 
-.cancel-input-list-btn {
-	margin: 2px 0 0 20px;
+/*cancel add list*/
+
+.cancel-add-list-btn {
+	margin: 2px 12px 0 12px;
 	width: auto;
 	cursor: pointer;
 	outline: none;
@@ -190,18 +256,6 @@
 	width: 16px;
 }
 
-/*.cancel-input-list-submit {
-	width: 20%;
-	margin-right: 12px;
-	padding: 1.6%;
-	background-color: rgba( 197, 199, 212, 1);
-	border: 0px;
-	border-radius: 6px;
-	box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.1);
-	cursor: pointer;
-	outline: none;
-}*/
-
-.cancel-input-list-submit:hover {
+.cancel-add-list-btn:hover {
 	background-color: rgba( 180, 189, 210, 1);
 }

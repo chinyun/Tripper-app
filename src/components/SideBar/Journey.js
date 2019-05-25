@@ -3,32 +3,30 @@ import './Journey.css';
 import DeleteIcon from './delete-icon.png';
 
 class Journey extends Component {
-	constructor( props ) {
-		super( props );
+	constructor(props) {
+		super(props);
 		this.state = {};
-	}
+	};
 
-	handleDelete = ( props ) => {
+	handleDelete = (props) => {
 		const { journey, removeJourney } = this.props;
 		removeJourney( journey );
 	};
 
-	render(){
+	onJourneyChange = (journeyId) => {
+		  // fetch
+		  console.log('onJourneyChange');
+	};
+
+	render() {
 		const { journey } = this.props;
-		return (
-			<li 
-				className='journey'
-				id={journey.id}
-			>
-				<button 
-					onClick= { this.handleDelete } 
-					className='journey-delete-btn'
-				>
-					<img alt='delete-icon'src={DeleteIcon} />
-					
+		return(
+			<li className='journey' id={journey.id}>
+				<button onClick={this.handleDelete} className='journey-delete-btn'>
+					<img alt='delete-icon' src={DeleteIcon}/>
 				</button>
-				<span className='journey-content'>
-					{ journey.text }
+				<span className='journey-content' onClick={() => {this.onJourneyChange()}}>
+					{journey.text}
 				</span>
 			</li>
 		)

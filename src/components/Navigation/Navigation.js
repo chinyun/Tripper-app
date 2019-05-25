@@ -1,15 +1,28 @@
 import React from 'react';
 import './Navigation.css';
+import SeperateLine from './seperate-line-dark.png';
 
-const Navigation = ( )=>{
+
+const Navigation = ( {onRouteChange} ) => {
 	return (
 		<header>
-			<nav>
+			<nav className='navigation-nav'>
 				<p className='slogan'> Help balance your trip budget! </p>
 				<p className='logo'> Tripper </p>
 				<div className='user-display'>
-					<p className='user-welcome-words'> Hi,urname </p>
 					<div className='user-profile-picture'></div>
+					<p 
+						className='user-name-words'
+					>username</p>
+					<img 
+            src={SeperateLine}
+            alt='seperate-line'
+            className='seperate-line'
+          />
+					<p 
+						onClick = {() => {onRouteChange('signout')}} 
+						className='user-signout'
+					> Logout</p>
 				</div>
 			</nav>
 		</header>

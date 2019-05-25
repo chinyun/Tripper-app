@@ -1,0 +1,19 @@
+.landing-container {
+  margin: 0;
+  width: 100%;
+  height: auto;
+  padding-bottom: 20%;
+  background-color: rgba(82, 154, 237,1);
+}
+
+.landing-nav {
+  position: fixed;
+  right: 0;
+  top: 0;
+  padding: 0;
+  width: 100%;
+  margin: 0;
+  z-index: 100;
+  background-color: rgba(82, 154, 230,1);
+  transition: 0.5s ease;
+}

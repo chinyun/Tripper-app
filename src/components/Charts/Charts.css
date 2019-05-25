@@ -1,0 +1,68 @@
+.charts-container {
+  width: 100%;
+  height: auto;
+  padding: 3.2% 4%;
+  margin: 0;
+}
+
+.charts-wrapper {
+  padding: 0;
+  margin-top: 2%;
+  margin-right: 2%;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.charts-title {
+  font-size: 20px;
+  color: rgba(255,255,255,1);
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin: 0 16px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.chart-area {
+  margin: 0;
+  padding: 7% 6% 2% 6%;
+}
+
+.chart-legend-category {
+  letter-spacing: 2px;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.chart-legend-cost {
+  letter-spacing: 2px;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+.chart-legend-percentage {
+  letter-spacing: 1px;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.chart-total-amount {
+  margin: 0;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chart-total-amount-text {
+  margin: 0;
+  padding: 2%;
+  font-size: 20px;
+  color: rgba(255,255,255,1);
+  letter-spacing: 2px;
+  font-weight: 500;
+}

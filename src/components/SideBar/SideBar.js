@@ -20,11 +20,6 @@ class SideBar extends Component {
 		this.setState({
 			isShowed: true
 		})
-		// if( inputJourneyWrapper.style.display === 'none') {
-		// 	inputJourneyWrapper.style.display = 'block';	
-		// } else {
-		// 	inputJourneyWrapper.style.display = 'none';
-		// }
 	};
 
 	removeJourney = ( journey ) => {
@@ -56,65 +51,67 @@ class SideBar extends Component {
 
 	render( ) {
 		return (
-			<div className='sidenav'>
-				<ul className='journey-list'>
-				{/*   
-					<li className='journey-list-item'> 範例 </li>
-					<li className='journey-list-item'> 2017 京都大阪行 </li>
-					<li className='journey-list-item'> 2018 福岡九州 </li>
-					<li className='journey-list-item'> 2019 東京賞櫻 </li>
-				*/}
-					{this.state.journeys.map( journey => 
-						<Journey
-							key={journey.id}
-							journey={journey}
-							removeJourney={this.removeJourney}
-						/>)}
-				</ul>
+			<div className='side-bar-container'>
+				<div className='journeys-list-container'>
+					<ul className='journeys-list'>
+					{/*   
+						<li className='journey-list-item'> 範例 </li>
+						<li className='journey-list-item'> 2017 京都大阪行 </li>
+						<li className='journey-list-item'> 2018 福岡九州 </li>
+						<li className='journey-list-item'> 2019 東京賞櫻 </li>
+					*/}
+						{this.state.journeys.map( journey => 
+							<Journey
+								key={journey.id}
+								journey={journey}
+								removeJourney={this.removeJourney}
+							/>)}
+					</ul>
 
-				<div className='add-journey-wrapper'>
-					{ this.state.isShowed === false
-						? <button
-								className='show-add-journey'
-								onClick={this.showAddJourney}
-							>
-								<img 
-									className='add-journey-img' 
-									alt='add' 
-									src={AddIcon} 
-								/>
-								<span className='show-add-journey-text'>新增行程表</span>
-							</button>
-						: <div className='add-journey'>
-								<input 
-									id='input-journey'
-									className='input-journey' 
-									type='text' 
-									placeholder='新增行程表'
-									value={this.state.newJourney}
-									onChange={this.onJourneyValueChange}
-								/>
-								<div className='submit-new-journey'>
-									<input 
-										id='input-new-journey' 
-										className='input-new-journey'
-										type='submit' 
-										value='新增'
-										onClick={this.createJourney}
+					<div className='add-journey-wrapper'>
+						{ this.state.isShowed === false
+							? <button
+									className='show-add-journey-btn'
+									onClick={this.showAddJourney}
+								>
+									<img 
+										className='show-add-journey-img' 
+										alt='add' 
+										src={AddIcon} 
 									/>
-									<button
-										className='cancel-new-submit-btn'
-										onClick={this.cancelNewSubmit}
-									>
-										<img 
-											className='cancel-dark-btn-img' 
-											alt='cancel' 
-											src={CancelIcon} 
+									<span className='show-add-journey-text'>新增項目</span>
+								</button>
+							: <div className='add-new-journey'>
+									<input 
+										id='input-new-journey'
+										className='input-new-journey' 
+										type='text' 
+										placeholder='新增行程表'
+										value={this.state.newJourney}
+										onChange={this.onJourneyValueChange}
+									/>
+									<div className='submit-new-journey-group'>
+										<input 
+											id='submit-new-journey' 
+											className='submit-new-journey'
+											type='submit' 
+											value='新增'
+											onClick={this.createJourney}
 										/>
-									</button>
-								</div>
-							</div>	
-					}
+										<button
+											className='cancel-new-submit-btn'
+											onClick={this.cancelNewSubmit}
+										>
+											<img 
+												className='cancel-dark-btn-img' 
+												alt='cancel' 
+												src={CancelIcon} 
+											/>
+										</button>
+									</div>
+								</div>	
+						}
+					</div>
 				</div>
 			</div>
 		)
