@@ -59,10 +59,14 @@ class Landing extends Component {
           ? <SignIn
               switchLandingRoute={this.switchLandingRoute}
               onRouteChange={this.props.onRouteChange}
+              loadUser={this.props.loadUser}
+              loadJourneys={this.props.loadJourneys}
             />
           : <Register
               switchLandingRoute={this.switchLandingRoute}
               onRouteChange={this.props.onRouteChange}
+              loadUser={this.props.loadUser}
+              loadJourneys={this.props.loadJourneys}
             /> 
         }
       </div>

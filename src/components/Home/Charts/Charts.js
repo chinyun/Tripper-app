@@ -91,7 +91,6 @@ const createChart = ( ) => {
         .attr('d', arcPath)
         .attr('fill', d => colour(d.data.name));
   };
-
   update(data);
 };
 
@@ -103,25 +102,22 @@ class Charts extends Component {
 
   componentDidMount = () => {
     createChart();
-  }
+  };
 
   render() {
     return (
       <div className='charts-container'>
         <p className='charts-title'>Total</p>
         <div className='charts-wrapper'>
-          
           <div id='chart-area' className='chart-area'>
           </div>
           <div className='chart-total-amount'>
-            <p className='chart-total-amount-text'> 合計 {totalAmount}  (100%)</p>
+            <p className='chart-total-amount-text'> 合計 {totalAmount} (100%)</p>
           </div>
-          
         </div>
       </div>
     );
   }
-
 };
 
 export default Charts;

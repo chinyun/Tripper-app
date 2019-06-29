@@ -1,0 +1,179 @@
+.account-list-item {
+	margin-bottom: 1%;
+	padding: 8px;
+	border-radius: 6px;
+	background-color: rgba(249, 249, 253,1 );
+	box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.1);
+	display: flex;
+	align-items: center;
+}
+
+.list-item-delete-btn, .update-btn {
+	background: none;
+	outline: none;
+}
+
+.list-item-delete-btn img {
+	padding: 0;
+	margin: 5px 5px 0 10px;
+	width: 10px;
+}
+
+.update-btn img {
+	padding: 0;
+	margin: 5px 0 0 10px;
+	width: 12px;
+}
+
+.list-item-group {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 4px;
+	margin: 0;
+	width: 90%;
+}
+
+.list-item-category {
+	color: rgba(62,62,62,1);
+	font-weight: 500;
+	font-size: 16px;
+	margin-left: 20px;
+	width: 15%;
+}
+
+.list-item-detail {
+	color: rgba(113, 113, 113, 1);
+	font-weight: 500;
+	font-size: 16px;
+	width: 75%;
+	margin-left: 20px;
+}
+
+.list-item-amount {
+	color: rgba(113, 113, 113, 1);
+	font-weight: 500;
+	font-size: 16px;
+	margin: 0 20px;
+}
+
+.account-update {
+	display: flex;
+	align-items: center;
+	width: 90%;
+	padding: 0;
+	margin: 0;
+	margin-left: 8px;
+}
+
+.account-category-update {
+	width: 40%;
+	margin: 0 2px 0 5px;
+	padding: 5px;
+	background-color: rgba( 0, 172, 238, 1);
+	border: 0px;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+}
+
+.account-category-selector-update {
+	appearance: none;
+	outline: none;
+	font-size: 15px;
+	font-weight: 500;
+	color: rgba(255,255,255,1);
+	letter-spacing: 2px;
+	background: transparent; 
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	margin-left: 5px;
+}
+
+.account-category-selector-icon {
+	padding: 0;
+	margin: 0;
+	float: right;
+}
+
+.account-category-selector-icon img {
+	padding: 0;
+	margin: 0 2px 2px 0;
+	width: 8px;
+}
+
+.input-list-detail-update {
+	width: 80%;
+}
+
+.input-list-amount-update {
+	width: 40%;
+}
+
+.input-list-detail-update,
+.input-list-amount-update {
+	font-weight: 500;
+	font-size: 15px;
+	color: rgba(62,62,62, 0.9);
+	margin: 0 2px;
+	padding: 5px;
+	background-color: rgba(0, 0, 0,0.1);
+	outline: none;
+	border: 2px solid rgba(70, 210, 235, 0);
+	border-radius: 6px;
+}
+
+.input-list-detail-update::placeholder,
+.input-list-amount-update::placeholder {
+	color: rgba(0,0,0,0.5);
+	font-weight: 500;
+	letter-spacing: 0.5px;
+}
+
+.input-list-detail-update:focus,
+.input-list-amount-update:focus {
+	background-color: rgba(0, 0, 0,0.02);
+	border: 2px solid rgba(40, 215, 194, 1);
+}
+
+
+.update-list-input-group {
+	margin: 0;
+	padding: 0;
+	width: 60%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.update-list-input-group input {
+	font-weight: 500;
+	font-size: 15px;
+	letter-spacing: 1px;
+	width: 50%;
+	margin: 0 2px;
+	padding: 5px;
+	color: rgba(249,249,253,1);
+	border: 0px;
+	border-radius: 6px;
+	box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.1);
+	cursor: pointer;
+}
+
+.update-list-submit {
+	background-color: rgba(70, 205, 160, 1);
+}
+
+.update-list-submit:hover {
+	background-color: rgba(65, 195, 150, 1);
+}
+
+.cancel-update-submit {	
+	background-color: rgba(200, 40, 60, 1);
+}
+
+.cancel-update-submit:hover {	
+	background-color: rgba(195, 30, 50, 1);
+}
+

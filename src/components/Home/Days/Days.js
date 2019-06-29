@@ -1,10 +1,9 @@
 import React from 'react';
 
 const Days = ({day}) => {
-  const dayValue = `Day${day.counts}`
   return (
-    <option value ={dayValue}>
-      {dayValue}
+    <option value ={day.id}>
+      {day.name}
     </option>
   );
 };

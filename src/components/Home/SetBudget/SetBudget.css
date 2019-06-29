@@ -19,6 +19,23 @@
 	margin-bottom: 18px;
 }
 
+.setting-control-main {
+	display: flex;
+}
+
+.setting-control-container {
+	display: flex;
+	flex-direction: column;
+	margin-right: 80px;
+}
+
+.setting-control-session {
+	display: flex;
+	align-items: center;
+	margin: 7px 0;
+	padding: 0;
+}
+
 .title {
 	margin-right: 20px;
 	font-size: 16px;
@@ -27,29 +44,16 @@
 	color: rgba(62, 62, 62, 1);
 }
 
-.setting-control-main {
-	display: flex;
-}
-
-.setting-control-container {
-	display: flex;
-	flex-direction: column;
-}
-
-.setting-control-session {
-	display: flex;
-	align-items: center;
-	margin: 7px 20px 7px 0;
-}
-
 .currency-category {
-	padding: 2.5%;
-	width: 70%;
+	margin: 0;
+	padding: 6px;
+	width: 150px;
 	background-color: rgba( 0, 172, 238, 1);
 	border: 0px;
 	border-radius: 6px;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 }
 
 .currency-category-selector {
@@ -61,8 +65,35 @@
 	background: transparent; 
 	border: none;
 	cursor: pointer;
-	width: 100%;
 	margin-left: 10px;
+}
+
+.budget-item {
+	display: flex;
+	justify-content: flex-start;
+	padding: 0;
+	margin: 0;
+	width: 160px;
+}
+
+.budget-item-text {
+	font-weight: 500;
+	font-size: 18px;
+	letter-spacing: 1px;
+	color: rgba(46, 167, 214, 1);
+	padding: 7px;
+	margin: 0;
+	cursor: pointer;
+}
+
+.balance-content {
+	font-weight: 500;
+	font-size: 18px;
+	letter-spacing: 1px;
+	color: rgba(46, 167, 214, 1);
+	padding: 7px;
+	margin: 0;
+	width: 160px;
 }
 
 .currency-category-selector-icon {
@@ -73,27 +104,39 @@
 
 .currency-category-selector-icon img {
 	padding: 0;
-	margin: 0 10px 2px 0;
+	margin: 5px 10px 2px 10px;
 	width: 10px;
 }
 
+.budget-update {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: flex-start;
+}
 
-.balance-content {
-	font-weight: 500;
-	font-size: 17px;
-	color: rgba( 46, 167, 214, 1);
-	padding: 2%;
-	width: 70%;
-	text-align: right;
+.cancel-btn {
+	background: none;
+	outline: none;
+	display: flex;
+	align-items: center;
+	margin-left:10px;
+}
+
+.cancel-btn img {
+	padding: 0;
+	margin: 0;
+	width: 10px;
 }
 
 .setting-control-session input {
 	font-weight: 500;
 	font-size: 18px;
-	line-height: 20px;
-	color: rgba(62,62,62, 0.9);
-	padding: 2%;
-	width: 70%;
+	letter-spacing: 1px;
+	color: rgba(62, 62, 62, 0.9);
+	margin: 0;
+	padding: 5px;
+	width: 120px;
 	background-color: rgba(0, 0, 0,0.1);
 	outline: none;
 	border: 2px solid rgba(70, 210, 235, 0);
