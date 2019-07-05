@@ -46,6 +46,11 @@ class App extends Component {
           living_budget: item.living_budget,
           ticket_budget: item.ticket_budget,
           shopping_budget: item.shopping_budget,
+          traffic_expense: item.traffic_expense,
+          food_expense: item.food_expense,
+          living_expense: item.living_expense,
+          ticket_expense: item.ticket_expense,
+          shopping_expense: item.shopping_expense,
           accountList: item.accountList
         }],
         journeyList: [...this.state.journeyList, {

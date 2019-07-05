@@ -57,10 +57,18 @@ class Accounts extends Component {
 		.catch(err => alert('unable to add expense'))
 	};
 
-	deleteExpense = ( delExpenseId ) => {
+	deleteExpense = ( delExpense ) => {
+		console.log(delExpense);
 		const { displayedAccountId, handleRemoveExpense } = this.props;
-		fetch(`http://localhost:3000/expenses/${delExpenseId}`, {
+		fetch(`http://localhost:3000/expenses/${delExpense.id}`, {
       method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify({
+				category: delExpense.category,
+				detail: delExpense.detail,
+				amount: delExpense.amount,
+				account_id: delExpense.account_id
+			})
     })
     .then(response => response.json())
     .then(updatedJourney => {

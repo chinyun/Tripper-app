@@ -35,14 +35,15 @@ class List extends Component {
 		this.setState({ amount: event.target.value })
 	};
 
-	editExpense = (expenseId) => {
-		fetch(`http://localhost:3000/expenses/${expenseId}`, {
+	editExpense = (expense) => {
+		fetch(`http://localhost:3000/expenses/${expense.id}`, {
 			method: 'PATCH',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
 				category: this.state.category,
 				detail: this.state.detail,
-				amount: this.state.amount
+				amount: this.state.amount,
+				account_id: expense.account_id
 			})
 		})
 		.then(response => response.json())
@@ -54,8 +55,8 @@ class List extends Component {
 		this.setState({ isEditing: '' })
 	};
 
-	handleDeleteExpense = ( delExpenseId ) => {
-		this.props.deleteExpense(delExpenseId);
+	handleDeleteExpense = ( delExpense ) => {
+		this.props.deleteExpense(delExpense);
 	};
 
 	render() {
@@ -66,7 +67,7 @@ class List extends Component {
 				id={list.id}
 			>
 				<button 
-					onClick={() => this.handleDeleteExpense(list.id)} 
+					onClick={() => this.handleDeleteExpense(list)} 
 					className='list-item-delete-btn'
 				>
 					<img alt='delete-icon'src={DeleteIcon} />	
@@ -117,7 +118,7 @@ class List extends Component {
 									className='update-list-submit'
 									type='submit' 
 									value='修改'
-									onClick={() => this.editExpense(list.id)}
+									onClick={() => this.editExpense(list)}
 								/>
 								<input 
 									id='cancel-update-submit' 

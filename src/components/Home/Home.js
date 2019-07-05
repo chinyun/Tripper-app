@@ -6,7 +6,46 @@ import Charts from './Charts/Charts';
 import Days from './Days/Days';
 import './Home.css';
 import SelectIcon from './select-white-icon.png';
-import AddIcon from './add-white-icon.png'; 
+import AddIcon from './add-white-icon.png';
+
+const getData = (datas) => {
+  console.log(datas);
+  const getPercentage = (num) => {
+    num.toFixed(3);
+    let result = (num*100).toString();
+    return result.slice(0,4);
+  };
+
+  const traffic_percentage = getPercentage(datas[0].traffic_expense / datas[0].expense),
+    food_percentage = getPercentage(datas[0].food_expense / datas[0].expense),
+    living_percentage = getPercentage(datas[0].living_expense / datas[0].expense),
+    ticket_percentage = getPercentage(datas[0].ticket_expense / datas[0].expense),
+    shopping_percentage = getPercentage(datas[0].shopping_expense / datas[0].expense);
+
+  const data = [{ 
+    name: '交通',
+    cost: datas[0].traffic_expense,
+    percentage: `${traffic_percentage}%`
+  }, { 
+    name: '食物',
+    cost: datas[0].food_expense,
+    percentage: `${food_percentage}%`
+  }, { 
+    name: '住宿',
+    cost: datas[0].living_expense,
+    percentage: `${living_percentage}%`
+  }, {
+    name: '票券',
+    cost: datas[0].ticket_expense,
+    percentage: `${ticket_percentage}%`
+  }, {
+    name: '購物',
+    cost: datas[0].shopping_expense,
+    percentage: `${shopping_percentage}%`
+  }];
+  console.log(data);
+  return data;
+ }
 
 class Home extends Component {
   constructor(props){
@@ -20,6 +59,7 @@ class Home extends Component {
       test: journeys[journeys.length-1].name,
       displayedAccountId: initialJourney[0].accountList[0].id,
       newDay: 2,
+      data: getData(initialJourney)
     }
   };
 
@@ -31,7 +71,8 @@ class Home extends Component {
       accounts: target[0].accountList,
       expenseList: target[0].accountList[0].expenseList,
       test: target[0].name,
-      displayedAccountId: target[0].accountList[0].id
+      displayedAccountId: target[0].accountList[0].id,
+      data: getData(target)
     });
   };
 
@@ -52,7 +93,8 @@ class Home extends Component {
       displayedJourney: newJourney,
       accounts: newJourney[0].accountList,
       expenseList: newJourney[0].accountList[0].expenseList,
-      test: newJourney[0].name
+      test: newJourney[0].name,
+      data: getData(newJourney)
     })
   };
 
@@ -72,7 +114,8 @@ class Home extends Component {
       accounts: initialJourney[0].accountList,
       expenseList: initialJourney[0].accountList[0].expenseList,
       test: journeys[journeys.length-1].name,
-      displayedAccountId: initialJourney[0].accountList[0].id
+      displayedAccountId: initialJourney[0].accountList[0].id,
+      data: getData(initialJourney)
     })
   };
 
@@ -95,7 +138,8 @@ class Home extends Component {
         displayedJourney: updatedJourney,
         accounts: updatedJourney[0].accountList,
         expenseList: displayedAccount[0].expenseList,
-        displayedAccountId: displayedAccount[0].id
+        displayedAccountId: displayedAccount[0].id,
+        data: getData(updatedJourney)
       });
     })
     .catch(err => alert('unable to add day'));
@@ -124,8 +168,9 @@ class Home extends Component {
     this.setState({
       displayedJourney: updatedJourney,
       accounts: updatedJourney[0].accountList,
-      expenseList: displayedAccount[0].expenseList
-    })
+      expenseList: displayedAccount[0].expenseList,
+      data: getData(updatedJourney)
+    });
   };
 
   handleUpdateExpense = (updatedJourney) => {
@@ -136,7 +181,8 @@ class Home extends Component {
     this.setState({
       displayedJourney: updatedJourney,
       accounts: updatedJourney[0].accountList,
-      expenseList: displayedAccount[0].expenseList
+      expenseList: displayedAccount[0].expenseList,
+      data: getData(updatedJourney)
     })
   };
 
@@ -145,11 +191,12 @@ class Home extends Component {
     const displayedAccount = updatedJourney[0].accountList.filter(item =>
       item.id === displayedAccountId);
     this.setState({
+      displayedJourney: updatedJourney,
       accounts: updatedJourney[0].accountList,
-      expenseList: displayedAccount[0].expenseList
+      expenseList: displayedAccount[0].expenseList,
+      data: getData(updatedJourney)
     })
   };
-
 
   render( ) {
     return (
@@ -219,7 +266,10 @@ class Home extends Component {
                 handleRemoveExpense={this.handleRemoveExpense}
               />
             </div>
-            <Charts/>
+            <Charts
+              displayedJourney={this.state.displayedJourney}
+              data={this.state.data}
+            />
           </div>
           <div className='footer'>
             <p className='web-info'>2019 Tripper. Created by Chin Yun Chen.</p>
