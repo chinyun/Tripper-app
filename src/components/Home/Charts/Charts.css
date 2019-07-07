@@ -15,6 +15,7 @@
   box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.08);
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .charts-title {
@@ -32,22 +33,34 @@
   padding: 7% 6% 2% 6%;
 }
 
+.chart-legend-wrapper {
+  margin-bottom: 10px;
+}
+
+.chart-legend-list {
+  color: #fff;
+  margin-bottom: 2px;
+}
+
 .chart-legend-category {
   letter-spacing: 2px;
   font-weight: 500;
   font-size: 20px;
+  margin-right: 20px;
 }
 
 .chart-legend-cost {
   letter-spacing: 2px;
   font-weight: 300;
   font-size: 20px;
+  margin: 0 20px;
 }
 
 .chart-legend-percentage {
   letter-spacing: 1px;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 18px;
+  margin: 0 20px;
 }
 
 .chart-total-amount {
@@ -59,10 +72,10 @@
 }
 
 .chart-total-amount-text {
-  margin: 0;
-  padding: 2%;
-  font-size: 20px;
+  margin: 15px 0 25px 0;
+  padding: 0;
+  font-size: 19px;
   color: rgba(255,255,255,1);
-  letter-spacing: 2px;
+  letter-spacing: 4px;
   font-weight: 500;
 }

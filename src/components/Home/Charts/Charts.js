@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
+import Legend from './Legend';
 import './Charts.css';
 
 const dims = { height: 100, width: 220, radius: 80 };
@@ -78,6 +79,16 @@ class Charts extends Component {
               height={this.state.height}
               ref={el => this.svgEl = el}
             >{ paths }</svg>
+          </div>
+          <div className='chart-legend-wrapper'>
+            <ul>
+            { this.props.data.map(d => 
+              <Legend
+                key={d.name}
+                data={d}
+              /> 
+            )}
+            </ul>
           </div>
           <div className='chart-total-amount'>
             <p className='chart-total-amount-text'> 合計 {this.props.displayedJourney[0].expense} (100%)</p>
