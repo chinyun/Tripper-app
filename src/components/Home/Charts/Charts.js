@@ -3,8 +3,8 @@ import * as d3 from 'd3';
 import Legend from './Legend';
 import './Charts.css';
 
-const dims = { height: 100, width: 220, radius: 80 };
-const cent = { x: (dims.width / 2 -20), y: (dims.height / 2 + 50) };
+const dims = { height: 100, width: 200, radius: 80 };
+const cent = { x: (dims.width / 2 + 20), y: (dims.height / 2 + 50) };
 const pie = d3.pie()
     .sort(null)
     .value(d => d.cost);
@@ -17,7 +17,7 @@ class Charts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      width: dims.width + 300,
+      width: dims.width,
       height: dims.height + 100      
     };
   };
@@ -34,13 +34,13 @@ class Charts extends Component {
     console.log('update!');
     const colour = d3.scaleOrdinal(['#FBC2A2','#7BF7C9','#F9FCBC','#ECA9FF','#E488FC']);
     
-    const arcTweenEnter = (d) => {
-      var i = d3.interpolate(d.endAngle, d.startAngle);
-      return function(t) {
-        d.startAngle = i(t);
-        return arcPath(d);
-      }
-    };
+    // const arcTweenEnter = (d) => {
+    //   var i = d3.interpolate(d.endAngle, d.startAngle);
+    //   return function(t) {
+    //     d.startAngle = i(t);
+    //     return arcPath(d);
+    //   }
+    // };
 
     function arcTweenUpdate(d) {
       var i = d3.interpolate(this._current, d);
@@ -70,9 +70,9 @@ class Charts extends Component {
   render() {
     const paths = this.props.data.map(d => <path key={d.name}/>)
     return (
-      <div className='charts-container'>
-        <p className='charts-title'>Total</p>
-        <div className='charts-wrapper'>
+      <div className='charts-wrapper'>
+        <p className='home-title'>Data Chart<span>Expense</span></p>
+        <div className='charts'>
           <div id='chart-area' className='chart-area'>
             <svg
               width={this.state.width}
@@ -81,7 +81,7 @@ class Charts extends Component {
             >{ paths }</svg>
           </div>
           <div className='chart-legend-wrapper'>
-            <ul>
+            <ul className='chart-legend'>
             { this.props.data.map(d => 
               <Legend
                 key={d.name}
@@ -89,10 +89,13 @@ class Charts extends Component {
               /> 
             )}
             </ul>
+            <div className='chart-legend-sum'>
+              <span>合計</span>
+              <span>{this.props.displayedJourney[0].expense}</span>
+              <span>約100%</span>
+            </div>
           </div>
-          <div className='chart-total-amount'>
-            <p className='chart-total-amount-text'> 合計 {this.props.displayedJourney[0].expense} (100%)</p>
-          </div>
+          
         </div>
       </div>
     );

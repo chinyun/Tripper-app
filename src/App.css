@@ -1,5 +1,12 @@
-.app, .home {
+.app {
 	height: 100%;
 	padding: 0;
 	margin: 0;
+}
+
+.dashboard {
+  height: 120%;
+  padding: 0;
+  margin: 0;
+  background-color: #f9f9f9;
 }

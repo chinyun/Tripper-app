@@ -14,7 +14,13 @@ class SetBudget extends Component {
       living_budget: displayedJourney[0].living_budget,
       ticket_budget: displayedJourney[0].ticket_budget,
       shopping_budget: displayedJourney[0].shopping_budget,
-      isEditing: ''
+      isEditing: '',
+      expense: displayedJourney[0].expense,
+      traffic_expense: displayedJourney[0].traffic_expense,
+			food_expense: displayedJourney[0].food_expense,
+      living_expense: displayedJourney[0].living_expense,
+      ticket_expense: displayedJourney[0].ticket_expense,
+      shopping_expense: displayedJourney[0].shopping_expense
 		};
 	};
 	
@@ -61,194 +67,92 @@ class SetBudget extends Component {
 	}
 
 	render() {
-		const { budget, traffic_budget, food_budget,
-				living_budget, ticket_budget, shopping_budget} = this.state;
+		const { traffic_budget, food_budget, living_budget,
+			ticket_budget, shopping_budget, traffic_expense,
+			food_expense, living_expense,ticket_expense, shopping_expense } = this.state;
 		const { displayedJourney } = this.props;
 		return (
-			<div className='setting-control-wrapper'> 
-				<div className='setting-control'>
-					<p className='setting-control-title'>預算設定</p>
-					<div className='setting-control-main'>
-						<div className='setting-control-container'>
-							<div className='setting-control-session'>
-								<span className='title'>幣別</span>
-								<div className='currency-category'>
-									<select 
-										className='currency-category-selector' 
-										id='currency-category-selector' 
-										name='currency-category-selector'
-										// onChange={}
-									>
-										<option value='台幣'>台幣 NTD</option>
-										<option value='日圓'>日圓 JPY</option>
-									</select>
-									<span className='currency-category-selector-icon'>
-										<img alt='select-white-icon'src={SelectIcon}/>
-									</span>
-								</div>
+			<div className='budget-wrapper'> 
+				<p className='home-title'>Budgets</p>
+				<div className='budget'>
+					<div className='budget-section'>
+						<div className='budget-control'>
+							<div className='budget-text'>
+								<p className='budget-topic'>交通預算</p>
+								<p className='budget-amount'>{traffic_budget}</p>
 							</div>
-
-							<div className='setting-control-session'>
-								<span className='title'>目標</span>
-								<div className='budget-item'>								
-									{ this.state.isEditing === 'budget'
-										? <div className='budget-update'>
-												<input 
-													id='total-budget-input'
-													className='total-budget-input' 
-													type='text' 
-													placeholder={budget}
-													value={budget}
-													onChange={this.onBudgetChange}
-													onKeyDown={this.handleEnter}
-												/>
-												<button className='cancel-btn' onClick={()=> this.handleEditing('')}>
-													<img alt='cancel-btn-icon' src={CancelIcon}/>
-												</button>
-											</div>
-										: <span className='budget-item-text' onClick={()=> this.handleEditing('budget')}>
-												{displayedJourney[0].budget}
-											</span>		
-									}
-								</div>					
+							<div className='budget-detail'>
+								<p>支出</p>
+								<p>{traffic_expense}</p>
 							</div>
-
-							<div className='setting-control-session'>
-								<span className='title'>剩餘</span>
-								<span className='balance-content'>
-									{displayedJourney[0].budget - displayedJourney[0].expense}
-								</span>
+							<div className='budget-detail'>
+								<p>剩餘</p>
+								<p>{traffic_budget - traffic_expense}</p>
 							</div>
 						</div>
-
-						<div className='setting-control-container'>
-							<div className='setting-control-session'>
-								<span className='title'>交通</span>
-								<div className='budget-item'>
-									{ this.state.isEditing === 'traffic' 
-										? <div className='budget-update'>
-												<input 
-													id='traffic-budget-input'
-													className='traffic-budget-input' 
-													type='text' 
-													placeholder={traffic_budget}
-													value={traffic_budget}
-													onChange={this.onTrafficBudgetChange}
-													onKeyDown={this.handleEnter}
-												/>
-												<button className='cancel-btn' onClick={()=>this.handleEditing('')}>
-													<img alt='cancel-btn-icon' src={CancelIcon}/>
-												</button>
-											</div>
-										: <span className='budget-item-text' onClick={()=>this.handleEditing('traffic')}>
-												{displayedJourney[0].traffic_budget}
-											</span>
-									}	
-								</div>
+					</div>
+					<div className='budget-section'>
+						<div className='budget-control'>
+							<div className='budget-text'>
+								<p className='budget-topic'>飲食預算</p>
+								<p className='budget-amount'>{food_budget}</p>
 							</div>
-
-							<div className='setting-control-session'>
-								<span className='title'>住宿</span>
-								<div className='budget-item'>
-									{ this.state.isEditing === 'living'
-										? <div className='budget-update'>
-												<input 
-													id='living-budget-input'
-													className='living-budget-input' 
-													type='text' 
-													placeholder={living_budget}
-													value={living_budget}
-													onChange={this.onLivingBudgetChange}
-													onKeyDown={this.handleEnter}
-												/>
-												<button className='cancel-btn' onClick={()=>this.handleEditing('')}>
-													<img alt='cancel-btn-icon' src={CancelIcon}/>
-												</button>
-											</div>
-										: <span className='budget-item-text' onClick={()=>this.handleEditing('living')}>
-												{displayedJourney[0].living_budget}
-											</span>
-									}		
-								</div>
+							<div className='budget-detail'>
+								<p>支出</p>
+								<p>{food_expense}</p>
 							</div>
-
-							<div className='setting-control-session'>
-								<span className='title'>飲食</span>
-								<div className='budget-item'>
-									{ this.state.isEditing === 'food' 
-										? <div className='budget-update'>
-												<input 
-													id='food-budget-input'
-													className='food-budget-input' 
-													type='text' 
-													placeholder={food_budget}
-													value={food_budget}
-													onChange={this.onFoodBudgetChange}
-													onKeyDown={this.handleEnter}
-												/>
-												<button  className='cancel-btn' onClick={()=>this.handleEditing('')}>
-													<img alt='cancel-btn-icon' src={CancelIcon}/>
-												</button>	
-											</div>
-										: <span className='budget-item-text' onClick={()=>this.handleEditing('food')}>
-												{displayedJourney[0].food_budget}
-											</span>
-									}
-								</div>
+							<div className='budget-detail'>
+								<p>剩餘</p>
+								<p>{food_budget - food_expense}</p>
 							</div>
 						</div>
-
-						<div className='setting-control-container'>
-							<div className='setting-control-session'>
-								<span className='title'>票券</span>
-								<div className='budget-item'>
-									{ this.state.isEditing === 'ticket' 
-										? <div className='budget-update'>
-												<input 
-													id='ticket-budget-input'
-													className='ticket-budget-input' 
-													type='text' 
-													placeholder={ticket_budget}
-													value={ticket_budget}
-													onChange={this.onTicketBudgetChange}
-													onKeyDown={this.handleEnter}
-												/>
-												<button className='cancel-btn' onClick={()=>this.handleEditing('')}>
-													<img alt='cancel-btn-icon' src={CancelIcon}/>
-												</button>
-											</div>
-										: <span className='budget-item-text' onClick={()=>this.handleEditing('ticket')}>
-												{displayedJourney[0].ticket_budget}
-											</span>
-									}
-								</div>
+					</div>
+					<div className='budget-section'>
+						<div className='budget-control'>
+							<div className='budget-text'>
+								<p className='budget-topic'>住宿預算</p>
+								<p className='budget-amount'>{living_budget}</p>
 							</div>
-
-							<div className='setting-control-session'>
-								<span className='title'>購物</span>
-								<div className='budget-item'>
-									{ this.state.isEditing === 'shopping' 
-										? <div className='budget-update'>
-												<input 
-													id='shopping-budget-input'
-													className='shopping-budget-input' 
-													type='text' 
-													placeholder={shopping_budget}
-													value={shopping_budget}
-													onChange={this.onShoppingBudgetChange}
-													onKeyDown={this.handleEnter}
-												/>
-												<button className='cancel-btn' onClick={()=>this.handleEditing('')}>
-													<img alt='cancel-btn-icon' src={CancelIcon}/>
-												</button>
-											</div>
-										: <span className='budget-item-text' onClick={()=>this.handleEditing('shopping')}>
-												{displayedJourney[0].shopping_budget}
-											</span>
-									}
-								</div>
+							<div className='budget-detail'>
+								<p>支出</p>
+								<p>{living_expense}</p>
 							</div>
-
+							<div className='budget-detail'>
+								<p>剩餘</p>
+								<p>{living_budget - living_expense}</p>
+							</div>
+						</div>
+					</div>
+					<div className='budget-section'>
+						<div className='budget-control'>
+							<div className='budget-text'>
+								<p className='budget-topic'>票券預算</p>
+								<p className='budget-amount'>{ticket_budget}</p>
+							</div>
+							<div className='budget-detail'>
+								<p>支出</p>
+								<p>{ticket_expense}</p>
+							</div>
+							<div className='budget-detail'>
+								<p>剩餘</p>
+								<p>{ticket_budget - ticket_expense}</p>
+							</div>
+						</div>
+					</div>
+					<div className='budget-section'>
+						<div className='budget-control'>
+							<div className='budget-text'>
+								<p className='budget-topic'>購物預算</p>
+								<p className='budget-amount'>{shopping_budget}</p>
+							</div>
+							<div className='budget-detail'>
+								<p>支出</p>
+								<p>{shopping_expense}</p>
+							</div>
+							<div className='budget-detail'>
+								<p>剩餘</p>
+								<p>{shopping_budget - shopping_expense}</p>
+							</div>
 						</div>
 					</div>
 				</div>

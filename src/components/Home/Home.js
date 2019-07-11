@@ -200,8 +200,8 @@ class Home extends Component {
 
   render( ) {
     return (
-      <div className='container'>
-        <div className='side-bar'>
+      <div className='home-container'>
+        {/*<div className='side-bar'>
           <SideBar
             user={this.props.user}
             journeyList={this.props.journeyList}
@@ -210,53 +210,80 @@ class Home extends Component {
             updateJourney={this.props.updateJourney}
             handleRemoveJourney={this.handleRemoveJourney}
           />
-        </div>
-        <div className='section'>
-          <div className='control-pannel'>
-            <SetBudget
-              user={this.props.user}
-              journeyId={this.state.journeyId}
-              displayedJourney={this.state.displayedJourney}
-              handleBudgetsChange={this.handleBudgetsChange}
-            />
+        </div>*/}
+        <div className='main-section'>
+          <div className='static-pannel-wrapper'>
+            <p className='home-title'>行程 {this.state.test}</p>
+            <div className='static-pannel'>
+              <div className='static-pannel-section'>
+                <div className='static-pannel-topic'>
+                  <p className='static-pannel-title'>目標</p>
+                  <p className='static-pannel-subtitle '>總預算</p>
+                </div>
+                <span className='static-pannel-amount editable-text'>{this.state.displayedJourney[0].budget}</span>
+              </div>
+              <div className='static-pannel-section'>
+                <div className='static-pannel-topic'>
+                  <p className='static-pannel-title'>支出</p>
+                  <p className='static-pannel-subtitle'>總支出</p>
+                </div>
+                <span className='static-pannel-amount'>{this.state.displayedJourney[0].expense}</span>
+              </div>
+              <div className='static-pannel-section'>
+                <div className='static-pannel-topic'>
+                  <p className='static-pannel-title'>剩餘</p>
+                  <p className='static-pannel-subtitle'>可支配預算</p>
+                </div>
+                <span className='static-pannel-amount'>{this.state.displayedJourney[0].budget - this.state.displayedJourney[0].expense}</span>
+              </div>
+            </div>
           </div>
-          <div className='dashboard'>
-            <div className='accounts-container'>
+          <div className='sub-section'>
+            <SetBudget
+            user={this.props.user}
+            journeyId={this.state.journeyId}
+            displayedJourney={this.state.displayedJourney}
+            handleBudgetsChange={this.handleBudgetsChange}
+            />
+            <div className='minor-section'>
+              <Charts
+                displayedJourney={this.state.displayedJourney}
+                data={this.state.data}
+              />
               <div className='accounts-days-nav'>
-                <p className='accounts-day-title'>記帳簿{this.state.test}</p>
-                <div className='accounts-days-manage'>
-                  <button 
-                    className='control-days-btn' 
-                    onClick={this.createNewDay}
+              <div className='accounts-days-manage'>
+                <button 
+                  className='control-days-btn' 
+                  onClick={this.createNewDay}
+                >
+                  <img className='add-day-img' alt='add' src={AddIcon}/>
+                  <span>新增</span>
+                </button>
+                <button 
+                  className='control-days-btn' 
+                  onClick={() => this.handleRemoveAccount(this.state.displayedAccountId)}
+                >
+                  <span>刪除</span>
+                </button>
+                <div className='accounts-days'>
+                  <select 
+                    className='accounts-day-selector' 
+                    name='accounts-day-selector'
+                    onChange={this.onDayChange}
                   >
-                    <img className='add-day-img' alt='add' src={AddIcon}/>
-                    <span>新增</span>
-                  </button>
-                  <button 
-                    className='control-days-btn' 
-                    onClick={() => this.handleRemoveAccount(this.state.displayedAccountId)}
-                  >
-                    <span>刪除</span>
-                  </button>
-                  <div className='accounts-days'>
-                    <select 
-                      className='accounts-day-selector' 
-                      name='accounts-day-selector'
-                      onChange={this.onDayChange}
-                    >
-                      { this.state.accounts.map( day => 
-                        <Days 
-                          key={day.id} 
-                          day={day}
-                        />
-                      )}
-                    </select>
-                    <span className='account-category-selector-icon'>
-                      <img alt='select-green-icon'src={SelectIcon}/>
-                    </span>
-                  </div>
+                    { this.state.accounts.map( day => 
+                      <Days 
+                        key={day.id} 
+                        day={day}
+                      />
+                    )}
+                  </select>
+                  <span className='account-category-selector-icon'>
+                    <img alt='select-green-icon'src={SelectIcon}/>
+                  </span>
                 </div>
               </div>
+            </div>
               <Accounts
                 accounts={this.state.accounts}
                 expenseList={this.state.expenseList}
@@ -266,15 +293,18 @@ class Home extends Component {
                 handleRemoveExpense={this.handleRemoveExpense}
               />
             </div>
-            <Charts
-              displayedJourney={this.state.displayedJourney}
-              data={this.state.data}
-            />
           </div>
-          <div className='footer'>
-            <p className='web-info'>2019 Tripper. Created by Chin Yun Chen.</p>
-          </div>
+          
         </div>
+        // {/*
+        //   <div className='accounts-section'>
+        //     
+        //     
+        //   </div>*/}
+          
+        {/*<div className='footer'>
+          <p className='web-info'>2019 Tripper. Created by Chin Yun Chen.</p>
+        </div>*/}
       </div>
     );
   }

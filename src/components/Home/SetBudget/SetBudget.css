@@ -1,17 +1,60 @@
-.setting-control-wrapper {
-	margin: 0;
-	padding: 80px;
+.budget-wrapper {
+	margin-right: 50px;
+	padding: 0;
+	width: 40%;
+	max-width: 400px
 }
 
-.setting-control {
-	padding: 2% 5%;
+.budget {
+	padding-right: 10%;
 	margin: 0;
-	background-color: rgba(255, 255, 255, 1);
+}
+
+.budget-section {
+	padding: 30px 25px;
+	margin-bottom: 10px;
+	width: 100%;
+	background-color: #fff;
 	border-radius: 20px;
 	box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.1);
 }
 
-.setting-control-title {
+.budget-text {
+	display: flex;
+	align-items: center;
+	margin-bottom: 15px;
+}
+
+.budget-control {
+	margin-right: 20px;
+	font-family: "Ubuntu";
+}
+
+.budget-topic ,.budget-amount{
+	font-size: 16px;
+	font-weight: 500;
+	margin-right: 50px;
+}
+
+.budget-topic {
+	color: #2d2d2d;
+}
+
+.budget-amount {
+	color: #177ef5;
+}
+
+.budget-detail {
+	display: flex;
+	align-items: center;
+	margin-bottom: 2px;
+}
+
+.budget-detail p {
+	font-size: 15px;
+	margin-right: 20px;
+}
+/*.setting-control-title {
 	font-size: 17px;
 	font-weight: 500;
 	font-family: "Ubuntu";
@@ -154,4 +197,4 @@
 .setting-control-session input:focus {
 	background-color: rgba(0, 0, 0,0.02);
 	border: 2px solid rgba(70, 210, 235, 1);
-}
+}*/

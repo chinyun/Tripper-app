@@ -197,7 +197,7 @@ class App extends Component {
     return (
       <div className='app'> 
         { this.state.isSignedIn === true
-          ? <div className='home'>
+          ? <div className='dashboard'>
               <Navigation
                 onRouteChange={this.onRouteChange}
                 userName={user.name}
