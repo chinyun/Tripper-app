@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import SideBar from './SideBar/SideBar';
+import StaticPannel from './StaticPannel/StaticPannel';
 import SetBudget from './SetBudget/SetBudget';
 import Accounts from './Accounts/Accounts';
 import Charts from './Charts/Charts';
 import Days from './Days/Days';
 import './Home.css';
-import SelectIcon from './select-white-icon.png';
-import AddIcon from './add-white-icon.png';
+import SelectIcon from './select-black-icon.png';
+import AddIcon from './add-blue-icon.png';
+import UpdateIcon from './update-blue-icon.png';
+import DeleteIcon from './delete-blue-icon.png';
 
 const getData = (datas) => {
   console.log(datas);
@@ -59,7 +62,8 @@ class Home extends Component {
       test: journeys[journeys.length-1].name,
       displayedAccountId: initialJourney[0].accountList[0].id,
       newDay: 2,
-      data: getData(initialJourney)
+      data: getData(initialJourney),
+      countDays: initialJourney[0].accountList.length
     }
   };
 
@@ -212,86 +216,66 @@ class Home extends Component {
           />
         </div>*/}
         <div className='main-section'>
-          <div className='static-pannel-wrapper'>
-            <p className='home-title'>行程 {this.state.test}</p>
-            <div className='static-pannel'>
-              <div className='static-pannel-section'>
-                <div className='static-pannel-topic'>
-                  <p className='static-pannel-title'>目標</p>
-                  <p className='static-pannel-subtitle '>總預算</p>
-                </div>
-                <span className='static-pannel-amount editable-text'>{this.state.displayedJourney[0].budget}</span>
-              </div>
-              <div className='static-pannel-section'>
-                <div className='static-pannel-topic'>
-                  <p className='static-pannel-title'>支出</p>
-                  <p className='static-pannel-subtitle'>總支出</p>
-                </div>
-                <span className='static-pannel-amount'>{this.state.displayedJourney[0].expense}</span>
-              </div>
-              <div className='static-pannel-section'>
-                <div className='static-pannel-topic'>
-                  <p className='static-pannel-title'>剩餘</p>
-                  <p className='static-pannel-subtitle'>可支配預算</p>
-                </div>
-                <span className='static-pannel-amount'>{this.state.displayedJourney[0].budget - this.state.displayedJourney[0].expense}</span>
-              </div>
-            </div>
-          </div>
+          <StaticPannel
+            test={this.state.test}
+            displayedJourney={this.state.displayedJourney}
+            journeyId={this.state.journeyId}
+            handleBudgetsChange={this.handleBudgetsChange}
+          />
           <div className='sub-section'>
             <SetBudget
-            user={this.props.user}
-            journeyId={this.state.journeyId}
-            displayedJourney={this.state.displayedJourney}
-            handleBudgetsChange={this.handleBudgetsChange}
+              journeyId={this.state.journeyId}
+              displayedJourney={this.state.displayedJourney}
+              handleBudgetsChange={this.handleBudgetsChange}
             />
             <div className='minor-section'>
               <Charts
                 displayedJourney={this.state.displayedJourney}
                 data={this.state.data}
               />
-              <div className='accounts-days-nav'>
-              <div className='accounts-days-manage'>
-                <button 
-                  className='control-days-btn' 
-                  onClick={this.createNewDay}
-                >
-                  <img className='add-day-img' alt='add' src={AddIcon}/>
-                  <span>新增</span>
-                </button>
-                <button 
-                  className='control-days-btn' 
-                  onClick={() => this.handleRemoveAccount(this.state.displayedAccountId)}
-                >
-                  <span>刪除</span>
-                </button>
-                <div className='accounts-days'>
-                  <select 
-                    className='accounts-day-selector' 
-                    name='accounts-day-selector'
-                    onChange={this.onDayChange}
-                  >
-                    { this.state.accounts.map( day => 
-                      <Days 
-                        key={day.id} 
-                        day={day}
-                      />
-                    )}
-                  </select>
-                  <span className='account-category-selector-icon'>
-                    <img alt='select-green-icon'src={SelectIcon}/>
-                  </span>
+              <div className='accounts-wrapper'>
+                <div className='accounts-nav'>
+                  <div className='accounts-days-manage'>
+                    <p className='home-title'>{this.state.countDays} Days</p>
+                    <button className='control-btn' onClick={this.createNewDay}>
+                      <img className='add-icon-img' alt='add' src={AddIcon}/>
+                      <span>新增</span>
+                    </button>
+
+
+                    <button className='control-btn' onClick={() => 
+                      this.handleRemoveAccount(this.state.displayedAccountId)}>
+                      <img className='delete-icon-img' alt='delete' src={DeleteIcon}/>
+                      <span>刪除</span>
+                    </button>
+                    <div className='accounts-days'>
+                      <select 
+                        className='accounts-day-selector' 
+                        name='accounts-day-selector'
+                        onChange={this.onDayChange}
+                      >
+                        { this.state.accounts.map( day => 
+                          <Days 
+                            key={day.id} 
+                            day={day}
+                          />
+                        )}
+                      </select>
+                      <span className='account-category-selector-icon'>
+                        <img className='select-icon-img' alt='select' src={SelectIcon}/>
+                      </span>
+                    </div>
+                  </div>
                 </div>
+                <Accounts
+                  accounts={this.state.accounts}
+                  expenseList={this.state.expenseList}
+                  displayedAccountId={this.state.displayedAccountId}
+                  handleAddExpense={this.handleAddExpense}
+                  handleUpdateExpense={this.handleUpdateExpense}
+                  handleRemoveExpense={this.handleRemoveExpense}
+                />
               </div>
-            </div>
-              <Accounts
-                accounts={this.state.accounts}
-                expenseList={this.state.expenseList}
-                displayedAccountId={this.state.displayedAccountId}
-                handleAddExpense={this.handleAddExpense}
-                handleUpdateExpense={this.handleUpdateExpense}
-                handleRemoveExpense={this.handleRemoveExpense}
-              />
             </div>
           </div>
           

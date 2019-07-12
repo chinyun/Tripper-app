@@ -19,6 +19,7 @@
 .chart-area {
   margin: 0;
   padding: 5px;
+  background-color: #888;
 }
 
 .chart-legend-wrapper {

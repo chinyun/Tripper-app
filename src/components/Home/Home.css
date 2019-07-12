@@ -24,64 +24,12 @@
   align-items: center;
 }
 
-.static-pannel-wrapper {
-  width: 80%;
-  max-width: 1048px;
-  padding: 10px;
-  margin: 15px;
-}
-
 .home-title {
   font-weight: 400;
   font-size: 15px;
   letter-spacing: 1px;
   font-family: "Ubuntu";
-  margin: 15px;
-  color: #3e3e3e;
-}
-
-.static-pannel {
-  margin: 0;
-  padding: 2% 1.5%;
-  background-color: #fff;
-  border: 0;
-  border-radius: 12px;
-  box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.1);
-  display: flex;
-  justify-content: space-around;
-}
-
-.static-pannel-section {
-  width: 30%;
-  margin: 10px 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.static-pannel-topic {
-  margin-right: 25px;
-  font-family: "Ubuntu";
-  padding: 2px;
-}
-
-.static-pannel-title {
-  font-size: 16px;
-  font-weight: 500;
-  margin-bottom: 2px;
-}
-
-.static-pannel-subtitle {
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 1px;
-}
-
-.static-pannel-amount {
-  font-size: 24px;
-  font-weight: 300;
-  margin-top: 18px;
+  margin: 12px 15px;
   color: #3e3e3e;
 }
 
@@ -124,31 +72,23 @@
   justify-content: space-around;
 }*/
 
-.accounts-section {
+/*.accounts-section {
   width: 100%;
   height: auto;
   padding: 3.2% 4%;
   margin: 0;
+}*/
+
+.accounts-wrapper {
+  width: 100%;
+  margin-top: 20px;
+  padding: 0;
 }
 
-.accounts-days-nav {
+.accounts-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.accounts-day-title {
-  font-size: 20px;
-  color: rgba(255,255,255,1);
-  font-weight: 500;
-  letter-spacing: 1px;
-  margin: 0 15px;
-  padding: 5px;
-  cursor: pointer; 
-}
-
-.accounts-day-title:hover {
-  color: rgba(255,255,255,0.7);
 }
 
 .accounts-days-manage {
@@ -156,51 +96,62 @@
   align-items: center;
 }
 
-.accounts-days {
-  width: 100px;
-  height: 36px;
-  margin: 0 15px;
-  padding: 0 15px;
-  background-color: rgba( 0, 172, 238, 1);
-  border: 0px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-}
-
-.accounts-day-selector {
-  appearance: none;
-  outline: none;
-  font-size: 16px;
-  font-weight: 600;
-  color: rgba(255,255,255,1);
-  letter-spacing: 3px;
-  background: transparent; 
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
-
-.control-days-btn {
+.control-btn {
   margin: 2px 0 0 0;
+  padding: 2px 3px;
   outline: none;
   background: none;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 500;
-  color: rgba(255,255,255,1);
+  color: #9b9b9b;
 }
 
-.control-days-btn:hover {
-  color: rgba(255,255,255,0.8);
+.control-btn:hover {
+  background-color: #E7E7E7;
+  border: 0;
+  border-radius: 8px;
+  color: #177ef5;
 }
 
-.add-day-img {
+.add-icon-img ,.delete-icon-img, .select-icon-img{
+  width: 10px;
+  height: auto;
+  margin: 0 2px;
+  padding: 0;
+}
+
+.update-icon-img {
   width: 12px;
   height: auto;
   margin: 0 5px;
   padding: 0;
 }
 
+.accounts-days {
+  width: 142px;
+  height: 48px;
+  margin: 0 15px;
+  padding: 0 15px;
+  background-color: #f1f1f1;
+  border: 0px;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  /*box-shadow: 3px 0px 4px 0px rgba(0,0,0, 0.1);*/
+}
+
+.accounts-day-selector {
+  appearance: none;
+  outline: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: #4a4a4a;
+  letter-spacing: 3px;
+  background: transparent; 
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
 
 .web-info {
   font-weight: 500;

@@ -1,11 +1,10 @@
 .accounts-table {
 	padding: 1%;
-	margin-top: 2%;
-	margin-left: 2%;
+	margin-bottom: 50px;
 	height: auto;
-	background-color: #f2f2f2;
+	background-color: #f1f1f1;
 	border-radius: 20px;
-	box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.08);
+	box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.1);
 }
 
 .scroll-accounts-list {
@@ -16,7 +15,6 @@
 	margin: 0;
 	padding: 0;
 	width: 98%;
-	max-height: 340px;
 }
 
 .show-add-account-btn {
