@@ -24,7 +24,6 @@ const getData = (datas) => {
     percentage: `${100 - percentage}%`
   }];
 
-  console.log(data);
   return data;
  }
 
@@ -144,7 +143,7 @@ class SetBudget extends Component {
 		const { displayedJourney } = this.props;
 		return (
 			<div className='budget-wrapper'> 
-				<p className='home-title'>Budgets</p>
+				<p className='home-title'>Budgets Manage</p>
 				<div className='budget'>
 					<div className='budget-section'>
 						<div className='budget-control'>

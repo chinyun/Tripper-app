@@ -41,7 +41,10 @@ class StaticPannel extends Component {
     const { budget, isEditing } = this.state;
     return (
       <div className='static-pannel-wrapper'>
-        <p className='home-title'>行程 {this.props.test}</p>
+        <p className='home-title'>
+          Journey
+          <span className='home-subtitle'>{this.props.test}</span>
+        </p>
         <div className='static-pannel'>
           <div className='static-pannel-section-wrapper'>
             <div className='static-pannel-section'>

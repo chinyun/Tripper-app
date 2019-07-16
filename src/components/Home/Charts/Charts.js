@@ -71,7 +71,10 @@ class Charts extends Component {
     const paths = this.props.data.map(d => <path key={d.name}/>)
     return (
       <div className='charts-wrapper'>
-        <p className='home-title'>Data Chart<span>Expense</span></p>
+        <p className='home-title'>
+          Data Chart
+          <span className='home-subtitle'>Expense</span>
+        </p>
         <div className='charts'>
           <div id='chart-area' className='chart-area'>
             <svg

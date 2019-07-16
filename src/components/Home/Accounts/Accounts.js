@@ -3,9 +3,9 @@ import './Accounts.css';
 import Scroll from './Scroll/Scroll';
 import List from './List/List';
 
-import SelectIcon from './select-white-icon.png';
-import AddIcon from './add-white-icon.png'; 
-import CancelIcon from './cancel-icon.png';
+import SelectIcon from './select-black-icon.png';
+import AddIcon from './add-blue-icon.png'; 
+import CancelIcon from './cancel-dark-icon.png';
 
 class Accounts extends Component {
 	constructor (props) {
@@ -79,8 +79,8 @@ class Accounts extends Component {
 
 	render () {
 		return (
-			<div className='accounts-table'>
-				<div className='scroll-accounts-list'>
+			<div className='accounts'>
+				<div className='scroll-wrapper'>
 					<Scroll>
 		        <ul className='accounts-list'>
 		          {this.props.expenseList.map( list => 
@@ -93,21 +93,14 @@ class Accounts extends Component {
 		          )}
 		        </ul>
 		      </Scroll>
-					<div>
+					<div className='add-accounts-wrapper'>
 						{ this.state.isAdded === false
-							? <button
-									className='show-add-account-btn'
-									onClick={this.showAddExpense}
-								>
-									<img 
-										className='add-account-img' 
-										alt='add' 
-										src={AddIcon} 
-									/>
-									<span className='show-add-account-text'>新增支出項目</span>
+							? <button className='control-btn' onClick={this.showAddExpense}>
+									<img className='add-icon-img' alt='add' src={AddIcon}/>
+									<span>新增支出項目</span>
 								</button>
-							: <div className='add-account-list'>
-									<div className='add-account-list-content'>
+							: <div className='add-account'>
+									<div className='add-account-content'>
 										<div className='account-category'>
 											<select 
 												className='account-category-selector' 
@@ -120,7 +113,7 @@ class Accounts extends Component {
 												<option value='票券'>票券</option>
 												<option value='購物'>購物</option>
 											</select>
-											<span className='account-category-selector-icon'>
+											<span className='category-selector-icon'>
 												<img alt='select-green-icon'src={SelectIcon}/>
 											</span>
 										</div>
@@ -149,15 +142,8 @@ class Accounts extends Component {
 											value='新增支出'
 											onClick={this.createNewExpense}
 										/>
-										<button
-											className='cancel-add-list-btn'
-											onClick={this.cancelAddExpense}
-										>
-											<img 
-												className='cancel-btn-img' 
-												alt='cancel' 
-												src={CancelIcon} 
-											/>
+										<button className='cancel-btn' onClick={this.cancelAddExpense}>
+											<img className='cancel-btn-img' alt='cancel' src={CancelIcon} />
 										</button>
 									</div>
 								</div>

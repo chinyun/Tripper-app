@@ -233,20 +233,19 @@ class Home extends Component {
               />
               <div className='accounts-wrapper'>
                 <div className='accounts-nav'>
-                  <div className='accounts-days-manage'>
-                    <p className='home-title'>{this.state.countDays} Days</p>
-                    <button className='control-btn' onClick={this.createNewDay}>
-                      <img className='add-icon-img' alt='add' src={AddIcon}/>
-                      <span>新增</span>
-                    </button>
-
-
-                    <button className='control-btn' onClick={() => 
-                      this.handleRemoveAccount(this.state.displayedAccountId)}>
-                      <img className='delete-icon-img' alt='delete' src={DeleteIcon}/>
-                      <span>刪除</span>
-                    </button>
-                    <div className='accounts-days'>
+                  
+                    <div className='left-column'>
+                      <p className='home-title'>{this.state.countDays} Days</p>
+                      <button
+                        className='control-btn' 
+                        onClick={this.createNewDay}
+                      >
+                        <img className='add-icon-img' alt='add' src={AddIcon}/>
+                        <span>新增</span>
+                      </button>
+                    </div>
+                    <div className='right-column'>
+                      <div className='accounts-days'>
                       <select 
                         className='accounts-day-selector' 
                         name='accounts-day-selector'
@@ -263,7 +262,16 @@ class Home extends Component {
                         <img className='select-icon-img' alt='select' src={SelectIcon}/>
                       </span>
                     </div>
-                  </div>
+                    <button 
+                      className='control-btn' 
+                      onClick={() => this.handleRemoveAccount(this.state.displayedAccountId)}
+                    >
+                      <img className='delete-icon-img' alt='delete' src={DeleteIcon}/>
+                      <span>刪除</span>
+                    </button>
+                    </div>
+                    
+                  
                 </div>
                 <Accounts
                   accounts={this.state.accounts}
