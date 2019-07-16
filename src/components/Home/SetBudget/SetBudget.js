@@ -1,7 +1,32 @@
 import React, { Component } from 'react';
+import BudgetCharts from './BudgetCharts/BudgetCharts';
 import './SetBudget.css';
 import CancelIcon from './cancel-dark-icon.png';
 import UpdateIcon from './update-blue-icon.png';
+
+const getData = (datas) => {
+  console.log(datas);
+  const getPercentage = (num) => {
+    num.toFixed(3);
+    let result = (num*100).toString();
+    return result.slice(0,4);
+  };
+
+  const percentage = getPercentage(datas[0].target_expense / datas[0].target_budget);
+
+  const data = [{ 
+    name: '支出',
+    cost: datas[0].target_expense,
+    percentage: `${percentage}%`
+  },{
+    name: '剩餘可支配預算',
+    cost: datas[0].target_budget - datas[0].target_expense,
+    percentage: `${100 - percentage}%`
+  }];
+
+  console.log(data);
+  return data;
+ }
 
 class SetBudget extends Component {
 	constructor(props) {
@@ -13,27 +38,78 @@ class SetBudget extends Component {
       living_budget: displayedJourney[0].living_budget,
       ticket_budget: displayedJourney[0].ticket_budget,
       shopping_budget: displayedJourney[0].shopping_budget,
-      isEditing: '',
-      expense: displayedJourney[0].expense,
-      traffic_expense: displayedJourney[0].traffic_expense,
-			food_expense: displayedJourney[0].food_expense,
-      living_expense: displayedJourney[0].living_expense,
-      ticket_expense: displayedJourney[0].ticket_expense,
-      shopping_expense: displayedJourney[0].shopping_expense
+      isEditing: ''
 		};
 	};
 
-	onTrafficBudgetChange = (event) => { this.setState({ traffic_budget: event.target.value }) };
+  handleDataType = (type) => {
+    const { displayedJourney } = this.props;
+    switch(type) {
+      case 'traffic':
+        return [{ 
+          target_expense: displayedJourney[0].traffic_expense,
+          target_budget: this.state.traffic_budget
+        }]
+      case 'food':
+        return [{
+          target_expense: displayedJourney[0].food_expense,
+          target_budget: this.state.food_budget
+        }]
+      case 'living':
+        return [{
+          target_expense: displayedJourney[0].living_expense,
+          target_budget: this.state.living_budget
+        }]
+      case 'ticket':
+        return [{
+          target_expense: displayedJourney[0].ticket_expense,
+          target_budget: this.state.ticket_budget
+        }]
+      case 'shopping':
+        return [{
+          target_expense: displayedJourney[0].shopping_expense,
+          target_budget: this.state.shopping_budget
+        }]
+      default:
+        return []
+    }
+  };
 
-	onFoodBudgetChange = (event) => { this.setState({ food_budget: event.target.value }) };
+  handleColour = (type) => {
+    switch(type) {
+      case 'traffic':
+        return '#FBC2A2'
+      case 'food':
+        return '#7BF7C9'
+      case 'living':
+        return '#F9FCBC'
+      case 'ticket':
+        return '#ECA9FF'
+      case 'shopping':
+        return '#E488FC'
+      default:
+        return '#F4F4F4'
+    }
+  };
 
-	onLivingBudgetChange = (event) => { this.setState({ living_budget: event.target.value }) };
-
-	onTicketBudgetChange = (event) => { this.setState({ ticket_budget: event.target.value }) };
-
-	onShoppingBudgetChange = (event) => { this.setState({ shopping_budget: event.target.value }) };
-
-	handleEditing = (target) => { this.setState({ isEditing: target }) };
+	onTrafficBudgetChange = (event) => { 
+    this.setState({ traffic_budget: event.target.value })
+  };
+	onFoodBudgetChange = (event) => { 
+    this.setState({ food_budget: event.target.value })
+  };
+	onLivingBudgetChange = (event) => { 
+    this.setState({ living_budget: event.target.value })
+  };
+	onTicketBudgetChange = (event) => { 
+    this.setState({ ticket_budget: event.target.value })
+  };
+	onShoppingBudgetChange = (event) => { 
+    this.setState({ shopping_budget: event.target.value })
+  };
+	handleEditing = (target) => { 
+    this.setState({ isEditing: target })
+  };
 
 	handleEnter = (event) => {
 		const { journeyId } = this.props;
@@ -64,8 +140,7 @@ class SetBudget extends Component {
 
 	render() {
 		const { traffic_budget, food_budget, living_budget,
-			ticket_budget, shopping_budget, traffic_expense,
-			food_expense, living_expense,ticket_expense, shopping_expense } = this.state;
+			ticket_budget, shopping_budget} = this.state;
 		const { displayedJourney } = this.props;
 		return (
 			<div className='budget-wrapper'> 
@@ -90,7 +165,7 @@ class SetBudget extends Component {
                         <img className='cancel-icon-img' alt='cancel' src={CancelIcon}/>
                       </button>
                     </div>
-                  : <div className='budget-text'>
+                  : <div className='budget-text-wrapper'>
                   		<p className='budget-amount'>{traffic_budget}</p>
 											<button className='control-btn' onClick={()=> this.handleEditing('traffic')}>
 			                  <img className='update-icon-img' alt='update' src={UpdateIcon}/>
@@ -100,13 +175,17 @@ class SetBudget extends Component {
 							</div>
 							<div className='budget-detail'>
 								<p>支出</p>
-								<p>{traffic_expense}</p>
+								<p>{displayedJourney[0].traffic_expense}</p>
 							</div>
 							<div className='budget-detail'>
 								<p>剩餘</p>
-								<p>{traffic_budget - traffic_expense}</p>
+								<p>{traffic_budget - displayedJourney[0].traffic_expense}</p>
 							</div>
 						</div>
+            <BudgetCharts
+              data={getData(this.handleDataType('traffic'))}
+              color={this.handleColour('traffic')}
+            />
 					</div>
 					<div className='budget-section'>
 						<div className='budget-control'>
@@ -127,7 +206,7 @@ class SetBudget extends Component {
                         <img className='cancel-icon-img' alt='cancel' src={CancelIcon}/>
                       </button>
                     </div>
-                  : <div className='budget-text'>
+                  : <div className='budget-text-wrapper'>
                   		<p className='budget-amount'>{food_budget}</p>
 											<button className='control-btn' onClick={()=> this.handleEditing('food')}>
 			                  <img className='update-icon-img' alt='update' src={UpdateIcon}/>
@@ -137,13 +216,17 @@ class SetBudget extends Component {
 							</div>
 							<div className='budget-detail'>
 								<p>支出</p>
-								<p>{food_expense}</p>
+								<p>{displayedJourney[0].food_expense}</p>
 							</div>
 							<div className='budget-detail'>
 								<p>剩餘</p>
-								<p>{food_budget - food_expense}</p>
+								<p>{food_budget - displayedJourney[0].food_expense}</p>
 							</div>
 						</div>
+            <BudgetCharts
+              data={getData(this.handleDataType('food'))}
+              color={this.handleColour('food')}
+            />
 					</div>
 					<div className='budget-section'>
 						<div className='budget-control'>
@@ -164,7 +247,7 @@ class SetBudget extends Component {
                         <img className='cancel-icon-img' alt='cancel' src={CancelIcon}/>
                       </button>
                     </div>
-                  : <div className='budget-text'>
+                  : <div className='budget-text-wrapper'>
                   		<p className='budget-amount'>{living_budget}</p>
 											<button className='control-btn' onClick={()=> this.handleEditing('living')}>
 			                  <img className='update-icon-img' alt='update' src={UpdateIcon}/>
@@ -174,13 +257,17 @@ class SetBudget extends Component {
 							</div>
 							<div className='budget-detail'>
 								<p>支出</p>
-								<p>{living_expense}</p>
+								<p>{displayedJourney[0].living_expense}</p>
 							</div>
 							<div className='budget-detail'>
 								<p>剩餘</p>
-								<p>{living_budget - living_expense}</p>
+								<p>{living_budget - displayedJourney[0].living_expense}</p>
 							</div>
 						</div>
+            <BudgetCharts
+              data={getData(this.handleDataType('living'))}
+              color={this.handleColour('living')}
+            />
 					</div>
 					<div className='budget-section'>
 						<div className='budget-control'>
@@ -201,7 +288,7 @@ class SetBudget extends Component {
                         <img className='cancel-icon-img' alt='cancel' src={CancelIcon}/>
                       </button>
                     </div>
-                  : <div className='budget-text'>
+                  : <div className='budget-text-wrapper'>
                   		<p className='budget-amount'>{ticket_budget}</p>
 											<button className='control-btn' onClick={()=> this.handleEditing('ticket')}>
 			                  <img className='update-icon-img' alt='update' src={UpdateIcon}/>
@@ -211,13 +298,17 @@ class SetBudget extends Component {
 							</div>
 							<div className='budget-detail'>
 								<p>支出</p>
-								<p>{ticket_expense}</p>
+								<p>{displayedJourney[0].ticket_expense}</p>
 							</div>
 							<div className='budget-detail'>
 								<p>剩餘</p>
-								<p>{ticket_budget - ticket_expense}</p>
+								<p>{ticket_budget - displayedJourney[0].ticket_expense}</p>
 							</div>
 						</div>
+            <BudgetCharts
+              data={getData(this.handleDataType('ticket'))}
+              color={this.handleColour('ticket')}
+            />
 					</div>
 					<div className='budget-section'>
 						<div className='budget-control'>
@@ -238,7 +329,7 @@ class SetBudget extends Component {
                         <img className='cancel-icon-img' alt='cancel' src={CancelIcon}/>
                       </button>
                     </div>
-                  : <div className='budget-text'>
+                  : <div className='budget-text-wrapper'>
                   		<p className='budget-amount'>{shopping_budget}</p>
 											<button className='control-btn' onClick={()=> this.handleEditing('shopping')}>
 			                  <img className='update-icon-img' alt='update' src={UpdateIcon}/>
@@ -248,13 +339,17 @@ class SetBudget extends Component {
 							</div>
 							<div className='budget-detail'>
 								<p>支出</p>
-								<p>{shopping_expense}</p>
+								<p>{displayedJourney[0].shopping_expense}</p>
 							</div>
 							<div className='budget-detail'>
 								<p>剩餘</p>
-								<p>{shopping_budget - shopping_expense}</p>
+								<p>{shopping_budget - displayedJourney[0].shopping_expense}</p>
 							</div>
 						</div>
+            <BudgetCharts
+              data={getData(this.handleDataType('shopping'))}
+              color={this.handleColour('shopping')}
+            />
 					</div>
 				</div>
 			</div>

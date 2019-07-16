@@ -9,7 +9,6 @@ class StaticPannel extends Component {
     const { displayedJourney } = this.props;
     this.state = {
       budget: displayedJourney[0].budget,
-      expense: displayedJourney[0].expense,
       isEditing: ''
     }
   }
@@ -39,7 +38,7 @@ class StaticPannel extends Component {
   }
 
   render() {
-    const { budget, expense, isEditing } = this.state;
+    const { budget, isEditing } = this.state;
     return (
       <div className='static-pannel-wrapper'>
         <p className='home-title'>行程 {this.props.test}</p>
@@ -80,7 +79,7 @@ class StaticPannel extends Component {
                 <p className='static-pannel-title'>支出</p>
                 <p className='static-pannel-subtitle'>總支出</p>
               </div>
-              <span className='static-pannel-amount'>{expense}</span>
+              <span className='static-pannel-amount'>{this.props.displayedJourney[0].expense}</span>
             </div>
           </div>
           <div className='static-pannel-section-wrapper'>
@@ -89,7 +88,7 @@ class StaticPannel extends Component {
                 <p className='static-pannel-title'>剩餘</p>
                 <p className='static-pannel-subtitle'>可支配預算</p>
               </div>
-              <span className='static-pannel-amount'>{budget - expense}</span>
+              <span className='static-pannel-amount'>{budget - this.props.displayedJourney[0].expense}</span>
             </div>
           </div>
         </div>

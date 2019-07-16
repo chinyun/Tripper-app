@@ -17,6 +17,9 @@
 	background-color: #fff;
 	border-radius: 20px;
 	box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.1);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .budget-content {
@@ -54,11 +57,12 @@
 }
 
 .budget-detail p {
-	font-size: 15px;
+	font-size: 14px;
+	letter-spacing: 1px;
 	margin-right: 20px;
 }
 
-.budget-text {
+.budget-text-wrapper {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;

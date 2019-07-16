@@ -12,7 +12,6 @@ import UpdateIcon from './update-blue-icon.png';
 import DeleteIcon from './delete-blue-icon.png';
 
 const getData = (datas) => {
-  console.log(datas);
   const getPercentage = (num) => {
     num.toFixed(3);
     let result = (num*100).toString();
@@ -46,7 +45,6 @@ const getData = (datas) => {
     cost: datas[0].shopping_expense,
     percentage: `${shopping_percentage}%`
   }];
-  console.log(data);
   return data;
  }
 
