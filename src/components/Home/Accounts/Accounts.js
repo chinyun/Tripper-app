@@ -3,9 +3,9 @@ import './Accounts.css';
 import Scroll from './Scroll/Scroll';
 import List from './List/List';
 
-import SelectIcon from './select-black-icon.png';
-import AddIcon from './add-blue-icon.png'; 
-import CancelIcon from './cancel-dark-icon.png';
+import SelectIcon from '../Icons/select-black-icon.png';
+import AddIcon from '../Icons/add-blue-icon.png'; 
+import CancelIcon from '../Icons/cancel-dark-icon.png';
 
 class Accounts extends Component {
 	constructor (props) {
@@ -93,18 +93,18 @@ class Accounts extends Component {
 		          )}
 		        </ul>
 		      </Scroll>
-					<div className='add-accounts-wrapper'>
+					<div className='add-item-wrapper'>
 						{ this.state.isAdded === false
 							? <button className='control-btn' onClick={this.showAddExpense}>
 									<img className='add-icon-img' alt='add' src={AddIcon}/>
 									<span>新增支出項目</span>
 								</button>
-							: <div className='add-account'>
-									<div className='add-account-content'>
-										<div className='account-category'>
+							: <div className='add-item'>
+									<div className='add-item-content'>
+										<div className='item-category'>
 											<select 
-												className='account-category-selector' 
-												name='account-category-selector'
+												className='item-category-selector' 
+												name='item-category-selector'
 												onChange={this.onCategorySelectChange}
 											>
 												<option value='交通'>交通</option>
@@ -114,30 +114,30 @@ class Accounts extends Component {
 												<option value='購物'>購物</option>
 											</select>
 											<span className='category-selector-icon'>
-												<img alt='select-green-icon'src={SelectIcon}/>
+												<img alt='select-icon'src={SelectIcon}/>
 											</span>
 										</div>
 										<input 
-											id='input-list-detail'
-											className='input-list-detail' 
+											id='item-detail-input'
+											className='item-detail-input' 
 											type='text' 
 											placeholder='描述'
 											value={this.state.detail}
 											onChange={this.onDetailValueChange}
 										/>
 										<input 
-											id='input-list-amount' 
-											className='input-list-amount'
+											id='item-amount-input' 
+											className='item-amount-input'
 											type='text' 
 											placeholder='金額'
 											value={this.state.amount}
 											onChange={this.onAmountValueChange}
 										/>
 									</div>
-									<div className='add-list-btn-group'>
+									<div className='item-btn-group'>
 										<input 
-											id='add-list-submit' 
-											className='add-list-submit'
+											id='add-item-submit' 
+											className='add-item-submit'
 											type='submit' 
 											value='新增支出'
 											onClick={this.createNewExpense}

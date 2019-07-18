@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import BudgetCharts from './BudgetCharts/BudgetCharts';
 import './SetBudget.css';
-import CancelIcon from './cancel-dark-icon.png';
-import UpdateIcon from './update-blue-icon.png';
+import CancelIcon from '../Icons/cancel-dark-icon.png';
+import UpdateIcon from '../Icons/update-blue-icon.png';
 
 const getData = (datas) => {
   console.log(datas);

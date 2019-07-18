@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import './List.css';
-import DeleteIcon from './delete-icon.png';
-import UpdateIcon from './update-icon.png';
-import SelectIcon from './select-white-icon.png';
+import SelectIcon from '../../Icons/select-black-icon.png';
+import UpdateIcon from '../../Icons/update-blue-icon.png';
+import CancelIcon from '../../Icons/cancel-dark-icon.png';
+import ConfirmIcon from '../../Icons/confirm-green-icon.png';
 
 class List extends Component {
 	constructor( props ) {
 		super( props );
 		this.state = {
 			category: '交通',
-			detail: '',
-			amount: 0,
-			isEditing: ''
+      detail: '',
+      amount: 0,
+			isEditing: '',
+			isSelecting: false
 		};
 	}
 
@@ -23,19 +25,28 @@ class List extends Component {
 		}
 	};
 
+	onCategorySelect = () => {
+		if(this.state.isSelecting === false) {
+			this.setState({ isSelecting: true })
+		} else {
+			this.setState({ isSelecting: false })
+		}
+	};
+
 	onCategorySelectChange = (event) => { 
-		this.setState({category: event.target.value})
-	};
+    this.setState({category: event.target.value})
+  };
 
-	onDetailValueChange = (event) => {
-		this.setState({ detail: event.target.value })
-	};
+  onDetailValueChange = (event) => {
+    this.setState({ detail: event.target.value })
+  };
 
-	onAmountValueChange = (event) => {
-		this.setState({ amount: event.target.value })
-	};
+  onAmountValueChange = (event) => {
+    this.setState({ amount: event.target.value })
+  };
 
 	editExpense = (expense) => {
+		alert('確定修改嗎？');
 		fetch(`http://localhost:3000/expenses/${expense.id}`, {
 			method: 'PATCH',
 			headers: {'Content-Type': 'application/json'},
@@ -48,7 +59,6 @@ class List extends Component {
 		})
 		.then(response => response.json())
 		.then(updatedJourney => {
-			console.log(updatedJourney);
 			this.props.handleUpdateExpense(updatedJourney);
 		})
 		.catch(err => alert('unable to update expense'));
@@ -62,85 +72,117 @@ class List extends Component {
 	render() {
 		const { list } = this.props;
 		return (
-			<li 
-				className='account-list-item'
-				id={list.id}
-			>
-				<button 
-					onClick={() => this.handleDeleteExpense(list)} 
-					className='list-item-delete-btn'
-				>
-					<img alt='delete-icon'src={DeleteIcon} />	
-				</button>
-				<button 
-					onClick={() => this.onEditingChange(list.id)}
-					className='update-btn'
-				>
-					<img alt='update-icon' src={UpdateIcon}/>
-				</button>
-				{this.state.isEditing === list.id
-					? <div className='account-update'>
-							<div className='account-category-update'>
-								<select 
-									className='account-category-selector-update' 
-									name='account-category-selector-update'
-									onChange={this.onCategorySelectChange}
-								>
-									<option value='交通'>交通</option>
-									<option value='住宿'>住宿</option>
-									<option value='飲食'>飲食</option>
-									<option value='票券'>票券</option>
-									<option value='購物'>購物</option>
-								</select>
-								<span className='account-category-selector-icon'>
-									<img alt='select-green-icon'src={SelectIcon}/>
+			<li id={list.id} className='accounts-list-item-wrapper'>
+				{ this.state.isEditing === list.id
+					? <div className='accounts-list-item-update'>
+							<div className='accounts-list-item'> 
+								<div className='list-item-update'>
+									<div className='list-item-category'>
+										<button 
+											className='item-category-btn'
+											onClick={() => {this.onCategorySelect()}}
+										>
+											<span>{this.state.category}</span>
+											<span className='item-category-btn-icon'>
+						            <img alt='select-icon'src={SelectIcon}/>
+						          </span>
+										</button>
+										<div className={ this.state.isSelecting === false
+												? 'category-selector-hidden'
+												: 'category-selector-wrapper'
+											}>
+											<div className='category-selector'>
+												<button>交通</button>
+												<button>住宿</button>
+												<button>飲食</button>
+												<button>票券</button>
+												<button>購物</button>
+											</div>
+										</div>
+									</div>
+									
+					        {/*<div className='item-category'>
+					          <select 
+					            className='item-category-selector' 
+					            name='item-category-selector'
+					            onChange={this.onCategorySelectChange}
+					          >
+					            <option value='交通'>交通</option>
+					            <option value='住宿'>住宿</option>
+					            <option value='飲食'>飲食</option>
+					            <option value='票券'>票券</option>
+					            <option value='購物'>購物</option>
+					          </select>
+					          <span className='category-selector-icon'>
+					            <img alt='select-icon'src={SelectIcon}/>
+					          </span>
+					        </div>
+					      */}
+					        <input 
+					          id='item-detail-update-input'
+					          className='item-detail-update-input' 
+					          type='text' 
+					          placeholder='描述'
+					          value={list.detail}
+					          onChange={this.onDetailValueChange}
+					        />
+					        <input 
+					          id='item-amount-update-input' 
+					          className='item-amount-update-input'
+					          type='text' 
+					          placeholder='金額'
+					          value={list.amount}
+					          onChange={this.onAmountValueChange}
+					        />
+					        <div className='delete-item'>
+					        	<button
+						        	className='delete-btn'
+						        	onClick={() => this.handleDeleteExpense(list)}
+						        >
+						        	<span>刪除</span>
+						        </button>
+					        </div>
+					      </div>
+							</div>
+							<div className='item-update-btn-group'>
+								<div className='item-update-btn'>
+									<button 
+										onClick={() => this.onEditingChange(list.id)} 
+										className='control-btn'
+									>
+										<img className='cancel-btn-img' alt='cancel-icon'src={CancelIcon}/>	
+									</button>
+								</div>
+								<div className='item-update-btn'>
+									<button 
+										onClick={() => this.editExpense(list)}
+										className='control-btn'
+									>
+										<img className='confirm-btn-img' alt='confirm-icon' src={ConfirmIcon}/>
+									</button>
+								</div>
+							</div>
+						</div>
+					: <div className='accounts-list-item'>
+							<div className='list-item-group'>
+								<span className='list-item-category'>
+									{list.category}
+								</span>
+								<span className='list-item-detail'>
+									{list.detail}
+								</span>
+								<span className='list-item-amount'>
+									{list.amount}
 								</span>
 							</div>
-							<input 
-								id='input-list-detail-update'
-								className='input-list-detail-update' 
-								type='text' 
-								placeholder='描述'
-								value={this.state.detail}
-								onChange={this.onDetailValueChange}
-							/>
-							<input 
-								id='input-list-amount-update' 
-								className='input-list-amount-update'
-								type='text' 
-								placeholder='金額'
-								value={this.state.Amount}
-								onChange={this.onAmountValueChange}
-							/>
-							<div className='update-list-input-group'>
-								<input 
-									id='update-list-submit' 
-									className='update-list-submit'
-									type='submit' 
-									value='修改'
-									onClick={() => this.editExpense(list)}
-								/>
-								<input 
-									id='cancel-update-submit' 
-									className='cancel-update-submit'
-									type='submit' 
-									value='取消'
-									onClick={this.cancelUpdateExpense}
-								/>
-							</div>
+							<button 
+								className='control-btn' 
+								onClick={() => this.onEditingChange(list.id)}
+							>
+                <img className='update-icon-img' alt='update' src={UpdateIcon}/>
+              </button>
 						</div>
-					: <div className='list-item-group'>
-							<span className='list-item-category'>
-								{ list.category}
-							</span>
-							<span className='list-item-detail'>
-								{ list.detail}
-							</span>
-							<span className='list-item-amount'>
-								{ list.amount }
-							</span>
-						</div>
-				}
+					}
 			</li>
 		)
 	}

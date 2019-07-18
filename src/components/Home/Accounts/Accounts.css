@@ -18,11 +18,11 @@
 	max-height: 400px;
 }
 
-.add-accounts-wrapper {
+.add-item-wrapper {
 	margin: 20px 0;
 }
 
-.add-account {
+.add-item {
 	margin: 0;
 	padding: 0% 0% 2% 0%;
 	width: 95.5%;
@@ -30,30 +30,33 @@
 	flex-direction: column;
 }
 
-.add-account-content {
+.add-item-content {
 	margin-top: 25px;
-	padding: 1%;
 	width: 100%;
+	margin-bottom: 1%;
+	padding: 8px;
+	border-radius: 6px;
+	background-color: #F9F9FD;
+	box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.1);
 	display: flex;
-	border-radius: 5px;
-	background-color: rgba(255, 255, 255,1);
+	align-items: center;
+	justify-content: space-between;
 }
 
-.account-category {
-	width: 14%;
-	height: 40px;
-	margin: 0 5px 0 0;
-	padding: 0 2%;
+.item-category {
+	width: 60px;
+	margin-right: 6px;
+	padding: 0 8px;
 	border: 0px;
 	border-radius: 6px;
 	display: flex;
 	align-items: center;
 }
 
-.account-category-selector {
+.item-category-selector {
 	appearance: none;
 	outline: none;
-	font-size: 15px;
+	font-size: 14px;
 	font-weight: 500;
 	color: #3E3E3E;
 	letter-spacing: 2px;
@@ -72,55 +75,48 @@
 	width: 8px;
 }
 
-.add-list-input-group {
-	display: flex;
-	justify-content: flex-start;
+.item-detail-input {
+	width: 60%;
 }
 
-.input-list-detail {
-	width: 54%;
+.item-amount-input {
+	width: 20%;
 }
 
-.input-list-amount {
-	width: 16%;
-}
-
-.input-list-detail, .input-list-amount {
+.add-item-content input {
 	font-weight: 500;
 	font-size: 15px;
-	color: #717171;
-	margin: 0 2px;
-	padding: 9px 10px;
+	color: rgba(62,62,62, 0.9);
+	margin: 0 4px;
+	padding: 5px;
 	background-color: rgba(0, 0, 0,0.1);
 	outline: none;
 	border: 2px solid rgba(70, 210, 235, 0);
 	border-radius: 6px;
 }
 
-.input-list-detail::placeholder, .input-list-amount::placeholder {
-	color: #9B9B9B;
+.add-item-content input::placeholder {
+	color: rgba(0,0,0,0.5);
 	font-weight: 500;
 	letter-spacing: 0.5px;
 }
 
-.input-list-detail:focus, .input-list-amount:focus {
+.add-item-content input:focus {
 	background-color: rgba(0, 0, 0,0.02);
-	border: 2px solid #529AED;
+	border: 2px solid rgba(40, 215, 194, 1);
 }
 
-
-.add-list-btn-group {
+.item-btn-group {
 	margin-top: 8px;
 	padding: 0;
-	width: 104%;
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: flex-start;
 }
 
-.add-list-submit {
+.add-item-submit {
 	font-weight: 500;
-	font-size: 15px;
+	font-size: 13px;
 	letter-spacing: 0.8px;
 	padding: 8px 16px;
 	color: #FFF;
@@ -130,15 +126,13 @@
 	cursor: pointer;
 }
 
-.add-list-submit:hover {
+.add-item-submit:hover {
 	background-color: #2E8AF4;
 }
 
 .cancel-btn {
 	margin: 2px 5px;
 	padding: 5px;
-	cursor: pointer;
-	outline: none;
 	background-color: none;
 	border: 0;
   border-radius: 7px;

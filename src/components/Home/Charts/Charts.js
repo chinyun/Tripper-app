@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
-import Legend from './Legend';
+import Legend from './Legend/Legend';
 import './Charts.css';
 
 const dims = { height: 100, width: 200, radius: 80 };

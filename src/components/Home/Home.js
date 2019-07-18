@@ -6,10 +6,8 @@ import Accounts from './Accounts/Accounts';
 import Charts from './Charts/Charts';
 import Days from './Days/Days';
 import './Home.css';
-import SelectIcon from './select-black-icon.png';
-import AddIcon from './add-blue-icon.png';
-import UpdateIcon from './update-blue-icon.png';
-import DeleteIcon from './delete-blue-icon.png';
+import SelectIcon from './Icons/select-black-icon.png';
+import AddIcon from './Icons/add-blue-icon.png';
 
 const getData = (datas) => {
   const getPercentage = (num) => {
@@ -212,7 +210,11 @@ class Home extends Component {
             updateJourney={this.props.updateJourney}
             handleRemoveJourney={this.handleRemoveJourney}
           />
-        </div>*/}
+        </div>
+        <div className='footer'>
+          <p className='web-info'>2019 Tripper. Created by Chin Yun Chen.</p>
+        </div>
+      */}
         <div className='main-section'>
           <StaticPannel
             test={this.state.test}
@@ -233,9 +235,9 @@ class Home extends Component {
               />
               <div className='accounts-wrapper'>
                 <div className='accounts-nav'>
-                  
-                    <div className='left-column'>
-                      <p className='home-title'>{this.state.countDays} Days</p>
+                  <div className='left-column'>
+                    <p className='home-title'>{this.state.countDays} Days</p>
+                    <div className='add-day'>
                       <button
                         className='control-btn' 
                         onClick={this.createNewDay}
@@ -244,8 +246,9 @@ class Home extends Component {
                         <span>新增</span>
                       </button>
                     </div>
-                    <div className='right-column'>
-                      <div className='accounts-days'>
+                  </div>
+                  <div className='right-column'>
+                    <div className='accounts-days'>
                       <select 
                         className='accounts-day-selector' 
                         name='accounts-day-selector'
@@ -262,16 +265,15 @@ class Home extends Component {
                         <img className='select-icon-img' alt='select' src={SelectIcon}/>
                       </span>
                     </div>
-                    <button 
-                      className='control-btn' 
-                      onClick={() => this.handleRemoveAccount(this.state.displayedAccountId)}
-                    >
-                      <img className='delete-icon-img' alt='delete' src={DeleteIcon}/>
-                      <span>刪除</span>
-                    </button>
+                    <div className='delete-day'>
+                      <button 
+                        className='delete-btn' 
+                        onClick={() => this.handleRemoveAccount(this.state.displayedAccountId)}
+                      >
+                        <span>刪除</span>
+                      </button>
                     </div>
-                    
-                  
+                  </div>
                 </div>
                 <Accounts
                   accounts={this.state.accounts}
@@ -283,18 +285,8 @@ class Home extends Component {
                 />
               </div>
             </div>
-          </div>
-          
+          </div>    
         </div>
-        // {/*
-        //   <div className='accounts-section'>
-        //     
-        //     
-        //   </div>*/}
-          
-        {/*<div className='footer'>
-          <p className='web-info'>2019 Tripper. Created by Chin Yun Chen.</p>
-        </div>*/}
       </div>
     );
   }

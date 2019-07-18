@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './SideBar.css';
 import Journey from './Journey/Journey';
+import './SideBar.css';
 import AddIcon from './add-icon.png';
 import CancelIcon from './cancel-dark-icon.png';
 
