@@ -14,8 +14,13 @@ class Accounts extends Component {
 			category: '交通',
 			detail: '',
 			amount: 0,
-			isAdded: true
+			isAdded: true,
+			isEditing: ''
 		};
+	};
+
+	onEditing = (id) => {
+		this.setState({ isEditing: id})
 	};
 
 	onCategorySelectChange = (event) => { 
@@ -58,7 +63,6 @@ class Accounts extends Component {
 	};
 
 	deleteExpense = ( delExpense ) => {
-		console.log(delExpense);
 		const { displayedAccountId, handleRemoveExpense } = this.props;
 		fetch(`http://localhost:3000/expenses/${delExpense.id}`, {
       method: 'DELETE',
@@ -87,6 +91,8 @@ class Accounts extends Component {
 		            <List 
 		              key={list.id} 
 		              list={list}
+		              EditingListId={this.state.isEditing}
+		              onEditing={this.onEditing}
 		             	handleUpdateExpense={this.props.handleUpdateExpense}
 		             	deleteExpense={this.deleteExpense}
 		            /> 
@@ -114,7 +120,7 @@ class Accounts extends Component {
 												<option value='購物'>購物</option>
 											</select>
 											<span className='category-selector-icon'>
-												<img alt='select-icon'src={SelectIcon}/>
+												<img className='category-selector-icon-img' alt='select-icon'src={SelectIcon}/>
 											</span>
 										</div>
 										<input 

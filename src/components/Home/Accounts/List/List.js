@@ -12,20 +12,16 @@ class List extends Component {
 			category: '交通',
       detail: '',
       amount: 0,
-			isEditing: '',
 			isSelecting: false
 		};
 	}
 
-	onEditingChange = (id) => {
-		if(this.state.isEditing === '') {
-			this.setState({ isEditing: id })
-		} else {
-			this.setState({ isEditing: '' })
-		}
+	onEditingChange = (list) => {
+		this.props.onEditing(list.id);
+		this.setState({ category: list.category })
 	};
 
-	onCategorySelect = () => {
+	onSelecting = () => {
 		if(this.state.isSelecting === false) {
 			this.setState({ isSelecting: true })
 		} else {
@@ -33,8 +29,11 @@ class List extends Component {
 		}
 	};
 
-	onCategorySelectChange = (event) => { 
-    this.setState({category: event.target.value})
+	onCategoryChange = (category) => { 
+    this.setState({
+    	category: category,
+    	isSelecting: false
+    });
   };
 
   onDetailValueChange = (event) => {
@@ -62,7 +61,7 @@ class List extends Component {
 			this.props.handleUpdateExpense(updatedJourney);
 		})
 		.catch(err => alert('unable to update expense'));
-		this.setState({ isEditing: '' })
+		this.props.onEditing('');
 	};
 
 	handleDeleteExpense = ( delExpense ) => {
@@ -73,18 +72,18 @@ class List extends Component {
 		const { list } = this.props;
 		return (
 			<li id={list.id} className='accounts-list-item-wrapper'>
-				{ this.state.isEditing === list.id
+				{ this.props.EditingListId === list.id
 					? <div className='accounts-list-item-update'>
 							<div className='accounts-list-item'> 
 								<div className='list-item-update'>
 									<div className='list-item-category'>
 										<button 
 											className='item-category-btn'
-											onClick={() => {this.onCategorySelect()}}
+											onClick={() => {this.onSelecting()}}
 										>
-											<span>{this.state.category}</span>
+											<span className='item-category-text'>{this.state.category}</span>
 											<span className='item-category-btn-icon'>
-						            <img alt='select-icon'src={SelectIcon}/>
+						            <img className='category-selector-icon-img'	alt='select-icon' src={SelectIcon}/>
 						          </span>
 										</button>
 										<div className={ this.state.isSelecting === false
@@ -92,32 +91,14 @@ class List extends Component {
 												: 'category-selector-wrapper'
 											}>
 											<div className='category-selector'>
-												<button>交通</button>
-												<button>住宿</button>
-												<button>飲食</button>
-												<button>票券</button>
-												<button>購物</button>
+												<button onClick={() => {this.onCategoryChange('交通')}}>交通</button>
+												<button onClick={() => {this.onCategoryChange('住宿')}}>住宿</button>
+												<button onClick={() => {this.onCategoryChange('飲食')}}>飲食</button>
+												<button onClick={() => {this.onCategoryChange('票券')}}>票券</button>
+												<button onClick={() => {this.onCategoryChange('購物')}}>購物</button>
 											</div>
 										</div>
 									</div>
-									
-					        {/*<div className='item-category'>
-					          <select 
-					            className='item-category-selector' 
-					            name='item-category-selector'
-					            onChange={this.onCategorySelectChange}
-					          >
-					            <option value='交通'>交通</option>
-					            <option value='住宿'>住宿</option>
-					            <option value='飲食'>飲食</option>
-					            <option value='票券'>票券</option>
-					            <option value='購物'>購物</option>
-					          </select>
-					          <span className='category-selector-icon'>
-					            <img alt='select-icon'src={SelectIcon}/>
-					          </span>
-					        </div>
-					      */}
 					        <input 
 					          id='item-detail-update-input'
 					          className='item-detail-update-input' 
@@ -147,7 +128,7 @@ class List extends Component {
 							<div className='item-update-btn-group'>
 								<div className='item-update-btn'>
 									<button 
-										onClick={() => this.onEditingChange(list.id)} 
+										onClick={() => this.onEditingChange('')} 
 										className='control-btn'
 									>
 										<img className='cancel-btn-img' alt='cancel-icon'src={CancelIcon}/>	
@@ -177,7 +158,7 @@ class List extends Component {
 							</div>
 							<button 
 								className='control-btn' 
-								onClick={() => this.onEditingChange(list.id)}
+								onClick={() => this.onEditingChange(list)}
 							>
                 <img className='update-icon-img' alt='update' src={UpdateIcon}/>
               </button>

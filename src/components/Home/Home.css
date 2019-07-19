@@ -107,6 +107,7 @@
 
 .delete-btn:hover {
   color: #177EF5;
+  font-weight: 500;
 }
 
 .control-btn {
@@ -119,6 +120,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0s;
 }
 
 .control-btn:hover {

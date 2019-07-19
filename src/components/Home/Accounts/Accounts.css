@@ -31,9 +31,9 @@
 }
 
 .add-item-content {
-	margin-top: 25px;
 	width: 100%;
 	margin-bottom: 1%;
+	margin-top: 25px;
 	padding: 8px;
 	border-radius: 6px;
 	background-color: #F9F9FD;
@@ -67,11 +67,11 @@
 }
 
 .category-selector-icon {
-	padding: 0 0 2px 0;
+	padding-bottom: 2px;
 	float: right;
 }
 
-.category-selector-icon img {
+.category-selector-icon-img {
 	width: 8px;
 }
 

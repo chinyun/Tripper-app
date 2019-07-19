@@ -5,7 +5,6 @@ import CancelIcon from '../Icons/cancel-dark-icon.png';
 import UpdateIcon from '../Icons/update-blue-icon.png';
 
 const getData = (datas) => {
-  console.log(datas);
   const getPercentage = (num) => {
     num.toFixed(3);
     let result = (num*100).toString();
