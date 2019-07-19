@@ -121,7 +121,6 @@ class Home extends Component {
 
   createNewDay = () => {
     const newDay = `Day${this.state.accounts.length + 1}`;
-    console.log(newDay);
     fetch('http://localhost:3000/accounts', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -243,7 +242,7 @@ class Home extends Component {
                         onClick={this.createNewDay}
                       >
                         <img className='add-icon-img' alt='add' src={AddIcon}/>
-                        <span>新增</span>
+                        <span>新增旅遊天數</span>
                       </button>
                     </div>
                   </div>

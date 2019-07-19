@@ -3,18 +3,18 @@
 }
 
 ::-webkit-scrollbar-track {
-	background: rgba(255, 255, 255, 0.2);
-	border-radius: 4px;
+  background: #FFF;
+	border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: rgba(255, 255, 255, 0.7);
-	border-radius: 4px;
+  background: #D3D3D3;
+	border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: rgba(255, 255, 255, 0.4);
-	border-radius: 4px;
+  background: #B5B5B5;
+	border-radius: 2px;
 }
 
 div.scroll {

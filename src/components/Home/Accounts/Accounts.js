@@ -13,19 +13,34 @@ class Accounts extends Component {
 		this.state = {
 			category: '交通',
 			detail: '',
-			amount: 0,
-			isAdded: true,
-			isEditing: ''
+			amount: '',
+			isAdded: false,
+			isEditing: '',
+			isSelecting: false
 		};
 	};
 
 	onEditing = (id) => {
-		this.setState({ isEditing: id})
+		this.setState({ 
+			isEditing: id,
+			isAdded: false
+		})
 	};
 
-	onCategorySelectChange = (event) => { 
-		this.setState({category: event.target.value})
+	onSelecting = () => {
+		if(this.state.isSelecting === false) {
+			this.setState({ isSelecting: true })
+		} else {
+			this.setState({ isSelecting: false })
+		}
 	};
+
+	onCategoryChange = (category) => { 
+    this.setState({
+    	category: category,
+    	isSelecting: false
+    });
+  };
 
 	onDetailValueChange = (event) => {
 		this.setState({ detail: event.target.value })
@@ -35,13 +50,19 @@ class Accounts extends Component {
 		this.setState({ amount: event.target.value })
 	};
 
-	showAddExpense = (event) => {
-		this.setState({ isAdded: true })
+	onAddingExpense = () => {
+		if(this.state.isAdded === false) {
+			this.setState({ isAdded: true, isEditing: '' })
+		} else {
+			this.setState({ isAdded: false })
+		}
+		this.setState({
+			category: '交通',
+			detail: '',
+			amount: ''
+		})
 	};
 
-	cancelAddExpense = (event) => {
-		this.setState({ isAdded: false })
-	};
 
 	createNewExpense = () => {
 		const { displayedAccountId } = this.props;
@@ -59,7 +80,13 @@ class Accounts extends Component {
 		.then(updatedJourney => {
 			this.props.handleAddExpense(updatedJourney, displayedAccountId);
 		})
-		.catch(err => alert('unable to add expense'))
+		.catch(err => alert('unable to add expense'));
+		this.setState({
+			category: '交通',
+			detail: '',
+			amount: '',
+			isAdded: false
+		})
 	};
 
 	deleteExpense = ( delExpense ) => {
@@ -99,35 +126,44 @@ class Accounts extends Component {
 		          )}
 		        </ul>
 		      </Scroll>
-					<div className='add-item-wrapper'>
+					<div className={this.state.isAdded === false ? 'add-item-wrapper': 'add-item-wrapper add-item-wrapper-bg'}>
 						{ this.state.isAdded === false
-							? <button className='control-btn' onClick={this.showAddExpense}>
-									<img className='add-icon-img' alt='add' src={AddIcon}/>
-									<span>新增支出項目</span>
-								</button>
+							? <div className='add-item-btn-wrapper'>
+									<button className='control-btn' onClick={() => this.onAddingExpense()}>
+										<img className='add-icon-img' alt='add' src={AddIcon}/>
+										<span>新增支出項目</span>
+									</button>
+								</div>
 							: <div className='add-item'>
 									<div className='add-item-content'>
 										<div className='item-category'>
-											<select 
-												className='item-category-selector' 
-												name='item-category-selector'
-												onChange={this.onCategorySelectChange}
+											<button 
+												className='item-category-btn'
+												onClick={() => {this.onSelecting()}}
 											>
-												<option value='交通'>交通</option>
-												<option value='住宿'>住宿</option>
-												<option value='飲食'>飲食</option>
-												<option value='票券'>票券</option>
-												<option value='購物'>購物</option>
-											</select>
-											<span className='category-selector-icon'>
-												<img className='category-selector-icon-img' alt='select-icon'src={SelectIcon}/>
-											</span>
+												<span className='item-category-text'>{this.state.category}</span>
+												<span className='item-category-btn-icon'>
+							            <img className='category-selector-icon-img'	alt='select-icon' src={SelectIcon}/>
+							          </span>
+											</button>
+											<div className={ this.state.isSelecting === false
+													? 'category-selector-hidden'
+													: 'category-selector-wrapper'
+												}>
+												<div className='category-selector'>
+													<button onClick={() => {this.onCategoryChange('交通')}}>交通</button>
+													<button onClick={() => {this.onCategoryChange('住宿')}}>住宿</button>
+													<button onClick={() => {this.onCategoryChange('飲食')}}>飲食</button>
+													<button onClick={() => {this.onCategoryChange('票券')}}>票券</button>
+													<button onClick={() => {this.onCategoryChange('購物')}}>購物</button>
+												</div>
+											</div>
 										</div>
 										<input 
 											id='item-detail-input'
 											className='item-detail-input' 
 											type='text' 
-											placeholder='描述'
+											placeholder='內容'
 											value={this.state.detail}
 											onChange={this.onDetailValueChange}
 										/>
@@ -146,9 +182,9 @@ class Accounts extends Component {
 											className='add-item-submit'
 											type='submit' 
 											value='新增支出'
-											onClick={this.createNewExpense}
+											onClick={() => this.createNewExpense()}
 										/>
-										<button className='cancel-btn' onClick={this.cancelAddExpense}>
+										<button className='cancel-btn' onClick={() => this.onAddingExpense()}>
 											<img className='cancel-btn-img' alt='cancel' src={CancelIcon} />
 										</button>
 									</div>

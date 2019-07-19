@@ -111,7 +111,7 @@
 }
 
 .control-btn {
-  padding: 2px 3px;
+  padding: 5px 2px;
   background: none;
   font-size: 15px;
   font-weight: 500;
@@ -132,6 +132,10 @@
 .update-icon-img {
   width: 10px;
   margin: 0 5px;
+}
+
+.control-btn span {
+  margin-right: 5px;
 }
 
 .accounts-days {

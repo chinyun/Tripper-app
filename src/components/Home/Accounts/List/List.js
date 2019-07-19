@@ -9,9 +9,9 @@ class List extends Component {
 	constructor( props ) {
 		super( props );
 		this.state = {
-			category: '交通',
-      detail: '',
-      amount: 0,
+			category: this.props.list.category,
+      detail: this.props.list.detail,
+      amount: this.props.list.amount,
 			isSelecting: false
 		};
 	}
@@ -45,7 +45,6 @@ class List extends Component {
   };
 
 	editExpense = (expense) => {
-		alert('確定修改嗎？');
 		fetch(`http://localhost:3000/expenses/${expense.id}`, {
 			method: 'PATCH',
 			headers: {'Content-Type': 'application/json'},
@@ -76,7 +75,7 @@ class List extends Component {
 					? <div className='accounts-list-item-update'>
 							<div className='accounts-list-item'> 
 								<div className='list-item-update'>
-									<div className='list-item-category'>
+									<div className='item-category'>
 										<button 
 											className='item-category-btn'
 											onClick={() => {this.onSelecting()}}
@@ -91,11 +90,11 @@ class List extends Component {
 												: 'category-selector-wrapper'
 											}>
 											<div className='category-selector'>
-												<button onClick={() => {this.onCategoryChange('交通')}}>交通</button>
-												<button onClick={() => {this.onCategoryChange('住宿')}}>住宿</button>
-												<button onClick={() => {this.onCategoryChange('飲食')}}>飲食</button>
-												<button onClick={() => {this.onCategoryChange('票券')}}>票券</button>
-												<button onClick={() => {this.onCategoryChange('購物')}}>購物</button>
+												<button onClick={() => this.onCategoryChange('交通')}>交通</button>
+												<button onClick={() => this.onCategoryChange('住宿')}>住宿</button>
+												<button onClick={() => this.onCategoryChange('飲食')}>飲食</button>
+												<button onClick={() => this.onCategoryChange('票券')}>票券</button>
+												<button onClick={() => this.onCategoryChange('購物')}>購物</button>
 											</div>
 										</div>
 									</div>
@@ -103,16 +102,16 @@ class List extends Component {
 					          id='item-detail-update-input'
 					          className='item-detail-update-input' 
 					          type='text' 
-					          placeholder='描述'
-					          value={list.detail}
+					          placeholder={list.detail}
+					          value={this.state.detail}
 					          onChange={this.onDetailValueChange}
 					        />
 					        <input 
 					          id='item-amount-update-input' 
 					          className='item-amount-update-input'
 					          type='text' 
-					          placeholder='金額'
-					          value={list.amount}
+					          placeholder={list.amount}
+					          value={this.state.amount}
 					          onChange={this.onAmountValueChange}
 					        />
 					        <div className='delete-item'>
@@ -129,7 +128,7 @@ class List extends Component {
 								<div className='item-update-btn'>
 									<button 
 										onClick={() => this.onEditingChange('')} 
-										className='control-btn'
+										className='list-item-control-btn'
 									>
 										<img className='cancel-btn-img' alt='cancel-icon'src={CancelIcon}/>	
 									</button>
@@ -137,7 +136,7 @@ class List extends Component {
 								<div className='item-update-btn'>
 									<button 
 										onClick={() => this.editExpense(list)}
-										className='control-btn'
+										className='list-item-control-btn'
 									>
 										<img className='confirm-btn-img' alt='confirm-icon' src={ConfirmIcon}/>
 									</button>
