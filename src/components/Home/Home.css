@@ -89,6 +89,68 @@
   display: flex;
 }
 
+.accounts-days {
+  width: 142px;
+  height: 48px;
+  margin: 0 15px;
+  padding: 0 15px;
+  background-color: #F1F1F1;
+  border: 0px;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.days-selector-btn {
+  display: flex;
+  justify-content: space-between;
+  background: none;
+  margin: 0 10px;
+}
+
+.days-name {
+  font-size: 16px;
+  color: #3E3E3E;
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-family: "Ubuntu";
+  color: #3E3E3E;
+}
+
+.days-selector-btn-icon {
+  padding-top: 1px;
+}
+
+.days-selector-btn-icon-img {
+  width: 9px;
+}
+
+.days-selector-hidden {
+  display: none;
+}
+
+.days-selector-wrapper {
+  position: absolute;
+  z-index: 1000;
+  border: 0px;
+  border-radius: 12px;
+  background-color: #FFF;
+  box-shadow: 3px 5px 8px 0px rgba(0,0,0, 0.2);
+  width: 8%;
+  min-width: 90px;
+  max-width: 142px;
+  padding: 2px 0;
+}
+
+.days-selector {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 0;
+}
+
 .delete-day, .add-day {
   margin: 2px 0 0 5px;
   padding: 2px 3px;
@@ -138,7 +200,7 @@
   margin-right: 5px;
 }
 
-.accounts-days {
+/*.accounts-days {
   width: 142px;
   height: 48px;
   margin: 0 15px;
@@ -161,7 +223,7 @@
   border: none;
   cursor: pointer;
   width: 100%;
-}
+}*/
 
 .web-info {
   font-weight: 500;

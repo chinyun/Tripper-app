@@ -98,13 +98,13 @@ class App extends Component {
     }
   };
 
-  updateBudgets = (budgets, journeyId) => {
-    const index =  this.state.journeyList.findIndex(item => item.id === journeyId);
+  updateBudgets = (journey, journeyId) => {
+    const index = this.state.journeyList.findIndex(item => item.id === journeyId);
     if (index !== -1) {
       this.setState({
         journeys: [
           ...this.state.journeys.slice(0, index),
-          Object.assign({}, this.state.journeys[index], budgets[0]),
+          Object.assign({}, this.state.journeys[index], journey[0]),
           ...this.state.journeys.slice(index + 1)
         ]
       })

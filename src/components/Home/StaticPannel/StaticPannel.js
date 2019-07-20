@@ -29,8 +29,9 @@ class StaticPannel extends Component {
         })
       })
       .then(response => response.json())
-      .then(budgets=> {
-        this.props.handleBudgetsChange(budgets, journeyId);
+      .then(journey=> {
+        console.log(journey);
+        this.props.handleBudgetsChange(journey, journeyId);
       })
       .catch(err => alert('unable to edit budget'));
       this.setState({ isEditing: '' });
@@ -43,7 +44,7 @@ class StaticPannel extends Component {
       <div className='static-pannel-wrapper'>
         <p className='home-title'>
           Journey
-          <span className='home-subtitle'>{this.props.test}</span>
+          <span className='home-subtitle'>{this.props.journeyName}</span>
         </p>
         <div className='static-pannel'>
           <div className='static-pannel-section-wrapper'>
@@ -63,7 +64,10 @@ class StaticPannel extends Component {
                       onChange={this.onBudgetChange}
                       onKeyDown={this.handleEnter}
                     />
-                    <button className='cancel-btn' onClick={()=>this.handleEditing('')}>
+                    <button 
+                      className='cancel-btn' 
+                      onClick={()=>this.handleEditing('')}
+                    >
                       <img className='cancel-icon-img' alt='cancel' src={CancelIcon}/>
                     </button>
                   </div>

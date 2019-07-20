@@ -128,8 +128,8 @@ class SetBudget extends Component {
 	      })
 	    })
 	    .then(response => response.json())
-	    .then(budgets=> {
-	    	this.props.handleBudgetsChange(budgets, journeyId);
+	    .then(journey=> {
+	    	this.props.handleBudgetsChange(journey, journeyId);
 	    })
 	    .catch(err => alert('unable to edit budget'));
 	    this.setState({ isEditing: '' });

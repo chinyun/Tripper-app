@@ -139,7 +139,7 @@ class Accounts extends Component {
 										<div className='item-category'>
 											<button 
 												className='item-category-btn'
-												onClick={() => {this.onSelecting()}}
+												onClick={() => this.onSelecting()}
 											>
 												<span className='item-category-text'>{this.state.category}</span>
 												<span className='item-category-btn-icon'>

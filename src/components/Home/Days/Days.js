@@ -1,11 +1,15 @@
 import React from 'react';
+import './Days.css';
 
-const Days = ({day}) => {
+const Days = ({ day, onDayChange }) => {
   return (
-    <option value ={day.id}>
+    <button 
+      className='days-option-btn' 
+      onClick={() => onDayChange(day.id)}
+    >
       {day.name}
-    </option>
-  );
+    </button>
+  )
 };
 
 export default Days;

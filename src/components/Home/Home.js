@@ -10,41 +10,53 @@ import SelectIcon from './Icons/select-black-icon.png';
 import AddIcon from './Icons/add-blue-icon.png';
 
 const getData = (datas) => {
-  const getPercentage = (num) => {
-    num.toFixed(3);
-    let result = (num*100).toString();
-    return result.slice(0,4);
+  const total = datas[0].expense,
+    traffic = datas[0].traffic_expense,
+    food = datas[0].food_expense,
+    living = datas[0].living_expense,
+    ticket = datas[0].ticket_expense,
+    shopping = datas[0].shopping_expense;
+
+  const getPercentage = (target) => {
+    if(total === '0') {
+      return 0;
+    } else {
+      const num = target / total;
+      num.toFixed(3);
+      let result = (num*100).toString();
+      return result.slice(0,4);
+    }    
   };
 
-  const traffic_percentage = getPercentage(datas[0].traffic_expense / datas[0].expense),
-    food_percentage = getPercentage(datas[0].food_expense / datas[0].expense),
-    living_percentage = getPercentage(datas[0].living_expense / datas[0].expense),
-    ticket_percentage = getPercentage(datas[0].ticket_expense / datas[0].expense),
-    shopping_percentage = getPercentage(datas[0].shopping_expense / datas[0].expense);
+  const trafficPercentage = getPercentage(traffic),
+    foodPercentage = getPercentage(food),
+    livingPercentage = getPercentage(living),
+    ticketPercentage = getPercentage(ticket),
+    shoppingPercentage = getPercentage(shopping);
 
   const data = [{ 
     name: '交通',
-    cost: datas[0].traffic_expense,
-    percentage: `${traffic_percentage}%`
+    cost: traffic,
+    percentage: `${trafficPercentage}%`
   }, { 
     name: '食物',
-    cost: datas[0].food_expense,
-    percentage: `${food_percentage}%`
+    cost: food,
+    percentage: `${foodPercentage}%`
   }, { 
     name: '住宿',
-    cost: datas[0].living_expense,
-    percentage: `${living_percentage}%`
+    cost: living,
+    percentage: `${livingPercentage}%`
   }, {
     name: '票券',
-    cost: datas[0].ticket_expense,
-    percentage: `${ticket_percentage}%`
+    cost: ticket,
+    percentage: `${ticketPercentage}%`
   }, {
     name: '購物',
-    cost: datas[0].shopping_expense,
-    percentage: `${shopping_percentage}%`
+    cost: shopping,
+    percentage: `${shoppingPercentage}%`
   }];
   return data;
- }
+};
 
 class Home extends Component {
   constructor(props){
@@ -55,11 +67,12 @@ class Home extends Component {
       displayedJourney: initialJourney,
       accounts: initialJourney[0].accountList,
       expenseList: initialJourney[0].accountList[0].expenseList,
-      test: journeys[journeys.length-1].name,
+      journeyName: journeys[journeys.length-1].name,
       displayedAccountId: initialJourney[0].accountList[0].id,
-      newDay: 2,
+      displayedDay:initialJourney[0].accountList[0].name,
+      countDays: initialJourney[0].accountList.length,
       data: getData(initialJourney),
-      countDays: initialJourney[0].accountList.length
+      isSelecting: false
     }
   };
 
@@ -70,19 +83,19 @@ class Home extends Component {
       displayedJourney: target,
       accounts: target[0].accountList,
       expenseList: target[0].accountList[0].expenseList,
-      test: target[0].name,
+      journeyName: target[0].name,
       displayedAccountId: target[0].accountList[0].id,
       data: getData(target)
     });
   };
 
-  onDayChange = (event) => {
-    const id = +event.target.value;
+  onDayChange = (id) => {
     const day = this.state.accounts.filter(item => item.id === id);
-    console.log(day[0].id);
     this.setState({ 
       expenseList: day[0].expenseList,
-      displayedAccountId: day[0].id
+      displayedAccountId: day[0].id,
+      displayedDay: day[0].name,
+      isSelecting: false
     });
   };
 
@@ -93,15 +106,15 @@ class Home extends Component {
       displayedJourney: newJourney,
       accounts: newJourney[0].accountList,
       expenseList: newJourney[0].accountList[0].expenseList,
-      test: newJourney[0].name,
+      journeyName: newJourney[0].name,
       data: getData(newJourney)
     })
   };
 
-  handleBudgetsChange = (budgets, journeyId) => {
-    this.props.updateBudgets(budgets, journeyId);
+  handleBudgetsChange = (journey, journeyId) => {
+    this.props.updateBudgets(journey, journeyId);
     this.setState({
-      displayedJourney: budgets
+      displayedJourney: journey
     })
   };
 
@@ -113,7 +126,7 @@ class Home extends Component {
       displayedJourney: initialJourney,
       accounts: initialJourney[0].accountList,
       expenseList: initialJourney[0].accountList[0].expenseList,
-      test: journeys[journeys.length-1].name,
+      journeyName: journeys[journeys.length-1].name,
       displayedAccountId: initialJourney[0].accountList[0].id,
       data: getData(initialJourney)
     })
@@ -138,7 +151,10 @@ class Home extends Component {
         accounts: updatedJourney[0].accountList,
         expenseList: displayedAccount[0].expenseList,
         displayedAccountId: displayedAccount[0].id,
+        displayedDay: displayedAccount[0].name,
+        countDays: updatedJourney[0].accountList.length,
         data: getData(updatedJourney)
+
       });
     })
     .catch(err => alert('unable to add day'));
@@ -154,7 +170,9 @@ class Home extends Component {
       this.setState({
         accounts: updatedJourney[0].accountList,
         expenseList: updatedJourney[0].accountList[0].expenseList,
-        displayedAccountId: updatedJourney[0].accountList[0].id
+        displayedAccountId: updatedJourney[0].accountList[0].id,
+        displayedDay: updatedJourney[0].accountList[0].name,
+        countDays: updatedJourney[0].accountList.length
       })
     })
     .catch(err => alert('unable to delete'));
@@ -197,10 +215,18 @@ class Home extends Component {
     })
   };
 
+  onSelecting = () => {
+    if(this.state.isSelecting === false) {
+      this.setState({ isSelecting: true })
+    } else {
+      this.setState({ isSelecting: false })
+    }
+  };
+
   render( ) {
     return (
       <div className='home-container'>
-        {/*<div className='side-bar'>
+        <div className='side-bar'>
           <SideBar
             user={this.props.user}
             journeyList={this.props.journeyList}
@@ -210,13 +236,13 @@ class Home extends Component {
             handleRemoveJourney={this.handleRemoveJourney}
           />
         </div>
-        <div className='footer'>
+        {/*<div className='footer'>
           <p className='web-info'>2019 Tripper. Created by Chin Yun Chen.</p>
         </div>
       */}
         <div className='main-section'>
           <StaticPannel
-            test={this.state.test}
+            journeyName={this.state.journeyName}
             displayedJourney={this.state.displayedJourney}
             journeyId={this.state.journeyId}
             handleBudgetsChange={this.handleBudgetsChange}
@@ -248,22 +274,40 @@ class Home extends Component {
                   </div>
                   <div className='right-column'>
                     <div className='accounts-days'>
-                      <select 
+                      <button
+                        className='days-selector-btn'
+                        onClick={() => this.onSelecting()}
+                      >
+                        <span className='days-name'>{this.state.displayedDay}</span>
+                        <span className='days-selector-btn-icon'>
+                          <img 
+                            className='days-selector-btn-icon-img' 
+                            alt='select' 
+                            src={SelectIcon}
+                          />
+                        </span>
+                      </button>
+                      <div className={ this.state.isSelecting === false
+                          ? 'days-selector-hidden'
+                          : 'days-selector-wrapper'
+                        }>
+                        <div className='days-selector'>
+                          { this.state.accounts.map(day => 
+                            <Days 
+                              key={day.id} 
+                              day={day} 
+                              onDayChange={this.onDayChange}
+                            />
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                      {/*<select 
                         className='accounts-day-selector' 
                         name='accounts-day-selector'
                         onChange={this.onDayChange}
-                      >
-                        { this.state.accounts.map( day => 
-                          <Days 
-                            key={day.id} 
-                            day={day}
-                          />
-                        )}
-                      </select>
-                      <span className='account-category-selector-icon'>
-                        <img className='select-icon-img' alt='select' src={SelectIcon}/>
-                      </span>
-                    </div>
+                      > </select>*/}
+                   
                     <div className='delete-day'>
                       <button 
                         className='delete-btn' 
