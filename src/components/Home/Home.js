@@ -226,7 +226,10 @@ class Home extends Component {
   render( ) {
     return (
       <div className='home-container'>
-        <div className='side-bar'>
+        <div className={ this.props.isShowedSideBar === false
+          ? 'side-bar-wrapper'
+          : 'side-bar-hidden'
+        }>
           <SideBar
             user={this.props.user}
             journeyList={this.props.journeyList}
@@ -301,19 +304,12 @@ class Home extends Component {
                           )}
                         </div>
                       </div>
-                    </div>
-                      {/*<select 
-                        className='accounts-day-selector' 
-                        name='accounts-day-selector'
-                        onChange={this.onDayChange}
-                      > </select>*/}
-                   
+                    </div>                   
                     <div className='delete-day'>
-                      <button 
-                        className='delete-btn' 
-                        onClick={() => this.handleRemoveAccount(this.state.displayedAccountId)}
-                      >
-                        <span>刪除</span>
+                      <button className='delete-btn' onClick={() => {
+                          this.handleRemoveAccount(this.state.displayedAccountId)
+                        }}
+                      ><span>刪除</span>
                       </button>
                     </div>
                   </div>

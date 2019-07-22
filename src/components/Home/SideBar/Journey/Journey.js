@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import './Journey.css';
-import DeleteIcon from './delete-icon.png';
-import UpdateIcon from './update-icon.png';
+import UpdateIcon from '../../Icons/update-blue-icon.png';
+import CancelIcon from '../../Icons/cancel-dark-icon.png';
 
 class Journey extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			isEditing: false
-		};
 	};
 
 	handleJourneyValueChange = (event) => {
@@ -17,19 +14,14 @@ class Journey extends Component {
 
 	handleJourneyValueConfirm = (event) => {
 		if (event.keyCode === 13) {
-			console.log('enter');
-			this.setState({ isEditing: false });
-			const { journey, editJourneyName } = this.props;
+			const { onEditing, journey, editJourneyName } = this.props;
+			onEditing('');
 			editJourneyName(journey.id);
 		}
 	};
 
-	handleUpdate = () => {
-		if(this.state.isEditing === false) {
-			this.setState({ isEditing: true })
-		} else {
-			this.setState({ isEditing: false })
-		}
+	handleUpdate = (id) => {
+		this.props.onEditing(id)
 	};
 
 	handleDelete = (delJourneyId) => {
@@ -40,35 +32,42 @@ class Journey extends Component {
 		const { journey, onJourneyChange } = this.props;
 		return(
 			<li className='journey' id={journey.id}>
-				<button 
-					onClick={() => this.handleDelete(journey.id)} 
-					className='journey-delete-btn'
-				>
-					<img alt='delete-icon' src={DeleteIcon}/>
-				</button>
-				<button 
-					onClick={this.handleUpdate}
-					className='journey-update-btn'
-				>
-					<img alt='update-icon' src={UpdateIcon}/>
-				</button>
-				{this.state.isEditing === false 
-					? <span 
-							className='journey-content' 
-							onClick={() => {onJourneyChange(journey.id)}}
-						>
-							{journey.name}
-						</span>
-					: <input
-							id='input-update-journey'
-							className='input-update-journey' 
+				{this.props.editingId === journey.id
+					? <input
+							id='update-journey-input'
+							className='update-journey-input' 
 							type='text' 
 							placeholder={journey.name}
-							value={this.state.updateValue}
 							onChange={this.handleJourneyValueChange}
 							onKeyDown={this.handleJourneyValueConfirm}
 						/>
+					: <button 
+							className='change-display-journey-btn' 
+							onClick={() => onJourneyChange(journey.id)}
+						>
+							<span className='journey-name'>{journey.name}</span>
+						</button>
 				}
+				<div className='journey-btn-group'>
+				{	this.props.editingId === journey.id
+					?	<button
+	            className='cancel-btn' 
+	            onClick={() => this.handleUpdate('')}
+	          >
+	            <img className='cancel-icon-img' alt='cancel' src={CancelIcon}/>
+	          </button>
+					:	<button
+							onClick={() => this.handleUpdate(journey.id)}
+							className='update-btn'
+						>
+							<img className='update-icon-img' alt='update-icon' src={UpdateIcon}/>
+						</button>
+        }
+					<button 
+						onClick={() => this.handleDelete(journey.id)} 
+						className='delete-btn'
+					><span>刪除</span></button>
+				</div>
 			</li>
 		)
 	}

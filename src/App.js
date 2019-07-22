@@ -14,7 +14,8 @@ const initialState = {
   journeys: [],
   journeyList:[],
   route: 'landing',
-  isSignedIn: false
+  isSignedIn: false,
+  isShowedSideBar: false
 }
 
 class App extends Component {
@@ -67,6 +68,14 @@ class App extends Component {
       this.setState({ isSignedIn: true });
     } else {
       this.setState({ isSignedIn: false });
+    }
+  };
+
+  onShowSideBar = () => {
+    if(this.state.isShowedSideBar === false) {
+      this.setState({ isShowedSideBar: true })
+    } else {
+      this.setState({ isShowedSideBar: false })
     }
   };
 
@@ -198,10 +207,13 @@ class App extends Component {
       <div className='app'> 
         { this.state.isSignedIn === true
           ? <div className='dashboard'>
-              <Navigation
-                onRouteChange={this.onRouteChange}
-                userName={user.name}
-              />
+              <header>
+                <Navigation
+                  onShowSideBar={this.onShowSideBar}
+                  onRouteChange={this.onRouteChange}
+                  userName={user.name}
+                />
+              </header>
               <Home
                 user={user}
                 journeys={journeys}
@@ -216,6 +228,7 @@ class App extends Component {
                 addExpense={this.addExpense}
                 updateExpense={this.updateExpense}
                 removeExpense={this.removeExpense}
+                isShowedSideBar={this.state.isShowedSideBar}
               />
             </div>
           : <Landing

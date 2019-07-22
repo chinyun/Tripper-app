@@ -1,29 +1,40 @@
 import React, { Component } from 'react';
 import Journey from './Journey/Journey';
 import './SideBar.css';
-import AddIcon from './add-icon.png';
-import CancelIcon from './cancel-dark-icon.png';
+import AddIcon from '../Icons/add-blue-icon.png'; 
+import CancelIcon from '../Icons/cancel-dark-icon.png';
 
 class SideBar extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
+			isAdded: false,
 			newJourney:'',
-			isShowed: false,
+			isEditing: '',
 			updateValue: ''
 		};
 	};
 
-	showAddJourney = ( event ) => {
-		this.setState({ isShowed: true })
-	};
-
-	cancelNewSubmit = ( event ) => {
-		this.setState({ isShowed: false })
+	showAddJourney = () => {
+		if(this.state.isAdded === false) {
+			this.setState({ 
+				isAdded: true,
+				isEditing: ''
+			})
+		} else {
+			this.setState({ isAdded: false })
+		}
 	};
 
 	onJourneyValueChange = ( event ) => {	
 		this.setState({ newJourney: event.target.value });
+	};
+
+	onEditing = (id) => {
+		this.setState({ 
+			isEditing: id,
+			isAdded: false
+		})
 	};
 
 	onJourneyValueUpdate = ( updateValue ) => {
@@ -51,14 +62,13 @@ class SideBar extends Component {
 			this.props.handleAddJourney(newJourney);
 			this.setState({
 				newJourney: '',
-				isShowed: false
+				isAdded: false
 			});
 		})
 		.catch(err => alert('unable to create'));
 	};
 
 	editJourneyName = (journeyId) => {
-		console.log(journeyId);
     fetch(`http://localhost:3000/journeys/${journeyId}`, {
       method: 'PATCH',
       headers: {'Content-Type': 'application/json'},
@@ -69,6 +79,7 @@ class SideBar extends Component {
     .then(response => response.json())
     .then(journey => {
       this.props.updateJourney(journey);
+      this.props.onJourneyChange(journeyId);
     })
     .catch(err => alert('unable to edit journey'));
   };
@@ -79,7 +90,6 @@ class SideBar extends Component {
 		})
 		.then(response => response.json())
 		.then(updatedJourney=> {
-			console.log(updatedJourney);
 			this.props.handleRemoveJourney(updatedJourney, delJourneyId);
 		})
 		.catch(err => alert('unable to delete'));
@@ -87,8 +97,8 @@ class SideBar extends Component {
 
 	render( ) {
 		return (
-			<div className='side-bar-container'>
-				<div className='journeys-list-container'>
+			<div className='side-bar'>
+				<div className='journeys-list-wrapper'>
 					<ul className='journeys-list'>
 						{this.props.journeyList.map( journey => 
 							<Journey
@@ -98,47 +108,41 @@ class SideBar extends Component {
 								editJourneyName={this.editJourneyName}
 								deleteJourney={this.deleteJourney}
 								onJourneyValueUpdate={this.onJourneyValueUpdate}
+								onEditing={this.onEditing}
+								editingId={this.state.isEditing}
 							/>)}
 					</ul>
 					<div className='add-journey-wrapper'>
-						{ this.state.isShowed === false
+						{ this.state.isAdded === false
 							? <button
 									className='show-add-journey-btn'
-									onClick={this.showAddJourney}
+									onClick={() => this.showAddJourney()}
 								>
-									<img 
-										className='show-add-journey-img' 
-										alt='add' 
-										src={AddIcon} 
-									/>
-									<span className='show-add-journey-text'>新增項目</span>
+									<img className='add-icon-img' alt='add' src={AddIcon}/>
+									<span className='show-add-journey-btn-text'>新增項目</span>
 								</button>
-							: <div className='add-new-journey'>
+							: <div className='add-journey'>
 									<input 
-										id='input-new-journey'
-										className='input-new-journey' 
+										id='add-journey-input'
+										className='add-journey-input' 
 										type='text' 
 										placeholder='新增行程表'
 										value={this.state.newJourney}
 										onChange={this.onJourneyValueChange}
 									/>
-									<div className='submit-new-journey-group'>
+									<div className='add-journey-btn-group'>
 										<input 
-											id='submit-new-journey' 
-											className='submit-new-journey'
+											id='add-journey-submit' 
+											className='add-journey-submit'
 											type='submit' 
 											value='新增'
-											onClick={this.createNewJourney}
+											onClick={() => this.createNewJourney()}
 										/>
 										<button
-											className='cancel-new-submit-btn'
-											onClick={this.cancelNewSubmit}
+											className='cancel-btn'
+											onClick={() => this.showAddJourney()}
 										>
-											<img 
-												className='cancel-dark-btn-img' 
-												alt='cancel' 
-												src={CancelIcon} 
-											/>
+											<img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
 										</button>
 									</div>
 								</div>	

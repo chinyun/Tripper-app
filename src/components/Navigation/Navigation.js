@@ -3,29 +3,30 @@ import './Navigation.css';
 import SeperateLine from './seperate-line-dark.png';
 
 
-const Navigation = ( {onRouteChange, userName} ) => {
+const Navigation = ( {onShowSideBar, onRouteChange, userName} ) => {
 	return (
-		<header>
-			<nav className='navigation-nav'>
-				<p className='slogan'> Help balance your trip budget! </p>
-				<p className='logo'> Tripper </p>
-				<div className='user-display'>
-					{/*<div className='user-profile-picture'></div>*/}
-					<p 
-						className='user-name-words'
-					>{`Hi, ${userName}`}</p>
-					<img 
-            src={SeperateLine}
-            alt='seperate-line'
-            className='seperate-line'
-          />
-					<p 
-						onClick = {() => {onRouteChange('signout')}} 
-						className='user-signout'
-					> Logout</p>
-				</div>
-			</nav>
-		</header>
+		<nav className='navigation'>
+			<button 
+				onClick={() => {onShowSideBar()}}
+			>Journey</button>
+			<div className='nav-text-wrapper'>
+				<span className='nav-text-logo'> Tripper </span>
+				<span className='nav-text-slogan'> Help balance your trip budget! </span>
+			</div>
+			<div className='nav-user'>
+				<span className='nav-user-name'>
+					{`Hi, ${userName}`}
+				</span>
+				<img 
+          className='seperate-line-img'
+          alt='seperate-line'
+          src={SeperateLine}
+        />
+				<button 
+					onClick={() => {onRouteChange('signout')}}
+				>Logout</button>
+			</div>
+		</nav>
 	)
 };
 

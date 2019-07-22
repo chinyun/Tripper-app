@@ -70,13 +70,13 @@
   background-color: #f0f0f0;
   outline: none;
   border: 1px solid #f0f0f0;
-  border-radius: 5px;
+  border-radius: 6px;
 }
 
 .static-pannel-input::placeholder {
   font-weight: 300;
   font-size: 20px;
-  color: #3e3e3e;
+  color: rgba(62,62,62, 0.5);
 }
 
 .static-pannel-input:focus {
