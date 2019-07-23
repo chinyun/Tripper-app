@@ -4,7 +4,7 @@ import Legend from './Legend/Legend';
 import './Charts.css';
 
 const dims = { height: 100, width: 200, radius: 80 };
-const cent = { x: (dims.width / 2 + 20), y: (dims.height / 2 + 50) };
+const cent = { x: (dims.width / 2), y: (dims.height / 2 + 50) };
 const pie = d3.pie()
     .sort(null)
     .value(d => d.cost);
@@ -71,10 +71,18 @@ class Charts extends Component {
     const paths = this.props.data.map(d => <path key={d.name}/>)
     return (
       <div className='charts-wrapper'>
-        <p className='home-title'>
-          Data Chart
-          <span className='home-subtitle'>Expense</span>
-        </p>
+        <div className='charts-info'>
+          <p className='home-title'>
+            Data Chart
+            <span className='home-subtitle'>Expense</span>
+          </p>
+          <p className='charts-summary'>
+            <span>Total</span>
+            <span>{this.props.displayedJourney[0].expense}</span>
+            <span>(100%)</span>
+          </p>
+        </div>
+        
         <div className='charts'>
           <div id='chart-area' className='chart-area'>
             <svg
@@ -83,22 +91,15 @@ class Charts extends Component {
               ref={el => this.svgEl = el}
             >{ paths }</svg>
           </div>
-          <div className='chart-legend-wrapper'>
-            <ul className='chart-legend'>
-            { this.props.data.map(d => 
-              <Legend
-                key={d.name}
-                data={d}
-              /> 
-            )}
-            </ul>
-            <div className='chart-legend-sum'>
-              <span>合計</span>
-              <span>{this.props.displayedJourney[0].expense}</span>
-              <span>約100%</span>
-            </div>
-          </div>
-          
+          <ul className='chart-legend'>
+          { this.props.data.map(d => 
+            <Legend
+              key={d.name}
+              data={d}
+              color={d.color}
+            /> 
+          )}
+          </ul> 
         </div>
       </div>
     );

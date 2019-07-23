@@ -14,13 +14,18 @@
 	margin: 0 15px;
 	cursor: pointer;
 	padding: 2px 0 2px 10px;
+	color: #3e3e3e;
+	font-weight: 400;
+}
+
+.change-display-journey-btn:hover {
+	color: #177EF5;
+	font-weight: 500;
 }
 
 .journey-name {
-	font-weight: 400;
 	font-size: 15px;
 	font-family: "Ubuntu";
-	color: #3e3e3e;
 	letter-spacing: 1px;
 }
 

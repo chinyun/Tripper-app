@@ -5,59 +5,41 @@
   margin: 0;
 }
 
+.charts-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.charts-summary {
+  margin: 0 15px;
+}
+
+.charts-summary span {
+  letter-spacing: 0.5px;
+  font-family: "Ubuntu";
+  margin: 0 5px;
+  color: #3E3E3E;
+  font-weight: 400;
+  font-size: 15px;
+}
+
 .charts {
-  padding: 0;
-  margin: 0;
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.08);
   display: flex;
   justify-content: space-around;
   align-items: center;
+  padding: 8px;
 }
 
 .chart-area {
-  margin: 0;
-  padding: 5px;
-}
-
-.chart-legend-wrapper {
-  margin: 0;
-  padding: 20px;
+  padding: 2px;
 }
 
 .chart-legend {
-  padding: 0;
-  margin: 20px 0;
-}
-
-.chart-legend-list {
-  color: #152a32;
-  margin-bottom: 2px;
-  font-weight: 400;
-  font-size: 15px;
-}
-
-.chart-legend-category {
-  margin-right: 20px;
-  letter-spacing: 2px;
-}
-
-.chart-legend-cost, .chart-legend-percentage {
-  margin: 0 20px;
-  letter-spacing: 1px;
-}
-
-.chart-legend-sum {
-  margin-top: 30px;
-  padding-bottom: 30px;
-}
-
-.chart-legend-sum span {
-  letter-spacing: 1.8px;
-  font-weight: 400;
-  font-size: 15px;
-  color: #152a32;
-  margin-right: 30px;
+  padding: 4% 1.2%;
+  width: 50%;
 }
 

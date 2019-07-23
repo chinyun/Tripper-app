@@ -37,23 +37,28 @@ const getData = (datas) => {
   const data = [{ 
     name: '交通',
     cost: traffic,
-    percentage: `${trafficPercentage}%`
+    percentage: `${trafficPercentage}`,
+    color: 'traffic-color'
   }, { 
     name: '食物',
     cost: food,
-    percentage: `${foodPercentage}%`
+    percentage: `${foodPercentage}`,
+    color: 'food-color'
   }, { 
     name: '住宿',
     cost: living,
-    percentage: `${livingPercentage}%`
+    percentage: `${livingPercentage}`,
+    color: 'living-color'
   }, {
     name: '票券',
     cost: ticket,
-    percentage: `${ticketPercentage}%`
+    percentage: `${ticketPercentage}`,
+    color: 'ticket-color'
   }, {
     name: '購物',
     cost: shopping,
-    percentage: `${shoppingPercentage}%`
+    percentage: `${shoppingPercentage}`,
+    color: 'shopping-color'
   }];
   return data;
 };
@@ -85,6 +90,7 @@ class Home extends Component {
       expenseList: target[0].accountList[0].expenseList,
       journeyName: target[0].name,
       displayedAccountId: target[0].accountList[0].id,
+      countDays: target[0].accountList.length,
       data: getData(target)
     });
   };
@@ -154,7 +160,6 @@ class Home extends Component {
         displayedDay: displayedAccount[0].name,
         countDays: updatedJourney[0].accountList.length,
         data: getData(updatedJourney)
-
       });
     })
     .catch(err => alert('unable to add day'));
@@ -307,9 +312,8 @@ class Home extends Component {
                     </div>                   
                     <div className='delete-day'>
                       <button className='delete-btn' onClick={() => {
-                          this.handleRemoveAccount(this.state.displayedAccountId)
-                        }}
-                      ><span>刪除</span>
+                        this.handleRemoveAccount(this.state.displayedAccountId)
+                      }}><span>刪除</span>
                       </button>
                     </div>
                   </div>
