@@ -38,33 +38,37 @@ class StaticPannel extends Component {
         this.props.handleBudgetsChange(journey, journeyId);
       })
       .catch(err => alert('unable to edit budget'));
-      this.setState({ isEditing: '' });
+      this.setState({
+        budget: this.props.displayedJourney[0].budget, 
+        isEditing: ''
+      });
     }
   }
 
   render() {
     const { budget, isEditing } = this.state;
+    const { journeyName, displayedJourney } = this.props;
     return (
       <div className='static-pannel-wrapper'>
         <p className='home-title'>
           Journey
-          <span className='home-subtitle'>{this.props.journeyName}</span>
+          <span className='home-subtitle'>{journeyName}</span>
         </p>
         <div className='static-pannel'>
           <div className='static-pannel-section-wrapper'>
             <div className='static-pannel-section'>
               <div className='static-pannel-topic'>
                 <p className='static-pannel-title'>目標</p>
-                <p className='static-pannel-subtitle '>總預算</p>
+                <p className='static-pannel-subtitle'>總預算</p>
               </div>
+              <div className='static-pannel-update'>
               { isEditing === 'budget' 
-                ? <div className='static-pannel-update'>
+                ? <div className='total-budget-update'>
                     <input 
                       id='total-budget-input'
                       className='static-pannel-input' 
                       type='text' 
-                      placeholder={budget}
-                      value={budget}
+                      placeholder={displayedJourney[0].budget}
                       onChange={this.onBudgetChange}
                       onKeyDown={this.handleEnter}
                     />
@@ -77,7 +81,7 @@ class StaticPannel extends Component {
                   </div>
                 : <div className='static-pannel-text'>
                     <span className='static-pannel-amount editable-text'>
-                      {budget}
+                      {displayedJourney[0].budget}
                     </span>
                     <button 
                       className='control-btn' 
@@ -87,6 +91,7 @@ class StaticPannel extends Component {
                     </button>
                   </div>
               }
+              </div>
             </div>
           </div>
           <div className='static-pannel-section-wrapper'>
@@ -96,7 +101,7 @@ class StaticPannel extends Component {
                 <p className='static-pannel-subtitle'>總支出</p>
               </div>
               <span className='static-pannel-amount'>
-                {this.props.displayedJourney[0].expense}
+                {displayedJourney[0].expense}
               </span>
             </div>
           </div>
@@ -107,7 +112,7 @@ class StaticPannel extends Component {
                 <p className='static-pannel-subtitle'>可支配預算</p>
               </div>
               <span className='static-pannel-amount'>
-                {budget - this.props.displayedJourney[0].expense}
+                {displayedJourney[0].budget - displayedJourney[0].expense}
               </span>
             </div>
           </div>

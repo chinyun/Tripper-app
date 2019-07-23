@@ -64,7 +64,10 @@ class Journey extends Component {
 						</button>
         }
 					<button 
-						onClick={() => this.handleDelete(journey.id)} 
+						onClick={() => { 
+							if(window.confirm('Are you sure you wish to delete this Journey?'))
+								this.handleDelete(journey.id) 
+						}}
 						className='delete-btn'
 					><span>刪除</span></button>
 				</div>

@@ -107,14 +107,6 @@ class Home extends Component {
 
   handleAddJourney = (newJourney)=> {
     this.props.addJourney(newJourney);
-    this.setState({
-      journeyId: newJourney[0].id,
-      displayedJourney: newJourney,
-      accounts: newJourney[0].accountList,
-      expenseList: newJourney[0].accountList[0].expenseList,
-      journeyName: newJourney[0].name,
-      data: getData(newJourney)
-    })
   };
 
   handleBudgetsChange = (journey, journeyId) => {
@@ -276,7 +268,7 @@ class Home extends Component {
                         onClick={this.createNewDay}
                       >
                         <img className='add-icon-img' alt='add' src={AddIcon}/>
-                        <span>新增旅遊天數</span>
+                        <span>增加旅遊天數</span>
                       </button>
                     </div>
                   </div>
@@ -312,6 +304,7 @@ class Home extends Component {
                     </div>                   
                     <div className='delete-day'>
                       <button className='delete-btn' onClick={() => {
+                        if(window.confirm(`Are you sure you wish to delete ${this.state.displayedDay} ?`))
                         this.handleRemoveAccount(this.state.displayedAccountId)
                       }}><span>刪除</span>
                       </button>

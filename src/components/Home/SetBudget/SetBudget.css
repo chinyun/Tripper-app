@@ -1,17 +1,15 @@
 .budget-wrapper {
 	margin-right: 50px;
-	padding: 0;
 	width: 40%;
 	max-width: 400px
 }
 
 .budget {
 	padding-right: 10%;
-	margin: 0;
 }
 
 .budget-section {
-	padding: 30px 25px;
+	padding: 25px 30px;
 	margin-bottom: 10px;
 	width: 100%;
 	background-color: #fff;
@@ -22,19 +20,20 @@
 	align-items: center;
 }
 
+.budget-control {
+	margin: 0 15px;
+	font-family: "Ubuntu";
+}
+
 .budget-content {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	height: 27px;
 	margin-bottom: 12px;
 }
 
-.budget-control {
-	margin-right: 20px;
-	font-family: "Ubuntu";
-}
-
-.budget-topic ,.budget-amount{
+.budget-content p {
 	font-size: 16px;
 	font-weight: 500;
 	letter-spacing: 0.5px;
@@ -45,47 +44,15 @@
 	margin-right: 40px;
 }
 
-.budget-amount {
-	color: #177ef5;
-	margin-right: 2px;
-}
-
-.budget-detail {
+.budget-update-wrapper {
+	width: 90px;
 	display: flex;
-	align-items: center;
-	margin-bottom: 2px;
-}
-
-.budget-detail p {
-	font-size: 14px;
-	letter-spacing: 1px;
-	margin-right: 20px;
-}
-
-.budget-text-wrapper {
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
+	justify-content: flex-end;
 }
 
 .budget-update {
-	margin: 0;
-	padding: 0;
 	display: flex;
-	justify-content: flex-start;
-}
-
-.cancel-btn {
-	background: none;
-	outline: none;
-	display: flex;
-	align-items: center;
-	margin-left: 3px;
-}
-
-.cancel-icon-img {
-	margin: 0;
-	width: 10px;
+	justify-content: flex-end;
 }
 
 .budget-input {
@@ -94,10 +61,9 @@
 	letter-spacing: 0.2px;
 	color: rgba(62, 62, 62, 0.9);
 	margin: 0;
-	padding: 3px 3px 3px 5px;
-	width: 70px;
+	padding: 3px 0 3px 7px;
+	width: 80px;
 	background-color: #f0f0f0;
-	outline: none;
 	border: 1px solid #f0f0f0;
 	border-radius: 5px;
 }
@@ -112,5 +78,45 @@
 
 .budget-input:focus {
 	background-color: rgba(0, 0, 0,0.02);
-	border: 1px solid #50e3c2;
+	border: 1px solid #177EF5;
 }
+.cancel-btn {
+	background: none;
+	outline: none;
+	display: flex;
+	align-items: center;
+	margin-left: 3px;
+}
+
+.cancel-icon-img {
+	width: 10px;
+}
+
+.budget-text-wrapper {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.budget-amount {
+	color: #177ef5;
+	margin-right: 2px;
+}
+
+.budget-detail {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 2px;
+}
+
+.budget-detail p {
+	font-size: 14px;
+	letter-spacing: 1px;
+	margin-right: 28px;
+}
+
+.hidden {
+	display: none;
+}
+

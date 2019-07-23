@@ -24,6 +24,13 @@
   font-size: 15px;
 }
 
+.initial-chart {
+  padding: 15%;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.08);
+}
+
 .charts {
   background-color: #fff;
   border-radius: 20px;

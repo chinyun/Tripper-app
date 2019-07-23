@@ -23,7 +23,6 @@
 
 .static-pannel-section {
   margin: 10px 0;
-  padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,7 +31,7 @@
 .static-pannel-topic {
   margin-right: 15px;
   font-family: "Ubuntu";
-  padding: 2px;
+  padding: 3px;
 }
 
 .static-pannel-title {
@@ -55,28 +54,29 @@
 }
 
 .static-pannel-update {
-  margin-top: 14px;
-  padding: 0;
+  display: flex;
+  flex-direction: flex-end;
+}
+
+.total-budget-update {
+  margin-top: 12px;
   display: flex;
   justify-content: center;
 }
 
 .static-pannel-input {
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 400;
   color: #3e3e3e;
-  padding: 5px 3px 3px 6px;
-  width: 80px;
+  padding-left: 6px;
+  width: 90px;
   background-color: #f0f0f0;
-  outline: none;
-  border: 1px solid #f0f0f0;
+  border: 0;
   border-radius: 6px;
 }
 
 .static-pannel-input::placeholder {
-  font-weight: 300;
-  font-size: 20px;
-  color: rgba(62,62,62, 0.5);
+  color: rgba(62,62,62, 0.6);
 }
 
 .static-pannel-input:focus {

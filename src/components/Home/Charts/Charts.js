@@ -18,7 +18,8 @@ class Charts extends Component {
     super(props);
     this.state = {
       width: dims.width,
-      height: dims.height + 100      
+      height: dims.height + 100,
+      isShowed: false    
     };
   };
 
@@ -82,25 +83,29 @@ class Charts extends Component {
             <span>(100%)</span>
           </p>
         </div>
-        
-        <div className='charts'>
-          <div id='chart-area' className='chart-area'>
-            <svg
-              width={this.state.width}
-              height={this.state.height}
-              ref={el => this.svgEl = el}
-            >{ paths }</svg>
-          </div>
-          <ul className='chart-legend'>
-          { this.props.data.map(d => 
-            <Legend
-              key={d.name}
-              data={d}
-              color={d.color}
-            /> 
-          )}
-          </ul> 
-        </div>
+       { this.props.displayedJourney[0].expense === '0'
+          ? <div className='initial-chart'>
+              <p>There is no Expense yet.</p>
+            </div>
+          : <div className='charts'>
+              <div id='chart-area' className='chart-area'>
+                <svg
+                  width={this.state.width}
+                  height={this.state.height}
+                  ref={el => this.svgEl = el}
+                >{ paths }</svg>
+              </div>
+              <ul className='chart-legend'>
+              { this.props.data.map(d => 
+                <Legend
+                  key={d.name}
+                  data={d}
+                  color={d.color}
+                /> 
+              )}
+              </ul> 
+            </div>
+        }
       </div>
     );
   }

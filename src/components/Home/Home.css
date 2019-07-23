@@ -191,6 +191,10 @@
   color: #177EF5;
 }
 
+.control-btn:active {
+  color: #9B9B9B;
+}
+
 .add-icon-img, .select-icon-img,
 .update-icon-img {
   width: 10px;

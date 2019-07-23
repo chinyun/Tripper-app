@@ -60,6 +60,7 @@ class SideBar extends Component {
 		.then(response => response.json())
 		.then(newJourney => {
 			this.props.handleAddJourney(newJourney);
+			this.props.onJourneyChange(newJourney[0].id);
 			this.setState({
 				newJourney: '',
 				isAdded: false
@@ -119,7 +120,7 @@ class SideBar extends Component {
 									onClick={() => this.showAddJourney()}
 								>
 									<img className='add-icon-img' alt='add' src={AddIcon}/>
-									<span className='show-add-journey-btn-text'>新增項目</span>
+									<span className='show-add-journey-btn-text'>新增旅程</span>
 								</button>
 							: <div className='add-journey'>
 									<input 
