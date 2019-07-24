@@ -1,6 +1,4 @@
 .home-container {
-  margin: 0;
-  padding: 0;
   height: 100%;
   width: 100%;
   background-color: #f9f9f9;
@@ -215,4 +213,17 @@
 
 .footer {
   background-color: #f9f9f9;
+}
+
+@media (max-width: 767px) {
+  .sub-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .minor-section {
+    width: 80%;
+    max-width: 767px;
+    margin: 10px;
+  }
 }

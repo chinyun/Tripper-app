@@ -120,3 +120,18 @@
 	display: none;
 }
 
+@media (min-width: 320px) and (max-width: 767px) {
+	.budget-wrapper {
+    width: 80%;
+    margin: 10px;
+    max-width: 767px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .budget {
+  	padding: 0;
+  }
+}
+
