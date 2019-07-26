@@ -1,4 +1,4 @@
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1650px) {
   .add-item {
     flex-direction: column;
     align-items: flex-start;
@@ -24,9 +24,13 @@
   .item-amount-input {
     width: 24%;
   }
+
+  .journey-name {
+    letter-spacing: 0.2px;
+  }
 }
 
-@media screen and (min-width: 1023px) and (max-width: 1252px) {
+@media screen and (min-width: 1261px) and (max-width: 1491px) {
   .accounts-nav {
     flex-direction: column;
     align-items: flex-start;
@@ -43,7 +47,7 @@
   }
 }
 
-@media screen and (min-width: 414px) and (max-width: 1023px) {
+@media screen and (min-width: 960px) and (max-width: 1260px) {
   .nav-text-wrapper {
     display: flex;
     flex-direction: column;
@@ -51,8 +55,17 @@
     margin: 8px 0;
   }
 
+  .side-bar-wrapper {
+    width: 35%;
+    min-width: 292px;
+  }
+
+  .journeys-list-wrapper {
+    padding-top: 90px;
+  }
+
   .main-section {
-    margin-top: 70px;
+    margin-top: 65px;
   }
 
   .sub-section {
@@ -67,18 +80,27 @@
   }
 
   .static-pannel-wrapper {
-    margin: 10px;
     max-width: 600px;
   }
 
-  .static-pannel-section {
-    flex-direction: column;
-    align-items: flex-start;
+  .static-pannel {
+    padding: 3% 1.5%;
   }
 
-  .static-pannel-topic {
-    margin: 0;
+  .static-pannel-section-wrapper {
     padding: 0;
+    margin: 0 15px;
+  }
+  
+  .static-pannel-amount {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .static-pannel-input {
+    font-size: 18px;
+    width: 60px;
+    font-weight: 500;
   }
 
   .budget-wrapper {
@@ -93,4 +115,8 @@
     max-width: 600px;
     margin-top: 30px;
   }
+}
+
+@media screen and (min-width: 375px) and (max-width: 959px) {
+
 }
