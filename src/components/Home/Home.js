@@ -261,16 +261,8 @@ class Home extends Component {
               <div className='accounts-wrapper'>
                 <div className='accounts-nav'>
                   <div className='left-column'>
-                    <p className='home-title'>{this.state.countDays} Days</p>
-                    <div className='add-day'>
-                      <button
-                        className='control-btn' 
-                        onClick={this.createNewDay}
-                      >
-                        <img className='add-icon-img' alt='add' src={AddIcon}/>
-                        <span>增加旅遊天數</span>
-                      </button>
-                    </div>
+                    <p className='home-title'>Travel Days</p>
+                    <p className='home-subtitle'>{this.state.countDays} Days</p>
                   </div>
                   <div className='right-column'>
                     <div className='accounts-days'>
@@ -301,13 +293,23 @@ class Home extends Component {
                           )}
                         </div>
                       </div>
-                    </div>                   
-                    <div className='delete-day'>
-                      <button className='delete-btn' onClick={() => {
-                        if(window.confirm(`Are you sure you wish to delete ${this.state.displayedDay} ?`))
-                        this.handleRemoveAccount(this.state.displayedAccountId)
-                      }}><span>刪除</span>
-                      </button>
+                    </div>
+                    <div className='control-day-group'>
+                      <div className='add-day'>
+                        <button
+                          className='control-btn' 
+                          onClick={this.createNewDay}
+                        >
+                          <span>新增</span>
+                        </button>
+                      </div>               
+                      <div className='delete-day'>
+                        <button className='delete-btn' onClick={() => {
+                          if(window.confirm(`Are you sure you wish to delete ${this.state.displayedDay} ?`))
+                          this.handleRemoveAccount(this.state.displayedAccountId)
+                        }}><span>刪除</span>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

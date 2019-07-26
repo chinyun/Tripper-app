@@ -131,9 +131,9 @@ class SetBudget extends Component {
 		const { displayedJourney } = this.props;
 		return (
 			<div className='budget-wrapper'>
-        <div className='charts-info'>
+        <div className='budget-info'>
           <p className='home-title'>Budgets Manage</p>
-          <p className='charts-summary'>
+          <p className='budget-summary'>
             <span>Total</span>
             <span>{displayedJourney[0].budget}</span>
             <span>(100%)</span>

@@ -1,7 +1,6 @@
 .home-container {
   height: 100%;
   width: 100%;
-  background-color: #f9f9f9;
   display: flex;
 }
 
@@ -23,7 +22,7 @@
 
 .main-section {
   margin-top: 40px;
-  padding: 10px 50px;
+  padding: 10px 0;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -151,6 +150,10 @@
   padding: 10px 0;
 }
 
+.control-day-group {
+  display: flex;
+}
+
 .delete-day, .add-day {
   margin: 2px 0 0 5px;
   padding: 2px 3px;
@@ -213,17 +216,4 @@
 
 .footer {
   background-color: #f9f9f9;
-}
-
-@media (max-width: 767px) {
-  .sub-section {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .minor-section {
-    width: 80%;
-    max-width: 767px;
-    margin: 10px;
-  }
 }

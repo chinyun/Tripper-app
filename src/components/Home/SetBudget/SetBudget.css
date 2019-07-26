@@ -4,8 +4,27 @@
 	max-width: 400px
 }
 
+.budget-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.budget-summary {
+  margin-right: 15px;
+}
+
+.budget-summary span {
+  letter-spacing: 0.5px;
+  font-family: "Ubuntu";
+  margin: 0 5px;
+  color: #3E3E3E;
+  font-weight: 400;
+  font-size: 15px;
+}
+
 .budget {
-	padding-right: 10%;
+	width: 90%;
 }
 
 .budget-section {
@@ -119,19 +138,3 @@
 .hidden {
 	display: none;
 }
-
-@media (min-width: 320px) and (max-width: 767px) {
-	.budget-wrapper {
-    width: 80%;
-    margin: 10px;
-    max-width: 767px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .budget {
-  	padding: 0;
-  }
-}
-

@@ -3,6 +3,7 @@ import Landing from './components/Landing/Landing';
 import Navigation from './components/Navigation/Navigation';
 import Home from './components/Home/Home';
 import './App.css';
+import './Rwd.css';
 // import logo from './logo.svg';
 
 const initialState = {

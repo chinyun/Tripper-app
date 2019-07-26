@@ -6,7 +6,6 @@
 }
 
 .static-pannel {
-  margin: 0;
   padding: 2% 1.5%;
   background-color: #fff;
   border: 0;
@@ -59,7 +58,7 @@
 }
 
 .total-budget-update {
-  margin-top: 12px;
+  margin-top: 10px;
   display: flex;
   justify-content: center;
 }
@@ -87,7 +86,6 @@
 .static-pannel-text {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
 }
 
 .static-pannel-text button {
