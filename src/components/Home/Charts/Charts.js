@@ -74,7 +74,7 @@ class Charts extends Component {
       <div className='charts-wrapper'>
         <div className='charts-info'>
           <p className='home-title'>
-            Data Chart
+            Data
             <span className='home-subtitle'>Expense</span>
           </p>
           <p className='charts-summary'>

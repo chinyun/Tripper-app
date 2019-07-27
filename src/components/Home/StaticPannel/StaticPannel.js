@@ -76,7 +76,7 @@ class StaticPannel extends Component {
                       className='cancel-btn' 
                       onClick={()=>this.handleEditing('')}
                     >
-                      <img className='cancel-icon-img' alt='cancel' src={CancelIcon}/>
+                      <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
                     </button>
                   </div>
                 : <div className='static-pannel-text'>

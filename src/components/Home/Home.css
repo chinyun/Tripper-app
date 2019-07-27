@@ -196,6 +196,27 @@
   margin-right: 5px;
 }
 
+.cancel-btn {
+  margin: 12px 3px;
+  width: 25px;
+  height: 25px;
+  background-color: none;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cancel-btn:hover {
+  background-color: #DDD;
+  border-radius: 20px;
+}
+
+.cancel-btn-img {
+  width: 10px;
+  margin: 0 2px;
+}
+
 .web-info {
   font-weight: 500;
   color: rgba( 62, 62, 62,1);

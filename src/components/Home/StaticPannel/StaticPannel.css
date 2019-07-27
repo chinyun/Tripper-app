@@ -66,6 +66,10 @@
   justify-content: center;
 }
 
+.total-budget-update .cancel-btn {
+  margin: 5px 2px;
+}
+
 .static-pannel-input {
   font-size: 20px;
   font-weight: 400;

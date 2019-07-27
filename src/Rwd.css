@@ -6,6 +6,7 @@
 
   .item-btn-group {
     margin: 10px 5px;
+    align-items: center;
   }
 
   .add-item-submit {
@@ -230,6 +231,10 @@
 }
 
 @media screen and (max-width: 680px) {
+  .nav-text-logo {
+    margin: 0;
+  }
+
   .nav-text-slogan, .nav-user-name,
   .seperate-line-img {
     display: none;
@@ -239,6 +244,12 @@
   .add-journey-input, .delete-btn {
     font-size: 13px;
     letter-spacing: 0.5px;
+  }
+
+  .add-journey-submit {
+    font-size: 13px;
+    width: 38%;
+    padding: 5px 0;
   }
 
   .home-title, .home-subtitle, 
@@ -275,7 +286,7 @@
   }
 
   .budget-content p {
-    font-size: 14px;
+    font-size: 15px;
   }
 
   .budget-input {
@@ -327,11 +338,11 @@
   
   .static-pannel-amount {
     margin-top: 14px;
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .static-pannel-text span {
-    font-size: 16px;
+    font-size: 18px;
     margin-top: 2px;
   }
 
@@ -341,15 +352,12 @@
 
   .static-pannel-input {
     width: 72px;
+    font-size: 17px;
   }
 
   .chart-legend {
     padding: 0;
     width: 60%;
-  }
-
-  .legend-list {
-    font-size: 0.9em;
   }
 
   .accounts-days {
@@ -358,6 +366,10 @@
 
   .days-name {
     font-size: 15px;
+  }
+
+  .category-selector-icon-img {
+    margin-bottom: 1px;
   }
 
   .control-btn span {
@@ -393,6 +405,268 @@
   }
 }
 
-@media screen and (max-width: 645) {
-  
-} 
+@media screen and (max-width: 575px) {
+  .home-title {
+    margin-bottom: 8px;
+  }
+
+  .static-pannel-wrapper {
+    width: 90%;
+  }
+
+  .budget-wrapper {
+    width: 90%;
+  }
+
+  .minor-section {
+    width: 90%;
+    margin: 10px;
+  }
+
+  .chart-legend {
+    width: 50%;
+    padding-right: 20px;
+    margin: 5px 0 25px 0;
+  }
+
+  .legend-list {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .static-pannel {
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 0;
+  }
+
+  .static-pannel-section-wrapper {
+    width: 80%;
+    margin: 0;
+  }
+
+  .static-pannel-section {
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 0;
+    margin: 2px;
+  }
+
+  .static-pannel-title {
+    margin: 0;
+    letter-spacing: 2px;
+    font-size: 13px;
+  }
+
+  .total-budget-update {
+    margin: 0;
+  }
+
+  .static-pannel-input {
+    height: 27px;
+  }
+
+  .static-pannel-update {
+    height: 27px;
+  }
+
+  .static-pannel-amount {
+    margin: 0 7px 0 0;
+  }
+
+  .total-budget-update .cancel-btn {
+    margin: 3px 2px;
+  }
+
+  .static-pannel-text {
+    margin: 0;
+    align-items: center;
+  }
+    
+  .static-pannel-text span {
+    margin: 0;
+  }
+
+  .charts {
+    flex-direction: column;
+  }
+
+  .chart-legend {
+    width: 75%;
+    margin: 5px 0 25px 0;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .accounts {
+    border-radius: 10px;
+  }
+
+  .accounts-list {
+    padding: 0 3.5% 1% 3.5%;
+  }  
+
+  .accounts-list-item {
+    width: 97%;
+    border-radius: 10px;
+    margin-bottom: 5px;
+  }
+
+  .category-selector-wrapper {
+    width: 30%;
+    max-width: 110px;
+  }
+
+  .accounts-list .item-category {
+    width: 90%;
+    align-items: flex-start;
+    margin: 10px;
+  }
+
+  .accounts-list .item-category-btn-icon {
+    margin-left: 15px;
+  }
+
+  .list-item-update {
+    flex-direction: column;
+  }
+
+  .list-item-update input {
+    margin: 4px;
+  }
+
+  .item-detail-update-input {
+    width: 90%;
+  }
+
+  .item-amount-update-input {
+    width: 90%;
+  }
+
+  .add-item-wrapper {
+    padding: 1% 3.5% 1.5% 3.5%;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .budget-section {
+    width: 94%;
+  }
+
+  .budget-control {
+    margin: 0 8px;
+  }
+
+  .budget-content .budget-topic {
+    font-size: 13px;
+    margin-right: 16px;
+  }
+
+  .budget-update-wrapper {
+    margin-left: 25px;
+  }
+
+  .accounts-list {
+    padding: 0 5% 2% 5%;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .home-title {
+    margin: 10px 0 8px 18px;
+    font-size: 12px;
+  }
+
+  .home-subtitle {
+    letter-spacing: 0.1px;
+    margin: 10px 0 5px 10px;
+    font-size: 12px;
+  }
+
+  .static-pannel-wrapper {
+    margin: 10px 0 0 0;
+  }
+
+  .budget-wrapper {
+    margin: 0;
+  }
+
+  .budget-chart-area {
+    margin-right: 2px;
+  }
+
+  .budget-summary span, .charts-summary span {
+    letter-spacing: 0.5px;
+    font-size: 12px;
+    margin: 0 3px;
+  }
+
+  .budget-update-wrapper {
+    margin-right: 15px;
+    width: 80px;
+  }
+
+  .budget-control {
+    margin: 0 0 0 15px;
+  }
+
+  .budget-input {
+    width: 65px;
+  }
+}
+
+@media screen and (max-width: 362px) {
+  .budget-control {
+    margin: 0 0 0 12px;
+  }
+
+  .budget-content .budget-topic {
+    margin-right: 10px;
+  }
+}
+
+
+@media screen and (max-width: 358px) {
+  .static-pannel-wrapper {
+    min-width: 267px;
+  }
+
+  .budget-wrapper {
+    width: 75%;
+    min-width: 267px;
+  }
+
+  .budget-section {
+    flex-direction: column-reverse;
+  }
+
+  .budget-chart-area {
+    margin: 5px 0;
+  }
+
+  .budget-control {
+    margin: 8px 0 10px 30px;
+  }
+
+  .budget-content .budget-topic {
+    margin-right: 30px;
+  }
+
+  .minor-section {
+    min-width: 267px;
+  }
+
+  .accounts-days {
+    width: 120px;
+    padding: 0 8px;
+    margin: 0 15px 0 5px;
+  }
+
+  .list-item-detail {
+    margin-left: 10px;
+    width: 45%;
+  }
+
+}

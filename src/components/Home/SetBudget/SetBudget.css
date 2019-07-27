@@ -67,6 +67,7 @@
 	width: 90px;
 	display: flex;
 	justify-content: flex-end;
+	margin-left: 10px;
 }
 
 .budget-update {
@@ -79,9 +80,10 @@
 	font-size: 16px;
 	letter-spacing: 0.2px;
 	color: rgba(62, 62, 62, 0.9);
-	margin: 0;
+	margin: 9px 0;
 	padding: 3px 0 3px 7px;
 	width: 80px;
+	height: 22px;
 	background-color: #f0f0f0;
 	border: 1px solid #f0f0f0;
 	border-radius: 5px;
@@ -98,17 +100,6 @@
 .budget-input:focus {
 	background-color: rgba(0, 0, 0,0.02);
 	border: 1px solid #177EF5;
-}
-.cancel-btn {
-	background: none;
-	outline: none;
-	display: flex;
-	align-items: center;
-	margin-left: 3px;
-}
-
-.cancel-icon-img {
-	width: 10px;
 }
 
 .budget-text-wrapper {

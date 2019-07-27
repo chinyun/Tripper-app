@@ -132,7 +132,7 @@ class SetBudget extends Component {
 		return (
 			<div className='budget-wrapper'>
         <div className='budget-info'>
-          <p className='home-title'>Budgets Manage</p>
+          <p className='home-title'>Budgets</p>
           <p className='budget-summary'>
             <span>Total</span>
             <span>{displayedJourney[0].budget}</span>
@@ -158,7 +158,7 @@ class SetBudget extends Component {
                         onKeyDown={this.handleEnter}
                       />
                       <button className='cancel-btn' onClick={()=>this.handleEditing('')}>
-                        <img className='cancel-icon-img' alt='cancel' src={CancelIcon}/>
+                        <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
                       </button>
                     </div>
                   : <div className='budget-text-wrapper'>
@@ -207,7 +207,7 @@ class SetBudget extends Component {
                         onKeyDown={this.handleEnter}
                       />
                       <button className='cancel-btn' onClick={()=>this.handleEditing('')}>
-                        <img className='cancel-icon-img' alt='cancel' src={CancelIcon}/>
+                        <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
                       </button>
                     </div>
                   : <div className='budget-text-wrapper'>
@@ -256,7 +256,7 @@ class SetBudget extends Component {
                         onKeyDown={this.handleEnter}
                       />
                       <button className='cancel-btn' onClick={()=>this.handleEditing('')}>
-                        <img className='cancel-icon-img' alt='cancel' src={CancelIcon}/>
+                        <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
                       </button>
                     </div>
                   : <div className='budget-text-wrapper'>
@@ -305,7 +305,7 @@ class SetBudget extends Component {
                         onKeyDown={this.handleEnter}
                       />
                       <button className='cancel-btn' onClick={()=>this.handleEditing('')}>
-                        <img className='cancel-icon-img' alt='cancel' src={CancelIcon}/>
+                        <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
                       </button>
                     </div>
                   : <div className='budget-text-wrapper'>
@@ -354,7 +354,7 @@ class SetBudget extends Component {
                         onKeyDown={this.handleEnter}
                       />
                       <button className='cancel-btn' onClick={()=>this.handleEditing('')}>
-                        <img className='cancel-icon-img' alt='cancel' src={CancelIcon}/>
+                        <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
                       </button>
                     </div>
                   : <div className='budget-text-wrapper'>
