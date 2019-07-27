@@ -1,12 +1,17 @@
 .app {
-	height: 100%;
+	height: 125%;
 	padding: 0;
 	margin: 0;
 }
 
 .dashboard {
-  height: 135%;
+  height: 100%;
   padding: 0;
   margin: 0;
   background-color: #f9f9f9;
+}
+
+.dashboard button {
+  outline: none;
+  cursor: pointer;
 }

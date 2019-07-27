@@ -80,7 +80,7 @@ class StaticPannel extends Component {
                     </button>
                   </div>
                 : <div className='static-pannel-text'>
-                    <span className='static-pannel-amount editable-text'>
+                    <span>
                       {displayedJourney[0].budget}
                     </span>
                     <button 

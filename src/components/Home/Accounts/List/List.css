@@ -38,7 +38,7 @@
 	padding: 5px;
 	background-color: #F2F2F2;
 	outline: none;
-	border: 2px solid rgba(70, 210, 235, 0);
+	border: 1px solid rgba(0, 0, 0, 0);
 	border-radius: 6px;
 }
 
@@ -47,8 +47,8 @@
 }
 
 .list-item-update input:focus {
-	background-color: rgba(0, 0, 0,0.02);
-	border: 2px solid #3b93f7;
+	background-color: rgba(0, 0, 0, 0.02);
+	border: 1px solid #3b93f7;
 }
 
 .item-detail-update-input {

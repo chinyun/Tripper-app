@@ -4,12 +4,6 @@
   display: flex;
 }
 
-.home-container button {
-  outline: none;
-  cursor: pointer;
-  border: 0;
-}
-
 .side-bar-wrapper {
   width: 27%;
   height: 100%;
@@ -45,11 +39,6 @@
   margin: 12px 15px;
   color: #3E3E3E;
   text-transform: capitalize;
-}
-
-.editable-text {
-  color: #177EF5;
-  font-weight: 400;
 }
 
 .sub-section {
@@ -163,10 +152,10 @@
 }
 
 .delete-btn {
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 15px;
+  font-weight: 500;
   letter-spacing: 1px;
-  color: rgba( 62, 62, 62,1);
+  color: #9B9B9B;
   background: none;
 }
 
@@ -180,7 +169,8 @@
   background: none;
   font-size: 15px;
   font-weight: 500;
-  color: #9B9B9B;
+  letter-spacing: 1px;
+  color: rgba( 62, 62, 62,0.8);
   border-radius: 8px;
   display: flex;
   justify-content: center;

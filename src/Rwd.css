@@ -47,7 +47,7 @@
   }
 }
 
-@media screen and (min-width: 960px) and (max-width: 1260px) {
+@media screen and (min-width: 679px) and (max-width: 1047px) {
   .nav-text-wrapper {
     display: flex;
     flex-direction: column;
@@ -55,15 +55,12 @@
     margin: 8px 0;
   }
 
-  .side-bar-wrapper {
-    width: 35%;
-    min-width: 292px;
-  }
-
   .journeys-list-wrapper {
     padding-top: 90px;
   }
+}
 
+@media screen and (max-width: 1047px)  {
   .main-section {
     margin-top: 65px;
   }
@@ -79,6 +76,71 @@
     margin: 10px;
   }
 
+  .budget-wrapper {
+    width: 80%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+  }
+
+}
+
+@media screen and (min-width: 1048px) and (max-width: 1260px) {
+  header {
+    position: absolute;
+    z-index: 10001;
+  }
+
+  .side-bar-wrapper {
+    z-index: 10000;
+    position: absolute;
+    width: 35%;
+    min-width: 292px;
+    max-width: 350px;
+    box-shadow: 4px 0px 10px 0 rgba(0,0,0, 0.2);
+  }
+}
+
+@media screen and (max-width: 987px) {
+  header {
+    position: absolute;
+    z-index: 10001;
+  }
+
+  .side-bar-wrapper {
+    z-index: 10000;
+    position: absolute;
+    width: 35%;
+    min-width: 292px;
+    max-width: 350px;
+    box-shadow: 4px 0px 10px 0 rgba(0,0,0, 0.2);
+  }
+}
+
+@media screen and (max-width: 1260px) {
+  .side-bar-wrapper {
+    width: 35%;
+    min-width: 292px;
+  }
+
+  .accounts-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .accounts-days {
+    margin: 0 15px 0 0;
+  }
+
+  .right-column {
+    width: 93%;
+    justify-content: space-between;
+    margin: 0 0 0 12px;
+  }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1047px) {
   .static-pannel-wrapper {
     max-width: 600px;
   }
@@ -91,16 +153,113 @@
     padding: 0;
     margin: 0 15px;
   }
+
+  .static-pannel-text {
+    margin-top: 18px;
+  }
   
-  .static-pannel-amount {
+  .static-pannel-amount, .static-pannel-text span {
     font-size: 18px;
     font-weight: 500;
+  }
+
+  .static-pannel-text button {
+    margin-top: 0;
   }
 
   .static-pannel-input {
     font-size: 18px;
     width: 60px;
     font-weight: 500;
+  }
+
+  .accounts-wrapper {
+    max-width: 600px;
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 699px) {
+  .navigation button, .nav-text-slogan, .nav-user-name {
+    font-size: 12px;
+  }
+
+  .nav-text-logo {
+    font-size: 15px;
+  }
+
+  .static-pannel {
+    padding: 3% 1.5%;
+  }
+
+  .static-pannel-section-wrapper {
+    padding: 0;
+    margin: 0 12px;
+  }
+
+  .static-pannel-topic {
+    margin-right: 10px;
+  }
+
+  .static-pannel-title {
+    font-size: 13px;
+  }
+
+  .static-pannel-subtitle {
+    font-size: 11px;
+    letter-spacing: 0.2px;
+  }
+  
+  .static-pannel-amount, .static-pannel-text span {
+    font-size: 15px;
+  }
+
+  .total-budget-update {
+    margin-top: 6px;
+  }
+
+  .static-pannel-input {
+    font-size: 15px;
+    width: 60px;
+    font-weight: 500;
+  }
+
+  .budget-section {
+    width: 98%;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .nav-text-slogan, .nav-user-name,
+  .seperate-line-img {
+    display: none;
+  }
+
+  .journey-name, .update-journey-input,
+  .add-journey-input, .delete-btn {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+
+  .home-title, .home-subtitle, 
+  .charts-summary span, .budget-summary span {
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .main-section {
+    margin-top: 25px;
+  }
+
+  .sub-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .minor-section {
+    width: 80%;
+    max-width: 767px;
+    margin: 10px;
   }
 
   .budget-wrapper {
@@ -110,13 +269,130 @@
     flex-direction: column;
     max-width: 600px;
   }
+
+  .budget {
+    width: 100%;
+  }
+
+  .budget-content p {
+    font-size: 14px;
+  }
+
+  .budget-input {
+    font-size: 14px;
+  }
+
+  .budget-detail p {
+    font-size: 11px;
+  }
+
+  .budget-section {
+    padding: 15px 10px;
+    width: 96%;
+  }
+
+  .static-pannel-wrapper {
+    margin: 10px;
+  }
   
-  .accounts-wrapper {
-    max-width: 600px;
-    margin-top: 30px;
+  .static-pannel {
+    border-radius: 20px;
+    padding: 5px 2px 8px 2px;
+  }
+
+  .static-pannel-section-wrapper {
+    width: 33%;
+    margin: 10px 0;
+  }
+
+  .static-pannel-section {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 25%;
+    margin: 5px 0;
+  }
+
+  .static-pannel-topic {
+    margin-right: 0;
+    padding: 3px 0;
+  }
+
+  .static-pannel-title {
+    font-size: 14px;
+  }
+
+  .static-pannel-subtitle {
+    display: none;
+  }
+  
+  .static-pannel-amount {
+    margin-top: 14px;
+    font-size: 16px;
+  }
+
+  .static-pannel-text span {
+    font-size: 16px;
+    margin-top: 2px;
+  }
+
+  .static-pannel-text button {
+    margin-top: 0px;
+  }
+
+  .static-pannel-input {
+    width: 72px;
+  }
+
+  .chart-legend {
+    padding: 0;
+    width: 60%;
+  }
+
+  .legend-list {
+    font-size: 0.9em;
+  }
+
+  .accounts-days {
+    width: 118px;
+  }
+
+  .days-name {
+    font-size: 15px;
+  }
+
+  .control-btn span {
+    font-size: 13px;
+  }
+
+  .list-item-group span {
+    font-size: 13px;
+  }
+
+  .item-category-text {
+    font-size: 14px;
+  }
+
+  .add-item-content input {
+    font-size: 13px;
+  }
+
+  .item-category {
+    width: 20%;
+  }
+
+  .item-detail-input {
+    width: 46%;
+  }
+
+  .item-amount-input {
+    width: 18%;
+  }
+
+  .add-item-submit {
+    font-size: 11px;
   }
 }
 
-@media screen and (min-width: 375px) and (max-width: 959px) {
-
-}
+@media screen and (max-width: 645) {
+  
+} 

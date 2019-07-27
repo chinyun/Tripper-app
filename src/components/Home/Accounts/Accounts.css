@@ -135,7 +135,7 @@
 	margin: 0 4px;
 	padding: 6px;
 	background-color: rgba(0, 0, 0,0.1);
-	border: 2px solid rgba(70, 210, 235, 0);
+	border: 1px solid rgba(0, 0, 0, 0);
 	border-radius: 6px;
 }
 
@@ -147,7 +147,7 @@
 
 .add-item-content input:focus {
 	background-color: rgba(0, 0, 0,0.02);
-	border: 2px solid  #3b93f7;
+	border: 1px solid  #3b93f7;
 }
 
 .item-btn-group {
