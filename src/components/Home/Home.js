@@ -222,7 +222,6 @@ class Home extends Component {
   };
 
   calcHeight = (node) => {
-    console.log(node);
     if (node && !this.state.sidebarHeight) {
       const height = node.offsetHeight - 40;
       this.setState({
@@ -230,14 +229,6 @@ class Home extends Component {
       });
     }
   };
-
-  componentDidMount = () => {
-    console.log(this.state.sidebarHeight);
-  };
-
-  componentDidUpdate = () => {
-    console.log(this.state.sidebarHeight);
-  }
 
   render() {
     return (
