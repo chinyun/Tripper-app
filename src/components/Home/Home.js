@@ -77,7 +77,8 @@ class Home extends Component {
       displayedDay:initialJourney[0].accountList[0].name,
       countDays: initialJourney[0].accountList.length,
       data: getData(initialJourney),
-      isSelecting: false
+      isSelecting: false,
+      sidebarHeight: null
     }
   };
 
@@ -220,13 +221,34 @@ class Home extends Component {
     }
   };
 
-  render( ) {
+  calcHeight = (node) => {
+    console.log(node);
+    if (node && !this.state.sidebarHeight) {
+      const height = node.offsetHeight - 40;
+      this.setState({
+        sidebarHeight: height
+      });
+    }
+  };
+
+  componentDidMount = () => {
+    console.log(this.state.sidebarHeight);
+  };
+
+  componentDidUpdate = () => {
+    console.log(this.state.sidebarHeight);
+  }
+
+  render() {
     return (
-      <div className='home-container'>
-        <div className={ this.props.isShowedSideBar === true
-          ? 'side-bar-wrapper'
-          : 'side-bar-wrapper hidden'
-        }>
+      <div className='home-container' ref={(node) => this.calcHeight(node)}>
+        <div 
+          className={ this.props.isShowedSideBar === true
+            ? 'side-bar-wrapper'
+            : 'side-bar-wrapper hidden'
+          }
+          style={{height: this.state.sidebarHeight}}
+        >
           <div className='side-bar'>
             <SideBar
               user={this.props.user}

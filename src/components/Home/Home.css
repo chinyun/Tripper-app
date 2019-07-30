@@ -6,18 +6,21 @@
 
 .side-bar-wrapper {
   width: 27%;
-  height: 100%;
+  /*height: 100%;*/
   background-color: #FFF;
   position: relative;
+  top: 40px;
   animation: animateleft 0.4s;
   display: block;
+  box-shadow: 4px 0px 10px 0 rgba(0,0,0, 0.1);
 }
-@keyframes animateleft{from{left:-300px;opacity:0} to{left:0;opacity:1}}
 
-/*.side-bar-hidden {
-  display: none;
-}
-*/
+@keyframes 
+  animateleft {
+    from {left:-300px; opacity:0} 
+    to {left:0; opacity:1}
+  }
+
 .side-bar {
   width: 100%;
 }
@@ -53,6 +56,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  background-color: #f9f9f9;
 }
 
 .minor-section {
