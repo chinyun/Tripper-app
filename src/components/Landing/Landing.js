@@ -46,7 +46,7 @@ class Landing extends Component {
   render () {
     const {isRegistered, landingRoute} = this.state;
     return (
-      <div className='landing-container'>
+      <div className='landing'>
         <nav
           id='landing-nav' 
           className='landing-nav'>

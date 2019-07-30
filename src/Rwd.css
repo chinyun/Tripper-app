@@ -1,3 +1,108 @@
+/*Landing*/
+@media screen and (max-width: 1259px) {
+  .switcher-nav {
+    margin: 4%;
+  }
+
+  .landing {
+    padding: 0;
+  }
+
+  .signin, .register {
+    margin-top: 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .switcher-nav {
+    margin: 6%;
+  }
+
+  .signin, .register {
+    padding: 10% 0 0 12%;
+  }
+
+  .signin-welcome-words, .register-welcome-words {
+    margin-bottom: 10%;
+    width: 80%;
+  }
+
+  .signin-form, .register-form {
+    margin-top: 5%;
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 547px) {
+  .landing {
+    padding-bottom: 20%;
+  }
+
+  .switch-on, .switch-down {
+    font-size: 16px;
+    margin: 0 10px;
+  }
+
+  .signin, .register {
+    margin-top: 20px;
+  }
+
+  .signin-welcome-words p, .register-welcome-words p {
+    line-height: 32px;
+    font-size: 28px;
+    letter-spacing: 0.5px;
+  }
+
+  .tripper-white-logo {
+    width: 90px;
+  }
+
+  .signin-form, .register-form {
+    margin-top: 28px;
+    max-width: 380px;
+  }
+
+  .signin-form-row-title, .register-form-row-title {
+    margin: 15px 0 7px 0;
+  }
+
+  .signin-form-submit, .register-form-submit {
+    margin-top: 30px;
+  }
+
+  .signin-form-alarm-words, .register-form-alarm-words {
+    font-size: 13px;
+    letter-spacing: 0.6px;
+    margin: 5px;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .signin, .register {
+    padding: 30px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .signin-form, .register-form {
+    margin-top: 10px;
+    padding: 20px;
+    width: 280px;
+  }
+
+  .signin-form-row-title, .register-form-row-title {
+    font-size: 16px;
+    letter-spacing: 0.2px;
+  }
+
+  .signin-form-alarm, .register-form-alarm {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+
+/*Home & Navigation*/
 @media screen and (max-width: 1650px) {
   .add-item {
     flex-direction: column;
@@ -84,15 +189,9 @@
     flex-direction: column;
     max-width: 600px;
   }
-
 }
 
 @media screen and (min-width: 1048px) and (max-width: 1260px) {
-  header {
-    position: absolute;
-    z-index: 10001;
-  }
-
   .side-bar-wrapper {
     z-index: 10000;
     position: absolute;
@@ -104,11 +203,6 @@
 }
 
 @media screen and (max-width: 987px) {
-  header {
-    position: absolute;
-    z-index: 10001;
-  }
-
   .side-bar-wrapper {
     z-index: 10000;
     position: absolute;

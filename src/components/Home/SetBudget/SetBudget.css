@@ -126,6 +126,12 @@
 	margin-right: 28px;
 }
 
-.hidden {
-	display: none;
+.initial-budgetchart {
+	margin-right: 15px;
+  width: 60px;
+  padding: 20px;
+  font-size: 0.8em;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 3px 5px 6px 0px rgba(0,0,0, 0.08);
 }

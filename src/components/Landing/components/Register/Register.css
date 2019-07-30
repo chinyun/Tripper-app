@@ -1,20 +1,13 @@
-.register-container {
-  margin: 0;
-  padding: 0;
-}
-
-.register-session {
+.register {
   padding: 7% 0 0 20%;
 }
 
 .register-welcome-words {
   margin: 20px;
-  padding: 0;
 }
 
 .register-welcome-words p {
   margin: 7px 0;
-  padding: 0;
   font-weight: 600;
   line-height: 40px;
   font-size: 35px;
@@ -26,8 +19,6 @@
 .words-inline {
   display: flex;
   align-items: center;
-  margin: 0;
-  padding: 0;
 }
 
 .tripper-white-logo {
@@ -38,7 +29,7 @@
 .register-form {
   margin-top: 3%;
   padding: 4%;
-  width: 400px;
+  max-width: 400px;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.98);
   border-radius: 22px;
@@ -51,8 +42,6 @@
 
 .register-form-row {
   width: 100%;
-  margin: 0;
-  padding: 0;
 }
 
 .register-form-row-title {
@@ -62,25 +51,21 @@
   letter-spacing: 1.2px;
   display: block;
   margin: 27px 0 7px 0;
-  padding: 0;
 }
 
 .register-form-row-input {
   font-weight: 500;
   font-size: 18px;
   color: rgba(40,40,40, 0.9);
-  margin: 0;
   padding: 3.2% 3%;
   width: 94%;
   background-color: rgba(0, 0, 0,0.1);
-  outline: none;
   border: 0px;
   border-radius: 6px;
 }
 
 .register-form-submit {
   margin: 50px 0 10px 0;
-  padding: 0;
   width: 100%;
   text-align: right;
   display: flex;
@@ -93,11 +78,9 @@
   font-size: 16px;
   line-height: 20px;
   color: rgba(62,62,62, 0.9);
-  margin: 0;
   padding: 3.2% 0;
   width: 147px;
   background-color: rgba(80, 227, 194,1);
-  outline: none;
   border: 0px;
   border-radius: 21px;
   box-shadow: 2px 4px 10px 0 rgba(0,0,0, 0.3); 
@@ -110,7 +93,6 @@
 
 .register-form-alarm {
   margin: 10px 0;
-  padding: 0;
   width: 100%;
   text-align: right;
   display: flex;
@@ -124,7 +106,6 @@
   letter-spacing: 1px;
   color: rgba(70,70,70 ,1);
   margin: 0 5px;
-  padding: 0;
 }
 
 .register-form-alarm-btn {
@@ -133,5 +114,4 @@
   letter-spacing: 0.1px;
   color: rgba(73, 199, 170,1);
   margin: 0 5px;
-  padding: 0;
 }

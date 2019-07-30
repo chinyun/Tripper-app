@@ -225,7 +225,7 @@ class Home extends Component {
       <div className='home-container'>
         <div className={ this.props.isShowedSideBar === true
           ? 'side-bar-wrapper'
-          : 'side-bar-wrapper side-bar-hidden'
+          : 'side-bar-wrapper hidden'
         }>
           <div className='side-bar'>
             <SideBar

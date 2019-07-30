@@ -17,8 +17,6 @@ body {
 }
 
 header {
-
-  /*position: absolute;*/
   z-index: 10001;
   position: fixed;
   left: 0;

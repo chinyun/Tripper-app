@@ -185,10 +185,15 @@ class SetBudget extends Component {
 								<p>{displayedJourney[0].traffic_budget - displayedJourney[0].traffic_expense}</p>
 							</div>
 						</div>
-            <BudgetCharts
-              data={getData(this.handleDataType('traffic'))}
-              color={this.handleColour('traffic')}
-            />
+            { displayedJourney[0].traffic_budget === '0'
+              ? <div className='initial-budgetchart'>
+                  <p>No Budget yet.</p>
+                </div>
+              : <BudgetCharts
+                  data={getData(this.handleDataType('traffic'))}
+                  color={this.handleColour('traffic')}
+                />
+              }
 					</div>
 					<div className='budget-section'>
 						<div className='budget-control'>
@@ -234,10 +239,15 @@ class SetBudget extends Component {
 								<p>{displayedJourney[0].food_budget - displayedJourney[0].food_expense}</p>
 							</div>
 						</div>
-            <BudgetCharts
-              data={getData(this.handleDataType('food'))}
-              color={this.handleColour('food')}
-            />
+            { displayedJourney[0].food_budget === '0'
+              ? <div className='initial-budgetchart'>
+                  <p>No Budget yet.</p>
+                </div>
+              : <BudgetCharts
+                  data={getData(this.handleDataType('food'))}
+                  color={this.handleColour('food')}
+                />
+            }
 					</div>
 					<div className='budget-section'>
 						<div className='budget-control'>
@@ -283,10 +293,15 @@ class SetBudget extends Component {
 								<p>{displayedJourney[0].living_budget - displayedJourney[0].living_expense}</p>
 							</div>
 						</div>
-            <BudgetCharts
-              data={getData(this.handleDataType('living'))}
-              color={this.handleColour('living')}
-            />
+            { displayedJourney[0].living_budget === '0'
+              ? <div className='initial-budgetchart'>
+                  <p>No Budget yet.</p>
+                </div>
+              : <BudgetCharts
+                  data={getData(this.handleDataType('living'))}
+                  color={this.handleColour('living')}
+                />
+            }
 					</div>
 					<div className='budget-section'>
 						<div className='budget-control'>
@@ -332,10 +347,15 @@ class SetBudget extends Component {
 								<p>{displayedJourney[0].ticket_budget - displayedJourney[0].ticket_expense}</p>
 							</div>
 						</div>
-            <BudgetCharts
-              data={getData(this.handleDataType('ticket'))}
-              color={this.handleColour('ticket')}
-            />
+            { displayedJourney[0].ticket_budget === '0'
+              ? <div className='initial-budgetchart'>
+                  <p>No Budget yet.</p>
+                </div>
+              : <BudgetCharts
+                  data={getData(this.handleDataType('ticket'))}
+                  color={this.handleColour('ticket')}
+                />
+            }
 					</div>
 					<div className='budget-section'>
 						<div className='budget-control'>
@@ -381,10 +401,15 @@ class SetBudget extends Component {
 								<p>{displayedJourney[0].shopping_budget - displayedJourney[0].shopping_expense}</p>
 							</div>
 						</div>
-            <BudgetCharts
-              data={getData(this.handleDataType('shopping'))}
-              color={this.handleColour('shopping')}
-            />
+            { displayedJourney[0].shopping_budget === '0'
+              ? <div className='initial-budgetchart'>
+                  <p>No Budget yet.</p>
+                </div>
+              : <BudgetCharts
+                  data={getData(this.handleDataType('shopping'))}
+                  color={this.handleColour('shopping')}
+                />
+            }   
 					</div>
 				</div>
 			</div>
