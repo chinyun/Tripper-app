@@ -54,7 +54,7 @@ class Journey extends Component {
 	            className='cancel-btn' 
 	            onClick={() => this.handleUpdate('')}
 	          >
-	            <img className='cancel-icon-img' alt='cancel' src={CancelIcon}/>
+	            <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
 	          </button>
 					:	<button
 							onClick={() => this.handleUpdate(journey.id)}

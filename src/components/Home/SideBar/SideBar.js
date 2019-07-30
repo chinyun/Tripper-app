@@ -98,57 +98,55 @@ class SideBar extends Component {
 
 	render( ) {
 		return (
-			<div className='side-bar'>
-				<div className='journeys-list-wrapper'>
-					<ul className='journeys-list'>
-						{this.props.journeyList.map( journey => 
-							<Journey
-								key={journey.id}
-								journey={journey}
-								onJourneyChange={this.props.onJourneyChange}
-								editJourneyName={this.editJourneyName}
-								deleteJourney={this.deleteJourney}
-								onJourneyValueUpdate={this.onJourneyValueUpdate}
-								onEditing={this.onEditing}
-								editingId={this.state.isEditing}
-							/>)}
-					</ul>
-					<div className='add-journey-wrapper'>
-						{ this.state.isAdded === false
-							? <button
-									className='show-add-journey-btn'
-									onClick={() => this.showAddJourney()}
-								>
-									<img className='add-icon-img' alt='add' src={AddIcon}/>
-									<span className='show-add-journey-btn-text'>新增旅程</span>
-								</button>
-							: <div className='add-journey'>
+			<div className='journeys-list-wrapper'>
+				<ul className='journeys-list'>
+					{this.props.journeyList.map( journey => 
+						<Journey
+							key={journey.id}
+							journey={journey}
+							onJourneyChange={this.props.onJourneyChange}
+							editJourneyName={this.editJourneyName}
+							deleteJourney={this.deleteJourney}
+							onJourneyValueUpdate={this.onJourneyValueUpdate}
+							onEditing={this.onEditing}
+							editingId={this.state.isEditing}
+						/>)}
+				</ul>
+				<div className='add-journey-wrapper'>
+					{ this.state.isAdded === false
+						? <button
+								className='show-add-journey-btn'
+								onClick={() => this.showAddJourney()}
+							>
+								<img className='add-icon-img' alt='add' src={AddIcon}/>
+								<span className='show-add-journey-btn-text'>新增旅程</span>
+							</button>
+						: <div className='add-journey'>
+								<input 
+									id='add-journey-input'
+									className='add-journey-input' 
+									type='text' 
+									placeholder='新增行程表'
+									value={this.state.newJourney}
+									onChange={this.onJourneyValueChange}
+								/>
+								<div className='add-journey-btn-group'>
 									<input 
-										id='add-journey-input'
-										className='add-journey-input' 
-										type='text' 
-										placeholder='新增行程表'
-										value={this.state.newJourney}
-										onChange={this.onJourneyValueChange}
+										id='add-journey-submit' 
+										className='add-journey-submit'
+										type='submit' 
+										value='新增'
+										onClick={() => this.createNewJourney()}
 									/>
-									<div className='add-journey-btn-group'>
-										<input 
-											id='add-journey-submit' 
-											className='add-journey-submit'
-											type='submit' 
-											value='新增'
-											onClick={() => this.createNewJourney()}
-										/>
-										<button
-											className='cancel-btn'
-											onClick={() => this.showAddJourney()}
-										>
-											<img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
-										</button>
-									</div>
-								</div>	
-						}
-					</div>
+									<button
+										className='cancel-btn'
+										onClick={() => this.showAddJourney()}
+									>
+										<img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
+									</button>
+								</div>
+							</div>	
+					}
 				</div>
 			</div>
 		)

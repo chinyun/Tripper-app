@@ -8,10 +8,41 @@
   width: 27%;
   height: 100%;
   background-color: #FFF;
+  position: relative;
+  animation: animateleft 0.4s;
+  display: block;
 }
+@keyframes animateleft{from{left:-300px;opacity:0} to{left:0;opacity:1}}
 
 .side-bar-hidden {
   display: none;
+}
+
+.side-bar-control {
+  padding-top: 60px;
+  width: 100%;
+}
+
+.side-bar-control-btn {
+  padding-left: 80%;
+}
+
+.side-bar-control-btn span {
+  font-size: 15px;
+  font-weight: 500;
+  color: #9B9B9B;
+}
+
+.side-bar-control-btn span:hover {
+  color: #177EF5;
+}
+
+.side-bar-control-btn span:active {
+  color: #177EF5;
+}
+
+.side-bar {
+  width: 100%;
 }
 
 .main-section {

@@ -230,6 +230,7 @@ class App extends Component {
                 updateExpense={this.updateExpense}
                 removeExpense={this.removeExpense}
                 isShowedSideBar={this.state.isShowedSideBar}
+                onShowSideBar={this.onShowSideBar}
               />
             </div>
           : <Landing

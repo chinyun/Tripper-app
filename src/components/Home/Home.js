@@ -223,18 +223,20 @@ class Home extends Component {
   render( ) {
     return (
       <div className='home-container'>
-        <div className={ this.props.isShowedSideBar === false
+        <div className={ this.props.isShowedSideBar === true
           ? 'side-bar-wrapper'
-          : 'side-bar-hidden'
+          : 'side-bar-wrapper side-bar-hidden'
         }>
-          <SideBar
-            user={this.props.user}
-            journeyList={this.props.journeyList}
-            onJourneyChange={this.onJourneyChange}
-            handleAddJourney={this.handleAddJourney}
-            updateJourney={this.props.updateJourney}
-            handleRemoveJourney={this.handleRemoveJourney}
-          />
+          <div className='side-bar'>
+            <SideBar
+              user={this.props.user}
+              journeyList={this.props.journeyList}
+              onJourneyChange={this.onJourneyChange}
+              handleAddJourney={this.handleAddJourney}
+              updateJourney={this.props.updateJourney}
+              handleRemoveJourney={this.handleRemoveJourney}
+            />
+          </div>
         </div>
         {/*<div className='footer'>
           <p className='web-info'>2019 Tripper. Created by Chin Yun Chen.</p>
