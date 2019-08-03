@@ -1,5 +1,6 @@
 .register {
   padding: 7% 0 0 20%;
+  background-color: rgba(82, 154, 237,1);
 }
 
 .register-welcome-words {
@@ -24,6 +25,11 @@
 .tripper-white-logo {
   width: 119px;
   margin: 2px 0 0 15px;
+}
+
+.register-form-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .register-form {

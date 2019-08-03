@@ -1,21 +1,12 @@
 .app {
 	height: 125%;
-	padding: 0;
-	margin: 0;
 }
 
 .dashboard {
   height: 100%;
-  padding: 0;
-  margin: 0;
-  background-color: #f9f9f9;
+  background-color: #F9F9F9;
 }
 
 .dashboard button {
   outline: none;
-  cursor: pointer;
-}
-
-.hidden {
-  display: none;
 }

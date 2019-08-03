@@ -80,6 +80,7 @@ class Home extends Component {
       isSelecting: false,
       sidebarHeight: null
     }
+    this.homeRef = React.createRef();
   };
 
   onJourneyChange = (id) => {
@@ -221,19 +222,27 @@ class Home extends Component {
     }
   };
 
-  calcHeight = (node) => {
-    if (node && !this.state.sidebarHeight) {
-      const height = node.offsetHeight - 40;
-      this.setState({
-        sidebarHeight: height
-      });
-    }
+  componentDidMount = () => {
+    this.calcSideBarHeight();
+    window.addEventListener("resize", this.calcSideBarHeight);
+
+  };
+
+  componentWillUnmount = () => {
+    window.addEventListener("resize", this.calcSideBarHeight);
+  };
+
+  calcSideBarHeight = () => {
+    const homeNode = this.homeRef.current;
+    this.setState({
+      sidebarHeight: homeNode.offsetHeight - 40
+    })
   };
 
   render() {
     return (
-      <div className='home-container' ref={(node) => this.calcHeight(node)}>
-        <div 
+      <div className='home-container' ref={this.homeRef}>
+        <div
           className={ this.props.isShowedSideBar === true
             ? 'side-bar-wrapper'
             : 'side-bar-wrapper hidden'
@@ -251,10 +260,6 @@ class Home extends Component {
             />
           </div>
         </div>
-        {/*<div className='footer'>
-          <p className='web-info'>2019 Tripper. Created by Chin Yun Chen.</p>
-        </div>
-      */}
         <div className='main-section'>
           <StaticPannel
             journeyName={this.state.journeyName}
@@ -295,7 +300,7 @@ class Home extends Component {
                         </span>
                       </button>
                       <div className={ this.state.isSelecting === false
-                          ? 'days-selector-hidden'
+                          ? 'hidden'
                           : 'days-selector-wrapper'
                         }>
                         <div className='days-selector'>
@@ -337,8 +342,11 @@ class Home extends Component {
                   handleRemoveExpense={this.handleRemoveExpense}
                 />
               </div>
+              <div className='web-info-wrapper'>
+                <p className='web-info'>2019 Tripper. Created by Chin Yun Chen.</p>
+              </div>
             </div>
-          </div>    
+          </div> 
         </div>
       </div>
     );

@@ -147,7 +147,7 @@ class Accounts extends Component {
 							          </span>
 											</button>
 											<div className={ this.state.isSelecting === false
-													? 'category-selector-hidden'
+													? 'hidden'
 													: 'category-selector-wrapper'
 												}>
 												<div className='category-selector'>

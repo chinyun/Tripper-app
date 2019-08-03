@@ -57,41 +57,46 @@ class SignIn extends Component {
           </div>
           <p>helps balance your Trip budget!</p>
         </div>
-        <div className='signin-form'>
-          <div className='signin-form-row'>
-            <label className='signin-form-row-title' htmlFor='email-address'>Email</label>
-            <input
-              className='signin-form-row-input'
-              type='email'
-              id='email'
-              onChange={this.onEmailChange}
-            />
+        <div className='signin-form-wrapper'>
+          <div className='signin-form'>
+            <div className='signin-form-row'>
+              <label className='signin-form-row-title' htmlFor='email-address'>Email</label>
+              <input
+                className='signin-form-row-input'
+                type='email'
+                id='email'
+                onChange={this.onEmailChange}
+              />
+            </div>
+            <div className='signin-form-row'>
+              <label className='signin-form-row-title' htmlFor='password'>Password</label>
+              <input
+                className='signin-form-row-input'
+                type='password'
+                id='password'
+                onChange={this.onPasswordChange}
+              />
+            </div>
+            <div className='signin-form-submit'>
+              <input 
+                id='signin-input-submit'
+                className='signin-input-submit'
+                type='submit'
+                value='signin'
+                onClick={this.onSubmitSignIn}
+              />
+            </div>
+            <div className='signin-form-alarm'>
+              <p className='signin-form-alarm-words'> Don't have an account? Try</p>
+              <button 
+                className='signin-form-alarm-btn'
+                onClick={() => this.props.switchLandingRoute('register')}
+              > Register
+              </button>
+            </div>
           </div>
-          <div className='signin-form-row'>
-            <label className='signin-form-row-title' htmlFor='password'>Password</label>
-            <input
-              className='signin-form-row-input'
-              type='password'
-              id='password'
-              onChange={this.onPasswordChange}
-            />
-          </div>
-          <div className='signin-form-submit'>
-            <input 
-              id='signin-input-submit'
-              className='signin-input-submit'
-              type='submit'
-              value='signin'
-              onClick={this.onSubmitSignIn}
-            />
-          </div>
-          <div className='signin-form-alarm'>
-            <p className='signin-form-alarm-words'> Don't have an account? Try</p>
-            <button 
-              className='signin-form-alarm-btn'
-              onClick={() => this.props.switchLandingRoute('register')}
-            > Register
-            </button>
+          <div className='web-info-wrapper'>
+            <p className='web-info'>2019 Tripper. Created by Chin Yun Chen.</p>
           </div>
         </div>
       </div>

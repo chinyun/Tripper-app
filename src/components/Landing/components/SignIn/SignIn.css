@@ -1,10 +1,10 @@
 .signin {
   padding: 7% 0 0 20%;
+  background-color: rgba(82, 154, 237,1);
 }
 
 .signin-welcome-words {
   margin: 20px;
-  padding: 0;
 }
 
 .signin-welcome-words p {
@@ -20,13 +20,16 @@
 .words-inline {
   display: flex;
   align-items: center;
-  margin: 0;
-  padding: 0;
 }
 
 .tripper-white-logo {
   width: 119px;
   margin: 2px 0 0 15px;
+}
+
+.signin-form-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .signin-form {
@@ -54,7 +57,6 @@
   letter-spacing: 1.2px;
   display: block;
   margin: 27px 0 7px 0;
-  padding: 0;
 }
 
 .signin-form-row-input {
