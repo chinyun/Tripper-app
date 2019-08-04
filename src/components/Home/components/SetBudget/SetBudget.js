@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import BudgetCharts from './BudgetCharts/BudgetCharts';
 import './SetBudget.css';
-import CancelIcon from '../Icons/cancel-dark-icon.png';
-import UpdateIcon from '../Icons/update-blue-icon.png';
+import CancelIcon from './../../../../icons/cancel-dark-icon.png';
+import UpdateIcon from './../../../../icons/update-blue-icon.png';
 
 const getData = (datas) => {
   const data = [{ 
@@ -163,7 +163,7 @@ class SetBudget extends Component {
                     </div>
                   : <div className='budget-text-wrapper'>
                   		<p className='budget-amount'>{displayedJourney[0].traffic_budget}</p>
-											<button className='control-btn' onClick={()=> this.handleEditing('traffic')}>
+											<button className='update-btn' onClick={()=> this.handleEditing('traffic')}>
 			                  <img className='update-icon-img' alt='update' src={UpdateIcon}/>
 			                </button>
                   	</div>
@@ -217,7 +217,7 @@ class SetBudget extends Component {
                     </div>
                   : <div className='budget-text-wrapper'>
                   		<p className='budget-amount'>{displayedJourney[0].food_budget}</p>
-											<button className='control-btn' onClick={()=> this.handleEditing('food')}>
+											<button className='update-btn' onClick={()=> this.handleEditing('food')}>
 			                  <img className='update-icon-img' alt='update' src={UpdateIcon}/>
 			                </button>
                   	</div>
@@ -271,7 +271,7 @@ class SetBudget extends Component {
                     </div>
                   : <div className='budget-text-wrapper'>
                   		<p className='budget-amount'>{displayedJourney[0].living_budget}</p>
-											<button className='control-btn' onClick={()=> this.handleEditing('living')}>
+											<button className='update-btn' onClick={()=> this.handleEditing('living')}>
 			                  <img className='update-icon-img' alt='update' src={UpdateIcon}/>
 			                </button>
                   	</div>
@@ -325,7 +325,7 @@ class SetBudget extends Component {
                     </div>
                   : <div className='budget-text-wrapper'>
                   		<p className='budget-amount'>{displayedJourney[0].ticket_budget}</p>
-											<button className='control-btn' onClick={()=> this.handleEditing('ticket')}>
+											<button className='update-btn' onClick={()=> this.handleEditing('ticket')}>
 			                  <img className='update-icon-img' alt='update' src={UpdateIcon}/>
 			                </button>
                   	</div>
@@ -379,7 +379,7 @@ class SetBudget extends Component {
                     </div>
                   : <div className='budget-text-wrapper'>
                   		<p className='budget-amount'>{displayedJourney[0].shopping_budget}</p>
-											<button className='control-btn' onClick={()=> this.handleEditing('shopping')}>
+											<button className='update-btn' onClick={()=> this.handleEditing('shopping')}>
 			                  <img className='update-icon-img' alt='update' src={UpdateIcon}/>
 			                </button>
                   	</div>

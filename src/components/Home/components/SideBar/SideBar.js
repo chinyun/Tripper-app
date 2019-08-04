@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Journey from './Journey/Journey';
 import './SideBar.css';
-import AddIcon from '../Icons/add-blue-icon.png'; 
-import CancelIcon from '../Icons/cancel-dark-icon.png';
+import AddIcon from './../../../../icons/add-blue-icon.png'; 
+import CancelIcon from './../../../../icons/cancel-dark-icon.png';
 
 class SideBar extends Component {
 	constructor (props) {
@@ -115,11 +115,11 @@ class SideBar extends Component {
 				<div className='add-journey-wrapper'>
 					{ this.state.isAdded === false
 						? <button
-								className='show-add-journey-btn'
+								className='show-add-btn'
 								onClick={() => this.showAddJourney()}
 							>
 								<img className='add-icon-img' alt='add' src={AddIcon}/>
-								<span className='show-add-journey-btn-text'>新增旅程</span>
+								<span>新增旅程</span>
 							</button>
 						: <div className='add-journey'>
 								<input 
@@ -133,9 +133,9 @@ class SideBar extends Component {
 								<div className='add-journey-btn-group'>
 									<input 
 										id='add-journey-submit' 
-										className='add-journey-submit'
+										className='add-submit-input'
 										type='submit' 
-										value='新增'
+										value='新增旅程'
 										onClick={() => this.createNewJourney()}
 									/>
 									<button

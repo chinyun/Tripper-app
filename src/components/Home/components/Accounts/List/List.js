@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './List.css';
-import SelectIcon from '../../Icons/select-black-icon.png';
-import UpdateIcon from '../../Icons/update-blue-icon.png';
-import CancelIcon from '../../Icons/cancel-dark-icon.png';
-import ConfirmIcon from '../../Icons/confirm-green-icon.png';
+import SelectIcon from './../../../../../icons/select-black-icon.png';
+import UpdateIcon from './../../../../../icons/update-blue-icon.png';
+import CancelIcon from './../../../../../icons/cancel-dark-icon.png';
+import ConfirmIcon from './../../../../../icons/confirm-green-icon.png';
 
 class List extends Component {
 	constructor( props ) {
@@ -124,8 +124,8 @@ class List extends Component {
 					        </div>
 					      </div>
 							</div>
-							<div className='item-update-btn-group'>
-								<div className='item-update-btn'>
+							<div className='item-control-btn-group'>
+								<div className='item-control-btn-wrapper'>
 									<button 
 										onClick={() => this.onEditingChange('')} 
 										className='list-item-control-btn'
@@ -133,7 +133,7 @@ class List extends Component {
 										<img className='cancel-btn-img' alt='cancel-icon'src={CancelIcon}/>	
 									</button>
 								</div>
-								<div className='item-update-btn'>
+								<div className='item-control-btn-wrapper'>
 									<button 
 										onClick={() => this.editExpense(list)}
 										className='list-item-control-btn'

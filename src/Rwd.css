@@ -22,12 +22,12 @@
     padding: 10% 0 0 12%;
   }
 
-  .signin-welcome-words, .register-welcome-words {
+  .landing-welcome-words {
     margin-bottom: 10%;
     width: 80%;
   }
 
-  .signin-form, .register-form {
+  .landing-form {
     margin-top: 5%;
     width: 80%;
   }
@@ -47,7 +47,7 @@
     margin-top: 20px;
   }
 
-  .signin-welcome-words p, .register-welcome-words p {
+  .landing-welcome-words p {
     line-height: 32px;
     font-size: 28px;
     letter-spacing: 0.5px;
@@ -57,20 +57,20 @@
     width: 90px;
   }
 
-  .signin-form, .register-form {
+  .landing-form {
     margin-top: 28px;
     max-width: 380px;
   }
 
-  .signin-form-row-title, .register-form-row-title {
+  .landing-form-row-title {
     margin: 15px 0 7px 0;
   }
 
-  .signin-form-submit, .register-form-submit {
+  .landing-form-submit {
     margin-top: 30px;
   }
 
-  .signin-form-alarm-words, .register-form-alarm-words {
+  .landing-form-alarm-words {
     font-size: 13px;
     letter-spacing: 0.6px;
     margin: 5px;
@@ -85,18 +85,18 @@
     align-items: center;
   }
 
-  .signin-form, .register-form {
+  .landing-form {
     margin-top: 10px;
     padding: 20px;
     width: 280px;
   }
 
-  .signin-form-row-title, .register-form-row-title {
+  .landing-form-row-title {
     font-size: 16px;
     letter-spacing: 0.2px;
   }
 
-  .signin-form-alarm, .register-form-alarm {
+  .landing-form-alarm {
     flex-direction: column;
     align-items: flex-end;
   }
@@ -104,6 +104,10 @@
 
 /*Home & Navigation*/
 @media screen and (max-width: 1650px) {
+  .journey-name {
+    letter-spacing: 0.2px;
+  }
+
   .add-item {
     flex-direction: column;
     align-items: flex-start;
@@ -114,7 +118,7 @@
     align-items: center;
   }
 
-  .add-item-submit {
+  .add-submit-input {
     margin: 0;
   }
 
@@ -129,14 +133,15 @@
 
   .item-amount-input {
     width: 24%;
-  }
-
-  .journey-name {
-    letter-spacing: 0.2px;
-  }
+  }  
 }
 
 @media screen and (min-width: 1261px) and (max-width: 1491px) {
+  .side-bar-wrapper {
+    width: 32%;
+    max-width: 350px;
+  }
+
   .accounts-nav {
     flex-direction: column;
     align-items: flex-start;
@@ -155,10 +160,10 @@
 
 @media screen and (min-width: 679px) and (max-width: 1047px) {
   .nav-text-wrapper {
+    margin: 8px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 8px 0;
   }
 
   .journeys-list-wrapper {
@@ -322,10 +327,9 @@
     letter-spacing: 0.5px;
   }
 
-  .add-journey-submit {
-    font-size: 13px;
-    width: 38%;
-    padding: 5px 0;
+  .add-submit-input {
+    font-size: 12px;
+    padding: 0 10px;
   }
 
   .home-title, .home-subtitle, 

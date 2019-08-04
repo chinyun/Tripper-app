@@ -1,17 +1,22 @@
 import React from 'react';
 import './Navigation.css';
-import SeperateLine from './seperate-line-dark.png';
+import SeperateLine from './../../icons/seperate-line-dark.png';
 
 
-const Navigation = ( {onShowSideBar, onRouteChange, userName} ) => {
+const Navigation = ({ onShowSideBar, isShowed, onRouteChange, userName }) => {
 	return (
 		<nav className='navigation'>
-			<button 
-				onClick={() => {onShowSideBar()}}
-			>Journey</button>
+			<button onClick={() => onShowSideBar()}>
+				{isShowed === false
+					? 'Journey'
+					: 'Close'
+				}
+			</button>
 			<div className='nav-text-wrapper'>
-				<span className='nav-text-logo'> Tripper </span>
-				<span className='nav-text-slogan'> Help balance your trip budget! </span>
+				<span className='nav-text-logo'>Tripper</span>
+				<span className='nav-text-slogan'>
+					Help balance your trip budget!
+				</span>
 			</div>
 			<div className='nav-user'>
 				<span className='nav-user-name'>
@@ -22,9 +27,9 @@ const Navigation = ( {onShowSideBar, onRouteChange, userName} ) => {
           alt='seperate-line'
           src={SeperateLine}
         />
-				<button 
-					onClick={() => {onRouteChange('signout')}}
-				>Logout</button>
+				<button onClick={() => onRouteChange('signout')}>
+					Logout
+				</button>
 			</div>
 		</nav>
 	)

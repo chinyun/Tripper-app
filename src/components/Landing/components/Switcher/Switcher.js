@@ -1,6 +1,6 @@
 import React from 'react';
 import './Switcher.css';
-import SeperateLine from '../seperate-line-white.png';
+import SeperateLine from '../../../../icons/seperate-line-white.png';
 
 const Switcher = ({switchLandingRoute, isRegistered}) => {
     return (

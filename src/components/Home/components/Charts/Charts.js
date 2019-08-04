@@ -34,14 +34,6 @@ class Charts extends Component {
   updateStyleAndAttrs = () => {
     console.log('update!');
     const colour = d3.scaleOrdinal(['#FBC2A2','#7BF7C9','#F9FCBC','#ECA9FF','#E488FC']);
-    
-    // const arcTweenEnter = (d) => {
-    //   var i = d3.interpolate(d.endAngle, d.startAngle);
-    //   return function(t) {
-    //     d.startAngle = i(t);
-    //     return arcPath(d);
-    //   }
-    // };
 
     function arcTweenUpdate(d) {
       var i = d3.interpolate(this._current, d);
@@ -57,9 +49,6 @@ class Charts extends Component {
       .attr('transform', `translate(${cent.x}, ${cent.y})`)
       .attr('class', 'arc')
       .attr('fill', d => colour(d.data.name))
-      // .each(function(d){ this._current = d })
-      // .transition().duration(750)
-      //   .attrTween('d', arcTweenEnter);
 
     d3.select(this.svgEl)
       .selectAll('path')

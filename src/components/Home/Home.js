@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import SideBar from './SideBar/SideBar';
-import StaticPannel from './StaticPannel/StaticPannel';
-import SetBudget from './SetBudget/SetBudget';
-import Accounts from './Accounts/Accounts';
-import Charts from './Charts/Charts';
-import Days from './Days/Days';
+import SideBar from './components/SideBar/SideBar';
+import StaticPannel from './components/StaticPannel/StaticPannel';
+import SetBudget from './components/SetBudget/SetBudget';
+import Accounts from './components/Accounts/Accounts';
+import Charts from './components/Charts/Charts';
+import Days from './components/Days/Days';
 import './Home.css';
-import SelectIcon from './Icons/select-black-icon.png';
-import AddIcon from './Icons/add-blue-icon.png';
+import SelectIcon from '../../icons/select-black-icon.png';
 
 const getData = (datas) => {
   const total = datas[0].expense,
@@ -283,6 +282,14 @@ class Home extends Component {
                   <div className='left-column'>
                     <p className='home-title'>Travel Days</p>
                     <p className='home-subtitle'>{this.state.countDays} Days</p>
+                    <div className='add-day'>
+                      <button
+                        className='add-btn' 
+                        onClick={this.createNewDay}
+                      >
+                        <span>新增</span>
+                      </button>
+                    </div>   
                   </div>
                   <div className='right-column'>
                     <div className='accounts-days'>
@@ -314,22 +321,12 @@ class Home extends Component {
                         </div>
                       </div>
                     </div>
-                    <div className='control-day-group'>
-                      <div className='add-day'>
-                        <button
-                          className='control-btn' 
-                          onClick={this.createNewDay}
-                        >
-                          <span>新增</span>
-                        </button>
-                      </div>               
-                      <div className='delete-day'>
-                        <button className='delete-btn' onClick={() => {
-                          if(window.confirm(`Are you sure you wish to delete ${this.state.displayedDay} ?`))
-                          this.handleRemoveAccount(this.state.displayedAccountId)
-                        }}><span>刪除</span>
-                        </button>
-                      </div>
+                    <div className='delete-day'>
+                      <button className='delete-btn' onClick={() => {
+                        if(window.confirm(`Are you sure you wish to delete ${this.state.displayedDay} ?`))
+                        this.handleRemoveAccount(this.state.displayedAccountId)
+                      }}><span>刪除</span>
+                      </button>
                     </div>
                   </div>
                 </div>

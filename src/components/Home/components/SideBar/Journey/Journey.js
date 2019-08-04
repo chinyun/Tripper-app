@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Journey.css';
-import UpdateIcon from '../../Icons/update-blue-icon.png';
-import CancelIcon from '../../Icons/cancel-dark-icon.png';
+import UpdateIcon from './../../../../../icons/update-blue-icon.png';
+import CancelIcon from './../../../../../icons/cancel-dark-icon.png';
 
 class Journey extends Component {
 	constructor(props) {
@@ -57,18 +57,18 @@ class Journey extends Component {
 	            <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
 	          </button>
 					:	<button
-							onClick={() => this.handleUpdate(journey.id)}
 							className='update-btn'
+							onClick={() => this.handleUpdate(journey.id)}
 						>
 							<img className='update-icon-img' alt='update-icon' src={UpdateIcon}/>
 						</button>
         }
 					<button 
+						className='delete-btn'
 						onClick={() => { 
 							if(window.confirm('Are you sure you wish to delete this Journey?'))
 								this.handleDelete(journey.id) 
 						}}
-						className='delete-btn'
 					><span>刪除</span></button>
 				</div>
 			</li>

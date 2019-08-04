@@ -1,8 +1,6 @@
 .charts-wrapper {
   width: 100%;
   max-width: 600px;
-  padding: 0;
-  margin: 0;
 }
 
 .charts-info {
@@ -16,29 +14,28 @@
 }
 
 .charts-summary span {
-  letter-spacing: 0.5px;
-  font-family: "Ubuntu";
-  margin: 0 5px;
-  color: #3E3E3E;
   font-weight: 400;
-  font-size: 15px;
+  color: #3E3E3E;
+  font-family: "Ubuntu";
+  letter-spacing: 0.5px;
+  margin: 0 5px;
 }
 
 .initial-chart {
-  padding: 15%;
-  background-color: #fff;
+  background-color: #FFF;
   border-radius: 20px;
   box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.08);
+  padding: 15%;
 }
 
 .charts {
-  background-color: #fff;
+  background-color: #FFF;
   border-radius: 20px;
   box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.08);
+  padding: 8px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 8px;
 }
 
 .chart-area {
@@ -46,11 +43,10 @@
 }
 
 .chart-legend {
+  width: 50%;
+  padding: 4% 1.2%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0;
-  padding: 4% 1.2%;
-  width: 50%;
 }
 

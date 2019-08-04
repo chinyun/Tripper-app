@@ -1,9 +1,9 @@
 .accounts {
+	height: auto;
 	margin-bottom: 50px;
 	padding-top: 7%;
-	height: auto;
-	background-color: #f1f1f1;
 	border-radius: 20px;
+	background-color: #F1F1F1;
 	box-shadow: 3px 4px 8px 0px rgba(0,0,0, 0.15);
 }
 
@@ -12,15 +12,14 @@
 }
 
 .accounts-list {
-	margin: 0;
-	padding: 0 7% 2% 7%;
 	max-height: 400px;
+	padding: 0 7% 2% 7%;
 }
 
 .add-item-wrapper {
-	border-radius: 0 0 18px 18px;
-	padding: 2% 7% 3% 7%;
 	margin-top: 2%;
+	padding: 2% 7% 3% 7%;
+	border-radius: 0 0 18px 18px;
 }
 
 .add-item-wrapper-bg {
@@ -32,8 +31,8 @@
 }
 
 .add-item {
-	padding: 3% 0;
 	width: 100%;
+	padding: 3% 0;
 	display: flex;
 	justify-content: center;
 }
@@ -49,12 +48,12 @@
 }
 
 .item-category {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
 	width: 14%;
 	margin-left: 5px;
 	padding: 0 4px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .item-category-btn {
@@ -63,7 +62,6 @@
 }
 
 .item-category-text {
-	font-size: 15px;
 	color: #3E3E3E;
 }
 
@@ -77,39 +75,43 @@
 }
 
 .category-selector-wrapper {
-	position: absolute;
-	z-index: 1000;
-	border: 0px;
-	border-radius: 12px;
-	background-color: #FFF;
-	box-shadow: 3px 5px 8px 0px rgba(0,0,0, 0.2);
 	width: 5.5%;
 	min-width: 60px;
 	max-width: 90px;
+	z-index: 1000;
+	position: absolute;
+	background-color: #FFF;
+	box-shadow: 3px 5px 8px 0px rgba(0,0,0, 0.2);
+	border: 0px;
+	border-radius: 12px;
 }
 
 .category-selector {
+	width: 100%;
+	padding: 10px 0;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	width: 100%;
-	padding: 10px 0;
 }
 
 .category-selector button {
-	color: #3E3E3E;
-	font-size: 15px;
 	font-weight: 400;
-	text-align: center;
+	color: #3E3E3E;
 	letter-spacing: 1px;
-	padding: 1px 10px;
+	text-align: center;
 	width: 100%;
+	padding: 1px 10px;
 	transition: 0s;
 }
 
 .category-selector button:hover {
-	background-color: #177EF5;
 	color: #FFF;
+	background-color: #177EF5;
+}
+
+.category-selector button:active {
+	color: #FFF;
+	background-color: #177EF5;
 }
 
 .item-detail-input {
@@ -125,8 +127,6 @@
 }
 
 .add-item-content input {
-	font-weight: 500;
-	font-size: 15px;
 	color: rgba(62,62,62, 0.9);
 	margin: 0 4px;
 	padding: 6px;
@@ -143,28 +143,12 @@
 
 .add-item-content input:focus {
 	background-color: rgba(0, 0, 0,0.02);
-	border: 1px solid  #3b93f7;
+	border: 1px solid  #3B93F7;
 }
 
 .item-btn-group {
 	margin-left: 8px;
 	display: flex;
+	align-items: center;
 	justify-content: center;
-}
-
-.add-item-submit {
-	font-weight: 500;
-	font-size: 13px;
-	letter-spacing: 0.8px;
-	height: 36px;
-	color: #FFF;
-	background-color: #2D8AF5;
-	margin: 6px 0;
-	padding: 0 13px;
-	border-radius: 8px;
-	cursor: pointer;
-}
-
-.add-item-submit:hover {
-	background-color: #2E8AF4;
 }

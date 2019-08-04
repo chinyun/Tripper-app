@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './StaticPannel.css';
-import UpdateIcon from '../Icons/update-blue-icon.png';
-import CancelIcon from '../Icons/cancel-dark-icon.png';
+import UpdateIcon from './../../../../icons/update-blue-icon.png';
+import CancelIcon from './../../../../icons/cancel-dark-icon.png';
 
 class StaticPannel extends Component {
   constructor(props) {
@@ -84,7 +84,7 @@ class StaticPannel extends Component {
                       {displayedJourney[0].budget}
                     </span>
                     <button 
-                      className='control-btn' 
+                      className='update-btn'
                       onClick={()=> this.handleEditing('budget')}
                     >
                       <img className='update-icon-img' alt='update' src={UpdateIcon}/>

@@ -3,7 +3,7 @@ import Landing from './components/Landing/Landing';
 import Navigation from './components/Navigation/Navigation';
 import Home from './components/Home/Home';
 import './App.css';
-import './Rwd.css';
+import './rwd.css';
 // import logo from './logo.svg';
 
 const initialState = {
@@ -203,13 +203,14 @@ class App extends Component {
   };
 
   render () {
-    const { user, journeys, journeyList } = this.state;
+    const { user, journeys, journeyList, isShowedSideBar } = this.state;
     return (
       <div className='app'> 
         { this.state.isSignedIn === true
           ? <div className='dashboard'>
               <header>
                 <Navigation
+                  isShowed={isShowedSideBar}
                   onShowSideBar={this.onShowSideBar}
                   onRouteChange={this.onRouteChange}
                   userName={user.name}

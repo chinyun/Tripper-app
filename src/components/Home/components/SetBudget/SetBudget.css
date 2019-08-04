@@ -1,7 +1,7 @@
 .budget-wrapper {
-	margin-right: 50px;
 	width: 40%;
-	max-width: 400px
+  max-width: 400px;
+  margin-right: 50px;
 }
 
 .budget-info {
@@ -15,12 +15,11 @@
 }
 
 .budget-summary span {
-  letter-spacing: 0.5px;
-  font-family: "Ubuntu";
-  margin: 0 5px;
-  color: #3E3E3E;
   font-weight: 400;
-  font-size: 15px;
+  font-family: "Ubuntu";
+  letter-spacing: 0.5px;
+  color: #3E3E3E;
+  margin: 0 5px;
 }
 
 .budget {
@@ -28,11 +27,11 @@
 }
 
 .budget-section {
-	padding: 25px 30px;
-	margin-bottom: 10px;
 	width: 100%;
-	background-color: #fff;
+  margin-bottom: 10px;
+  padding: 25px 30px;
 	border-radius: 20px;
+	background-color: #FFF;
 	box-shadow: 3px 5px 10px 0px rgba(0,0,0, 0.1);
 	display: flex;
 	justify-content: space-between;
@@ -40,16 +39,16 @@
 }
 
 .budget-control {
-	margin: 0 15px;
 	font-family: "Ubuntu";
+  margin: 0 15px;
 }
 
 .budget-content {
-	display: flex;
+	height: 27px;
+  margin-bottom: 12px;
+  display: flex;
 	align-items: center;
 	justify-content: space-between;
-	height: 27px;
-	margin-bottom: 12px;
 }
 
 .budget-content p {
@@ -59,15 +58,15 @@
 }
 
 .budget-topic {
-	color: #2d2d2d;
+	color: #2D2D2D;
 	margin-right: 40px;
 }
 
 .budget-update-wrapper {
 	width: 90px;
+  margin-left: 10px;
 	display: flex;
 	justify-content: flex-end;
-	margin-left: 10px;
 }
 
 .budget-update {
@@ -75,31 +74,35 @@
 	justify-content: flex-end;
 }
 
+.budget-update .cancel-btn {
+  margin: 12px 3px;
+}
+
 .budget-input {
-	font-weight: 500;
 	font-size: 16px;
+  font-weight: 500;
 	letter-spacing: 0.2px;
-	color: rgba(62, 62, 62, 0.9);
-	margin: 9px 0;
-	padding: 3px 0 3px 7px;
+	color: rgba(62,62,62, 0.6);
 	width: 80px;
-	height: 22px;
-	background-color: #f0f0f0;
-	border: 1px solid #f0f0f0;
+  height: 22px;
+  margin: 9px 0;
+	padding: 3px 0 3px 7px;
+	border: 1px solid #F0F0F0;
 	border-radius: 5px;
+  background-color: #F0F0F0;
 }
 
 .budget-input::placeholder {
-	font-weight: 300;
 	font-size: 17px;
+  font-weight: 300;
 	letter-spacing: 0.5px;
-	color: rgba(62, 62, 62, 0.9);
+	color: rgba(62,62,62, 0.6);
 	text-align: right;
 }
 
 .budget-input:focus {
-	background-color: rgba(0, 0, 0,0.02);
 	border: 1px solid #177EF5;
+  background-color: rgba(0, 0, 0,0.02);
 }
 
 .budget-text-wrapper {
@@ -109,15 +112,15 @@
 }
 
 .budget-amount {
-	color: #177ef5;
+	color: #177EF5;
 	margin-right: 2px;
 }
 
 .budget-detail {
-	display: flex;
+	margin-bottom: 2px;
+  display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 2px;
 }
 
 .budget-detail p {
@@ -127,11 +130,11 @@
 }
 
 .initial-budgetchart {
-	margin-right: 15px;
-  width: 60px;
-  padding: 20px;
-  font-size: 0.8em;
+	font-size: 0.8em;
   background-color: #fff;
-  border-radius: 16px;
   box-shadow: 3px 5px 6px 0px rgba(0,0,0, 0.08);
+  border-radius: 16px;
+  width: 60px;
+  margin-right: 15px;
+  padding: 20px;
 }

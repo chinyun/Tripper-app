@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import './SignIn.css';
-import Logo from '../tripper-white-logo.png'
+import Logo from './../../../../icons/tripper-white-logo.png'
 
 class SignIn extends Component {
   constructor (props) {
@@ -45,7 +44,7 @@ class SignIn extends Component {
   render() {
     return (
       <div className='signin'>
-        <div className='signin-welcome-words'>
+        <div className='landing-welcome-words'>
           <p>Welcome back!</p>
           <div className='words-inline'>
             <p>Let</p>
@@ -57,39 +56,39 @@ class SignIn extends Component {
           </div>
           <p>helps balance your Trip budget!</p>
         </div>
-        <div className='signin-form-wrapper'>
-          <div className='signin-form'>
-            <div className='signin-form-row'>
-              <label className='signin-form-row-title' htmlFor='email-address'>Email</label>
+        <div className='landing-form-wrapper'>
+          <div className='landing-form'>
+            <div className='landing-form-row'>
+              <label className='landing-form-row-title' htmlFor='email-address'>Email</label>
               <input
-                className='signin-form-row-input'
+                className='landing-form-row-input'
                 type='email'
                 id='email'
                 onChange={this.onEmailChange}
               />
             </div>
-            <div className='signin-form-row'>
-              <label className='signin-form-row-title' htmlFor='password'>Password</label>
+            <div className='landing-form-row'>
+              <label className='landing-form-row-title' htmlFor='password'>Password</label>
               <input
-                className='signin-form-row-input'
+                className='landing-form-row-input'
                 type='password'
                 id='password'
                 onChange={this.onPasswordChange}
               />
             </div>
-            <div className='signin-form-submit'>
+            <div className='landing-form-submit'>
               <input 
                 id='signin-input-submit'
-                className='signin-input-submit'
+                className='landing-input-submit'
                 type='submit'
                 value='signin'
                 onClick={this.onSubmitSignIn}
               />
             </div>
-            <div className='signin-form-alarm'>
-              <p className='signin-form-alarm-words'> Don't have an account? Try</p>
+            <div className='landing-form-alarm'>
+              <p className='landing-form-alarm-words'> Don't have an account? Try</p>
               <button 
-                className='signin-form-alarm-btn'
+                className='landing-form-alarm-btn'
                 onClick={() => this.props.switchLandingRoute('register')}
               > Register
               </button>

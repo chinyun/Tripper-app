@@ -24,22 +24,20 @@
 }
 
 .list-item-update {
+	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
-	width: 100%;
 }
 
 .list-item-update input {
 	font-weight: 400;
-	font-size: 15px;
 	color: rgba(62,62,62, 0.9);
-	margin-left: 4px;
-	padding: 5px;
 	background-color: #F2F2F2;
-	outline: none;
 	border: 1px solid rgba(0, 0, 0, 0);
 	border-radius: 6px;
+	margin-left: 4px;
+	padding: 5px;
 }
 
 .list-item-update input::placeholder {
@@ -48,7 +46,7 @@
 
 .list-item-update input:focus {
 	background-color: rgba(0, 0, 0, 0.02);
-	border: 1px solid #3b93f7;
+	border: 1px solid #3B93F7;
 }
 
 .item-detail-update-input {
@@ -65,21 +63,20 @@
 	flex-direction: flex-end;
 }
 
-.item-update-btn-group {
+.item-control-btn-group {
 	margin-left: 6px;
 	display: flex;
 }
 
-.item-update-btn {
-	margin-left: 2px;
+.item-control-btn-wrapper {
+	margin-left: 10px;
 	padding: 15px 0;
 	display: flex;
 }
 
 .list-item-control-btn {
-  padding: 5px 2px;
-  background: none;
-  border-radius: 8px;
+  border-radius: 16px;
+  padding: 5px 6px;
   display: flex;
   transition: 0s;
 }
@@ -88,28 +85,20 @@
   background-color: #DDD;
 }
 
-.cancel-btn-img {
+.item-control-btn-group .cancel-btn-img {
 	width: 10px;
-	margin: 0 2px;
 }
 
 .confirm-btn-img {
 	width: 13px;
-	margin: 0 3px;
 }
 
 .list-item-group {
+	width: 90%;
+	padding: 4px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 4px;
-	margin: 0;
-	width: 90%;
-}
-
-.list-item-group span {
-	font-weight: 500;
-	font-size: 15px;
 }
 
 .list-item-category {
@@ -120,8 +109,8 @@
 
 .list-item-detail {
 	color: rgba(113, 113, 113, 1);
-	margin-left: 20px;
 	width: 75%;
+	margin-left: 20px;
 }
 
 .list-item-amount {

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import './Accounts.css';
 import Scroll from './Scroll/Scroll';
 import List from './List/List';
-
-import SelectIcon from '../Icons/select-black-icon.png';
-import AddIcon from '../Icons/add-blue-icon.png'; 
-import CancelIcon from '../Icons/cancel-dark-icon.png';
+import './Accounts.css';
+import SelectIcon from './../../../../icons/select-black-icon.png';
+import AddIcon from './../../../../icons/add-blue-icon.png'; 
+import CancelIcon from './../../../../icons/cancel-dark-icon.png';
 
 class Accounts extends Component {
 	constructor (props) {
@@ -129,9 +128,9 @@ class Accounts extends Component {
 					<div className={this.state.isAdded === false ? 'add-item-wrapper': 'add-item-wrapper add-item-wrapper-bg'}>
 						{ this.state.isAdded === false
 							? <div className='add-item-btn-wrapper'>
-									<button className='control-btn' onClick={() => this.onAddingExpense()}>
+									<button className='show-add-btn' onClick={() => this.onAddingExpense()}>
 										<img className='add-icon-img' alt='add' src={AddIcon}/>
-										<span>新增支出項目</span>
+										<span className='show-add-btn-text'>新增支出項目</span>
 									</button>
 								</div>
 							: <div className='add-item'>
@@ -179,7 +178,7 @@ class Accounts extends Component {
 									<div className='item-btn-group'>
 										<input 
 											id='add-item-submit' 
-											className='add-item-submit'
+											className='add-submit-input'
 											type='submit' 
 											value='新增支出'
 											onClick={() => this.createNewExpense()}
