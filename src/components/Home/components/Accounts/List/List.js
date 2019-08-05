@@ -156,7 +156,7 @@ class List extends Component {
 								</span>
 							</div>
 							<button 
-								className='control-btn' 
+								className='update-btn' 
 								onClick={() => this.onEditingChange(list)}
 							>
                 <img className='update-icon-img' alt='update' src={UpdateIcon}/>

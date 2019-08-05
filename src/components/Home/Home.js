@@ -91,6 +91,7 @@ class Home extends Component {
       expenseList: target[0].accountList[0].expenseList,
       journeyName: target[0].name,
       displayedAccountId: target[0].accountList[0].id,
+      displayedDay: target[0].accountList[0].name,
       countDays: target[0].accountList.length,
       data: getData(target)
     });
@@ -107,7 +108,11 @@ class Home extends Component {
   };
 
   handleAddJourney = (newJourney)=> {
+    const { addJourney, journeys } = this.props;
     this.props.addJourney(newJourney);
+    this.setState({
+      displayedDay: journeys[journeys.length-1].accountList[0].name,
+    })
   };
 
   handleBudgetsChange = (journey, journeyId) => {
@@ -228,7 +233,7 @@ class Home extends Component {
   };
 
   componentWillUnmount = () => {
-    window.addEventListener("resize", this.calcSideBarHeight);
+    window.removeEventListener("resize", this.calcSideBarHeight);
   };
 
   calcSideBarHeight = () => {

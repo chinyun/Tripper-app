@@ -126,8 +126,6 @@ class SetBudget extends Component {
 	}
 
 	render() {
-		const { traffic_budget, food_budget, living_budget,
-			ticket_budget, shopping_budget} = this.state;
 		const { displayedJourney } = this.props;
 		return (
 			<div className='budget-wrapper'>
@@ -139,7 +137,6 @@ class SetBudget extends Component {
             <span>(100%)</span>
           </p>
         </div>
-				
 				<div className='budget'>
 					<div className='budget-section'>
 						<div className='budget-control'>
@@ -152,8 +149,7 @@ class SetBudget extends Component {
                         id='traffic-budget-input'
                         className='budget-input' 
                         type='text' 
-                        placeholder={traffic_budget}
-                        value={traffic_budget}
+                        placeholder={displayedJourney[0].traffic_budget}
                         onChange={this.onTrafficBudgetChange}
                         onKeyDown={this.handleEnter}
                       />
@@ -206,8 +202,8 @@ class SetBudget extends Component {
                         id='food-budget-input'
                         className='budget-input' 
                         type='text' 
-                        placeholder={food_budget}
-                        value={food_budget}
+                        placeholder={displayedJourney[0].food_budget}
+                        
                         onChange={this.onFoodBudgetChange}
                         onKeyDown={this.handleEnter}
                       />
@@ -260,8 +256,7 @@ class SetBudget extends Component {
                         id='living-budget-input'
                         className='budget-input' 
                         type='text' 
-                        placeholder={living_budget}
-                        value={living_budget}
+                        placeholder={displayedJourney[0].living_budget}
                         onChange={this.onLivingBudgetChange}
                         onKeyDown={this.handleEnter}
                       />
@@ -314,8 +309,7 @@ class SetBudget extends Component {
                         id='ticket-budget-input'
                         className='budget-input' 
                         type='text' 
-                        placeholder={ticket_budget}
-                        value={ticket_budget}
+                        placeholder={displayedJourney[0].ticket_budget}
                         onChange={this.onTicketBudgetChange}
                         onKeyDown={this.handleEnter}
                       />
@@ -368,8 +362,8 @@ class SetBudget extends Component {
                         id='shopping-budget-input'
                         className='budget-input' 
                         type='text' 
-                        placeholder={shopping_budget}
-                        value={shopping_budget}
+                        placeholder={displayedJourney[0].shopping_budget}
+                        
                         onChange={this.onShoppingBudgetChange}
                         onKeyDown={this.handleEnter}
                       />

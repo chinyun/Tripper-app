@@ -32,7 +32,6 @@ class Charts extends Component {
   };
 
   updateStyleAndAttrs = () => {
-    console.log('update!');
     const colour = d3.scaleOrdinal(['#FBC2A2','#7BF7C9','#F9FCBC','#ECA9FF','#E488FC']);
 
     function arcTweenUpdate(d) {
