@@ -57,7 +57,7 @@
   background-color: #196FD0;
 }
 
-/*in SideBar & StaticPannel & SetBudgets*/
+/*in SideBar & StaticPannel & SetBudget*/
 .cancel-btn {
   width: 25px;
   height: 25px;
@@ -115,7 +115,6 @@
   background-color: #FFF;
   position: relative;
   top: 40px;
-  display: block;
   animation: animateleft 0.4s;
 }
 

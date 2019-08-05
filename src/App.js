@@ -73,6 +73,7 @@ class App extends Component {
   };
 
   onShowSideBar = () => {
+    console.log('showed');
     if(this.state.isShowedSideBar === false) {
       this.setState({ isShowedSideBar: true })
     } else {
@@ -212,8 +213,8 @@ class App extends Component {
                 <Navigation
                   isShowed={isShowedSideBar}
                   onShowSideBar={this.onShowSideBar}
-                  onRouteChange={this.onRouteChange}
                   userName={user.name}
+                  onRouteChange={this.onRouteChange}
                 />
               </header>
               <Home
@@ -230,8 +231,7 @@ class App extends Component {
                 addExpense={this.addExpense}
                 updateExpense={this.updateExpense}
                 removeExpense={this.removeExpense}
-                isShowedSideBar={this.state.isShowedSideBar}
-                onShowSideBar={this.onShowSideBar}
+                isShowed={isShowedSideBar}
               />
             </div>
           : <Landing
