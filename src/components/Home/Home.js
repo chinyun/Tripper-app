@@ -228,12 +228,21 @@ class Home extends Component {
 
   componentDidMount = () => {
     this.calcSideBarHeight();
-    window.addEventListener("resize", this.calcSideBarHeight);
-
+    window.addEventListener('resize', this.calcSideBarHeight);
+    document.addEventListener('click', this.handleClickHidden);
   };
 
   componentWillUnmount = () => {
     window.removeEventListener("resize", this.calcSideBarHeight);
+    document.removeEventListener('click', this.handleClickHidden);
+  };
+
+  handleClickHidden = (event) => {
+    if(event.target.id !== 'days-selector-btn') {
+      this.setState({
+        isSelecting: false
+      });
+    }
   };
 
   calcSideBarHeight = () => {
@@ -247,9 +256,9 @@ class Home extends Component {
     return (
       <div className='home-container' ref={this.homeRef}>
         <div
-          className={ this.props.isShowedSideBar === true
+          className={ this.props.isShowed === true
             ? 'side-bar-wrapper'
-            : 'side-bar-wrapper hidden'
+            : 'hidden'
           }
           style={{height: this.state.sidebarHeight}}
         >
@@ -299,6 +308,7 @@ class Home extends Component {
                   <div className='right-column'>
                     <div className='accounts-days'>
                       <button
+                        id='days-selector-btn'
                         className='days-selector-btn'
                         onClick={() => this.onSelecting()}
                       >

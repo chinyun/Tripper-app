@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Scroll from './Scroll/Scroll';
 import List from './List/List';
+import Category from './Category/Category.js';
 import './Accounts.css';
-import SelectIcon from './../../../../icons/select-black-icon.png';
 import AddIcon from './../../../../icons/add-blue-icon.png'; 
 import CancelIcon from './../../../../icons/cancel-dark-icon.png';
 
@@ -41,6 +41,22 @@ class Accounts extends Component {
     });
   };
 
+  componentDidMount = () => {
+    document.addEventListener('click', this.handleClickHidden);
+  };
+
+  componentWillUnmount = () => {
+    document.removeEventListener('click', this.handleClickHidden);
+  };
+
+  handleClickHidden = (event) => {
+    if(event.target.id !== 'item-category-btn') {
+      this.setState({
+        isSelecting: false
+      });
+    }
+  };
+
 	onDetailValueChange = (event) => {
 		this.setState({ detail: event.target.value })
 	};
@@ -61,7 +77,6 @@ class Accounts extends Component {
 			amount: ''
 		})
 	};
-
 
 	createNewExpense = () => {
 		const { displayedAccountId } = this.props;
@@ -125,39 +140,28 @@ class Accounts extends Component {
 		          )}
 		        </ul>
 		      </Scroll>
-					<div className={this.state.isAdded === false ? 'add-item-wrapper': 'add-item-wrapper add-item-wrapper-bg'}>
+					<div className={this.state.isAdded === false 
+						? 'add-item-wrapper'
+						: 'add-item-wrapper add-item-wrapper-bg'}
+					>
 						{ this.state.isAdded === false
 							? <div className='add-item-btn-wrapper'>
-									<button className='show-add-btn' onClick={() => this.onAddingExpense()}>
+									<button 
+										className='show-add-btn'
+										onClick={() => this.onAddingExpense()}
+									>
 										<img className='add-icon-img' alt='add' src={AddIcon}/>
 										<span className='show-add-btn-text'>新增支出項目</span>
 									</button>
 								</div>
 							: <div className='add-item'>
 									<div className='add-item-content'>
-										<div className='item-category'>
-											<button 
-												className='item-category-btn'
-												onClick={() => this.onSelecting()}
-											>
-												<span className='item-category-text'>{this.state.category}</span>
-												<span className='item-category-btn-icon'>
-							            <img className='category-selector-icon-img'	alt='select-icon' src={SelectIcon}/>
-							          </span>
-											</button>
-											<div className={ this.state.isSelecting === false
-													? 'hidden'
-													: 'category-selector-wrapper'
-												}>
-												<div className='category-selector'>
-													<button onClick={() => {this.onCategoryChange('交通')}}>交通</button>
-													<button onClick={() => {this.onCategoryChange('住宿')}}>住宿</button>
-													<button onClick={() => {this.onCategoryChange('飲食')}}>飲食</button>
-													<button onClick={() => {this.onCategoryChange('票券')}}>票券</button>
-													<button onClick={() => {this.onCategoryChange('購物')}}>購物</button>
-												</div>
-											</div>
-										</div>
+										<Category
+											category={this.state.category}
+											isSelecting={this.state.isSelecting}
+											onSelecting={this.onSelecting}
+											onCategoryChange={this.onCategoryChange}
+										/>
 										<input 
 											id='item-detail-input'
 											className='item-detail-input' 
@@ -183,8 +187,11 @@ class Accounts extends Component {
 											value='新增支出'
 											onClick={() => this.createNewExpense()}
 										/>
-										<button className='cancel-btn' onClick={() => this.onAddingExpense()}>
-											<img className='cancel-btn-img' alt='cancel' src={CancelIcon} />
+										<button 
+											className='cancel-btn'
+											onClick={() => this.onAddingExpense()}
+										>
+											<img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
 										</button>
 									</div>
 								</div>

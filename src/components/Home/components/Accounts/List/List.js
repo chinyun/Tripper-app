@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import Category from '../Category/Category.js';
 import './List.css';
-import SelectIcon from './../../../../../icons/select-black-icon.png';
 import UpdateIcon from './../../../../../icons/update-blue-icon.png';
 import CancelIcon from './../../../../../icons/cancel-dark-icon.png';
 import ConfirmIcon from './../../../../../icons/confirm-green-icon.png';
@@ -34,6 +34,22 @@ class List extends Component {
     	category: category,
     	isSelecting: false
     });
+  };
+
+  componentDidMount = () => {
+    document.addEventListener('click', this.handleClickHidden);
+  };
+
+  componentWillUnmount = () => {
+    document.removeEventListener('click', this.handleClickHidden);
+  };
+
+  handleClickHidden = (event) => {
+    if(event.target.id !== 'item-category-btn') {
+      this.setState({
+        isSelecting: false
+      });
+    }
   };
 
   onDetailValueChange = (event) => {
@@ -75,29 +91,12 @@ class List extends Component {
 					? <div className='accounts-list-item-update'>
 							<div className='accounts-list-item'> 
 								<div className='list-item-update'>
-									<div className='item-category'>
-										<button 
-											className='item-category-btn'
-											onClick={() => {this.onSelecting()}}
-										>
-											<span className='item-category-text'>{this.state.category}</span>
-											<span className='item-category-btn-icon'>
-						            <img className='category-selector-icon-img'	alt='select-icon' src={SelectIcon}/>
-						          </span>
-										</button>
-										<div className={ this.state.isSelecting === false
-												? 'hidden'
-												: 'category-selector-wrapper'
-											}>
-											<div className='category-selector'>
-												<button onClick={() => this.onCategoryChange('交通')}>交通</button>
-												<button onClick={() => this.onCategoryChange('住宿')}>住宿</button>
-												<button onClick={() => this.onCategoryChange('飲食')}>飲食</button>
-												<button onClick={() => this.onCategoryChange('票券')}>票券</button>
-												<button onClick={() => this.onCategoryChange('購物')}>購物</button>
-											</div>
-										</div>
-									</div>
+									<Category
+										category={this.state.category}
+										isSelecting={this.state.isSelecting}
+										onSelecting={this.onSelecting}
+										onCategoryChange={this.onCategoryChange}
+									/>
 					        <input 
 					          id='item-detail-update-input'
 					          className='item-detail-update-input' 
