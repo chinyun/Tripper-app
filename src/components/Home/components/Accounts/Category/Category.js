@@ -1,4 +1,5 @@
 import React from 'react';
+import './Category.css';
 import SelectIcon from './../../../../../icons/select-black-icon.png';
 
 const Category = ({onSelecting, category, isSelecting, onCategoryChange}) => {
