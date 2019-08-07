@@ -46,10 +46,8 @@ class List extends Component {
 
   handleClickHidden = (event) => {
     if(event.target.id !== 'item-category-btn') {
-      this.setState({
-        isSelecting: false
-      });
-    }
+      this.setState({ isSelecting: false })
+    };
   };
 
   onDetailValueChange = (event) => {
@@ -87,7 +85,7 @@ class List extends Component {
 		const { list } = this.props;
 		return (
 			<li id={list.id} className='accounts-list-item-wrapper'>
-				{ this.props.EditingListId === list.id
+				{ this.props.isEditing === list.id
 					? <div className='accounts-list-item-update'>
 							<div className='accounts-list-item'> 
 								<div className='list-item-update'>
@@ -115,6 +113,7 @@ class List extends Component {
 					        />
 					        <div className='delete-item'>
 					        	<button
+					        		id='item-delete-btn'
 						        	className='delete-btn'
 						        	onClick={() => this.handleDeleteExpense(list)}
 						        >
@@ -125,17 +124,19 @@ class List extends Component {
 							</div>
 							<div className='item-control-btn-group'>
 								<div className='item-control-btn-wrapper'>
-									<button 
-										onClick={() => this.onEditingChange('')} 
+									<button
+										id='item-edit-cancel-btn'
 										className='list-item-control-btn'
+										onClick={() => this.onEditingChange('')} 
 									>
 										<img className='cancel-btn-img' alt='cancel-icon'src={CancelIcon}/>	
 									</button>
 								</div>
 								<div className='item-control-btn-wrapper'>
-									<button 
-										onClick={() => this.editExpense(list)}
+									<button
+										id='item-edit-confirm-btn'
 										className='list-item-control-btn'
+										onClick={() => this.editExpense(list)}
 									>
 										<img className='confirm-btn-img' alt='confirm-icon' src={ConfirmIcon}/>
 									</button>
@@ -154,7 +155,8 @@ class List extends Component {
 									{list.amount}
 								</span>
 							</div>
-							<button 
+							<button
+								id='item-update-btn'
 								className='update-btn' 
 								onClick={() => this.onEditingChange(list)}
 							>

@@ -32,7 +32,7 @@ class Journey extends Component {
 		const { journey, onJourneyChange } = this.props;
 		return(
 			<li className='journey' id={journey.id}>
-				{this.props.editingId === journey.id
+				{this.props.isEditing === journey.id
 					? <input
 							id='update-journey-input'
 							className='update-journey-input' 
@@ -49,7 +49,7 @@ class Journey extends Component {
 						</button>
 				}
 				<div className='journey-btn-group'>
-				{	this.props.editingId === journey.id
+				{	this.props.isEditing === journey.id
 					?	<button
 	            className='cancel-btn' 
 	            onClick={() => this.handleUpdate('')}

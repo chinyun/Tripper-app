@@ -270,6 +270,10 @@ class Home extends Component {
               handleAddJourney={this.handleAddJourney}
               updateJourney={this.props.updateJourney}
               handleRemoveJourney={this.handleRemoveJourney}
+              isActived={this.props.isActived}
+              toggleActive={this.props.toggleActive}
+              isEditing={this.props.isEditing}
+              onEditing={this.props.onEditing}
             />
           </div>
         </div>
@@ -352,6 +356,10 @@ class Home extends Component {
                   handleAddExpense={this.handleAddExpense}
                   handleUpdateExpense={this.handleUpdateExpense}
                   handleRemoveExpense={this.handleRemoveExpense}
+                  isActived={this.props.isActived}
+                  toggleActive={this.props.toggleActive}
+                  isEditing={this.props.isEditing}
+                  onEditing={this.props.onEditing}
                 />
               </div>
               <div className='web-info-wrapper'>

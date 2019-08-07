@@ -16,7 +16,9 @@ const initialState = {
   journeyList:[],
   route: 'landing',
   isSignedIn: false,
-  isShowedSideBar: true
+  isShowedSideBar: true,
+  isActived: '',
+  isEdding: ''
 }
 
 class App extends Component {
@@ -76,17 +78,46 @@ class App extends Component {
         },
         journeys: [],
         journeyList:[],
+        route: 'landing',
         isSignedIn: false,
-        isShowedSideBar: true
+        isShowedSideBar: true,
+        isActived: '',
+        isEdding: ''
       });
     }
   };
 
   onShowSideBar = () => {
     if(this.state.isShowedSideBar === false) {
-      this.setState({ isShowedSideBar: true })
+      this.setState({ 
+        isShowedSideBar: true,
+        isEditing: '',
+        isActived: ''
+      })
     } else {
-      this.setState({ isShowedSideBar: false })
+      this.setState({ 
+        isShowedSideBar: false,
+        isEditing: '',
+        isActived: ''
+      })
+    }
+  };
+
+  onEditing = (id) => {
+    this.setState({ 
+      isEditing: id,
+      isActived: '' 
+    })
+  };
+
+  toggleActive = (route) => {
+    if(this.state.isActived === '') {
+      this.setState({ 
+        isActived: route,
+        isEditing: ''
+      })
+    } else {
+      this.setState({ isActived: '' })
     }
   };
 
@@ -241,6 +272,10 @@ class App extends Component {
                 updateExpense={this.updateExpense}
                 removeExpense={this.removeExpense}
                 isShowed={isShowedSideBar}
+                isActived={this.state.isActived}
+                toggleActive={this.toggleActive}
+                isEditing={this.state.isEditing}
+                onEditing={this.onEditing}
               />
             </div>
           : <Landing

@@ -21,6 +21,7 @@
 
 /*in SideBar & Accounts*/
 .show-add-btn {
+  letter-spacing: 0.2px;
   color: #9B9B9B;
   border-radius: 8px;
   display: flex;
@@ -34,10 +35,6 @@
 
 .show-add-btn:active {
   color: #177EF5;
-}
-
-.show-add-btn span {
-  letter-spacing: 0.2px;
 }
 
 .add-submit-input {

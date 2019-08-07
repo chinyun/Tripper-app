@@ -8,33 +8,13 @@ class SideBar extends Component {
 	constructor (props) {
 		super(props);
 		this.state = {
-			isAdded: false,
 			newJourney:'',
-			isEditing: '',
 			updateValue: ''
 		};
 	};
 
-	showAddJourney = () => {
-		if(this.state.isAdded === false) {
-			this.setState({ 
-				isAdded: true,
-				isEditing: ''
-			})
-		} else {
-			this.setState({ isAdded: false })
-		}
-	};
-
 	onJourneyValueChange = ( event ) => {	
 		this.setState({ newJourney: event.target.value });
-	};
-
-	onEditing = (id) => {
-		this.setState({ 
-			isEditing: id,
-			isAdded: false
-		})
 	};
 
 	onJourneyValueUpdate = ( updateValue ) => {
@@ -108,20 +88,13 @@ class SideBar extends Component {
 							editJourneyName={this.editJourneyName}
 							deleteJourney={this.deleteJourney}
 							onJourneyValueUpdate={this.onJourneyValueUpdate}
-							onEditing={this.onEditing}
-							editingId={this.state.isEditing}
+							onEditing={this.props.onEditing}
+							isEditing={this.props.isEditing}
 						/>)}
 				</ul>
 				<div className='add-journey-wrapper'>
-					{ this.state.isAdded === false
-						? <button
-								className='show-add-btn'
-								onClick={() => this.showAddJourney()}
-							>
-								<img className='add-icon-img' alt='add' src={AddIcon}/>
-								<span>新增旅程</span>
-							</button>
-						: <div className='add-journey'>
+					{ this.props.isActived === 'showAddJourney'
+						? <div className='add-journey'>
 								<input 
 									id='add-journey-input'
 									className='add-journey-input' 
@@ -140,12 +113,19 @@ class SideBar extends Component {
 									/>
 									<button
 										className='cancel-btn'
-										onClick={() => this.showAddJourney()}
+										onClick={() => this.props.toggleActive('showAddJourney')}
 									>
 										<img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
 									</button>
 								</div>
 							</div>	
+						: <button
+								className='show-add-btn'
+								onClick={() => this.props.toggleActive('showAddJourney')}
+							>
+								<img className='add-icon-img' alt='add' src={AddIcon}/>
+								新增旅程
+							</button>
 					}
 				</div>
 			</div>

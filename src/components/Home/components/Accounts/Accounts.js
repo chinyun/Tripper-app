@@ -13,17 +13,8 @@ class Accounts extends Component {
 			category: '交通',
 			detail: '',
 			amount: '',
-			isAdded: false,
-			isEditing: '',
 			isSelecting: false
 		};
-	};
-
-	onEditing = (id) => {
-		this.setState({ 
-			isEditing: id,
-			isAdded: false
-		})
 	};
 
 	onSelecting = () => {
@@ -51,10 +42,8 @@ class Accounts extends Component {
 
   handleClickHidden = (event) => {
     if(event.target.id !== 'item-category-btn') {
-      this.setState({
-        isSelecting: false
-      });
-    }
+      this.setState({ isSelecting: false })
+    };
   };
 
 	onDetailValueChange = (event) => {
@@ -65,12 +54,8 @@ class Accounts extends Component {
 		this.setState({ amount: event.target.value })
 	};
 
-	onAddingExpense = () => {
-		if(this.state.isAdded === false) {
-			this.setState({ isAdded: true, isEditing: '' })
-		} else {
-			this.setState({ isAdded: false })
-		}
+	handleAdding = (route) => {
+		this.props.toggleActive(route);
 		this.setState({
 			category: '交通',
 			detail: '',
@@ -132,29 +117,20 @@ class Accounts extends Component {
 		            <List 
 		              key={list.id} 
 		              list={list}
-		              EditingListId={this.state.isEditing}
-		              onEditing={this.onEditing}
+		              isEditing={this.props.isEditing}
+		              onEditing={this.props.onEditing}
 		             	handleUpdateExpense={this.props.handleUpdateExpense}
 		             	deleteExpense={this.deleteExpense}
 		            /> 
 		          )}
 		        </ul>
 		      </Scroll>
-					<div className={this.state.isAdded === false 
-						? 'add-item-wrapper'
-						: 'add-item-wrapper add-item-wrapper-bg'}
+					<div className={this.props.isActived === 'showAddItem' 
+						? 'add-item-wrapper add-item-wrapper-bg'
+						: 'add-item-wrapper'}
 					>
-						{ this.state.isAdded === false
-							? <div className='add-item-btn-wrapper'>
-									<button 
-										className='show-add-btn'
-										onClick={() => this.onAddingExpense()}
-									>
-										<img className='add-icon-img' alt='add' src={AddIcon}/>
-										<span className='show-add-btn-text'>新增支出項目</span>
-									</button>
-								</div>
-							: <div className='add-item'>
+						{ this.props.isActived === 'showAddItem'
+							? <div className='add-item'>
 									<div className='add-item-content'>
 										<Category
 											category={this.state.category}
@@ -181,19 +157,28 @@ class Accounts extends Component {
 									</div>
 									<div className='item-btn-group'>
 										<input 
-											id='add-item-submit' 
+											id='add-item-submit-input' 
 											className='add-submit-input'
 											type='submit' 
 											value='新增支出'
 											onClick={() => this.createNewExpense()}
 										/>
-										<button 
+										<button
 											className='cancel-btn'
-											onClick={() => this.onAddingExpense()}
+											onClick={() => this.handleAdding('showAddItem')}
 										>
 											<img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
 										</button>
 									</div>
+								</div>
+							: <div className='add-item-btn-wrapper'>
+									<button
+										className='show-add-btn'
+										onClick={() => this.handleAdding('showAddItem')}
+									>
+										<img className='add-icon-img' alt='add' src={AddIcon}/>
+										新增支出項目
+									</button>
 								</div>
 						}
 					</div>
