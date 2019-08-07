@@ -210,17 +210,14 @@
 }
 
 .days-selector-btn {
-  margin: 0 10px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.days-name {
   font-size: 16px;
   font-weight: 400;
   font-family: "Ubuntu";
   letter-spacing: 1px;
   color: #3E3E3E;
+  margin: 0 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .days-selector-btn-icon {

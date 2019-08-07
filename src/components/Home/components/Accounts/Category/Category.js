@@ -19,9 +19,9 @@ const Category = ({onSelecting, category, isSelecting, onCategoryChange}) => {
             />
           </span>
         </button>
-        <div className={ isSelecting === false
-          ? 'hidden'
-          : 'category-selector-wrapper'
+        <div className={ isSelecting === true
+          ? 'category-selector-wrapper'
+          : 'hidden'
         }>
           <div className='category-selector'>
             <button onClick={() => onCategoryChange('交通')}>

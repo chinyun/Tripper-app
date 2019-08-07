@@ -109,7 +109,7 @@ class Home extends Component {
 
   handleAddJourney = (newJourney)=> {
     const { addJourney, journeys } = this.props;
-    this.props.addJourney(newJourney);
+    addJourney(newJourney);
     this.setState({
       displayedDay: journeys[journeys.length-1].accountList[0].name,
     })
@@ -221,6 +221,7 @@ class Home extends Component {
   onSelecting = () => {
     if(this.state.isSelecting === false) {
       this.setState({ isSelecting: true })
+      this.props.toggleActive('');
     } else {
       this.setState({ isSelecting: false })
     }
@@ -234,14 +235,12 @@ class Home extends Component {
 
   componentWillUnmount = () => {
     window.removeEventListener("resize", this.calcSideBarHeight);
-    document.removeEventListener('click', this.handleClickHidden);
+    document.addEventListener('click', this.handleClickHidden);
   };
 
   handleClickHidden = (event) => {
     if(event.target.id !== 'days-selector-btn') {
-      this.setState({
-        isSelecting: false
-      });
+      this.setState({ isSelecting: false })
     }
   };
 
@@ -283,12 +282,16 @@ class Home extends Component {
             displayedJourney={this.state.displayedJourney}
             journeyId={this.state.journeyId}
             handleBudgetsChange={this.handleBudgetsChange}
+            isEditing={this.props.isEditing}
+            onEditing={this.props.onEditing}
           />
           <div className='sub-section'>
             <SetBudget
               journeyId={this.state.journeyId}
               displayedJourney={this.state.displayedJourney}
               handleBudgetsChange={this.handleBudgetsChange}
+              isEditing={this.props.isEditing}
+              onEditing={this.props.onEditing}
             />
             <div className='minor-section'>
               <Charts
@@ -316,18 +319,18 @@ class Home extends Component {
                         className='days-selector-btn'
                         onClick={() => this.onSelecting()}
                       >
-                        <span className='days-name'>{this.state.displayedDay}</span>
+                        {this.state.displayedDay}
                         <span className='days-selector-btn-icon'>
-                          <img 
+                          <img
                             className='days-selector-btn-icon-img' 
-                            alt='select' 
+                            alt='select'
                             src={SelectIcon}
                           />
                         </span>
                       </button>
-                      <div className={ this.state.isSelecting === false
-                          ? 'hidden'
-                          : 'days-selector-wrapper'
+                      <div className={ this.state.isSelecting === true
+                          ? 'days-selector-wrapper'
+                          : 'hidden'
                         }>
                         <div className='days-selector'>
                           { this.state.accounts.map(day => 

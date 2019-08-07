@@ -24,8 +24,7 @@ class SetBudget extends Component {
 			food_budget: displayedJourney[0].food_budget,
       living_budget: displayedJourney[0].living_budget,
       ticket_budget: displayedJourney[0].ticket_budget,
-      shopping_budget: displayedJourney[0].shopping_budget,
-      isEditing: ''
+      shopping_budget: displayedJourney[0].shopping_budget
 		};
 	};
 
@@ -82,24 +81,25 @@ class SetBudget extends Component {
 	onTrafficBudgetChange = (event) => { 
     this.setState({ traffic_budget: event.target.value })
   };
+
 	onFoodBudgetChange = (event) => { 
     this.setState({ food_budget: event.target.value })
   };
+
 	onLivingBudgetChange = (event) => { 
     this.setState({ living_budget: event.target.value })
   };
+
 	onTicketBudgetChange = (event) => { 
     this.setState({ ticket_budget: event.target.value })
   };
+
 	onShoppingBudgetChange = (event) => { 
     this.setState({ shopping_budget: event.target.value })
   };
-	handleEditing = (target) => { 
-    this.setState({ isEditing: target })
-  };
 
 	handleEnter = (event) => {
-		const { journeyId } = this.props;
+		const { journeyId, onEditing } = this.props;
 		const { traffic_budget, food_budget,
 			living_budget, ticket_budget, shopping_budget} = this.state;
 		if(event.key === 'Enter') {
@@ -121,12 +121,12 @@ class SetBudget extends Component {
 	    	this.props.handleBudgetsChange(journey, journeyId);
 	    })
 	    .catch(err => alert('unable to edit budget'));
-	    this.setState({ isEditing: '' });
+	    onEditing('');
 		}
 	}
 
 	render() {
-		const { displayedJourney } = this.props;
+		const { displayedJourney, onEditing } = this.props;
 		return (
 			<div className='budget-wrapper'>
         <div className='budget-info'>
@@ -143,7 +143,7 @@ class SetBudget extends Component {
 							<div className='budget-content'>
 								<p className='budget-topic'>交通預算</p>
                 <div className='budget-update-wrapper'>
-								{ this.state.isEditing === 'traffic' 
+								{ this.props.isEditing === 'traffic' 
                   ? <div className='budget-update'>
                       <input 
                         id='traffic-budget-input'
@@ -153,13 +153,13 @@ class SetBudget extends Component {
                         onChange={this.onTrafficBudgetChange}
                         onKeyDown={this.handleEnter}
                       />
-                      <button className='cancel-btn' onClick={()=>this.handleEditing('')}>
+                      <button className='cancel-btn' onClick={() => onEditing('')}>
                         <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
                       </button>
                     </div>
                   : <div className='budget-text-wrapper'>
                   		<p className='budget-amount'>{displayedJourney[0].traffic_budget}</p>
-											<button className='update-btn' onClick={()=> this.handleEditing('traffic')}>
+											<button className='update-btn' onClick={() => onEditing('traffic')}>
 			                  <img className='update-icon-img' alt='update' src={UpdateIcon}/>
 			                </button>
                   	</div>
@@ -196,7 +196,7 @@ class SetBudget extends Component {
 							<div className='budget-content'>
 								<p className='budget-topic'>飲食預算</p>
                 <div className='budget-update-wrapper'>
-								{ this.state.isEditing === 'food' 
+								{ this.props.isEditing === 'food' 
                   ? <div className='budget-update'>
                       <input
                         id='food-budget-input'
@@ -207,13 +207,13 @@ class SetBudget extends Component {
                         onChange={this.onFoodBudgetChange}
                         onKeyDown={this.handleEnter}
                       />
-                      <button className='cancel-btn' onClick={()=>this.handleEditing('')}>
+                      <button className='cancel-btn' onClick={() => onEditing('')}>
                         <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
                       </button>
                     </div>
                   : <div className='budget-text-wrapper'>
                   		<p className='budget-amount'>{displayedJourney[0].food_budget}</p>
-											<button className='update-btn' onClick={()=> this.handleEditing('food')}>
+											<button className='update-btn' onClick={() => onEditing('food')}>
 			                  <img className='update-icon-img' alt='update' src={UpdateIcon}/>
 			                </button>
                   	</div>
@@ -250,7 +250,7 @@ class SetBudget extends Component {
 							<div className='budget-content'>
 								<p className='budget-topic'>住宿預算</p>
                 <div className='budget-update-wrapper'>
-								{ this.state.isEditing === 'living' 
+								{ this.props.isEditing === 'living' 
                   ? <div className='budget-update'>
                       <input 
                         id='living-budget-input'
@@ -260,13 +260,13 @@ class SetBudget extends Component {
                         onChange={this.onLivingBudgetChange}
                         onKeyDown={this.handleEnter}
                       />
-                      <button className='cancel-btn' onClick={()=>this.handleEditing('')}>
+                      <button className='cancel-btn' onClick={() => onEditing('')}>
                         <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
                       </button>
                     </div>
                   : <div className='budget-text-wrapper'>
                   		<p className='budget-amount'>{displayedJourney[0].living_budget}</p>
-											<button className='update-btn' onClick={()=> this.handleEditing('living')}>
+											<button className='update-btn' onClick={() => onEditing('living')}>
 			                  <img className='update-icon-img' alt='update' src={UpdateIcon}/>
 			                </button>
                   	</div>
@@ -303,7 +303,7 @@ class SetBudget extends Component {
 							<div className='budget-content'>
 								<p className='budget-topic'>票券預算</p>
                 <div className='budget-update-wrapper'>
-								{ this.state.isEditing === 'ticket' 
+								{ this.props.isEditing === 'ticket' 
                   ? <div className='budget-update'>
                       <input 
                         id='ticket-budget-input'
@@ -313,13 +313,13 @@ class SetBudget extends Component {
                         onChange={this.onTicketBudgetChange}
                         onKeyDown={this.handleEnter}
                       />
-                      <button className='cancel-btn' onClick={()=>this.handleEditing('')}>
+                      <button className='cancel-btn' onClick={() => onEditing('')}>
                         <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
                       </button>
                     </div>
                   : <div className='budget-text-wrapper'>
                   		<p className='budget-amount'>{displayedJourney[0].ticket_budget}</p>
-											<button className='update-btn' onClick={()=> this.handleEditing('ticket')}>
+											<button className='update-btn' onClick={() => onEditing('ticket')}>
 			                  <img className='update-icon-img' alt='update' src={UpdateIcon}/>
 			                </button>
                   	</div>
@@ -356,7 +356,7 @@ class SetBudget extends Component {
 							<div className='budget-content'>
 								<p className='budget-topic'>購物預算</p>
                 <div className='budget-update-wrapper'>
-								{ this.state.isEditing === 'shopping' 
+								{ this.props.isEditing === 'shopping' 
                   ? <div className='budget-update'>
                       <input 
                         id='shopping-budget-input'
@@ -367,13 +367,13 @@ class SetBudget extends Component {
                         onChange={this.onShoppingBudgetChange}
                         onKeyDown={this.handleEnter}
                       />
-                      <button className='cancel-btn' onClick={()=>this.handleEditing('')}>
+                      <button className='cancel-btn' onClick={() => onEditing('')}>
                         <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
                       </button>
                     </div>
                   : <div className='budget-text-wrapper'>
                   		<p className='budget-amount'>{displayedJourney[0].shopping_budget}</p>
-											<button className='update-btn' onClick={()=> this.handleEditing('shopping')}>
+											<button className='update-btn' onClick={() => onEditing('shopping')}>
 			                  <img className='update-icon-img' alt='update' src={UpdateIcon}/>
 			                </button>
                   	</div>

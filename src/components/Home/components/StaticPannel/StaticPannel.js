@@ -8,8 +8,7 @@ class StaticPannel extends Component {
     super(props);
     const { displayedJourney } = this.props;
     this.state = {
-      budget: displayedJourney[0].budget,
-      isEditing: ''
+      budget: displayedJourney[0].budget
     }
   }
 
@@ -17,12 +16,8 @@ class StaticPannel extends Component {
     this.setState({ budget: event.target.value })
   };
 
-  handleEditing = (target) => {
-    this.setState({ isEditing: target })
-  };
-
   handleEnter = (event) => {
-    const { journeyId } = this.props;
+    const { journeyId, onEditing } = this.props;
     if(event.key === 'Enter') {
       fetch(`http://localhost:3000/journeys_budgets/${journeyId}`, {
         method: 'PATCH',
@@ -39,15 +34,14 @@ class StaticPannel extends Component {
       })
       .catch(err => alert('unable to edit budget'));
       this.setState({
-        budget: this.props.displayedJourney[0].budget, 
-        isEditing: ''
+        budget: this.props.displayedJourney[0].budget
       });
+      onEditing('');
     }
   }
 
   render() {
-    const { budget, isEditing } = this.state;
-    const { journeyName, displayedJourney } = this.props;
+    const { journeyName, displayedJourney, isEditing, onEditing} = this.props;
     return (
       <div className='static-pannel-wrapper'>
         <p className='home-title'>
@@ -74,7 +68,7 @@ class StaticPannel extends Component {
                     />
                     <button 
                       className='cancel-btn' 
-                      onClick={()=>this.handleEditing('')}
+                      onClick={() => onEditing('')}
                     >
                       <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
                     </button>
@@ -85,7 +79,7 @@ class StaticPannel extends Component {
                     </span>
                     <button 
                       className='update-btn'
-                      onClick={()=> this.handleEditing('budget')}
+                      onClick={() => onEditing('budget')}
                     >
                       <img className='update-icon-img' alt='update' src={UpdateIcon}/>
                     </button>

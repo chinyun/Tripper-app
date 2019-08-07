@@ -12,7 +12,7 @@ class List extends Component {
 			category: this.props.list.category,
       detail: this.props.list.detail,
       amount: this.props.list.amount,
-			isSelecting: false
+      isSelecting: false
 		};
 	}
 
@@ -21,19 +21,19 @@ class List extends Component {
 		this.setState({ category: list.category })
 	};
 
-	onSelecting = () => {
-		if(this.state.isSelecting === false) {
-			this.setState({ isSelecting: true })
-		} else {
-			this.setState({ isSelecting: false })
-		}
-	};
-
 	onCategoryChange = (category) => { 
     this.setState({
     	category: category,
     	isSelecting: false
-    });
+    })
+  };
+
+  onSelecting = () => {
+    if(this.state.isSelecting === false) {
+      this.setState({ isSelecting: true })
+    } else {
+      this.setState({ isSelecting: false })
+    }
   };
 
   componentDidMount = () => {
@@ -91,9 +91,9 @@ class List extends Component {
 								<div className='list-item-update'>
 									<Category
 										category={this.state.category}
+										onCategoryChange={this.onCategoryChange}
 										isSelecting={this.state.isSelecting}
 										onSelecting={this.onSelecting}
-										onCategoryChange={this.onCategoryChange}
 									/>
 					        <input 
 					          id='item-detail-update-input'
@@ -125,7 +125,6 @@ class List extends Component {
 							<div className='item-control-btn-group'>
 								<div className='item-control-btn-wrapper'>
 									<button
-										id='item-edit-cancel-btn'
 										className='list-item-control-btn'
 										onClick={() => this.onEditingChange('')} 
 									>
@@ -134,7 +133,6 @@ class List extends Component {
 								</div>
 								<div className='item-control-btn-wrapper'>
 									<button
-										id='item-edit-confirm-btn'
 										className='list-item-control-btn'
 										onClick={() => this.editExpense(list)}
 									>
@@ -156,7 +154,6 @@ class List extends Component {
 								</span>
 							</div>
 							<button
-								id='item-update-btn'
 								className='update-btn' 
 								onClick={() => this.onEditingChange(list)}
 							>

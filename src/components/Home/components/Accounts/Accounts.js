@@ -17,19 +17,19 @@ class Accounts extends Component {
 		};
 	};
 
-	onSelecting = () => {
-		if(this.state.isSelecting === false) {
-			this.setState({ isSelecting: true })
-		} else {
-			this.setState({ isSelecting: false })
-		}
-	};
-
 	onCategoryChange = (category) => { 
     this.setState({
     	category: category,
     	isSelecting: false
-    });
+    })
+  };
+
+  onSelecting = () => {
+    if(this.state.isSelecting === false) {
+      this.setState({ isSelecting: true })
+    } else {
+      this.setState({ isSelecting: false })
+    }
   };
 
   componentDidMount = () => {
@@ -54,8 +54,8 @@ class Accounts extends Component {
 		this.setState({ amount: event.target.value })
 	};
 
-	handleAdding = (route) => {
-		this.props.toggleActive(route);
+	handleAdding = (target) => {
+		this.props.toggleActive(target);
 		this.setState({
 			category: '交通',
 			detail: '',
@@ -64,7 +64,7 @@ class Accounts extends Component {
 	};
 
 	createNewExpense = () => {
-		const { displayedAccountId } = this.props;
+		const { displayedAccountId, toggleActive } = this.props;
 		fetch('http://localhost:3000/expenses', {
 			method: 'POST',
 			headers: {'Content-Type': 'application/json'},
@@ -83,9 +83,9 @@ class Accounts extends Component {
 		this.setState({
 			category: '交通',
 			detail: '',
-			amount: '',
-			isAdded: false
-		})
+			amount: ''
+		});
+		toggleActive('');
 	};
 
 	deleteExpense = ( delExpense ) => {
@@ -134,9 +134,9 @@ class Accounts extends Component {
 									<div className='add-item-content'>
 										<Category
 											category={this.state.category}
+											onCategoryChange={this.onCategoryChange}
 											isSelecting={this.state.isSelecting}
 											onSelecting={this.onSelecting}
-											onCategoryChange={this.onCategoryChange}
 										/>
 										<input 
 											id='item-detail-input'
@@ -165,7 +165,7 @@ class Accounts extends Component {
 										/>
 										<button
 											className='cancel-btn'
-											onClick={() => this.handleAdding('showAddItem')}
+											onClick={() => this.handleAdding('')}
 										>
 											<img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
 										</button>

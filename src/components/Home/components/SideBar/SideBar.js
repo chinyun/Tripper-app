@@ -42,9 +42,9 @@ class SideBar extends Component {
 			this.props.handleAddJourney(newJourney);
 			this.props.onJourneyChange(newJourney[0].id);
 			this.setState({
-				newJourney: '',
-				isAdded: false
+				newJourney: ''
 			});
+			this.props.toggleActive('');
 		})
 		.catch(err => alert('unable to create'));
 	};
@@ -88,8 +88,8 @@ class SideBar extends Component {
 							editJourneyName={this.editJourneyName}
 							deleteJourney={this.deleteJourney}
 							onJourneyValueUpdate={this.onJourneyValueUpdate}
-							onEditing={this.props.onEditing}
 							isEditing={this.props.isEditing}
+							onEditing={this.props.onEditing}
 						/>)}
 				</ul>
 				<div className='add-journey-wrapper'>
@@ -113,7 +113,7 @@ class SideBar extends Component {
 									/>
 									<button
 										className='cancel-btn'
-										onClick={() => this.props.toggleActive('showAddJourney')}
+										onClick={() => this.props.toggleActive('')}
 									>
 										<img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
 									</button>

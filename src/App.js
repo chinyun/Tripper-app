@@ -18,7 +18,8 @@ const initialState = {
   isSignedIn: false,
   isShowedSideBar: true,
   isActived: '',
-  isEdding: ''
+  isEdding: '',
+  isSelecting: ''
 }
 
 class App extends Component {
@@ -89,36 +90,28 @@ class App extends Component {
 
   onShowSideBar = () => {
     if(this.state.isShowedSideBar === false) {
-      this.setState({ 
-        isShowedSideBar: true,
-        isEditing: '',
-        isActived: ''
-      })
+      this.setState({ isShowedSideBar: true })
     } else {
-      this.setState({ 
-        isShowedSideBar: false,
-        isEditing: '',
-        isActived: ''
-      })
+      this.setState({ isShowedSideBar: false })
     }
-  };
-
-  onEditing = (id) => {
-    this.setState({ 
-      isEditing: id,
-      isActived: '' 
+    this.setState({
+      isEditing: '',
+      isActived: ''
     })
   };
 
-  toggleActive = (route) => {
-    if(this.state.isActived === '') {
-      this.setState({ 
-        isActived: route,
-        isEditing: ''
-      })
-    } else {
-      this.setState({ isActived: '' })
-    }
+  onEditing = (target) => {
+    return this.setState({ 
+      isEditing: target,
+      isActived: ''
+    })
+  };
+
+  toggleActive = (target) => {
+    return this.setState({ 
+      isActived: target,
+      isEditing: ''
+    })
   };
 
   addJourney = (newJourney) => {
