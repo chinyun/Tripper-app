@@ -58,6 +58,12 @@ class List extends Component {
     this.setState({ amount: event.target.value })
   };
 
+  handleEnter = (event, expense) => {
+    if(event.key === 'Enter') {
+      this.editExpense(expense);
+    }
+  };
+
 	editExpense = (expense) => {
 		fetch(`http://localhost:3000/expenses/${expense.id}`, {
 			method: 'PATCH',
@@ -102,6 +108,7 @@ class List extends Component {
 					          placeholder={list.detail}
 					          value={this.state.detail}
 					          onChange={this.onDetailValueChange}
+                    onKeyDown={(event) => this.handleEnter(event, list)}
 					        />
 					        <input 
 					          id='item-amount-update-input' 
@@ -110,6 +117,7 @@ class List extends Component {
 					          placeholder={list.amount}
 					          value={this.state.amount}
 					          onChange={this.onAmountValueChange}
+                    onKeyDown={(event) => this.handleEnter(event, list)}
 					        />
 					        <div className='delete-item'>
 					        	<button

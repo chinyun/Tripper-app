@@ -20,8 +20,8 @@ class Journey extends Component {
 		}
 	};
 
-	handleUpdate = (id) => {
-		this.props.onEditing(id)
+	handleUpdate = (target) => {
+		this.props.onEditing(target)
 	};
 
 	handleDelete = (delJourneyId) => {

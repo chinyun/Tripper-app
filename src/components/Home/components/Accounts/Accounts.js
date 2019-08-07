@@ -63,6 +63,12 @@ class Accounts extends Component {
 		})
 	};
 
+	handleEnter = (event) => {
+		if(event.key === 'Enter') {
+			this.createNewExpense();
+		}
+	};
+
 	createNewExpense = () => {
 		const { displayedAccountId, toggleActive } = this.props;
 		fetch('http://localhost:3000/expenses', {
@@ -145,6 +151,7 @@ class Accounts extends Component {
 											placeholder='內容'
 											value={this.state.detail}
 											onChange={this.onDetailValueChange}
+											onKeyDown={this.handleEnter}
 										/>
 										<input 
 											id='item-amount-input' 
@@ -153,6 +160,7 @@ class Accounts extends Component {
 											placeholder='金額'
 											value={this.state.amount}
 											onChange={this.onAmountValueChange}
+											onKeyDown={this.handleEnter}
 										/>
 									</div>
 									<div className='item-btn-group'>

@@ -21,6 +21,12 @@ class SideBar extends Component {
 		this.setState({ updateValue: updateValue });
 	};
 
+	handleEnter = (event) => {
+		if(event.key === 'Enter') {
+			this.createNewJourney();
+		}
+	};
+
 	createNewJourney = () => {
 		fetch('http://localhost:3000/journeys', {
 			method: 'POST',
@@ -102,6 +108,7 @@ class SideBar extends Component {
 									placeholder='新增行程表'
 									value={this.state.newJourney}
 									onChange={this.onJourneyValueChange}
+									onKeyDown={this.handleEnter}
 								/>
 								<div className='add-journey-btn-group'>
 									<input 
