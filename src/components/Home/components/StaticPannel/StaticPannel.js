@@ -46,7 +46,7 @@ class StaticPannel extends Component {
       <div className='static-pannel-wrapper'>
         <p className='home-title'>
           Journey
-          <span className='home-subtitle'>{journeyName}</span>
+          <span key={journeyName} className='home-subtitle'>{journeyName}</span>
         </p>
         <div className='static-pannel'>
           <div className='static-pannel-section-wrapper'>
@@ -73,7 +73,7 @@ class StaticPannel extends Component {
                       <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
                     </button>
                   </div>
-                : <div className='static-pannel-text'>
+                : <div key={displayedJourney[0].name} className='static-pannel-text'>
                     <span>
                       {displayedJourney[0].budget}
                     </span>
@@ -94,7 +94,10 @@ class StaticPannel extends Component {
                 <p className='static-pannel-title'>支出</p>
                 <p className='static-pannel-subtitle'>總支出</p>
               </div>
-              <span className='static-pannel-amount'>
+              <span 
+                key={displayedJourney[0].expense} 
+                className='static-pannel-amount'
+              >
                 {displayedJourney[0].expense}
               </span>
             </div>
@@ -105,7 +108,10 @@ class StaticPannel extends Component {
                 <p className='static-pannel-title'>剩餘</p>
                 <p className='static-pannel-subtitle'>可支配預算</p>
               </div>
-              <span className='static-pannel-amount'>
+              <span
+                key={displayedJourney[0].budget - displayedJourney[0].expense}
+                className='static-pannel-amount'
+              >
                 {displayedJourney[0].budget - displayedJourney[0].expense}
               </span>
             </div>

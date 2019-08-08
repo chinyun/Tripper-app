@@ -50,7 +50,18 @@
   font-weight: 300;
   color: #3e3e3e;
   margin-top: 18px;
+  animation: fadein 0.4s ease-in-out;
 }
+
+@keyframes
+  fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 
 .static-pannel-update {
   height: 36px;
@@ -93,6 +104,7 @@
   margin-top: 12px;
   display: flex;
   justify-content: center;
+  animation: fadein 0.4s ease-in-out;
 }
 
 .static-pannel-text span {

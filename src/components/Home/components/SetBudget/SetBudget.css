@@ -120,7 +120,20 @@
   display: flex;
 	justify-content: space-between;
 	align-items: center;
+  animation: fadeinup 0.3s ease-in-out;
 }
+
+@keyframes
+  fadeinup {
+    from {
+      margin-bottom: -2px;
+      opacity: 0;
+    }
+    to {
+      margin-bottom: 0;
+      opacity: 1;
+    }
+  }
 
 .budget-detail p {
 	font-size: 14px;

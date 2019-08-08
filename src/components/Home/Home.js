@@ -132,6 +132,8 @@ class Home extends Component {
       expenseList: initialJourney[0].accountList[0].expenseList,
       journeyName: journeys[journeys.length-1].name,
       displayedAccountId: initialJourney[0].accountList[0].id,
+      displayedDay: initialJourney[0].accountList[0].name,
+      countDays: initialJourney[0].accountList.length,
       data: getData(initialJourney)
     })
   };
@@ -300,19 +302,24 @@ class Home extends Component {
               />
               <div className='accounts-wrapper'>
                 <div className='accounts-nav'>
-                  <div className='left-column'>
+                  <div className='accounts-column'>
                     <p className='home-title'>Travel Days</p>
-                    <p className='home-subtitle'>{this.state.countDays} Days</p>
-                    <div className='add-day'>
+                    <div className='show-days'>
+                      <span key={this.state.countDays}>
+                        {this.state.countDays}
+                      </span>
+                      <span>Days</span>
+                    </div>
+                    <div className='contorl-day'>
                       <button
                         className='add-btn' 
-                        onClick={this.createNewDay}
+                        onClick={() => this.createNewDay()}
                       >
                         <span>新增</span>
                       </button>
                     </div>   
                   </div>
-                  <div className='right-column'>
+                  <div className='accounts-column'>
                     <div className='accounts-days'>
                       <button
                         id='days-selector-btn'
@@ -343,7 +350,7 @@ class Home extends Component {
                         </div>
                       </div>
                     </div>
-                    <div className='delete-day'>
+                    <div className='contorl-day'>
                       <button className='delete-btn' onClick={() => {
                         if(window.confirm(`Are you sure you wish to delete ${this.state.displayedDay} ?`))
                         this.handleRemoveAccount(this.state.displayedAccountId)

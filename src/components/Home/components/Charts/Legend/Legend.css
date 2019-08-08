@@ -24,7 +24,24 @@
   width: 9px;
   height: 9px;
   margin: 2px 8px 0 8px;
+  animation: jumpfadein 0.4s ease-in-out;
 }
+
+@keyframes
+  jumpfadein {
+    0% {
+      margin-bottom: -2px;
+      opacity: 0;
+    }
+    75% {
+      margin-bottom: 8px;
+      opacity: 1;
+    }
+    100% {
+      margin-bottom: 0px;
+      opacity: 1;
+    }
+  }
 
 .traffic-color {
   background-color: #FBC2A2;
