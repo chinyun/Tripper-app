@@ -64,7 +64,7 @@ class Accounts extends Component {
 	};
 
 	handleEnter = (event) => {
-		if(event.key === 'Enter') {
+		if(event.keyCode === 13) {
 			this.createNewExpense();
 		}
 	};
@@ -94,21 +94,21 @@ class Accounts extends Component {
 		toggleActive('');
 	};
 
-	deleteExpense = ( delExpense ) => {
-		const { displayedAccountId, handleRemoveExpense } = this.props;
-		fetch(`http://localhost:3000/expenses/${delExpense.id}`, {
+	deleteExpense = ( list ) => {
+		fetch(`http://localhost:3000/expenses/${list.id}`, {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
-				category: delExpense.category,
-				detail: delExpense.detail,
-				amount: delExpense.amount,
-				account_id: delExpense.account_id
+				category: list.category,
+				detail: list.detail,
+				amount: list.amount,
+				account_id: list.account_id
 			})
     })
     .then(response => response.json())
     .then(updatedJourney => {
-    	handleRemoveExpense(updatedJourney, displayedAccountId);
+    	console.log(updatedJourney);
+    	this.props.handleRemoveExpense(updatedJourney);
     })
     .catch(err => alert('unable to delete'));
 	};
@@ -151,7 +151,6 @@ class Accounts extends Component {
 											placeholder='內容'
 											value={this.state.detail}
 											onChange={this.onDetailValueChange}
-											onKeyDown={this.handleEnter}
 										/>
 										<input 
 											id='item-amount-input' 

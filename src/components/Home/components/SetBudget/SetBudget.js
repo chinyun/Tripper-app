@@ -4,27 +4,11 @@ import './SetBudget.css';
 import CancelIcon from './../../../../icons/cancel-dark-icon.png';
 import UpdateIcon from './../../../../icons/update-blue-icon.png';
 
-const getData = (datas) => {
-  const data = [{ 
-      name: '支出',
-      cost: datas[0].target_expense
-    },{
-      name: '剩餘可支配預算',
-      cost: datas[0].target_budget - datas[0].target_expense
-    }];
-    return data;
-  }
-
 class SetBudget extends Component {
 	constructor(props) {
 		super(props);
-		const { displayedJourney } = this.props;
 		this.state = {
-			traffic_budget: displayedJourney[0].traffic_budget,
-			food_budget: displayedJourney[0].food_budget,
-      living_budget: displayedJourney[0].living_budget,
-      ticket_budget: displayedJourney[0].ticket_budget,
-      shopping_budget: displayedJourney[0].shopping_budget
+      updateValue: 0
 		};
 	};
 
@@ -33,28 +17,43 @@ class SetBudget extends Component {
     switch(type) {
       case 'traffic':
         return [{ 
-          target_expense: displayedJourney[0].traffic_expense,
-          target_budget: displayedJourney[0].traffic_budget
+          name: '支出',
+          cost: displayedJourney[0].traffic_expense
+        },{
+          name: '剩餘可支配預算',
+          cost: displayedJourney[0].traffic_budget - displayedJourney[0].traffic_expense
         }]
       case 'food':
-        return [{
-          target_expense: displayedJourney[0].food_expense,
-          target_budget: displayedJourney[0].food_budget
+        return [{ 
+          name: '支出',
+          cost: displayedJourney[0].food_expense
+        },{
+          name: '剩餘可支配預算',
+          cost: displayedJourney[0].food_budget - displayedJourney[0].food_expense
         }]
       case 'living':
-        return [{
-          target_expense: displayedJourney[0].living_expense,
-          target_budget: displayedJourney[0].living_budget
+        return [{ 
+          name: '支出',
+          cost: displayedJourney[0].living_expense
+        },{
+          name: '剩餘可支配預算',
+          cost: displayedJourney[0].living_budget - displayedJourney[0].living_expense
         }]
       case 'ticket':
-        return [{
-          target_expense: displayedJourney[0].ticket_expense,
-          target_budget: displayedJourney[0].ticket_budget
+        return [{ 
+          name: '支出',
+          cost: displayedJourney[0].ticket_expense
+        },{
+          name: '剩餘可支配預算',
+          cost: displayedJourney[0].ticket_budget - displayedJourney[0].ticket_expense
         }]
       case 'shopping':
-        return [{
-          target_expense: displayedJourney[0].shopping_expense,
-          target_budget: displayedJourney[0].shopping_budget
+        return [{ 
+          name: '支出',
+          cost: displayedJourney[0].shopping_expense
+        },{
+          name: '剩餘可支配預算',
+          cost: displayedJourney[0].shopping_budget -displayedJourney[0].shopping_expense
         }]
       default:
         return []
@@ -78,47 +77,27 @@ class SetBudget extends Component {
     }
   };
 
-	onTrafficBudgetChange = (event) => { 
-    this.setState({ traffic_budget: event.target.value })
+  onBudgetChange = (event) => {
+    this.setState({ updateValue: event.target.value })
   };
 
-	onFoodBudgetChange = (event) => { 
-    this.setState({ food_budget: event.target.value })
-  };
-
-	onLivingBudgetChange = (event) => { 
-    this.setState({ living_budget: event.target.value })
-  };
-
-	onTicketBudgetChange = (event) => { 
-    this.setState({ ticket_budget: event.target.value })
-  };
-
-	onShoppingBudgetChange = (event) => { 
-    this.setState({ shopping_budget: event.target.value })
-  };
-
-	handleEnter = (event) => {
+	handleEnter = (event, type) => {
 		const { journeyId, onEditing } = this.props;
-		const { traffic_budget, food_budget,
-			living_budget, ticket_budget, shopping_budget} = this.state;
-		if(event.key === 'Enter') {
+    const data ={[`${type}_budget`]: this.state.updateValue};
+		if(event.keyCode === 13) {
 			fetch(`http://localhost:3000/journeys_budgets/${journeyId}`, {
 	      method: 'PATCH',
 	      headers: {
 	    		'Content-Type': 'application/json'
 	    	},
-	      body: JSON.stringify({
-					traffic_budget: traffic_budget,
-					food_budget: food_budget,
-      		living_budget: living_budget,
-      		ticket_budget: ticket_budget,
-      		shopping_budget: shopping_budget
-	      })
+	      body: JSON.stringify(data)
 	    })
 	    .then(response => response.json())
 	    .then(journey=> {
 	    	this.props.handleBudgetsChange(journey, journeyId);
+        this.setState({
+          updateValue: 0
+        })
 	    })
 	    .catch(err => alert('unable to edit budget'));
 	    onEditing('');
@@ -126,7 +105,7 @@ class SetBudget extends Component {
 	}
 
 	render() {
-		const { displayedJourney, onEditing } = this.props;
+		const { isEditing, displayedJourney, onEditing } = this.props;
 		return (
 			<div className='budget-wrapper'>
         <div className='budget-info'>
@@ -143,23 +122,29 @@ class SetBudget extends Component {
 							<div className='budget-content'>
 								<p className='budget-topic'>交通預算</p>
                 <div className='budget-update-wrapper'>
-								{ this.props.isEditing === 'traffic' 
+								{ isEditing === 'traffic' 
                   ? <div className='budget-update'>
                       <input 
                         id='traffic-budget-input'
                         className='budget-input' 
                         type='text' 
                         placeholder={displayedJourney[0].traffic_budget}
-                        onChange={this.onTrafficBudgetChange}
-                        onKeyDown={this.handleEnter}
+                        onChange={this.onBudgetChange}
+                        onKeyDown={(event) => this.handleEnter(event, 'traffic')}
                       />
-                      <button className='cancel-btn' onClick={() => onEditing('')}>
+                      <button 
+                        className='cancel-btn'
+                        onClick={() => onEditing('')}
+                      >
                         <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
                       </button>
                     </div>
                   : <div className='budget-text-wrapper'>
                   		<p className='budget-amount'>{displayedJourney[0].traffic_budget}</p>
-											<button className='update-btn' onClick={() => onEditing('traffic')}>
+											<button
+                        className='update-btn'
+                        onClick={() => onEditing('traffic')}
+                      >
 			                  <img className='update-icon-img' alt='update' src={UpdateIcon}/>
 			                </button>
                   	</div>
@@ -182,11 +167,9 @@ class SetBudget extends Component {
 							</div>
 						</div>
             { displayedJourney[0].traffic_budget === '0'
-              ? <div className='initial-budgetchart'>
-                  <p>No Budget yet.</p>
-                </div>
+              ? <div className='initial-budgetchart'><p>No Budget yet.</p></div>
               : <BudgetCharts
-                  data={getData(this.handleDataType('traffic'))}
+                  data={this.handleDataType('traffic')}
                   color={this.handleColour('traffic')}
                 />
               }
@@ -196,24 +179,29 @@ class SetBudget extends Component {
 							<div className='budget-content'>
 								<p className='budget-topic'>飲食預算</p>
                 <div className='budget-update-wrapper'>
-								{ this.props.isEditing === 'food' 
+								{ isEditing === 'food' 
                   ? <div className='budget-update'>
                       <input
                         id='food-budget-input'
                         className='budget-input' 
                         type='text' 
                         placeholder={displayedJourney[0].food_budget}
-                        
-                        onChange={this.onFoodBudgetChange}
-                        onKeyDown={this.handleEnter}
+                        onChange={this.onBudgetChange}
+                        onKeyDown={(event) => this.handleEnter(event, 'food')}
                       />
-                      <button className='cancel-btn' onClick={() => onEditing('')}>
+                      <button
+                        className='cancel-btn'
+                        onClick={() => onEditing('')}
+                      >
                         <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
                       </button>
                     </div>
                   : <div className='budget-text-wrapper'>
                   		<p className='budget-amount'>{displayedJourney[0].food_budget}</p>
-											<button className='update-btn' onClick={() => onEditing('food')}>
+											<button
+                        className='update-btn'
+                        onClick={() => onEditing('food')}
+                      >
 			                  <img className='update-icon-img' alt='update' src={UpdateIcon}/>
 			                </button>
                   	</div>
@@ -236,11 +224,9 @@ class SetBudget extends Component {
 							</div>
 						</div>
             { displayedJourney[0].food_budget === '0'
-              ? <div className='initial-budgetchart'>
-                  <p>No Budget yet.</p>
-                </div>
+              ? <div className='initial-budgetchart'><p>No Budget yet.</p></div>
               : <BudgetCharts
-                  data={getData(this.handleDataType('food'))}
+                  data={this.handleDataType('food')}
                   color={this.handleColour('food')}
                 />
             }
@@ -250,23 +236,29 @@ class SetBudget extends Component {
 							<div className='budget-content'>
 								<p className='budget-topic'>住宿預算</p>
                 <div className='budget-update-wrapper'>
-								{ this.props.isEditing === 'living' 
+								{ isEditing === 'living' 
                   ? <div className='budget-update'>
                       <input 
                         id='living-budget-input'
                         className='budget-input' 
                         type='text' 
                         placeholder={displayedJourney[0].living_budget}
-                        onChange={this.onLivingBudgetChange}
-                        onKeyDown={this.handleEnter}
+                        onChange={this.onBudgetChange}
+                        onKeyDown={(event) => this.handleEnter(event, 'living')}
                       />
-                      <button className='cancel-btn' onClick={() => onEditing('')}>
+                      <button
+                        className='cancel-btn'
+                        onClick={() => onEditing('')}
+                      >
                         <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
                       </button>
                     </div>
                   : <div className='budget-text-wrapper'>
                   		<p className='budget-amount'>{displayedJourney[0].living_budget}</p>
-											<button className='update-btn' onClick={() => onEditing('living')}>
+											<button
+                        className='update-btn'
+                        onClick={() => onEditing('living')}
+                      >
 			                  <img className='update-icon-img' alt='update' src={UpdateIcon}/>
 			                </button>
                   	</div>
@@ -289,11 +281,9 @@ class SetBudget extends Component {
 							</div>
 						</div>
             { displayedJourney[0].living_budget === '0'
-              ? <div className='initial-budgetchart'>
-                  <p>No Budget yet.</p>
-                </div>
+              ? <div className='initial-budgetchart'><p>No Budget yet.</p></div>
               : <BudgetCharts
-                  data={getData(this.handleDataType('living'))}
+                  data={this.handleDataType('living')}
                   color={this.handleColour('living')}
                 />
             }
@@ -303,23 +293,29 @@ class SetBudget extends Component {
 							<div className='budget-content'>
 								<p className='budget-topic'>票券預算</p>
                 <div className='budget-update-wrapper'>
-								{ this.props.isEditing === 'ticket' 
+								{ isEditing === 'ticket' 
                   ? <div className='budget-update'>
                       <input 
                         id='ticket-budget-input'
                         className='budget-input' 
                         type='text' 
                         placeholder={displayedJourney[0].ticket_budget}
-                        onChange={this.onTicketBudgetChange}
-                        onKeyDown={this.handleEnter}
+                        onChange={this.onBudgetChange}
+                        onKeyDown={(event) => this.handleEnter(event, 'ticket')}
                       />
-                      <button className='cancel-btn' onClick={() => onEditing('')}>
+                      <button 
+                        className='cancel-btn'
+                        onClick={() => onEditing('')}
+                      >
                         <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
                       </button>
                     </div>
                   : <div className='budget-text-wrapper'>
                   		<p className='budget-amount'>{displayedJourney[0].ticket_budget}</p>
-											<button className='update-btn' onClick={() => onEditing('ticket')}>
+											<button
+                        className='update-btn'
+                        onClick={() => onEditing('ticket')}
+                      >
 			                  <img className='update-icon-img' alt='update' src={UpdateIcon}/>
 			                </button>
                   	</div>
@@ -342,11 +338,9 @@ class SetBudget extends Component {
 							</div>
 						</div>
             { displayedJourney[0].ticket_budget === '0'
-              ? <div className='initial-budgetchart'>
-                  <p>No Budget yet.</p>
-                </div>
+              ? <div className='initial-budgetchart'><p>No Budget yet.</p></div>
               : <BudgetCharts
-                  data={getData(this.handleDataType('ticket'))}
+                  data={this.handleDataType('ticket')}
                   color={this.handleColour('ticket')}
                 />
             }
@@ -356,24 +350,29 @@ class SetBudget extends Component {
 							<div className='budget-content'>
 								<p className='budget-topic'>購物預算</p>
                 <div className='budget-update-wrapper'>
-								{ this.props.isEditing === 'shopping' 
+								{ isEditing === 'shopping' 
                   ? <div className='budget-update'>
                       <input 
                         id='shopping-budget-input'
                         className='budget-input' 
                         type='text' 
                         placeholder={displayedJourney[0].shopping_budget}
-                        
-                        onChange={this.onShoppingBudgetChange}
-                        onKeyDown={this.handleEnter}
+                        onChange={this.onBudgetChange}
+                        onKeyDown={(event) => this.handleEnter(event, 'shopping')}
                       />
-                      <button className='cancel-btn' onClick={() => onEditing('')}>
+                      <button
+                        className='cancel-btn'
+                        onClick={() => onEditing('')}
+                      >
                         <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
                       </button>
                     </div>
                   : <div className='budget-text-wrapper'>
                   		<p className='budget-amount'>{displayedJourney[0].shopping_budget}</p>
-											<button className='update-btn' onClick={() => onEditing('shopping')}>
+											<button
+                        className='update-btn'
+                        onClick={() => onEditing('shopping')}
+                      >
 			                  <img className='update-icon-img' alt='update' src={UpdateIcon}/>
 			                </button>
                   	</div>
@@ -396,11 +395,9 @@ class SetBudget extends Component {
 							</div>
 						</div>
             { displayedJourney[0].shopping_budget === '0'
-              ? <div className='initial-budgetchart'>
-                  <p>No Budget yet.</p>
-                </div>
+              ? <div className='initial-budgetchart'><p>No Budget yet.</p></div>
               : <BudgetCharts
-                  data={getData(this.handleDataType('shopping'))}
+                  data={this.handleDataType('shopping')}
                   color={this.handleColour('shopping')}
                 />
             }   

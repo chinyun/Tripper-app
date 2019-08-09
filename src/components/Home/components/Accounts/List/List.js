@@ -17,7 +17,7 @@ class List extends Component {
 	}
 
 	onEditingChange = (list) => {
-		this.props.onEditing(list.id);
+		this.props.onEditing(`list ${list.id}`);
 		this.setState({ category: list.category })
 	};
 
@@ -83,15 +83,11 @@ class List extends Component {
 		this.props.onEditing('');
 	};
 
-	handleDeleteExpense = ( delExpense ) => {
-		this.props.deleteExpense(delExpense);
-	};
-
 	render() {
 		const { list } = this.props;
 		return (
 			<li id={list.id} className='accounts-list-item-wrapper'>
-				{ this.props.isEditing === list.id
+				{ this.props.isEditing === `list ${list.id}`
 					? <div className='accounts-list-item-update'>
 							<div className='accounts-list-item'> 
 								<div className='list-item-update'>
@@ -121,9 +117,8 @@ class List extends Component {
 					        />
 					        <div className='delete-item'>
 					        	<button
-					        		id='item-delete-btn'
 						        	className='delete-btn'
-						        	onClick={() => this.handleDeleteExpense(list)}
+						        	onClick={() => this.props.deleteExpense(list)}
 						        >
 						        	<span>刪除</span>
 						        </button>
