@@ -196,13 +196,13 @@
   justify-content: space-between;
 }
 
-.accounts-column {
+.accounts-right-column, .accounts-left-column {
   margin-right: 13px;
   display: flex;
 }
 
 .show-days {
-  margin: 0 15px;
+  margin-right: 10px;
   display: flex;
   align-items: center;
 }

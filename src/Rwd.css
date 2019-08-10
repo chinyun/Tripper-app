@@ -136,10 +136,10 @@
   }  
 }
 
-@media screen and (min-width: 1261px) and (max-width: 1491px) {
+@media screen and (max-width: 1512px) {
   .side-bar-wrapper {
     width: 32%;
-    max-width: 350px;
+    max-width: 338px;
   }
 
   .accounts-nav {
@@ -148,26 +148,37 @@
   }
 
   .accounts-days {
-    margin: 0 15px 0 0;
+    margin: 0 15px;
   }
 
-  .right-column {
-    width: 93%;
-    justify-content: space-between;
-    margin: 0 0 0 12px;
+  .accounts-left-column {
+    margin-top: 10px;
+    width: 95%;
   }
 }
 
-@media screen and (min-width: 679px) and (max-width: 1047px) {
-  .nav-text-wrapper {
-    margin: 8px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+@media screen and (min-width: 1261px) and (max-width: 1512px) {
+  .minor-section {
+    width: 48%;
   }
 
-  .journeys-list-wrapper {
-    padding-top: 48px;
+  .budget-topic {
+    margin-right: 20px;
+  }
+
+  .item-control-btn-wrapper {
+    margin-left: 2px;
+  }
+}
+
+@media screen and (max-width: 1260px) {
+  .side-bar-wrapper {
+    width: 35%;
+    min-width: 292px;
+    max-width: 350px;
+    position: fixed;
+    z-index: 10000;
+    box-shadow: 4px 0px 10px 0 rgba(0,0,0, 0.2);
   }
 }
 
@@ -196,29 +207,16 @@
   }
 }
 
-@media screen and (max-width: 1260px) {
-  .side-bar-wrapper {
-    width: 35%;
-    min-width: 292px;
-    max-width: 350px;
-    position: fixed;
-    z-index: 10000;
-    box-shadow: 4px 0px 10px 0 rgba(0,0,0, 0.2);
-  }
-
-  .accounts-nav {
+@media screen and (min-width: 679px) and (max-width: 1047px) {
+  .nav-text-wrapper {
+    margin: 8px 0;
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 
-  .accounts-days {
-    margin: 0 15px 0 0;
-  }
-
-  .right-column {
-    width: 93%;
-    justify-content: space-between;
-    margin: 0 0 0 12px;
+  .journeys-list-wrapper {
+    padding-top: 48px;
   }
 }
 
@@ -312,6 +310,11 @@
 }
 
 @media screen and (max-width: 680px) {
+  button, input {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+
   .nav-text-logo {
     margin: 0;
   }
@@ -321,18 +324,12 @@
     display: none;
   }
 
-  .journey-name, .update-journey-input,
-  .add-journey-input, .delete-btn {
-    font-size: 13px;
-    letter-spacing: 0.5px;
-  }
-
   .add-submit-input {
     font-size: 12px;
     padding: 0 10px;
   }
 
-  .home-title, .home-subtitle, 
+  .home-title, .home-subtitle, .show-days span,
   .charts-summary span, .budget-summary span {
     font-size: 13px;
     letter-spacing: 1px;
@@ -441,19 +438,15 @@
   }
 
   .accounts-days {
-    width: 118px;
+    width: 114px;
   }
 
-  .days-name {
+  .days-name, .days-selector-btn {
     font-size: 15px;
   }
 
   .category-selector-icon-img {
     margin-bottom: 1px;
-  }
-
-  .control-btn span {
-    font-size: 13px;
   }
 
   .list-item-group span {
@@ -462,10 +455,6 @@
 
   .item-category-text {
     font-size: 14px;
-  }
-
-  .add-item-content input {
-    font-size: 13px;
   }
 
   .item-category {
@@ -486,10 +475,6 @@
 }
 
 @media screen and (max-width: 575px) {
-  .home-title {
-    margin-bottom: 8px;
-  }
-
   .static-pannel-wrapper {
     width: 90%;
   }
@@ -579,7 +564,7 @@
   }
 }
 
-@media screen and (max-width: 490px) {
+@media screen and (max-width: 560px) {
   .accounts {
     border-radius: 10px;
   }
@@ -655,13 +640,18 @@
 
 @media screen and (max-width: 390px) {
   .home-title {
-    margin: 10px 0 8px 18px;
+    margin: 8px 15px 18px 15px;
     font-size: 12px;
   }
 
   .home-subtitle {
     letter-spacing: 0.1px;
-    margin: 10px 0 5px 10px;
+    margin: 8px 0 18px 15px;
+    font-size: 12px;
+  }
+
+  .show-days span {
+    margin: 8px 0 18px 0px;
     font-size: 12px;
   }
 
