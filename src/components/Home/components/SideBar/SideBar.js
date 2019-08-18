@@ -9,7 +9,7 @@ class SideBar extends Component {
 		super(props);
 		this.state = {
 			newJourney:'',
-			updateValue: ''
+			updateValue: '',
 		};
 	};
 

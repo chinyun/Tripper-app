@@ -184,6 +184,8 @@ class Home extends Component {
   };
 
   handleAddExpense = (updatedJourney, displayedAccountId) => {
+    console.log(updatedJourney, displayedAccountId);
+    console.log(getData(updatedJourney));
     this.props.addExpense(updatedJourney);
     const displayedAccount = updatedJourney[0].accountList.filter(item =>
       item.id === displayedAccountId);
@@ -197,9 +199,8 @@ class Home extends Component {
 
   handleUpdateExpense = (updatedJourney) => {
     this.props.updateExpense(updatedJourney);
-    const { displayedAccountId } = this.state;
     const displayedAccount = updatedJourney[0].accountList.filter(item =>
-      item.id === displayedAccountId);
+      item.id === this.state.displayedAccountId);
     this.setState({
       displayedJourney: updatedJourney,
       accounts: updatedJourney[0].accountList,
@@ -208,10 +209,10 @@ class Home extends Component {
     })
   };
 
-  handleRemoveExpense = (updatedJourney, displayedAccountId) => {
+  handleRemoveExpense = (updatedJourney) => {
     this.props.removeExpense(updatedJourney);
     const displayedAccount = updatedJourney[0].accountList.filter(item =>
-      item.id === displayedAccountId);
+      item.id === this.state.displayedAccountId);
     this.setState({
       displayedJourney: updatedJourney,
       accounts: updatedJourney[0].accountList,
@@ -294,6 +295,7 @@ class Home extends Component {
               handleBudgetsChange={this.handleBudgetsChange}
               isEditing={this.props.isEditing}
               onEditing={this.props.onEditing}
+              
             />
             <div className='minor-section'>
               <Charts
@@ -302,7 +304,7 @@ class Home extends Component {
               />
               <div className='accounts-wrapper'>
                 <div className='accounts-nav'>
-                  <div className='accounts-column'>
+                  <div className='accounts-right-column'>
                     <p className='home-title'>Travel Days</p>
                     <div className='show-days'>
                       <span key={this.state.countDays}>
@@ -319,7 +321,7 @@ class Home extends Component {
                       </button>
                     </div>   
                   </div>
-                  <div className='accounts-column'>
+                  <div className='accounts-left-column'>
                     <div className='accounts-days'>
                       <button
                         id='days-selector-btn'
