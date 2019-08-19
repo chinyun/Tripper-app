@@ -144,15 +144,3 @@
   color: rgba(73, 199, 170,1);
   margin: 0 5px;
 }
-
-.web-info-wrapper {
-  height: 28px;
-  padding: 25px 20px 18px 20px;
-}
-
-.web-info {
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(62,62,62, 1);
-  margin: 25px 10px 10px 10px;
-}

@@ -47,7 +47,7 @@ class Charts extends Component {
       .data(pie(this.props.data))
       .attr('transform', `translate(${cent.x}, ${cent.y})`)
       .attr('class', 'arc')
-      .attr('fill', d => colour(d.data.name))
+      .attr('fill', d => colour(d.data.name));
 
     d3.select(this.svgEl)
       .selectAll('path')
@@ -97,6 +97,6 @@ class Charts extends Component {
       </div>
     );
   }
-};
+}
 
 export default Charts;

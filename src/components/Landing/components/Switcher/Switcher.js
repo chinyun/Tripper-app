@@ -8,10 +8,7 @@ const Switcher = ({switchLandingRoute, isRegistered}) => {
         <nav className='switcher-nav'>
           <p 
             onClick = {() => switchLandingRoute('signin')} 
-            className={ isRegistered === true
-              ? 'switch-on'
-              : 'switch-down'
-            }
+            className={ isRegistered === true ? 'switch-on' : 'switch-down'}
           >Sign in</p>
           <img 
             src={SeperateLine}
@@ -20,10 +17,7 @@ const Switcher = ({switchLandingRoute, isRegistered}) => {
           />
           <p 
             onClick = {() => switchLandingRoute('register')}
-            className={ isRegistered === true
-              ? 'switch-down'
-              : 'switch-on'
-            }
+            className={ isRegistered === true ? 'switch-down' : 'switch-on'}
           >Register</p>
         </nav>
       </div>

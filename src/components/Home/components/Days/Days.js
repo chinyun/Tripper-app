@@ -10,7 +10,7 @@ const Days = ({ day, onDayChange }) => {
       {day.name}
     </button>
   )
-};
+}
 
 export default Days;
 

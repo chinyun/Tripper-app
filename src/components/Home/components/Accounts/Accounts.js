@@ -7,7 +7,7 @@ import AddIcon from './../../../../icons/add-blue-icon.png';
 import CancelIcon from './../../../../icons/cancel-dark-icon.png';
 
 class Accounts extends Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			category: '交通',
@@ -17,20 +17,55 @@ class Accounts extends Component {
 		};
 	};
 
-	onCategoryChange = (category) => { 
-    this.setState({
-    	category: category,
-    	isSelecting: false
-    })
-  };
+  handleEnter = (event) => {
+		if (event.keyCode === 13) {
+			this.createNewExpense();
+		}
+	};
 
-  onSelecting = () => {
-    if(this.state.isSelecting === false) {
-      this.setState({ isSelecting: true })
-    } else {
-      this.setState({ isSelecting: false })
-    }
-  };
+	createNewExpense = () => {
+		fetch('http://localhost:3000/expenses', {
+			method: 'POST',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify({
+				category: this.state.category,
+				detail: this.state.detail,
+				amount: this.state.amount,
+				account_id: this.props.displayedAccountId
+			})
+		})
+		.then(response => response.json())
+		.then(updatedJourney => {
+			this.props.handleAddExpense(updatedJourney, this.props.displayedAccountId);
+		})
+		.catch(err => alert('unable to add expense'));
+
+		this.setState({
+			category: '交通',
+			detail: '',
+			amount: ''
+		});
+
+		this.props.toggleActive('');
+	};
+
+	deleteExpense = (list) => {
+		fetch(`http://localhost:3000/expenses/${list.id}`, {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify({
+				category: list.category,
+				detail: list.detail,
+				amount: list.amount,
+				account_id: list.account_id
+			})
+    })
+    .then(response => response.json())
+    .then(updatedJourney => {
+    	this.props.handleRemoveExpense(updatedJourney);
+    })
+    .catch(err => alert('unable to delete'));
+	};
 
   componentDidMount = () => {
     document.addEventListener('click', this.handleClickHidden);
@@ -41,9 +76,24 @@ class Accounts extends Component {
   };
 
   handleClickHidden = (event) => {
-    if(event.target.id !== 'item-category-btn') {
+    if (event.target.id !== 'item-category-btn') {
       this.setState({ isSelecting: false })
     };
+  };
+
+  onCategoryChange = (category) => { 
+    this.setState({
+    	category: category,
+    	isSelecting: false
+    })
+  };
+
+  onSelecting = () => {
+    if (this.state.isSelecting === false) {
+      this.setState({ isSelecting: true })
+    } else {
+      this.setState({ isSelecting: false })
+    }
   };
 
 	onDetailValueChange = (event) => {
@@ -63,63 +113,13 @@ class Accounts extends Component {
 		})
 	};
 
-	handleEnter = (event) => {
-		if(event.keyCode === 13) {
-			this.createNewExpense();
-		}
-	};
-
-	createNewExpense = () => {
-		const { displayedAccountId, toggleActive } = this.props;
-		fetch('http://localhost:3000/expenses', {
-			method: 'POST',
-			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify({
-				category: this.state.category,
-				detail: this.state.detail,
-				amount: this.state.amount,
-				account_id: displayedAccountId
-			})
-		})
-		.then(response => response.json())
-		.then(updatedJourney => {
-			this.props.handleAddExpense(updatedJourney, displayedAccountId);
-		})
-		.catch(err => alert('unable to add expense'));
-		this.setState({
-			category: '交通',
-			detail: '',
-			amount: ''
-		});
-		toggleActive('');
-	};
-
-	deleteExpense = ( list ) => {
-		fetch(`http://localhost:3000/expenses/${list.id}`, {
-      method: 'DELETE',
-      headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify({
-				category: list.category,
-				detail: list.detail,
-				amount: list.amount,
-				account_id: list.account_id
-			})
-    })
-    .then(response => response.json())
-    .then(updatedJourney => {
-    	console.log(updatedJourney);
-    	this.props.handleRemoveExpense(updatedJourney);
-    })
-    .catch(err => alert('unable to delete'));
-	};
-
-	render () {
+	render() {
 		return (
 			<div className='accounts'>
 				<div className='scroll-wrapper'>
 					<Scroll>
 		        <ul className='accounts-list'>
-		          {this.props.expenseList.map( list => 
+		          {this.props.expenseList.map(list => 
 		            <List 
 		              key={list.id} 
 		              list={list}
@@ -193,6 +193,6 @@ class Accounts extends Component {
 			</div>
 		)
 	}
-};
+}
 
 export default Accounts;

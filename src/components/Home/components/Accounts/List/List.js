@@ -6,8 +6,8 @@ import CancelIcon from './../../../../../icons/cancel-dark-icon.png';
 import ConfirmIcon from './../../../../../icons/confirm-green-icon.png';
 
 class List extends Component {
-	constructor( props ) {
-		super( props );
+	constructor(props) {
+		super(props);
 		this.state = {
 			category: this.props.list.category,
       detail: this.props.list.detail,
@@ -16,50 +16,8 @@ class List extends Component {
 		};
 	}
 
-	onEditingChange = (list) => {
-		this.props.onEditing(`list ${list.id}`);
-		this.setState({ category: list.category })
-	};
-
-	onCategoryChange = (category) => { 
-    this.setState({
-    	category: category,
-    	isSelecting: false
-    })
-  };
-
-  onSelecting = () => {
-    if(this.state.isSelecting === false) {
-      this.setState({ isSelecting: true })
-    } else {
-      this.setState({ isSelecting: false })
-    }
-  };
-
-  componentDidMount = () => {
-    document.addEventListener('click', this.handleClickHidden);
-  };
-
-  componentWillUnmount = () => {
-    document.removeEventListener('click', this.handleClickHidden);
-  };
-
-  handleClickHidden = (event) => {
-    if(event.target.id !== 'item-category-btn') {
-      this.setState({ isSelecting: false })
-    };
-  };
-
-  onDetailValueChange = (event) => {
-    this.setState({ detail: event.target.value })
-  };
-
-  onAmountValueChange = (event) => {
-    this.setState({ amount: event.target.value })
-  };
-
   handleEnter = (event, expense) => {
-    if(event.key === 'Enter') {
+    if (event.key === 'Enter') {
       this.editExpense(expense);
     }
   };
@@ -80,8 +38,51 @@ class List extends Component {
 			this.props.handleUpdateExpense(updatedJourney);
 		})
 		.catch(err => alert('unable to update expense'));
+
 		this.props.onEditing('');
 	};
+
+  componentDidMount = () => {
+    document.addEventListener('click', this.handleClickHidden);
+  };
+
+  componentWillUnmount = () => {
+    document.removeEventListener('click', this.handleClickHidden);
+  };
+
+  handleClickHidden = (event) => {
+    if (event.target.id !== 'item-category-btn') {
+      this.setState({ isSelecting: false })
+    }
+  };
+
+  onEditingChange = (list) => {
+    this.props.onEditing(`list ${list.id}`);
+    this.setState({ category: list.category })
+  };
+
+  onCategoryChange = (category) => { 
+    this.setState({
+      category: category,
+      isSelecting: false
+    })
+  };
+
+  onSelecting = () => {
+    if (this.state.isSelecting === false) {
+      this.setState({ isSelecting: true })
+    } else {
+      this.setState({ isSelecting: false })
+    }
+  };
+
+  onDetailValueChange = (event) => {
+    this.setState({ detail: event.target.value })
+  };
+
+  onAmountValueChange = (event) => {
+    this.setState({ amount: event.target.value })
+  };
 
 	render() {
 		const { list } = this.props;

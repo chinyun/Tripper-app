@@ -5,13 +5,13 @@ import Register from './components/Register/Register';
 import './Landing.css';
 
 const landingState = {
-      isRegistered:false,
-      landingRoute:'register',
-      isScrolled: false
-    };
+  isRegistered: false,
+  landingRoute: 'register',
+  isScrolled: false
+};
 
 class Landing extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = landingState;
   };
@@ -43,13 +43,11 @@ class Landing extends Component {
     }
   };
 
-  render () {
-    const {isRegistered, landingRoute} = this.state;
+  render() {
+    const { isRegistered, landingRoute } = this.state;
     return (
       <div className='landing'>
-        <nav
-          id='landing-nav' 
-          className='landing-nav'>
+        <nav id='landing-nav' className='landing-nav'>
           <Switcher
             isRegistered={isRegistered}
             switchLandingRoute={this.switchLandingRoute}

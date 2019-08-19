@@ -2,15 +2,11 @@ import React from 'react';
 import './Navigation.css';
 import SeperateLine from './../../icons/seperate-line-dark.png';
 
-
 const Navigation = ({ onShowSideBar, isShowed, onRouteChange, userName }) => {
 	return (
 		<nav className='navigation'>
 			<button onClick={() => onShowSideBar()}>
-				{isShowed === false
-					? 'Journey'
-					: 'Close'
-				}
+				{isShowed === false ? 'Journey' : 'Close'}
 			</button>
 			<div className='nav-text-wrapper'>
 				<span className='nav-text-logo'>Tripper</span>

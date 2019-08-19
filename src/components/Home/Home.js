@@ -17,14 +17,13 @@ const getData = (datas) => {
     shopping = datas[0].shopping_expense;
 
   const getPercentage = (target) => {
-    if(total === '0') {
+    if (total === '0') {
       return 0;
-    } else {
-      const num = target / total;
-      num.toFixed(3);
-      let result = (num*100).toString();
-      return result.slice(0,4);
-    }    
+    }
+    const num = target / total;
+    num.toFixed(3);
+    let result = (num * 100).toString();
+    return result.slice(0, 4);
   };
 
   const trafficPercentage = getPercentage(traffic),
@@ -59,11 +58,12 @@ const getData = (datas) => {
     percentage: `${shoppingPercentage}`,
     color: 'shopping-color'
   }];
+
   return data;
 };
 
 class Home extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     const {journeys, initialJourney} = this.props;
     this.state = {
@@ -107,11 +107,11 @@ class Home extends Component {
     });
   };
 
-  handleAddJourney = (newJourney)=> {
+  handleAddJourney = (newJourney) => {
     const { addJourney, journeys } = this.props;
     addJourney(newJourney);
     this.setState({
-      displayedDay: journeys[journeys.length-1].accountList[0].name,
+      displayedDay: journeys[journeys.length-1].accountList[0].name
     })
   };
 
@@ -151,13 +151,14 @@ class Home extends Component {
     .then(response => response.json())
     .then(updatedJourney => {
       this.props.addAccount(updatedJourney);
-      const displayedAccount = updatedJourney[0].accountList.filter(item => item.name === newDay);
+      const newAccount = updatedJourney[0].accountList.filter(item =>
+        item.name === newDay);
       this.setState({
         displayedJourney: updatedJourney,
         accounts: updatedJourney[0].accountList,
-        expenseList: displayedAccount[0].expenseList,
-        displayedAccountId: displayedAccount[0].id,
-        displayedDay: displayedAccount[0].name,
+        expenseList: newAccount[0].expenseList,
+        displayedAccountId: newAccount[0].id,
+        displayedDay: newAccount[0].name,
         countDays: updatedJourney[0].accountList.length,
         data: getData(updatedJourney)
       });
@@ -184,45 +185,43 @@ class Home extends Component {
   };
 
   handleAddExpense = (updatedJourney, displayedAccountId) => {
-    console.log(updatedJourney, displayedAccountId);
-    console.log(getData(updatedJourney));
     this.props.addExpense(updatedJourney);
-    const displayedAccount = updatedJourney[0].accountList.filter(item =>
+    const targetAccount = updatedJourney[0].accountList.filter(item =>
       item.id === displayedAccountId);
     this.setState({
       displayedJourney: updatedJourney,
       accounts: updatedJourney[0].accountList,
-      expenseList: displayedAccount[0].expenseList,
+      expenseList: targetAccount[0].expenseList,
       data: getData(updatedJourney)
     });
   };
 
   handleUpdateExpense = (updatedJourney) => {
     this.props.updateExpense(updatedJourney);
-    const displayedAccount = updatedJourney[0].accountList.filter(item =>
+    const targetAccount = updatedJourney[0].accountList.filter(item =>
       item.id === this.state.displayedAccountId);
     this.setState({
       displayedJourney: updatedJourney,
       accounts: updatedJourney[0].accountList,
-      expenseList: displayedAccount[0].expenseList,
+      expenseList: targetAccount[0].expenseList,
       data: getData(updatedJourney)
     })
   };
 
   handleRemoveExpense = (updatedJourney) => {
     this.props.removeExpense(updatedJourney);
-    const displayedAccount = updatedJourney[0].accountList.filter(item =>
+    const targetAccount = updatedJourney[0].accountList.filter(item =>
       item.id === this.state.displayedAccountId);
     this.setState({
       displayedJourney: updatedJourney,
       accounts: updatedJourney[0].accountList,
-      expenseList: displayedAccount[0].expenseList,
+      expenseList: targetAccount[0].expenseList,
       data: getData(updatedJourney)
     })
   };
 
   onSelecting = () => {
-    if(this.state.isSelecting === false) {
+    if (this.state.isSelecting === false) {
       this.setState({ isSelecting: true })
       this.props.toggleActive('');
     } else {
@@ -242,7 +241,7 @@ class Home extends Component {
   };
 
   handleClickHidden = (event) => {
-    if(event.target.id !== 'days-selector-btn') {
+    if (event.target.id !== 'days-selector-btn') {
       this.setState({ isSelecting: false })
     }
   };
@@ -258,11 +257,8 @@ class Home extends Component {
     return (
       <div className='home-container' ref={this.homeRef}>
         <div
-          className={ this.props.isShowed === true
-            ? 'side-bar-wrapper'
-            : 'hidden'
-          }
-          style={{height: this.state.sidebarHeight}}
+          className={this.props.isShowed === true ? 'side-bar-wrapper' : 'hidden'}
+          style={{ height: this.state.sidebarHeight }}
         >
           <div className='side-bar'>
             <SideBar
@@ -295,7 +291,6 @@ class Home extends Component {
               handleBudgetsChange={this.handleBudgetsChange}
               isEditing={this.props.isEditing}
               onEditing={this.props.onEditing}
-              
             />
             <div className='minor-section'>
               <Charts
@@ -307,16 +302,11 @@ class Home extends Component {
                   <div className='accounts-right-column'>
                     <p className='home-title'>Travel Days</p>
                     <div className='show-days'>
-                      <span key={this.state.countDays}>
-                        {this.state.countDays}
-                      </span>
+                      <span key={this.state.countDays}>{this.state.countDays}</span>
                       <span>Days</span>
                     </div>
                     <div className='contorl-day'>
-                      <button
-                        className='add-btn' 
-                        onClick={() => this.createNewDay()}
-                      >
+                      <button className='add-btn' onClick={() => this.createNewDay()}>
                         <span>新增</span>
                       </button>
                     </div>   
@@ -330,17 +320,10 @@ class Home extends Component {
                       >
                         {this.state.displayedDay}
                         <span className='days-selector-btn-icon'>
-                          <img
-                            className='days-selector-btn-icon-img' 
-                            alt='select'
-                            src={SelectIcon}
-                          />
+                          <img className='days-selector-btn-icon-img' alt='select' src={SelectIcon}/>
                         </span>
                       </button>
-                      <div className={ this.state.isSelecting === true
-                          ? 'days-selector-wrapper'
-                          : 'hidden'
-                        }>
+                      <div className={this.state.isSelecting === true ? 'days-selector-wrapper' : 'hidden'}>
                         <div className='days-selector'>
                           { this.state.accounts.map(day => 
                             <Days 
@@ -375,7 +358,7 @@ class Home extends Component {
                 />
               </div>
               <div className='web-info-wrapper'>
-                <p className='web-info'>2019 Tripper. Created by Chin Yun Chen.</p>
+                <p className='web-info'>2019 Tripper. Created by Chin Yun Chen. All Rights Reserved.</p>
               </div>
             </div>
           </div> 

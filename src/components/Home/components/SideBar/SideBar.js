@@ -5,20 +5,20 @@ import AddIcon from './../../../../icons/add-blue-icon.png';
 import CancelIcon from './../../../../icons/cancel-dark-icon.png';
 
 class SideBar extends Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			newJourney:'',
-			updateValue: '',
-		};
+			updateValue: ''
+		}
 	};
 
-	onJourneyValueChange = ( event ) => {	
-		this.setState({ newJourney: event.target.value });
+	onJourneyValueChange = (event) => {	
+		this.setState({ newJourney: event.target.value })
 	};
 
-	onJourneyValueUpdate = ( updateValue ) => {
-		this.setState({ updateValue: updateValue });
+	onJourneyValueUpdate = (updateValue) => {
+		this.setState({ updateValue: updateValue })
 	};
 
 	handleEnter = (event) => {
@@ -86,7 +86,7 @@ class SideBar extends Component {
 		return (
 			<div className='journeys-list-wrapper'>
 				<ul className='journeys-list'>
-					{this.props.journeyList.map( journey => 
+					{this.props.journeyList.map(journey => 
 						<Journey
 							key={journey.id}
 							journey={journey}
@@ -96,7 +96,8 @@ class SideBar extends Component {
 							onJourneyValueUpdate={this.onJourneyValueUpdate}
 							isEditing={this.props.isEditing}
 							onEditing={this.props.onEditing}
-						/>)}
+						/>
+					)}
 				</ul>
 				<div className='add-journey-wrapper'>
 					{ this.props.isActived === 'showAddJourney'
@@ -137,8 +138,7 @@ class SideBar extends Component {
 				</div>
 			</div>
 		)
-	};
-};
+	}
+}
 
 export default SideBar;
-

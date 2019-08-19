@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Landing from './components/Landing/Landing';
-import Navigation from './components/Navigation/Navigation';
-import Home from './components/Home/Home';
+import Landing from '../components/Landing/Landing';
+import Navigation from '../components/Navigation/Navigation';
+import Home from '../components/Home/Home';
 import './App.css';
 import './rwd.css';
 // import logo from './logo.svg';
@@ -23,7 +23,7 @@ const initialState = {
 }
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = initialState;
   };
@@ -71,25 +71,12 @@ class App extends Component {
     if (route === 'home') {
       this.setState({ isSignedIn: true });
     } else {
-      this.setState({ 
-        user: {
-          id: '',
-          name: '',
-          email: ''
-        },
-        journeys: [],
-        journeyList:[],
-        route: 'landing',
-        isSignedIn: false,
-        isShowedSideBar: true,
-        isActived: '',
-        isEdding: ''
-      });
+      this.setState(initialState);
     }
   };
 
   onShowSideBar = () => {
-    if(this.state.isShowedSideBar === false) {
+    if (this.state.isShowedSideBar === false) {
       this.setState({ isShowedSideBar: true })
     } else {
       this.setState({ isShowedSideBar: false })
@@ -125,7 +112,7 @@ class App extends Component {
   };
 
   updateJourney = (journey) => {
-    const index =  this.state.journeyList.findIndex((item)=> item.id === journey[0].id);
+    const index = this.state.journeyList.findIndex((item)=> item.id === journey[0].id);
     if (index !== -1) {
       this.setState({
         journeys: [
@@ -172,7 +159,7 @@ class App extends Component {
   };
 
   addAccount = (updatedJourney) => {
-    const index =  this.state.journeyList.findIndex(item => item.id === updatedJourney[0].id);
+    const index = this.state.journeyList.findIndex(item => item.id === updatedJourney[0].id);
     if (index !== -1) {
       this.setState({
         journeys: [
@@ -185,7 +172,7 @@ class App extends Component {
   };
 
   removeAccount = (updatedJourney) => {
-    const index =  this.state.journeyList.findIndex(item => item.id === updatedJourney[0].id);
+    const index = this.state.journeyList.findIndex(item => item.id === updatedJourney[0].id);
     if (index !== -1) {
       this.setState({
         journeys: [
@@ -224,7 +211,7 @@ class App extends Component {
   };
 
   removeExpense = (updatedJourney) => {
-    const index =  this.state.journeyList.findIndex(item => item.id === updatedJourney[0].id);
+    const index = this.state.journeyList.findIndex(item => item.id === updatedJourney[0].id);
     if (index !== -1) {
       this.setState({
         journeys: [
@@ -236,7 +223,7 @@ class App extends Component {
     }
   };
 
-  render () {
+  render() {
     const { user, journeys, journeyList, isShowedSideBar } = this.state;
     return (
       <div className='app'> 

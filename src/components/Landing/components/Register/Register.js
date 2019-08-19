@@ -2,25 +2,25 @@ import React, {Component} from 'react';
 import Logo from './../../../../icons/tripper-white-logo.png'
 
 class Register extends Component {
-  constructor (props) {
-    super (props);
+  constructor(props) {
+    super(props);
     this.state = {
-      email:'',
-      password:'',
-      name:''
+      email: '',
+      password: '',
+      name: ''
     }
   };
 
   onNameChange = (event) => {
-    this.setState({name: event.target.value});
+    this.setState({ name: event.target.value })
   };
 
   onEmailChange =(event) => {
-    this.setState({email: event.target.value});
+    this.setState({ email: event.target.value })
   };
 
   onPasswordChange = (event) => {
-    this.setState({password: event.target.value});
+    this.setState({ password: event.target.value })
   };
 
   onSubmitRegister = () => {
@@ -54,11 +54,7 @@ class Register extends Component {
           <p>Sign up now,</p>
           <div className='words-inline'>
             <p>Let</p>
-            <img 
-              alt='tripper-white-logo'
-              src={Logo}
-              className='tripper-white-logo'
-            />  
+            <img className='tripper-white-logo' alt='tripper-white-logo' src={Logo}/>  
           </div>
           <p>helps balance your Trip budget!</p>
         </div>
@@ -101,8 +97,8 @@ class Register extends Component {
               />
             </div>
             <div className='landing-form-alarm'>
-              <p className='landing-form-alarm-words'> Already has an account? Try</p>
-              <button 
+              <p className='landing-form-alarm-words'>Already has an account? Try</p>
+              <button
                 className='landing-form-alarm-btn'
                 onClick={() => this.props.switchLandingRoute('signin')}
               >Sign in
@@ -110,7 +106,7 @@ class Register extends Component {
             </div>
           </div>
           <div className='web-info-wrapper'>
-            <p className='web-info'>2019 Tripper. Created by Chin Yun Chen.</p>
+            <p className='web-info'>2019 Tripper. Created by Chin Yun Chen. All Rights Reserved.</p>
           </div>
         </div>
       </div>

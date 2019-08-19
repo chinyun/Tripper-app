@@ -9,7 +9,7 @@ class SetBudget extends Component {
 		super(props);
 		this.state = {
       updateValue: 0
-		};
+		}
 	};
 
   handleDataType = (type) => {
@@ -84,25 +84,22 @@ class SetBudget extends Component {
 	handleEnter = (event, type) => {
 		const { journeyId, onEditing } = this.props;
     const data ={[`${type}_budget`]: this.state.updateValue};
-		if(event.keyCode === 13) {
+		if (event.keyCode === 13) {
 			fetch(`http://localhost:3000/journeys_budgets/${journeyId}`, {
 	      method: 'PATCH',
-	      headers: {
-	    		'Content-Type': 'application/json'
-	    	},
+	      headers: {'Content-Type': 'application/json'},
 	      body: JSON.stringify(data)
 	    })
 	    .then(response => response.json())
 	    .then(journey=> {
 	    	this.props.handleBudgetsChange(journey, journeyId);
-        this.setState({
-          updateValue: 0
-        })
+        this.setState({ updateValue: 0 })
 	    })
 	    .catch(err => alert('unable to edit budget'));
+
 	    onEditing('');
 		}
-	}
+	};
 
 	render() {
 		const { isEditing, displayedJourney, onEditing } = this.props;

@@ -17,31 +17,30 @@ class StaticPannel extends Component {
   };
 
   handleEnter = (event) => {
-    const { journeyId, onEditing } = this.props;
-    if(event.key === 'Enter') {
-      fetch(`http://localhost:3000/journeys_budgets/${journeyId}`, {
+    if (event.key === 'Enter') {
+      fetch(`http://localhost:3000/journeys_budgets/${this.props.journeyId}`, {
         method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({
           budget: this.state.budget
         })
       })
       .then(response => response.json())
       .then(journey=> {
-        this.props.handleBudgetsChange(journey, journeyId);
+        this.props.handleBudgetsChange(journey, this.props.journeyId);
       })
       .catch(err => alert('unable to edit budget'));
+
       this.setState({
         budget: this.props.displayedJourney[0].budget
       });
-      onEditing('');
+
+      this.props.onEditing('');
     }
   }
 
   render() {
-    const { journeyName, displayedJourney, isEditing, onEditing} = this.props;
+    const { journeyName, displayedJourney, isEditing, onEditing } = this.props;
     return (
       <div className='static-pannel-wrapper'>
         <p className='home-title'>
@@ -66,21 +65,13 @@ class StaticPannel extends Component {
                       onChange={this.onBudgetChange}
                       onKeyDown={this.handleEnter}
                     />
-                    <button 
-                      className='cancel-btn' 
-                      onClick={() => onEditing('')}
-                    >
+                    <button className='cancel-btn' onClick={() => onEditing('')}>
                       <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
                     </button>
                   </div>
                 : <div key={displayedJourney[0].name} className='static-pannel-text'>
-                    <span>
-                      {displayedJourney[0].budget}
-                    </span>
-                    <button 
-                      className='update-btn'
-                      onClick={() => onEditing('budget')}
-                    >
+                    <span>{displayedJourney[0].budget}</span>
+                    <button className='update-btn'onClick={() => onEditing('budget')}>
                       <img className='update-icon-img' alt='update' src={UpdateIcon}/>
                     </button>
                   </div>
@@ -94,10 +85,7 @@ class StaticPannel extends Component {
                 <p className='static-pannel-title'>支出</p>
                 <p className='static-pannel-subtitle'>總支出</p>
               </div>
-              <span 
-                key={displayedJourney[0].expense} 
-                className='static-pannel-amount'
-              >
+              <span key={displayedJourney[0].expense} className='static-pannel-amount'>
                 {displayedJourney[0].expense}
               </span>
             </div>

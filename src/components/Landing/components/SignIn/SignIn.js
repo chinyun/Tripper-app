@@ -2,20 +2,20 @@ import React, {Component} from 'react';
 import Logo from './../../../../icons/tripper-white-logo.png'
 
 class SignIn extends Component {
-  constructor (props) {
-    super (props);
+  constructor(props) {
+    super(props);
     this.state = {
-      signInEmail:'',
-      signInPassword:''
+      signInEmail: '',
+      signInPassword: ''
     }
   };
 
   onEmailChange =(event) => {
-    this.setState({signInEmail: event.target.value});
+    this.setState({signInEmail: event.target.value})
   };
 
   onPasswordChange = (event) => {
-    this.setState({signInPassword: event.target.value});
+    this.setState({signInPassword: event.target.value})
   };
 
   onSubmitSignIn = (props) => {
@@ -48,11 +48,7 @@ class SignIn extends Component {
           <p>Welcome back!</p>
           <div className='words-inline'>
             <p>Let</p>
-            <img 
-              alt='tripper-white-logo'
-              src={Logo}
-              className='tripper-white-logo'
-            />  
+            <img className='tripper-white-logo' alt='tripper-white-logo' src={Logo}/>  
           </div>
           <p>helps balance your Trip budget!</p>
         </div>
@@ -86,7 +82,7 @@ class SignIn extends Component {
               />
             </div>
             <div className='landing-form-alarm'>
-              <p className='landing-form-alarm-words'> Don't have an account? Try</p>
+              <p className='landing-form-alarm-words'>Don't have an account? Try</p>
               <button 
                 className='landing-form-alarm-btn'
                 onClick={() => this.props.switchLandingRoute('register')}
@@ -95,7 +91,7 @@ class SignIn extends Component {
             </div>
           </div>
           <div className='web-info-wrapper'>
-            <p className='web-info'>2019 Tripper. Created by Chin Yun Chen.</p>
+            <p className='web-info'>2019 Tripper. Created by Chin Yun Chen. All Rights Reserved.</p>
           </div>
         </div>
       </div>
