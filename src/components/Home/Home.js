@@ -38,7 +38,7 @@ const getData = (datas) => {
     percentage: `${trafficPercentage}`,
     color: 'traffic-color'
   }, { 
-    name: '食物',
+    name: '飲食',
     cost: food,
     percentage: `${foodPercentage}`,
     color: 'food-color'

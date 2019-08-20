@@ -90,10 +90,9 @@ class Accounts extends Component {
 
   onSelecting = () => {
     if (this.state.isSelecting === false) {
-      this.setState({ isSelecting: true })
-    } else {
-      this.setState({ isSelecting: false })
+      return this.setState({ isSelecting: true })
     }
+    this.setState({ isSelecting: false })
   };
 
 	onDetailValueChange = (event) => {

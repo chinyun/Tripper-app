@@ -25,8 +25,8 @@ const Category = ({ onSelecting, category, isSelecting, onCategoryChange }) => {
       }>
         <div className='category-selector'>
           <button onClick={() => onCategoryChange('交通')}> 交通 </button>
-          <button onClick={() => onCategoryChange('住宿')}> 住宿 </button>
           <button onClick={() => onCategoryChange('飲食')}> 飲食 </button>
+          <button onClick={() => onCategoryChange('住宿')}> 住宿 </button>
           <button onClick={() => onCategoryChange('票券')}> 票券 </button>
           <button onClick={() => onCategoryChange('購物')}> 購物 </button>
         </div>
