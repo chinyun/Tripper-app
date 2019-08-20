@@ -28,7 +28,7 @@ class SideBar extends Component {
 	};
 
 	createNewJourney = () => {
-		fetch('http://localhost:3000/journeys', {
+		fetch('https://polar-refuge-41060.herokuapp.com/journeys', {
 			method: 'POST',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
@@ -56,7 +56,7 @@ class SideBar extends Component {
 	};
 
 	editJourneyName = (journeyId) => {
-    fetch(`http://localhost:3000/journeys/${journeyId}`, {
+    fetch(`https://polar-refuge-41060.herokuapp.com/journeys/${journeyId}`, {
       method: 'PATCH',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -72,7 +72,7 @@ class SideBar extends Component {
   };
 
 	deleteJourney = ( delJourneyId ) => {
-		fetch(`http://localhost:3000/journeys/${delJourneyId}`, {
+		fetch(`https://polar-refuge-41060.herokuapp.com/journeys/${delJourneyId}`, {
 			method: 'DELETE',
 		})
 		.then(response => response.json())

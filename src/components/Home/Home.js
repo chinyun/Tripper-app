@@ -140,7 +140,7 @@ class Home extends Component {
 
   createNewDay = () => {
     const newDay = `Day${this.state.accounts.length + 1}`;
-    fetch('http://localhost:3000/accounts', {
+    fetch('https://polar-refuge-41060.herokuapp.com/accounts', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -167,7 +167,7 @@ class Home extends Component {
   };
 
   handleRemoveAccount = (delAccountId) => {
-    fetch(`http://localhost:3000/accounts/${delAccountId}`, {
+    fetch(`https://polar-refuge-41060.herokuapp.com/accounts/${delAccountId}`, {
       method: 'DELETE',
     })
     .then(response => response.json())
