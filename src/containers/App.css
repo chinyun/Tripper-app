@@ -23,3 +23,19 @@
   color: rgba(62,62,62, 1);
   margin: 25px 10px 10px 10px;
 }
+
+.web-vital-info {
+  font-size: 12px;
+  letter-spacing: 0.1px;
+  line-height: 18px;
+  font-weight: 600;
+  text-align: justify;
+  text-justify: distribute;
+  color: rgba(62,62,62, 1);
+  margin: 25px 10px 10px 10px;
+  max-width: 420px;
+}
+
+.web-vital-info span {
+  color: #F04A2D;
+}

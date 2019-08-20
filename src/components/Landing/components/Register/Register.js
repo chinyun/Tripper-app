@@ -96,6 +96,8 @@ class Register extends Component {
                 onClick={this.onSubmitRegister}
               />
             </div>
+            <p className='web-vital-info'>NOTES: Tripper is under optimizing. It is recommended&nbsp;
+              <span>not to use vital personal information</span> to register or comunicate with the database.</p>
             <div className='landing-form-alarm'>
               <p className='landing-form-alarm-words'>Already has an account? Try</p>
               <button

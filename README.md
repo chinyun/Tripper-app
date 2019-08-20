@@ -2,7 +2,8 @@
 
 Tripper is a web application that aims to help users arrange trip budget before or during the trip, mainly built with **React**, also import **D3** library to handle data visualization. This repo is the **front-end** part of the entire app.
 
-The project is deployed to **[Heroku]()**.
+The app is already deployed on Heroku, you can view it at **[tripper-website](https://tripper-website.herokuapp.com)**.
+> Notes: this project is under optimizing and it is recommended not to use vital personal information to register or comunicate with the database.
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine.
