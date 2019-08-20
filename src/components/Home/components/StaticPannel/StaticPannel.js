@@ -18,7 +18,7 @@ class StaticPannel extends Component {
 
   handleEnter = (event) => {
     if (event.key === 'Enter') {
-      fetch(`https://polar-refuge-41060.herokuapp.com/journeys_budgets/${this.props.journeyId}`, {
+      fetch(`http://localhost:3000/journeys_budgets/${this.props.journeyId}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({

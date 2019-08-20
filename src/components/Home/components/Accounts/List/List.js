@@ -23,7 +23,7 @@ class List extends Component {
   };
 
 	editExpense = (expense) => {
-		fetch(`https://polar-refuge-41060.herokuapp.com/expenses/${expense.id}`, {
+		fetch(`http://localhost:3000/expenses/${expense.id}`, {
 			method: 'PATCH',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({

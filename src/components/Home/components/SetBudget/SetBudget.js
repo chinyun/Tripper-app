@@ -85,7 +85,7 @@ class SetBudget extends Component {
 		const { journeyId, onEditing } = this.props;
     const data ={[`${type}_budget`]: this.state.updateValue};
 		if (event.keyCode === 13) {
-			fetch(`https://polar-refuge-41060.herokuapp.com/journeys_budgets/${journeyId}`, {
+			fetch(`http://localhost:3000/journeys_budgets/${journeyId}`, {
 	      method: 'PATCH',
 	      headers: {'Content-Type': 'application/json'},
 	      body: JSON.stringify(data)

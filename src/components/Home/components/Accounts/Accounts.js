@@ -24,7 +24,7 @@ class Accounts extends Component {
 	};
 
 	createNewExpense = () => {
-		fetch('https://polar-refuge-41060.herokuapp.com/expenses', {
+		fetch('http://localhost:3000/expenses', {
 			method: 'POST',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
@@ -50,7 +50,7 @@ class Accounts extends Component {
 	};
 
 	deleteExpense = (list) => {
-		fetch(`https://polar-refuge-41060.herokuapp.com/expenses/${list.id}`, {
+		fetch(`http://localhost:3000/expenses/${list.id}`, {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
