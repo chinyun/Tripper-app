@@ -117,9 +117,9 @@
 
 /*Home & List*/
 .delete-btn {
-  letter-spacing: 1px;
+  letter-spacing: 0px;
   color: #9B9B9B;
-  padding: 2px 3px;
+  padding: 2px 2px;
 }
 
 .delete-btn:hover {
@@ -150,7 +150,8 @@
 }
 
 .side-bar-wrapper {
-  width: 27%;
+  width: 32%;
+  max-width: 380px;
   background-color: #FFF;
   position: relative;
   top: 40px;

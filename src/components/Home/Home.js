@@ -76,6 +76,9 @@ class Home extends Component {
       displayedDay:initialJourney[0].accountList[0].name,
       countDays: initialJourney[0].accountList.length,
       data: getData(initialJourney),
+      currentTotalBudget: + initialJourney[0].traffic_budget + + initialJourney[0].food_budget
+        + + initialJourney[0].living_budget + + initialJourney[0].ticket_budget
+        + + initialJourney[0].shopping_budget,
       isSelecting: false,
       sidebarHeight: null
     }
@@ -118,7 +121,10 @@ class Home extends Component {
   handleBudgetsChange = (journey, journeyId) => {
     this.props.updateBudgets(journey, journeyId);
     this.setState({
-      displayedJourney: journey
+      displayedJourney: journey,
+      currentTotalBudget: + journey[0].traffic_budget + + journey[0].food_budget
+        + + journey[0].living_budget + + journey[0].ticket_budget
+        + + journey[0].shopping_budget
     })
   };
 
@@ -291,6 +297,7 @@ class Home extends Component {
               handleBudgetsChange={this.handleBudgetsChange}
               isEditing={this.props.isEditing}
               onEditing={this.props.onEditing}
+              currentTotalBudget={this.state.currentTotalBudget}
             />
             <div className='minor-section'>
               <Charts

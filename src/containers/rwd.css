@@ -1,3 +1,4 @@
+/*This file consists of two parts: 'Landing' and 'Home & Navigation'*/
 /*Landing*/
 @media screen and (max-width: 1259px) {
   .switcher-nav {
@@ -104,6 +105,11 @@
 
 /*Home & Navigation*/
 @media screen and (max-width: 1650px) {
+  .side-bar-wrapper {
+    max-width: 380px;
+    min-width: 318px;
+  }
+
   .journey-name {
     letter-spacing: 0.2px;
   }
@@ -137,11 +143,6 @@
 }
 
 @media screen and (max-width: 1512px) {
-  .side-bar-wrapper {
-    width: 32%;
-    max-width: 338px;
-  }
-
   .accounts-nav {
     flex-direction: column;
     align-items: flex-start;
@@ -158,12 +159,12 @@
 }
 
 @media screen and (min-width: 1261px) and (max-width: 1512px) {
-  .minor-section {
-    width: 48%;
+  .static-pannel-wrapper {
+    min-width: 900px;
   }
 
-  .budget-topic {
-    margin-right: 20px;
+  .minor-section {
+    width: 48%;
   }
 
   .item-control-btn-wrapper {

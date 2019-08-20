@@ -109,7 +109,7 @@ class SetBudget extends Component {
           <p className='home-title'>Budgets</p>
           <p className='budget-summary'>
             <span>Total</span>
-            <span>{displayedJourney[0].budget}</span>
+            <span>{this.props.currentTotalBudget}</span>
             <span>(100%)</span>
           </p>
         </div>

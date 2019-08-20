@@ -69,10 +69,13 @@ class App extends Component {
   onRouteChange = (route) => {
     this.setState({ route: route });
     if (route === 'home') {
-      this.setState({ isSignedIn: true });
-    } else {
-      this.setState(initialState);
-    }
+      return this.setState({ isSignedIn: true });
+    } 
+    this.setState(initialState);
+  };
+
+  componentWillUnmount = () => {
+    this.onRouteChange('signout');
   };
 
   onShowSideBar = () => {
