@@ -14,14 +14,18 @@
 /*share css*/
 .web-info-wrapper {
   height: 28px;
-  padding: 25px 20px 18px 20px;
+  width: 90%;
+  max-width: 436px;
+  margin-top: 30px;
+  padding-left: 30px;
 }
 
 .web-info {
-  font-size: 11px;
-  font-weight: 500;
-  color: rgba(62,62,62, 1);
-  margin: 25px 10px 10px 10px;
+  font-size: 13px;
+  letter-spacing: 0.1px;
+  font-weight: 400;
+  line-height: 19px;
+  color: rgba(0,0,0, 1);
 }
 
 .web-vital-info {

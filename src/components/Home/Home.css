@@ -46,7 +46,6 @@
 
 .home-title {
   font-weight: 400;
-  font-family: "Ubuntu";
   letter-spacing: 1px;
   color: #3E3E3E;
   margin: 12px 15px;
@@ -54,7 +53,6 @@
 
 .home-subtitle {
   font-weight: 600;
-  font-family: "Ubuntu";
   color: #3E3E3E;
   text-transform: capitalize;
   margin: 0 15px;

@@ -44,13 +44,15 @@ class SignIn extends Component {
   render() {
     return (
       <div className='signin'>
-        <div className='landing-welcome-words'>
-          <p>Welcome back!</p>
-          <div className='words-inline'>
-            <p>Let</p>
-            <img className='tripper-white-logo' alt='tripper-white-logo' src={Logo}/>  
+        <div className='landing-welcome-words-wrapper'>
+          <div className='landing-welcome-words'>
+            <p>Welcome back!</p>
+            <div className='words-inline'>
+              <p>Let</p>
+              <img className='tripper-white-logo' alt='tripper-white-logo' src={Logo}/>  
+            </div>
+            <p>helps balance your Trip budget!</p>
           </div>
-          <p>helps balance your Trip budget!</p>
         </div>
         <div className='landing-form-wrapper'>
           <div className='landing-form'>
