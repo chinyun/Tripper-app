@@ -11,58 +11,50 @@ class Journey extends Component {
 		}
 	}
 
-	handleJourneyValueChange = (event) => {
+	handleJourneyUpdate = (event) => {
 		this.setState({ name: event.target.value });
-		this.props.onJourneyValueUpdate(this.state.name);
+		this.props.onValueChange(event.target.value);
 	};
 
-	handleJourneyValueConfirm = (event) => {
+	handleEnter = (event) => {
 		if (event.keyCode === 13) {
 			this.props.onEditing('');
 			this.props.editJourneyName(this.props.journey.id);
 		}
 	};
 
-	handleUpdate = (target) => {
-		this.props.onEditing(target);
-	};
-
-	handleDelete = (delJourneyId) => {
-		this.props.deleteJourney(delJourneyId);
-	};
-
 	render() {
-		const { journey, isEditing, onJourneyChange } = this.props;
+		const { journey } = this.props;
 		return (
 			<li className='journey' id={journey.id}>
-				{ isEditing === journey.id
+				{ this.props.isEditing === journey.id
 					? <input
 							id='update-journey-input'
 							className='update-journey-input' 
 							type='text'
 							value={this.state.name}
 							placeholder={journey.name}
-							onChange={this.handleJourneyValueChange}
-							onKeyDown={this.handleJourneyValueConfirm}
+							onChange={this.handleJourneyUpdate}
+							onKeyDown={this.handleEnter}
 						/>
 					: <button 
 							className='change-display-journey-btn' 
-							onClick={() => onJourneyChange(journey.id)}
+							onClick={() => this.props.onJourneyChange(journey.id)}
 						>
 							<span className='journey-name'>{journey.name}</span>
 						</button>
 				}
 				<div className='journey-btn-group'>
-				{	isEditing === journey.id
+				{	this.props.isEditing === journey.id
 					?	<button
 	            className='cancel-btn' 
-	            onClick={() => this.handleUpdate('')}
+	            onClick={() => this.props.onEditing('')}
 	          >
 	            <img className='cancel-btn-img' alt='cancel' src={CancelIcon}/>
 	          </button>
 					:	<button
 							className='update-btn'
-							onClick={() => this.handleUpdate(journey.id)}
+							onClick={() => this.props.onEditing(journey.id)}
 						>
 							<img className='update-icon-img' alt='update-icon' src={UpdateIcon}/>
 						</button>
@@ -71,7 +63,7 @@ class Journey extends Component {
 						className='delete-btn'
 						onClick={() => { 
 							if(window.confirm('Are you sure you wish to delete this Journey?'))
-								this.handleDelete(journey.id) 
+								this.props.deleteJourney(journey.id) 
 						}}
 					>刪除</button>
 				</div>

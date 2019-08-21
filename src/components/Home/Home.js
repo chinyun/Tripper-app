@@ -243,7 +243,7 @@ class Home extends Component {
 
   componentWillUnmount = () => {
     window.removeEventListener("resize", this.calcSideBarHeight);
-    document.addEventListener('click', this.handleClickHidden);
+    document.removeEventListener('click', this.handleClickHidden);
   };
 
   handleClickHidden = (event) => {

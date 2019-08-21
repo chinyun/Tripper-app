@@ -199,6 +199,10 @@
     margin: 10px;
   }
 
+  .change-display-journey-btn {
+    max-width: 160px;
+  }
+
   .budget-wrapper {
     width: 80%;
     margin: 10px;
