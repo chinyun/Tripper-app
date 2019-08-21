@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'whatwg-fetch';
 import './StaticPannel.css';
 import UpdateIcon from './../../../../icons/update-blue-icon.png';
 import CancelIcon from './../../../../icons/cancel-dark-icon.png';

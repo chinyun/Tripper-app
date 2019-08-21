@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import 'whatwg-fetch';
 import Logo from './../../../../icons/tripper-white-logo.png'
 
 class SignIn extends Component {

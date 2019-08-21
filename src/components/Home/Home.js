@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'whatwg-fetch';
 import SideBar from './components/SideBar/SideBar';
 import StaticPannel from './components/StaticPannel/StaticPannel';
 import SetBudget from './components/SetBudget/SetBudget';

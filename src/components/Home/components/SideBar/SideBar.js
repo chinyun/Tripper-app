@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'whatwg-fetch';
 import Journey from './Journey/Journey';
 import './SideBar.css';
 import AddIcon from './../../../../icons/add-blue-icon.png'; 

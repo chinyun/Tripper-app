@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'whatwg-fetch';
 import Scroll from './Scroll/Scroll';
 import List from './List/List';
 import Category from './Category/Category.js';

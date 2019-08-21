@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'whatwg-fetch';
 import BudgetCharts from './BudgetCharts/BudgetCharts';
 import './SetBudget.css';
 import CancelIcon from './../../../../icons/cancel-dark-icon.png';
