@@ -3,3 +3,15 @@
   padding: 0;
   animation: fadein 0.4s ease-in-out;
 }
+
+@media sreen and (max-width: 390px) {
+  .budget-chart-area {
+    margin-right: 2px;
+  }
+}
+
+@media screen and (max-width: 358px) {
+  .budget-chart-area {
+    margin: 5px 0;
+  }
+}

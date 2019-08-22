@@ -36,10 +36,43 @@
   text-align: justify;
   text-justify: distribute;
   color: rgba(62,62,62, 1);
-  margin: 25px 10px 10px 10px;
+  margin: 10px;
   max-width: 420px;
 }
 
 .web-vital-info span {
   color: #F04A2D;
+}
+
+@media screen and (max-width: 1047px) {
+  .app {
+    height: 250%;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  button, input {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .app, .dashboard {
+    height: 270%;
+  }
+
+  .web-info-wrapper {
+    padding-left: 25px;
+  }
+    
+  .web-info {
+    font-size: 9px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .app, .dashboard {
+    height: 250%;
+  }
 }

@@ -30,7 +30,6 @@
 }
 
 .journey-name {
-	font-family: "Ubuntu";
 	letter-spacing: 1px;
 }
 
@@ -67,4 +66,29 @@
 .update-journey-input:focus {
 	border: 1px solid #177EF5;
 	background-color: rgba(0, 0, 0,0.02);
+}
+
+@media screen and (max-width: 1650px) {
+  .journey-name {
+    letter-spacing: 0.2px;
+  }
+}
+
+@media screen and (max-width: 1047px) {
+  .change-display-journey-btn {
+    max-width: 160px;
+  }
+}
+
+@media screen and (min-width: 679px) and (max-width: 1047px) {
+  .journeys-list-wrapper {
+    padding-top: 48px;
+  }
+}
+
+@media screen and (max-width: 769px) {
+	.journey {
+		margin: 5px 0;
+		padding: 8px 0;
+  }
 }

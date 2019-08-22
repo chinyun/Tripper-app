@@ -77,3 +77,9 @@
   letter-spacing: 0.5px;
   margin-right: 2px;
 }
+
+@media screen and (max-width: 575px) {
+  .legend-list {
+    width: 100%;
+  }
+}

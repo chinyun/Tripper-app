@@ -16,7 +16,6 @@
 
 .budget-summary span {
   font-weight: 400;
-  font-family: "Ubuntu";
   letter-spacing: 0.5px;
   color: #3E3E3E;
   margin: 0 5px;
@@ -39,7 +38,6 @@
 }
 
 .budget-control {
-	font-family: "Ubuntu";
   margin: 0 15px;
   width: 70%;
 }
@@ -62,8 +60,8 @@
 }
 
 .budget-update-wrapper {
-	width: 90px;
-  margin-left: 10px;
+	width: 50%;
+  min-width: 120px;
 	display: flex;
 	justify-content: flex-end;
 }
@@ -79,7 +77,6 @@
 
 .budget-input {
 	font-size: 16px;
-  font-weight: 500;
 	letter-spacing: 0.2px;
 	color: rgba(62,62,62, 0.6);
 	width: 80px;
@@ -92,10 +89,9 @@
 }
 
 .budget-input::placeholder {
-	font-size: 17px;
+	font-size: 16px;
   font-weight: 400;
-	letter-spacing: 0.5px;
-	color: rgba(62,62,62, 0.6);
+  color: rgba(62,62,62, 0.6);
 }
 
 .budget-input:focus {
@@ -104,7 +100,7 @@
 }
 
 .budget-text-wrapper {
-	display: flex;
+  display: flex;
 	justify-content: flex-start;
 	align-items: center;
 }
@@ -115,7 +111,7 @@
 }
 
 .budget-detail {
-	margin-bottom: 2px;
+	margin-bottom: 6px;
   display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -148,4 +144,90 @@
   width: 60px;
   margin-right: 15px;
   padding: 20px;
+}
+
+@media screen and (max-width: 1047px) {
+  .budget-wrapper {
+    width: 80%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+  }
+}
+
+@media screen and (max-width: 699px) {
+  .budget-section {
+    width: 98%;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .budget-summary span {
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .budget {
+    width: 100%;
+  }
+
+  .budget-content p {
+    font-size: 15px;
+  }
+
+  .budget-input {
+    font-size: 14px;
+  }
+
+  .budget-detail p {
+    font-size: 13px;
+  }
+
+  .budget-section {
+    padding: 15px 10px;
+    width: 96%;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .budget-wrapper {
+    width: 90%;
+  }
+
+  .budget-content .budget-topic {
+    font-size: 13px;
+    margin-right: 16px;
+  }
+
+  .budget-input::placeholder {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 436px) {
+  .budget-wrapper {
+    width: 75%;
+    min-width: 267px;
+  }
+
+  .budget-section {
+    flex-direction: column-reverse;
+    padding: 30px 6px 10px 6px;
+  }
+
+  .budget-control {
+    margin: 30px 0 20px 5px;
+    max-width: 212px;
+  }
+
+  .budget-content .budget-topic {
+    margin-right: 8px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .budget-control {
+    min-width: 194px;
+  }
 }

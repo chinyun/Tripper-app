@@ -327,9 +327,7 @@ class Home extends Component {
                         onClick={() => this.onSelecting()}
                       >
                         {this.state.displayedDay}
-                        <span className='days-selector-btn-icon'>
-                          <img className='days-selector-btn-icon-img' alt='select' src={SelectIcon}/>
-                        </span>
+                        <img className='days-selector-btn-icon-img' alt='select' src={SelectIcon}/>
                       </button>
                       <div className={this.state.isSelecting === true ? 'days-selector-wrapper' : 'hidden'}>
                         <div className='days-selector'>

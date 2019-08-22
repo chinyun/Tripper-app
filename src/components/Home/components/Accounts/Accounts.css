@@ -85,3 +85,53 @@
 	align-items: center;
 	justify-content: center;
 }
+
+@media screen and (max-width: 1650px) {
+  .add-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .item-detail-input {
+    width: 56%;
+  }
+
+  .item-amount-input {
+    width: 24%;
+  }
+
+  .item-btn-group {
+    margin: 10px 5px;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .accounts {
+    border-radius: 10px;
+  }
+
+  .accounts-list {
+    width: 90%;
+    align-items: flex-start;
+    margin: 10px;
+  }
+
+  .add-item-wrapper {
+    padding: 1% 3.5% 1.5% 3.5%;
+  }
+
+  .add-item-content input::placeholder {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .accounts-list {
+    padding: 0 5px;
+  }
+
+  .add-item-content input {
+    font-size: 13px;
+  }  
+}

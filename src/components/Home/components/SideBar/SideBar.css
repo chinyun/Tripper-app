@@ -22,6 +22,7 @@
 }
 
 .add-journey-input {
+	width: 92%;
 	color: #3E3E3E;
 	background-color: #F0F0F0;
 	border-radius: 6px;
@@ -44,4 +45,10 @@
 	display: flex;
 	align-items: center;
 	justify-content: flex-end;
+}
+
+@media screen and (max-width: 1049px) {
+	.journeys-list-wrapper {
+		padding-top: 35px;
+	}
 }

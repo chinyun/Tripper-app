@@ -96,12 +96,13 @@
 
 /*in SideBar & StaticPannel & SetBudget*/
 .cancel-btn {
-  width: 25px;
-  height: 25px;
+  width: 24px;
+  height: 24px;
   border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 2px;
 }
 
 .cancel-btn:hover {
@@ -110,12 +111,13 @@
 
 .cancel-btn-img {
   width: 10px;
-  margin: 0 2px;
+  height: 10px;
+  margin: 0 7px;
 }
 
 /*Home & List*/
 .delete-btn {
-  letter-spacing: 0px;
+  letter-spacing: 1px;
   color: #9B9B9B;
   padding: 2px 2px;
 }
@@ -134,8 +136,12 @@
   border-radius: 20px;
 }
 
-.add-icon-img, .select-icon-img,
 .update-icon-img {
+  width: 10px;
+  margin: 3px 5px 0 5px;
+}
+
+.select-icon-img {
   width: 10px;
   margin: 0 5px;
 }
@@ -208,7 +214,6 @@
 
 .show-days span {
   font-weight: 600;
-  font-family: "Ubuntu";
   color: #3E3E3E;
   margin-left: 6px;
   animation: upfadein 0.2s ease-out;
@@ -238,8 +243,14 @@
   color: #9B9B9B;
 }
 
+.add-icon-img {
+  width: 10px;
+  height: 12px;
+  margin: 3px 5px;
+}
+
 .accounts-days {
-  width: 142px;
+  width: 120px;
   height: 48px;
   margin: 0 15px;
   padding: 0 15px;
@@ -254,20 +265,19 @@
 .days-selector-btn {
   font-size: 16px;
   font-weight: 400;
-  font-family: "Ubuntu";
   letter-spacing: 1px;
   color: #3E3E3E;
+  width: 100px;
+  height: 19px;
   margin: 0 10px;
   display: flex;
   justify-content: space-between;
 }
 
-.days-selector-btn-icon {
-  padding-top: 1px;
-}
-
 .days-selector-btn-icon-img {
   width: 9px;
+  height: 6px;
+  margin: 7px 5px 0 50px;
 }
 
 .days-selector-wrapper {
@@ -290,3 +300,162 @@
   flex-direction: column;
   justify-content: center;
 }
+
+@media screen and (max-width: 1650px) {
+  .side-bar-wrapper {
+    max-width: 380px;
+    min-width: 318px;
+  }
+
+  .add-submit-input {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 1512px) {
+  .accounts-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .accounts-left-column {
+    margin-top: 10px;
+    width: 95%;
+  }
+
+  .accounts-days {
+    margin: 0 15px;
+  }
+}
+
+@media screen and (min-width: 1261px) and (max-width: 1512px) {
+  .minor-section {
+    width: 48%;
+  }
+}
+
+@media screen and (max-width: 1260px) {
+  .side-bar-wrapper {
+    width: 35%;
+    min-width: 292px;
+    max-width: 350px;
+    position: fixed;
+    z-index: 10000;
+    box-shadow: 4px 0px 10px 0 rgba(0,0,0, 0.2);
+  }
+}
+
+@media screen and (max-width: 1047px) {
+  .main-section {
+    margin-top: 65px;
+  }
+
+  .sub-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .minor-section {
+    width: 80%;
+    max-width: 767px;
+    margin: 10px;
+  }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1047px) {
+  .accounts-wrapper {
+    max-width: 600px;
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .delete-btn, .add-btn {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .home-title, .home-subtitle, .show-days span {
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  .main-section {
+    margin-top: 25px;
+  }
+
+  .sub-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .minor-section {
+    width: 80%;
+    max-width: 767px;
+    margin: 10px;
+  }
+
+  .budget-wrapper {
+    width: 80%;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+  }
+
+  .add-submit-input {
+    font-size: 12px;
+    padding: 0 10px;
+    margin-right: 8px;
+  }
+
+  .days-selector-btn {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .minor-section {
+    width: 90%;
+    margin: 10px;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .add-btn {
+    font-size: 14px;
+  }
+
+  .show-add-btn {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .home-title {
+    font-size: 12px;
+  }
+
+  .home-subtitle {
+    letter-spacing: 0.1px;
+    margin: 8px 0 18px 15px;
+    font-size: 12px;
+  }
+
+  .show-days span {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 358px) {
+  .minor-section {
+    min-width: 267px;
+  }
+
+  .accounts-days {
+    padding: 0 8px;
+    margin: 0 15px 0 5px;
+  }
+}
+

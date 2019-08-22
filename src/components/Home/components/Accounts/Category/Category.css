@@ -1,5 +1,5 @@
 .item-category {
-  width: 14%;
+  width: 18%;
   margin-left: 5px;
   padding: 0 4px;
   display: flex;
@@ -9,7 +9,6 @@
 
 .item-category-btn {
   display: flex;
-  background: none;
   color: #3E3E3E;
 }
 
@@ -43,12 +42,12 @@
 }
 
 .category-selector button {
-  font-weight: 400;
+  font-weight: 500;
   color: #3E3E3E;
   letter-spacing: 1px;
   text-align: center;
   width: 100%;
-  padding: 1px 10px;
+  padding: 3px 10px;
   transition: 0s;
 }
 
@@ -61,3 +60,44 @@
   color: #FFF;
   background-color: #177EF5;
 }
+
+@media screen and (max-width: 1650px) {
+  .item-category {
+    padding: 0;
+    width: 17%;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .category-selector-wrapper {
+    width: 30%;
+    max-width: 110px;
+  }
+
+  .item-category {
+    width: 18%;
+    margin: 10px 5px;
+  }
+
+  .item-category-btn-icon {
+    margin-left: 5px;
+  }
+
+  .category-selector button {
+    padding: 6px;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .item-category-btn {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .item-category {
+    width: 18%;
+    min-width: 50px;
+    margin: 10px 3px;
+  }
+}
+
