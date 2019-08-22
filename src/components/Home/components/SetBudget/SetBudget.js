@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
 import BudgetCharts from './BudgetCharts/BudgetCharts';
+import Url from './../../../Api/Api';
 import './SetBudget.css';
 import CancelIcon from './../../../../icons/cancel-dark-icon.png';
 import UpdateIcon from './../../../../icons/update-blue-icon.png';
@@ -86,7 +87,7 @@ class SetBudget extends Component {
 		const { journeyId, onEditing } = this.props;
     const data ={[`${type}_budget`]: this.state.updateValue};
 		if (event.keyCode === 13) {
-			fetch(`http://localhost:3000/journeys_budgets/${journeyId}`, {
+			fetch(`${Url}/journeys_budgets/${journeyId}`, {
 	      method: 'PATCH',
 	      headers: {'Content-Type': 'application/json'},
 	      body: JSON.stringify(data)

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import 'whatwg-fetch';
+import Url from './../../../Api/Api';
 import Logo from './../../../../icons/tripper-white-logo.png'
 
 class Register extends Component {
@@ -25,7 +26,7 @@ class Register extends Component {
   };
 
   onSubmitRegister = () => {
-    fetch('http://localhost:3000/register', {
+    fetch(`${Url}/register`, {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({

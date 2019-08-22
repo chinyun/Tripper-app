@@ -6,6 +6,7 @@ import SetBudget from './components/SetBudget/SetBudget';
 import Accounts from './components/Accounts/Accounts';
 import Charts from './components/Charts/Charts';
 import Days from './components/Days/Days';
+import Url from './../Api/Api';
 import './Home.css';
 import SelectIcon from '../../icons/select-black-icon.png';
 
@@ -147,7 +148,7 @@ class Home extends Component {
 
   createNewDay = () => {
     const newDay = `Day${this.state.accounts.length + 1}`;
-    fetch('http://localhost:3000/accounts', {
+    fetch(`${Url}/accounts`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -174,7 +175,7 @@ class Home extends Component {
   };
 
   handleRemoveAccount = (delAccountId) => {
-    fetch(`http://localhost:3000/accounts/${delAccountId}`, {
+    fetch(`${Url}/accounts/${delAccountId}`, {
       method: 'DELETE',
     })
     .then(response => response.json())

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import 'whatwg-fetch';
+import Url from './../../../Api/Api';
 import Logo from './../../../../icons/tripper-white-logo.png'
 
 class SignIn extends Component {
@@ -20,7 +21,7 @@ class SignIn extends Component {
   };
 
   onSubmitSignIn = (props) => {
-    fetch('http://localhost:3000/signin', {
+    fetch(`${Url}/signin`, {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({

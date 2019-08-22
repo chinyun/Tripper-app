@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
 import Journey from './Journey/Journey';
+import Url from './../../../Api/Api';
 import './SideBar.css';
 import AddIcon from './../../../../icons/add-blue-icon.png'; 
 import CancelIcon from './../../../../icons/cancel-dark-icon.png';
@@ -24,7 +25,7 @@ class SideBar extends Component {
 	};
 
 	createNewJourney = () => {
-		fetch('http://localhost:3000/journeys', {
+		fetch(`${Url}/journeys`, {
 			method: 'POST',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
@@ -50,7 +51,7 @@ class SideBar extends Component {
 	};
 
 	editJourneyName = (journeyId) => {
-    fetch(`http://localhost:3000/journeys/${journeyId}`, {
+    fetch(`${Url}/journeys/${journeyId}`, {
       method: 'PATCH',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -67,7 +68,7 @@ class SideBar extends Component {
   };
 
 	deleteJourney = ( delJourneyId ) => {
-		fetch(`http://localhost:3000/journeys/${delJourneyId}`, {
+		fetch(`${Url}/journeys/${delJourneyId}`, {
 			method: 'DELETE',
 		})
 		.then(response => response.json())

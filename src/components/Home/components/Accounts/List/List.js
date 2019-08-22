@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
 import Category from '../Category/Category.js';
+import Url from './../../../../Api/Api';
 import './List.css';
 import UpdateIcon from './../../../../../icons/update-blue-icon.png';
 import CancelIcon from './../../../../../icons/cancel-dark-icon.png';
@@ -24,7 +25,7 @@ class List extends Component {
   };
 
 	editExpense = (expense) => {
-		fetch(`http://localhost:3000/expenses/${expense.id}`, {
+		fetch(`${Url}/expenses/${expense.id}`, {
 			method: 'PATCH',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({

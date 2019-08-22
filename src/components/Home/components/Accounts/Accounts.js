@@ -3,6 +3,7 @@ import 'whatwg-fetch';
 import Scroll from './Scroll/Scroll';
 import List from './List/List';
 import Category from './Category/Category.js';
+import Url from './../../../Api/Api';
 import './Accounts.css';
 import AddIcon from './../../../../icons/add-blue-icon.png'; 
 import CancelIcon from './../../../../icons/cancel-dark-icon.png';
@@ -25,7 +26,7 @@ class Accounts extends Component {
 	};
 
 	createNewExpense = () => {
-		fetch('http://localhost:3000/expenses', {
+		fetch(`${Url}/expenses`, {
 			method: 'POST',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
@@ -51,7 +52,7 @@ class Accounts extends Component {
 	};
 
 	deleteExpense = (list) => {
-		fetch(`http://localhost:3000/expenses/${list.id}`, {
+		fetch(`${Url}/expenses/${list.id}`, {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({

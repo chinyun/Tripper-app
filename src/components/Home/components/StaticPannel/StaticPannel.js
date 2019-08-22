@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
+import Url from './../../../Api/Api';
 import './StaticPannel.css';
 import UpdateIcon from './../../../../icons/update-blue-icon.png';
 import CancelIcon from './../../../../icons/cancel-dark-icon.png';
@@ -19,7 +20,7 @@ class StaticPannel extends Component {
 
   handleEnter = (event) => {
     if (event.key === 'Enter') {
-      fetch(`http://localhost:3000/journeys_budgets/${this.props.journeyId}`, {
+      fetch(`${Url}/journeys_budgets/${this.props.journeyId}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({
