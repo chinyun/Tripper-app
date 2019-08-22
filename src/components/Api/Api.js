@@ -1,3 +1,3 @@
-const Url = 'https://polar-refuge-41060.herokuapp.com';
+const Url = 'http://localhost:3000';
 
 export default Url;
