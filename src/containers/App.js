@@ -17,7 +17,7 @@ const initialState = {
   isSignedIn: false,
   isShowedSideBar: true,
   isActived: '',
-  isEdding: '',
+  isEditing: '',
   isSelecting: ''
 }
 

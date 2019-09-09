@@ -82,7 +82,7 @@ class SignIn extends Component {
                 className='landing-input-submit'
                 type='submit'
                 value='signin'
-                onClick={this.onSubmitSignIn}
+                onClick={() => this.onSubmitSignIn()}
               />
             </div>
             <div className='landing-form-alarm'>

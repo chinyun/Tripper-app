@@ -43,7 +43,7 @@ class Register extends Component {
         this.props.loadJourneys(data.map(item => item));
         this.props.onRouteChange('home');
       } else {
-        alert('unable to signin');
+        alert('unable to register');
       }
     })
     .catch(err => alert('error registering'))
@@ -97,7 +97,7 @@ class Register extends Component {
                 className='landing-input-submit'
                 type='submit'
                 value='Register'
-                onClick={this.onSubmitRegister}
+                onClick={() => this.onSubmitRegister()}
               />
             </div>
             <p className='web-vital-info'>NOTES: Tripper is under optimizing. It is recommended&nbsp;
